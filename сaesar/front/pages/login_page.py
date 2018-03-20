@@ -28,3 +28,7 @@ class LogInPage(BasePage):
         submit_btn = lambda: self.driver.find_element(
             *LogInLocators.CONFIRM_ACTION).click()
         return GroupsPage(self.driver)
+
+    def get_message(self):
+        message = self.driver.find_element(*LogInLocators.FIELD_MESSAGE)
+        return message.text
