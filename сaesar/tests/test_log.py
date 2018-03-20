@@ -1,5 +1,6 @@
 from tests.test_base import TestBase
 from front.pages.login_page import LogInPage
+import time
 
 import unittest
 
@@ -7,10 +8,13 @@ import unittest
 class TestLog(TestBase):
 
     def test_login_in(self):
-        groups_page = LogInPage(self.driver)\
-            .user_name("dmytro")\
-            .user_password('1234')\
-            .submit_log_in()
+        """проверку добавить на факт нужной страницы"""
+        groups_page = LogInPage(self.driver) \
+            .user_name("dmytro") \
+            .user_password('1234') \
+            .submit_log_in().get_title_name()
+        self.assertIn("Caesar", groups_page)
+        time.sleep(5)
 
 
 if __name__ == '__main__':

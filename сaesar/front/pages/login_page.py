@@ -14,6 +14,7 @@ class LogInPage(BasePage):
         name_field.click()
         name_field.clear()
         name_field.send_keys(name_user, Keys.ENTER)
+        return self
 
     def user_password(self, password_user):
         password_field = self.driver.find_element(
@@ -21,8 +22,13 @@ class LogInPage(BasePage):
         password_field.click()
         password_field.clear()
         password_field.send_keys(password_user, Keys.ENTER)
+        return self
 
     def submit_log_in(self):
         submit_btn = lambda: self.driver.find_element(
             *LogInLocators.CONFIRM_ACTION).click()
         return GroupsPage(self.driver)
+
+    def get_message(self):
+        message = self.driver.find_element(*LogInLocators.FIELD_MESSAGE)
+        return message.text
