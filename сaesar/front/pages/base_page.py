@@ -3,5 +3,4 @@ class BasePage(object):
         self.driver = driver
 
     def get_title_name(self):
-        # assertIn
         return self.driver.title
