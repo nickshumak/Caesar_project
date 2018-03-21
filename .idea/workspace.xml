@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3985f744-53f3-4764-be1a-e811ac2c5801" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/сaesar/front/users.py" />
       <change beforePath="$PROJECT_DIR$/.idea/Caesar_project.iml" afterPath="$PROJECT_DIR$/.idea/Caesar_project.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/сaesar/front/pages/login_page.py" afterPath="$PROJECT_DIR$/сaesar/front/pages/login_page.py" />
+      <change beforePath="$PROJECT_DIR$/сaesar/front/locators/locators.py" afterPath="$PROJECT_DIR$/сaesar/front/locators/locators.py" />
+      <change beforePath="$PROJECT_DIR$/сaesar/front/pages/groups_page.py" afterPath="$PROJECT_DIR$/сaesar/front/pages/groups_page.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/tests/test_log.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_log.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="test_log.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_log.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+            <state relative-caret-position="209">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -37,21 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/сaesar/front/users.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="test_base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,8 +59,8 @@
       <file leaf-file-name="login_page.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/front/pages/login_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+            <state relative-caret-position="413">
+              <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -82,8 +71,8 @@
       <file leaf-file-name="locators.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/front/locators/locators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state relative-caret-position="221">
+              <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -92,8 +81,30 @@
       <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/сaesar/resource/users_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/сaesar/front/user.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -130,12 +141,13 @@
         <option value="$PROJECT_DIR$/сaesar/front/pages/page_main.py" />
         <option value="$PROJECT_DIR$/сaesar/front/pages/page_base.py" />
         <option value="$PROJECT_DIR$/сaesar/front/pages/page_login.py" />
-        <option value="$PROJECT_DIR$/сaesar/front/locators/locators.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/test_base.py" />
         <option value="$PROJECT_DIR$/сaesar/front/pages/main_page.py" />
         <option value="$PROJECT_DIR$/сaesar/front/pages/login_page.py" />
-        <option value="$PROJECT_DIR$/сaesar/tests/test_log.py" />
         <option value="$PROJECT_DIR$/сaesar/front/users.py" />
+        <option value="$PROJECT_DIR$/сaesar/front/pages/groups_page.py" />
+        <option value="$PROJECT_DIR$/сaesar/tests/test_log.py" />
+        <option value="$PROJECT_DIR$/сaesar/front/locators/locators.py" />
       </list>
     </option>
   </component>
@@ -145,8 +157,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1932" />
-    <option name="height" value="996" />
+    <option name="width" value="1916" />
+    <option name="height" value="980" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -182,6 +194,12 @@
               <item name="Caesar_project" type="462c0819:PsiDirectoryNode" />
               <item name="сaesar" type="462c0819:PsiDirectoryNode" />
               <item name="front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Caesar_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Caesar_project" type="462c0819:PsiDirectoryNode" />
+              <item name="сaesar" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -220,7 +238,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_log.TestLog.test_login_in">
+  <component name="RunManager" selected="Python tests.Unittests for test_log.TestLog.test_2">
     <configuration name="login_page" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,7 +271,7 @@
       <option name="_new_target" value="&quot;test_log.TestLog&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for test_log.TestLog.test_login" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_log.TestLog.test_2" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -264,7 +282,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_log.TestLog.test_login&quot;" />
+      <option name="_new_target" value="&quot;test_log.TestLog.test_2&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for test_log.TestLog.test_login_in" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -297,18 +315,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_login" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_login_in" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in test_log.py" />
-      <item index="4" class="java.lang.String" itemvalue="Python.login_page" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_login_in" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_log.py" />
+      <item index="3" class="java.lang.String" itemvalue="Python.login_page" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_2" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_login_in" />
-        <item index="1" class="java.lang.String" itemvalue="Python.login_page" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in test_log.py" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_login" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_2" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog.test_login_in" />
+        <item index="2" class="java.lang.String" itemvalue="Python.login_page" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_log.TestLog" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_log.py" />
       </list>
     </recent_temporary>
   </component>
@@ -329,44 +347,45 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_log_TestLog - 2018.03.18 at 20h 21m 35s.xml">
-      <configuration name="Unittests for test_log.TestLog" configurationId="tests" />
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 25m 27s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog - 2018.03.18 at 20h 45m 51s.xml">
-      <configuration name="Unittests for test_log.TestLog" configurationId="tests" />
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 27m 48s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog - 2018.03.20 at 19h 23m 00s.xml">
-      <configuration name="Unittests for test_log.TestLog" configurationId="tests" />
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 29m 38s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog - 2018.03.20 at 19h 24m 05s.xml">
-      <configuration name="Unittests for test_log.TestLog" configurationId="tests" />
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 30m 36s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog_test_login_in - 2018.03.18 at 19h 40m 37s.xml">
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 30m 59s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 31m 58s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 33m 35s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 34m 05s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_log_TestLog_test_2 - 2018.03.21 at 18h 34m 58s.xml">
+      <configuration name="Unittests for test_log.TestLog.test_2" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_log_TestLog_test_login_in - 2018.03.21 at 18h 26m 58s.xml">
       <configuration name="Unittests for test_log.TestLog.test_login_in" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog_test_login_in - 2018.03.18 at 20h 19m 26s.xml">
-      <configuration name="Unittests for test_log.TestLog.test_login_in" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog_test_login_in - 2018.03.20 at 19h 21m 32s.xml">
-      <configuration name="Unittests for test_log.TestLog.test_login_in" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_log_TestLog_test_login_in - 2018.03.20 at 19h 26m 25s.xml">
-      <configuration name="Unittests for test_log.TestLog.test_login_in" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_log_py - 2018.03.20 at 19h 18m 34s.xml">
-      <configuration name="Unittests in test_log.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_log_py - 2018.03.20 at 19h 19m 38s.xml">
-      <configuration name="Unittests in test_log.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1928" height="952" extended-state="6" />
+    <frame x="-4" y="-4" width="1912" height="936" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19791667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.197479" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47003525" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49819493" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -422,6 +441,60 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/сaesar/tests/test_log.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/base_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/login_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/locators/locators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_log.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
@@ -458,7 +531,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -520,7 +595,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -562,7 +639,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -626,7 +705,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -644,30 +725,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/front/locators/locators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/users.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/front/pages/base_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -676,30 +734,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/login_page.py">
+    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/locators/locators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/test_log.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        <state relative-caret-position="209">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/front/users.py">
+    <entry file="file://$PROJECT_DIR$/сaesar/front/pages/login_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/resource/users_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/front/user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
           <folding />
         </state>
       </provider>
