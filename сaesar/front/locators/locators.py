@@ -10,7 +10,7 @@ class LogInLocators(object):
 
 
 class GroupPageLocators(object):
-    MY_GROUP = (By.CLASS_NAME, 'myGroups')
+    # MY_GROUP = (By.CLASS_NAME, 'myGroups')
     pass
 
 
