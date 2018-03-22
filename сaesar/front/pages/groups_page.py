@@ -12,10 +12,22 @@ class GroupsPage(BasePage):
 
     class LeftBar(object):
         """inner classes"""
-        pass
+
+        def create_group(self):
+            return self
+
+        def search_group(self):
+            return self
+
+        def edit_group(self):
+            return self
+
+        def delete_group(self):
+            return self
 
     class RightBar(object):
-        pass
+        def click_log_out(self):
+            pass
 
     class HeadBar(object):
         pass
