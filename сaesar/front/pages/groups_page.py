@@ -33,7 +33,6 @@ class GroupsPage(BasePage):
         for group in groups:
             groups_list.append(group.text)
         return groups_list
-        # return self.driver.find_element(*GroupPageLocators.GROUPS)
 
     def left_bar(self):
         self.driver.find_element(*GroupPageLocators.LEFT_BAR)
