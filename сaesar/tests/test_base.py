@@ -11,5 +11,7 @@ class TestBase(unittest.TestCase):
         self.driver.get(PathUrl.URL_SITE)
         self.driver.implicitly_wait(10)
 
+        self.driver.maximize_window()
+
     def tearDown(self):
         self.driver.quit()

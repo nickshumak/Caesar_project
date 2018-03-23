@@ -4,14 +4,16 @@ from selenium.webdriver.common.by import By
 class LogInLocators(object):
     LOGIN_FIELD = (By.NAME, 'login')
     PASSWORD_FIELD = (By.NAME, 'password')
-    CONFIRM_ACTION = (By.ID, "")
-    FIELD_MESSAGE = (By.CLASS_NAME, "message")
+    CONFIRM_ACTION = (By.CLASS_NAME, 'submit')
+    FIELD_MESSAGE = (By.CLASS_NAME, 'message')
 
 
 class GroupPageLocators(object):
     GROUP_LOCATION = (By.CLASS_NAME, 'groupLocation')
     BUTTON_SEARCH = (By.CSS_SELECTOR, 'div.search')
-    GROUPS = (By.CLASS_NAME, 'group-collection row')
+
+    # GROUPS = (By.CLASS_NAME, 'group-collection row')
+
     BUTTON_MY_GROUPS = (By.CLASS_NAME, 'myGroups')
     BUTTON_ALL_GROUPS = (By.CLASS_NAME, 'allGroups')
     BUTTONS_STAGE_GROUPS = (By.CLASS_NAME, 'stage-toggle')
@@ -21,7 +23,7 @@ class GroupPageLocators(object):
     CURRENT_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(4)')
     FUTURE_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
 
-    GROUPS = (By.CLASS_NAME, 'small-group-view col-md-6')
+    GROUPS = (By.CLASS_NAME, 'small-group-view')
 
     # main section
     GROUP_NAME = (By.CLASS_NAME, 'content-header-group-name')
@@ -36,6 +38,9 @@ class GroupPageLocators(object):
     KEY_DATES = (By.CLASS_NAME, 'key - dates')
     GROUP_STAGE_TITLE = (By.CLASS_NAME, 'groupStageTitle')
     GROUP_STAGE = (By.CLASS_NAME, 'groupStage')
+
+    LEFT_BAR = (By.ID, 'left-menu')
+    RIGHT_BAR = (By.CLASS_NAME, 'user-photo')
 
 
 class RightBarLocators(object):

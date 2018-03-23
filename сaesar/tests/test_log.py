@@ -20,7 +20,11 @@ class TestLog(TestBase):
         groups_page = LogInPage(self.driver) \
             .user_name("hello") \
             .user_password('1234') \
-            .submit_log_in().my_group()
+            .submit_log_in()
+        time.sleep(5)
+        group_location = groups_page.group_location()
+        print(group_location)
+        time.sleep(5)
 
 
 if __name__ == '__main__':
