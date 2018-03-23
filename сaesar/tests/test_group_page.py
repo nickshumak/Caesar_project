@@ -100,7 +100,6 @@ class TestGroupPage(TestBase):
     #     time.sleep(10)
     #     assert groups_page.open_right_bar().is_enabled()
 
-
     def test_groups_list(self):
         """Список групп на текущей странице, протстировано"""
         groups_page = LogInPage(self.driver) \
