@@ -1,4 +1,5 @@
 from front.pages.base_page import BasePage
+from front.pages.login_page import LogInPage
 from front.locators.locators import GroupPageLocators, LeftBarLocators, RightBarLocators
 
 
@@ -38,8 +39,27 @@ class GroupsPage(BasePage):
         self.driver.find_element(*GroupPageLocators.LEFT_BAR)
         # return self.LeftBar(self.driver)
 
+    class RightBar(object):
+        def __init__(self, driver):
+            self.driver = driver
+
+        def click_log_out(self):
+            self.driver.find_element(*RightBarLocators.BUTTON_LOGOUT).click()
+            return LogInPage(self.driver)
+
+        def user_full_name(self):
+            return self.driver.find_element(*RightBarLocators.USER_NAME).text
+
+        def user_role(self):
+            return self.driver.find_element(*RightBarLocators.USER_ROLE).text
+
+        def edit_user_button(self):
+            self.driver.find_element(*RightBarLocators.BUTTON_EDIT_PROFILE).click()
+            return self
+
     def open_right_bar(self):
-        self.driver.find_element(*GroupPageLocators.RIGHT_BAR)
+        self.driver.find_element(*GroupPageLocators.RIGHT_BAR).click()
+        return self.RightBar(self.driver)
 
     def get_current_url(self):
         return self.driver.current_url
@@ -62,9 +82,6 @@ class GroupsPage(BasePage):
         def delete_group(self):
             return self
 
-    class RightBar(object):
-        def click_log_out(self):
-            pass
 
     class HeadBar(object):
         pass
