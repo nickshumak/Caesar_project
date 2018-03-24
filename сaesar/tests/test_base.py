@@ -12,5 +12,7 @@ class TestBase(unittest.TestCase):
         self.login_page = LogInPage(self.driver)
         self.login_page.get(PathUrl().URL_SITE)
 
+        self.driver.maximize_window()
+
     def tearDown(self):
         self.driver.quit()
