@@ -69,3 +69,47 @@ class HeaderBarLocators(object):
     BUTTON_ABOUT = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(6)')
 
     BUTTON_LOGOUT = (By.CLASS_NAME, 'logout')
+
+
+class AdminPageLocators(object):
+    ADD_ENTITY = (By.ID, 'add-new-user')
+    TAB_USERS = (By.CSS_SELECTOR, "a[href*='users']")
+    TAB_GROUPS = (By.CSS_SELECTOR, "a[href*='groups']")
+    TAB_STUDENTS = (By.CSS_SELECTOR, "a[href*='students']")
+    BUTTON_ESCAPE = (By.CSS_SELECTOR, '.btn.btn-warning.home')
+    TITLE_ENTITY = (By.CSS_SELECTOR, '.modal-title')
+
+
+class CreateEditUsersLocators(object):
+    FIRST_NAME = (By.NAME, "firstName")
+    LAST_NAME = (By.NAME, "lastName")
+    ROLE = (By.NAME, "role")
+    LOCATION = (By.NAME, "location")
+    PHOTO = (By.NAME, "photo")
+    LOGIN_FIELD = (By.NAME, "login")
+    PASSWORD_FIELD = (By.NAME, "password")
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
+
+
+class CreateEditGroupsLocators(object):
+    NAME = (By.NAME, "name")
+    LOCATION = (By.NAME, "location")
+    DIRECTION = (By.NAME, "direction")
+    START_DATE = (By.NAME, "startDate")
+    FINISH_DATE = (By.NAME, "finishDate")
+    TEACHERS = (By.NAME, "teachers")
+    EXPERTS = (By.NAME, "experts")
+    STAGE = (By.NAME, "stage")
+    BUDGET = (By.NAME, "budgetOwner")
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
+
+
+class CreateEditStudentsLocators(object):
+    GROUP_ID = (By.NAME, 'groupID')
+    NAME = (By.NAME, "name")
+    LAST_NAME = (By.NAME, "lastName")
+    ENGLISH_LEVEL = (By.NAME, "englishLevel")
+    CV_URL = (By.NAME, "CvUrl")
+    ENTRY_SCORE = (By.NAME, "entryScore")
+    APPROVED_BY = (By.NAME, 'approvedBy')
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
