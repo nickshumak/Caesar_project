@@ -39,29 +39,27 @@ class GroupPageLocators(object):
     GROUP_STAGE_TITLE = (By.CLASS_NAME, 'groupStageTitle')
     GROUP_STAGE = (By.CLASS_NAME, 'groupStage')
 
-    LEFT_BAR = (By.ID, 'left-menu')
-    RIGHT_BAR = (By.CLASS_NAME, 'user-photo')
+    LEFT_MENU = (By.CSS_SELECTOR, '#left-menu > div')
+    USER_PHOTO = (By.CLASS_NAME, 'user-photo')
+    TOP_MENU = (By.CLASS_NAME, 'row')
 
 
-class RightBarLocators(object):
+class RightMenuLocators(object):
     BUTTON_EDIT_PROFILE = (By.CLASS_NAME, 'btn-edit')
     USER_NAME = (By.CLASS_NAME, 'name')
     USER_ROLE = (By.CLASS_NAME, 'role')
-    BUTTON_LOGOUT = (By.CLASS_NAME, 'logout')
+    BUTTON_LOGOUT = (By.CSS_SELECTOR, 'a.logout:nth-child(3)')
 
 
-class LeftBarLocators(object):
+class LeftMenuLocators(object):
     BUTTON_CREATE_GROUP = (By.XPATH, '//*[@title = "Create"]')
     BUTTON_SEARCH_GROUP = (By.XPATH, '//*[@title = "Search"]')
     BUTTON_EDIT_GROUP = (By.XPATH, '//*[@title = "Edit"]')
     BUTTON_DELETE_GROUP = (By.XPATH, '//*[@title = "Delete"]')
 
 
-class HeaderBarLocators(object):
-    LIST_BUTTONS_HEADER_BAR = (By.CLASS_NAME, 'containerMainMenu')
-
-    # опять таки массив или так?
-    BUTTON_LOCATIONS = (By.CSS_SELECTOR, 'div.itemMenu: nth - child(1)')
+class TopMenuLocators(object):
+    BUTTON_LOCATIONS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
     BUTTON_GROUPS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
     BUTTON_STUDENTS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
     BUTTON_SCHEDULE = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
@@ -72,7 +70,9 @@ class HeaderBarLocators(object):
 
 
 class AdminPageLocators(object):
-    ADD_ENTITY = (By.ID, 'add-new-user')
+    ADD_USER = (By.XPATH, ".//*[text()='Add user']")
+    ADD_GROUP = (By.XPATH, "/.//*[text()='Add group']")
+    ADD_STUDENT = (By.XPATH, ".//*[text()='Add student']")
     TAB_USERS = (By.CSS_SELECTOR, "a[href*='users']")
     TAB_GROUPS = (By.CSS_SELECTOR, "a[href*='groups']")
     TAB_STUDENTS = (By.CSS_SELECTOR, "a[href*='students']")
@@ -110,6 +110,7 @@ class CreateEditStudentsLocators(object):
     LAST_NAME = (By.NAME, "lastName")
     ENGLISH_LEVEL = (By.NAME, "englishLevel")
     CV_URL = (By.NAME, "CvUrl")
+    IMAGE = (By.NAME, "imageUrl")
     ENTRY_SCORE = (By.NAME, "entryScore")
     APPROVED_BY = (By.NAME, 'approvedBy')
     BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
