@@ -69,6 +69,34 @@ class TestGroupPage(TestBase):
         expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/locations'
         self.assertEqual(self.driver.current_url, expected_page_url)
 
+    def test24_open_create_page_for_admin(self):
+        first_admin.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        left_menu = group_page.left_menu_open()
+        time.sleep(1)
+        left_menu.create_group().click()
+        expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/new'
+        self.assertEqual(self.driver.current_url, expected_page_url)
+
+    def test24_open_create_page_for_coordinator(self):
+        first_admin.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        left_menu = group_page.left_menu_open()
+        left_menu.create_group().click()
+        expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/new'
+        self.assertEqual(self.driver.current_url, expected_page_url)
+
+    def test25_disabled_create_button_for_teacher(self):
+        teacher.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        left_menu = group_page.left_menu_open()
+        time.sleep(1)
+        try:
+            left_menu.create_group().is_displayed()
+            self.assertTrue(False)
+        except Exception:
+            self.assertTrue(True)
+
 
 if __name__ == '__main__':
     unittest.main()

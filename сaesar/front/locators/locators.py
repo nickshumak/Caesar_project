@@ -39,7 +39,7 @@ class GroupPageLocators(object):
     GROUP_STAGE_TITLE = (By.CLASS_NAME, 'groupStageTitle')
     GROUP_STAGE = (By.CLASS_NAME, 'groupStage')
 
-    LEFT_MENU = (By.ID, 'left-menu')
+    LEFT_MENU = (By.CSS_SELECTOR, '#left-menu > div')
     USER_PHOTO = (By.CLASS_NAME, 'user-photo')
     TOP_MENU = (By.CLASS_NAME, 'row')
 

@@ -15,16 +15,16 @@ class GroupsPage(BasePage):
             self.driver = driver
 
         def create_group(self):
-            self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP).click()
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
 
         def search_group(self):
-            self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP).click()
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
 
         def edit_group(self):
-            self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP).click()
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
 
         def delete_group(self):
-            self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP).click()
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
 
     class RightMenu(object):
         def __init__(self, driver):
@@ -112,7 +112,7 @@ class GroupsPage(BasePage):
 
     def left_menu_open(self):
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
-        ActionChains(self.driver).move_to_element(left_menu).perform()
+        ActionChains(self.driver).move_to_element_with_offset(left_menu, 100, 200).perform()
         return self.LeftMenu(self.driver)
 
     def right_menu_open(self):
