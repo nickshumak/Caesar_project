@@ -7,6 +7,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 expected_message = 'Incorrect login or password. Please, try again'
+expected_page_title = 'Caesar'
 
 
 class TestLoginPage(TestBase):
@@ -21,8 +22,8 @@ class TestLoginPage(TestBase):
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
         group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
-        right_bar = group_page.open_right_bar()
+        self.assertEqual(self.driver.title, expected_page_title)
+        right_bar = group_page.right_menu_open()
         self.assertEqual(right_bar.user_full_name(), first_admin.full_name)
         self.assertEqual(right_bar.user_role(), first_admin.role)
 
@@ -31,8 +32,8 @@ class TestLoginPage(TestBase):
         self.login_page.enter_password(coordinator.password)
         self.login_page.submit()
         group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
-        right_bar = group_page.open_right_bar()
+        self.assertEqual(self.driver.title, expected_page_title)
+        right_bar = group_page.right_menu_open()
         self.assertEqual(right_bar.user_full_name(), coordinator.full_name)
         self.assertEqual(right_bar.user_role(), coordinator.role)
 
@@ -41,8 +42,8 @@ class TestLoginPage(TestBase):
         self.login_page.enter_password(teacher.password)
         self.login_page.submit()
         group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
-        right_bar = group_page.open_right_bar()
+        self.assertEqual(self.driver.title, expected_page_title)
+        right_bar = group_page.right_menu_open()
         self.assertEqual(right_bar.user_full_name(), teacher.full_name)
         self.assertEqual(right_bar.user_role(), teacher.role)
 
@@ -50,47 +51,42 @@ class TestLoginPage(TestBase):
         self.login_page.enter_login(user_password_length_4.login)
         self.login_page.enter_password(user_password_length_4.password)
         self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     def test06_length_password_equal_10(self):
         self.login_page.enter_login(user_password_length_10.login)
         self.login_page.enter_password(user_password_length_10.password)
         self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     def test07_length_login_equal_4(self):
         self.login_page.enter_login(user_login_length_4.login)
         self.login_page.enter_password(user_login_length_4.password)
         self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     def test08_length_login_equal_10(self):
         self.login_page.enter_login(user_login_length_10.login)
         self.login_page.enter_password(user_login_length_10.password)
         self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     def test09_auto_login_function(self):
         first_admin.auto_login_n_open_group_page(self.login_page)
         group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     def test10_sensitive_to_case(self):
         self.login_page.enter_login(first_admin.login.upper())
         self.login_page.enter_password(first_admin.password.upper())
         self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     def test11_enter_tab_button(self):
-        ActionChains(self.driver).send_keys(first_admin.login).send_keys(Keys.TAB).send_keys(first_admin.password).send_keys(Keys.ENTER).perform()
+        ActionChains(self.driver).send_keys(first_admin.login).send_keys(Keys.TAB)\
+            .send_keys(first_admin.password).send_keys(Keys.ENTER).perform()
         time.sleep(1)
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, group_page.get_title_name())
+        self.assertEqual(self.driver.title, expected_page_title)
 
     # negative tests
     def test12_submit_button_is_disabled(self):
