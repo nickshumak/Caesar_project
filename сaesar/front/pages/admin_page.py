@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from front.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
@@ -8,6 +9,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 import time
 
 
@@ -55,7 +57,6 @@ class AdminPage(BasePage):
             EC.element_to_be_clickable((By.NAME, "firstName")))
         first_name.click()
         first_name.send_keys(name, Keys.ENTER)
-
         last_name = self.driver.find_element(
             *CreateEditUsersLocators.LAST_NAME)
         last_name.click()
@@ -155,11 +156,28 @@ class AdminPage(BasePage):
         approved_by.send_keys(approved)
         submit = self.driver.find_element(*CreateEditStudentsLocators.BUTTON_SUBMIT)
         submit.click()
+        return AdminPage(self.driver)
 
     def edit_entity(self):
         pass
 
     def delete_entity(self):
         pass
+
     def get_table(self):
-        pass
+        ignored_exceptions = (NoSuchElementException, StaleElementReferenceException,)
+        web_element1 = WebDriverWait(self.driver, 5, ignored_exceptions=ignored_exceptions).until(
+            EC.presence_of_element_located((
+                By.XPATH, ".//*[@id='students']/div/table/tbody//td[position()<last()]")))
+
+        web_elements = self.driver.find_elements(*AdminPageLocators.MAIN_TABLE)
+        web_text = [web_elements.text for web_elements in web_elements]
+        actual_result = [each.split(',') for each in web_text]
+        print(actual_result)
+        return actual_result
+
+
+expected_result = 'DP-095JS,New,Word,Pre-intermediate,http,http,100,100'
+print(expected_result)
+x = [[s] for s in expected_result.split(sep=',')]
+print(x)

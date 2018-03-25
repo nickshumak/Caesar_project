@@ -58,5 +58,8 @@ class TestAdminPage(TestBase):
             get_page("http://localhost:3000/admin").tab_students() \
             .add_entity_student().fill_student_fields(
             "DP-095JS", "New", "Word", "Pre-intermediate", "http", "http", "100", "100")
-        time.sleep(2)
-
+        actual_result = admin_page.get_table()
+        expected_result = 'DP-095JS,New,Word,Pre-intermediate,http,http,100,100'
+        result = [[s] for s in expected_result.split(sep=',')]
+        self.assertIn(result, actual_result)
+        time.sleep(3)

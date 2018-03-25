@@ -78,6 +78,7 @@ class AdminPageLocators(object):
     TAB_STUDENTS = (By.CSS_SELECTOR, "a[href*='students']")
     BUTTON_ESCAPE = (By.CSS_SELECTOR, '.btn.btn-warning.home')
     TITLE_ENTITY = (By.CSS_SELECTOR, '.modal-title')
+    MAIN_TABLE = (By.XPATH, ".//*[@id='students']/div/table/tbody//td[position()<last()]")
 
 
 class CreateEditUsersLocators(object):
