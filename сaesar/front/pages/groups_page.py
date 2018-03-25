@@ -85,9 +85,6 @@ class GroupsPage(BasePage):
     def group_location(self):
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text
 
-    def button_search(self):
-        return self.driver.find_element(*GroupPageLocators.BUTTON_SEARCH)
-
     def button_my_groups(self):
         return self.driver.find_element(*GroupPageLocators.BUTTON_MY_GROUPS)
 
@@ -103,16 +100,16 @@ class GroupsPage(BasePage):
     def button_future_groups(self):
         return self.driver.find_element(*GroupPageLocators.FUTURE_GROUPS)
 
-    def groups_list(self):
-        groups_list = []
+    def select_group(self, group_title):
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
         for group in groups:
-            groups_list.append(group.text)
-        return groups_list
+            if group_title == group.text:
+                return group.click()
 
     def left_menu_open(self):
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
         ActionChains(self.driver).move_to_element_with_offset(left_menu, 100, 200).perform()
+        time.sleep(1)
         return self.LeftMenu(self.driver)
 
     def right_menu_open(self):

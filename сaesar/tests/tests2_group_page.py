@@ -1,9 +1,7 @@
 from resource.users_base import *
 from tests.test_base import TestBase
 from front.pages.groups_page import GroupsPage
-from front.pages.login_page import LogInPage
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
+
 
 import time
 
@@ -11,6 +9,8 @@ import unittest
 
 expected_url = 'http://localhost:3000/Groups/Dnipro'
 expected_title_login_page = 'Log in - Caesar'
+group_name = 'DP-093-JS'
+edit_group_url = 'http://localhost:3000/Groups/Dnipro/' + group_name + '/info/edit'
 
 
 class TestGroupPage(TestBase):
@@ -73,12 +73,12 @@ class TestGroupPage(TestBase):
         first_admin.auto_login_n_open_group_page(self.login_page)
         group_page = GroupsPage(self.driver)
         left_menu = group_page.left_menu_open()
-        time.sleep(1)
+        time.sleep(2)
         left_menu.create_group().click()
         expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/new'
         self.assertEqual(self.driver.current_url, expected_page_url)
 
-    def test24_open_create_page_for_coordinator(self):
+    def test25_open_create_page_for_coordinator(self):
         first_admin.auto_login_n_open_group_page(self.login_page)
         group_page = GroupsPage(self.driver)
         left_menu = group_page.left_menu_open()
@@ -86,16 +86,54 @@ class TestGroupPage(TestBase):
         expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/new'
         self.assertEqual(self.driver.current_url, expected_page_url)
 
-    def test25_disabled_create_button_for_teacher(self):
+    def test26_disabled_create_button_for_teacher(self):
         teacher.auto_login_n_open_group_page(self.login_page)
         group_page = GroupsPage(self.driver)
         left_menu = group_page.left_menu_open()
-        time.sleep(1)
         try:
             left_menu.create_group().is_displayed()
             self.assertTrue(False)
         except Exception:
             self.assertTrue(True)
+
+    def test27_disabled_delete_button_for_teacher(self):
+        teacher.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        group_page.select_group(group_name)
+        left_menu = group_page.left_menu_open()
+        try:
+            left_menu.delete_group().is_displayed()
+            self.assertTrue(False)
+        except Exception:
+            self.assertTrue(True)
+
+    def test28_disabled_left_menu_edit_button_for_teacher(self):
+        teacher.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        group_page.select_group(group_name)
+        left_menu = group_page.left_menu_open()
+
+        try:
+            left_menu.edit_group().is_displayed()
+            self.assertTrue(False)
+        except Exception:
+            self.assertTrue(True)
+
+    def test29_open_edit_group_left_menu_for_admin(self):
+        first_admin.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        group_page.select_group(group_name)
+        left_menu = group_page.left_menu_open()
+        left_menu.edit_group().click()
+        self.assertEqual(self.driver.current_url, edit_group_url)
+
+    def test30_open_edit_group_left_menu_coordinator(self):
+        coordinator.auto_login_n_open_group_page(self.login_page)
+        group_page = GroupsPage(self.driver)
+        group_page.select_group(group_name)
+        left_menu = group_page.left_menu_open()
+        left_menu.edit_group().click()
+        self.assertEqual(self.driver.current_url, edit_group_url)
 
 
 if __name__ == '__main__':
