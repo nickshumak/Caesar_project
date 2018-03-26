@@ -129,10 +129,7 @@ class StudentsPage(BasePage):
     def click_button_exit_editor_students_list(self):
         return self.driver.find_element(*EditStudentsListLocators.
                                         BUTTON_EXIT_EDIT_STUDENTS_LIST).click()
-
-    def get_current_url(self):
-        return self.driver.current_url
-
+    
 
 def data_student_for_check(student):
     data_student = [student.last_name, student.first_name, 'Pre-intermediate low',

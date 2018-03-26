@@ -7,6 +7,7 @@ from tests.test_base import TestBase
 from front.pages.students_page import Student, data_student_for_check
 from front.user import first_admin, teacher, coordinator
 import unittest
+from resource.users_base import first_admin
 
 expected_url = 'http://localhost:3000/Students/Dnipro/DP-093-JS/list'
 # data for adding new student
