@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3985f744-53f3-4764-be1a-e811ac2c5801" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/сaesar/front/locators/locators.py" afterPath="$PROJECT_DIR$/сaesar/front/locators/locators.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/front/pages/groups_page.py" afterPath="$PROJECT_DIR$/сaesar/front/pages/groups_page.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/tests/test_creating_group.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_creating_group.py" />
     </list>
@@ -37,8 +36,8 @@
       <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="150" column="75" lean-forward="false" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
+            <state relative-caret-position="408">
+              <caret line="111" column="21" lean-forward="false" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -72,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_creating_group.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="30" column="65" lean-forward="false" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+              <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -1263,38 +1262,45 @@
       <option name="project" value="LOCAL" />
       <updated>1522095248738</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added test and auto_login function">
+      <created>1522097904256</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1522097904256</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 29m 05s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 30m 46s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 31m 17s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 33m 19s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 35m 20s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 35m 44s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 42m 15s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 46m 33s.xml">
-      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 47m 08s.xml">
       <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 57m 51s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.26 at 23h 59m 19s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 00m 01s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 03m 14s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 06m 28s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 07m 31s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 12m 54s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 14m 17s.xml">
+      <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_creating_group_py - 2018.03.27 at 00h 16m 12s.xml">
       <configuration name="Unittests in test_creating_group.py" configurationId="tests" />
     </history-entry>
   </component>
@@ -1409,7 +1415,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/сaesar/tests/test_creating_group.py</url>
-          <line>31</line>
+          <line>32</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1419,12 +1425,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py</url>
-          <line>156</line>
+          <line>162</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py</url>
-          <line>154</line>
+          <line>160</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -1434,7 +1440,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py</url>
-          <line>144</line>
+          <line>150</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
@@ -1773,16 +1779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_creating_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="30" column="65" lean-forward="false" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/front/locators/locators.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1793,10 +1789,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_creating_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/front/pages/groups_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="150" column="75" lean-forward="false" selection-start-line="150" selection-start-column="75" selection-end-line="150" selection-end-column="75" />
+        <state relative-caret-position="408">
+          <caret line="111" column="21" lean-forward="false" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

@@ -105,6 +105,12 @@ class GroupsPage(BasePage):
 
         def name_of_group_save_to_variable(self) -> str:
             name_of_group = self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).get_attribute("value")
+            while len(name_of_group) > 20:
+                if len(name_of_group) > 20:
+                    self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).send_keys(Keys.BACKSPACE)
+                    name_of_group = self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).get_attribute("value")
+                else:
+                    break
             return name_of_group
 
         def direction_of_group_choosing(self, index) -> object:
