@@ -78,7 +78,13 @@ class AdminPageLocators(object):
     TAB_STUDENTS = (By.CSS_SELECTOR, "a[href*='students']")
     BUTTON_ESCAPE = (By.CSS_SELECTOR, '.btn.btn-warning.home')
     TITLE_ENTITY = (By.CSS_SELECTOR, '.modal-title')
-    MAIN_TABLE = (By.XPATH, ".//*[@id='students']/div/table/tbody//td[position()<last()]")
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
+
+    @staticmethod
+    def get_request_table(table):
+        table = ".//*[@id='{type}']/div/table/tbody//td[position()<last()]" \
+            .format(type=table)
+        return table
 
 
 class CreateEditUsersLocators(object):
@@ -89,7 +95,6 @@ class CreateEditUsersLocators(object):
     PHOTO = (By.NAME, "photo")
     LOGIN_FIELD = (By.NAME, "login")
     PASSWORD_FIELD = (By.NAME, "password")
-    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
 
 
 class CreateEditGroupsLocators(object):
@@ -102,7 +107,6 @@ class CreateEditGroupsLocators(object):
     EXPERTS = (By.NAME, "experts")
     STAGE = (By.NAME, "stage")
     BUDGET = (By.NAME, "budgetOwner")
-    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
 
 
 class CreateEditStudentsLocators(object):
@@ -114,4 +118,3 @@ class CreateEditStudentsLocators(object):
     IMAGE = (By.NAME, "imageUrl")
     ENTRY_SCORE = (By.NAME, "entryScore")
     APPROVED_BY = (By.NAME, 'approvedBy')
-    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")

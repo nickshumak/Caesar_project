@@ -1,4 +1,5 @@
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException, \
+    StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from front.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
@@ -9,8 +10,6 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-import time
 
 
 class AdminPage(BasePage):
@@ -78,7 +77,7 @@ class AdminPage(BasePage):
         password.click()
         password.send_keys(secret)
         submit = self.driver.find_element(
-            *CreateEditUsersLocators.BUTTON_SUBMIT)
+            *AdminPageLocators.BUTTON_SUBMIT)
         submit.click()
         return AdminPage(self.driver)
 
@@ -120,7 +119,7 @@ class AdminPage(BasePage):
         Select(stage).select_by_visible_text(level_stage)
         stage.click()
         submit = self.driver.find_element(
-            *CreateEditGroupsLocators.BUTTON_SUBMIT)
+            *AdminPageLocators.BUTTON_SUBMIT)
         submit.click()
         return AdminPage(self.driver)
 
@@ -130,11 +129,12 @@ class AdminPage(BasePage):
             EC.element_to_be_clickable((By.NAME, "groupId")))
         group_id.click()
         group_id.send_keys(group, Keys.ENTER)
-
-        name = self.driver.find_element(*CreateEditStudentsLocators.NAME)
+        name = self.driver.find_element(
+            *CreateEditStudentsLocators.NAME)
         name.click()
         name.send_keys(first_name)
-        last_name = self.driver.find_element(*CreateEditStudentsLocators.LAST_NAME)
+        last_name = self.driver.find_element(
+            *CreateEditStudentsLocators.LAST_NAME)
         last_name.click()
         last_name.send_keys(second_name)
         english_level = self.driver.find_element(
@@ -142,42 +142,39 @@ class AdminPage(BasePage):
         english_level.click()
         Select(english_level).select_by_visible_text(english)
         english_level.click()
-        cv_url = self.driver.find_element(*CreateEditStudentsLocators.CV_URL)
+        cv_url = self.driver.find_element(
+            *CreateEditStudentsLocators.CV_URL)
         cv_url.click()
         cv_url.send_keys(curriculum_vitae)
-        image_url = self.driver.find_element(*CreateEditStudentsLocators.IMAGE)
+        image_url = self.driver.find_element(
+            *CreateEditStudentsLocators.IMAGE)
         image_url.click()
         image_url.send_keys(image)
-        entry_score = self.driver.find_element(*CreateEditStudentsLocators.ENTRY_SCORE)
+        entry_score = self.driver.find_element(
+            *CreateEditStudentsLocators.ENTRY_SCORE)
         entry_score.click()
         entry_score.send_keys(score)
-        approved_by = self.driver.find_element(*CreateEditStudentsLocators.APPROVED_BY)
+        approved_by = self.driver.find_element(
+            *CreateEditStudentsLocators.APPROVED_BY)
         approved_by.click()
         approved_by.send_keys(approved)
-        submit = self.driver.find_element(*CreateEditStudentsLocators.BUTTON_SUBMIT)
+        submit = self.driver.find_element(
+            *AdminPageLocators.BUTTON_SUBMIT)
         submit.click()
         return AdminPage(self.driver)
+
+    def get_table(self, table: str):
+        ignored_exceptions = (NoSuchElementException, StaleElementReferenceException,)
+        wait_table = WebDriverWait(self.driver, 5, ignored_exceptions=ignored_exceptions).until(
+            EC.presence_of_element_located((
+                By.XPATH, AdminPageLocators.get_request_table(table))))
+        web_table_elements = self.driver.find_elements(By.XPATH, AdminPageLocators.get_request_table(table))
+        table_text = [web_elements.text for web_elements in web_table_elements]
+        actual_result = [each.split(',') for each in table_text]
+        return actual_result
 
     def edit_entity(self):
         pass
 
     def delete_entity(self):
         pass
-
-    def get_table(self):
-        ignored_exceptions = (NoSuchElementException, StaleElementReferenceException,)
-        web_element1 = WebDriverWait(self.driver, 5, ignored_exceptions=ignored_exceptions).until(
-            EC.presence_of_element_located((
-                By.XPATH, ".//*[@id='students']/div/table/tbody//td[position()<last()]")))
-
-        web_elements = self.driver.find_elements(*AdminPageLocators.MAIN_TABLE)
-        web_text = [web_elements.text for web_elements in web_elements]
-        actual_result = [each.split(',') for each in web_text]
-        print(actual_result)
-        return actual_result
-
-
-expected_result = 'DP-095JS,New,Word,Pre-intermediate,http,http,100,100'
-print(expected_result)
-x = [[s] for s in expected_result.split(sep=',')]
-print(x)
