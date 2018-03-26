@@ -122,9 +122,10 @@ class WindowCreateGroup(object):
     SPINNER_LOCATION = (By.NAME, 'location')
     SPINNER_TEACHERS = (By.XPATH, "//div[@id='teachers']/div/div/span")
     SELECT_TEACHER = (By.NAME, 'teacher')
+    BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
     BUTTON_BUDGET_OWNER_SOFT_SERVE=(By.CLASS_NAME,'btn btn-default budget-option')
     # BUTTON_BUDGET_OWNER_OPEN_GROUP=
-    BUTTON_ACCEPT = (By.ID, 'acceptSelect')
-    CALENDAR_OPEN = (By.XPATH, '//*[@id="modal-window"]/section/')
+    DATE_START = (By.NAME, 'startDate')
+    DATE_FINISH = (By.NAME, 'finishDate')
     BUTTON_ADD_EXPERT = (By.NAME, 'expert')
     BUTTON_SAVE = (By.ID, 'save')

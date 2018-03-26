@@ -1,4 +1,8 @@
+import random
+
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.wait import WebDriverWait
 
 from front.pages.base_page import BasePage
 from front.pages.login_page import LogInPage
@@ -6,6 +10,7 @@ from front.locators.locators import GroupPageLocators, LeftMenuLocators, RightMe
     WindowCreateGroup
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class GroupsPage(BasePage):
@@ -93,36 +98,49 @@ class GroupsPage(BasePage):
         def __init__(self):
             self.driver = GroupsPage.driver
 
-        def set_group_name(self, new_name):
+        def group_name_setting(self, new_name):
             self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).send_keys(new_name)
-            return self
-
-        def direction_of_group_choose(self):
-            self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION).click()
-            select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION))
-            select.select_by_index(2)
             return self
 
         def name_of_group_save_to_variable(self) -> str:
             name_of_group = self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).get_attribute("value")
             return name_of_group
 
-        def direction_of_group_save_to_variable(self) -> str:
-            location = self.driver.find_element(
-                *WindowCreateGroup.SPINNER_DIRECTION)
-            location.click()
-            Select(location).select_by_visible_text(city)
-            return name_of_group
+        def direction_of_group_choosing(self, index) -> object:
+            self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION).click()
+            select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION))
+            select.select_by_index(index)
+            return self
 
-        def location_of_group_choosing(self):
-            pass
+        def direction_of_group_save_to_variable(self) -> str:
+            # direction = self.driver.find_element(
+            #     *WindowCreateGroup.SPINNER_DIRECTION)
+            direction_of_group = self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION).get_attribute("value")
+            return direction_of_group
+
+        def location_of_group_choosing(self) -> object:
+            self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION).click()
+            options_list = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION)
+            locations_list = options_list.find_elements(By.TAG_NAME, 'option')
+            random_location_index = random.randint(0, len(locations_list) - 1)
+            select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION))
+            select.select_by_index(random_location_index)
+            return self
 
         def location_of_group_save_to_variable(self) -> str:
-            location = self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).get_attribute("value")
-            return location
+            location_of_group = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION).get_attribute("value")
+            return location_of_group
 
-        def teachers_adding(self):
-            pass
+        def teachers_adding(self, index) -> object:
+            self.driver.find_element(*WindowCreateGroup.SELECT_TEACHER).click()
+            select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS))
+            select.select_by_index(index)
+            self.driver.find_element(*WindowCreateGroup.BUTTON_ACCEPT_TEACHER).click()
+            return self
+
+        def date_start_setting(self, start_date_value):
+            date_start_field=self.driver.find_element(*WindowCreateGroup.DATE_START)
+            date_start_field.send_keys(start_date_value)
 
     def group_location(self):
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text
@@ -153,6 +171,8 @@ class GroupsPage(BasePage):
         return groups_list
 
     def left_menu_open(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, '#left-menu > div')))
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
         ActionChains(self.driver).move_to_element_with_offset(left_menu, 100, 200).perform()
         return self.LeftMenu(self.driver)

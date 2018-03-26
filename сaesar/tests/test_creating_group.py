@@ -21,10 +21,11 @@ class TestCreatingGroup(TestBase):
         left_menu.create_group().click()
         WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "name")))
-        groups_page.WindowCreatingGroup().direction_of_group_choose()
-        groups_page.WindowCreatingGroup().set_group_name(TEST_GROUP_NAME)
+        groups_page.WindowCreatingGroup().direction_of_group_choosing(2)
+        groups_page.WindowCreatingGroup().location_of_group_choosing()
+        groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
         test_direction = groups_page.WindowCreatingGroup().direction_of_group_save_to_variable()
-        groups_page.WindowCreatingGroup().set_group_name(TEST_GROUP_NAME)
+        groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
 
         time.sleep(5)
         # self.assertEqual(self.driver.current_url, expected_page_url)
