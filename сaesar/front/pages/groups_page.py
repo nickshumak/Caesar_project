@@ -1,6 +1,7 @@
 import random
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -132,15 +133,28 @@ class GroupsPage(BasePage):
             return location_of_group
 
         def teachers_adding(self, index) -> object:
-            self.driver.find_element(*WindowCreateGroup.SELECT_TEACHER).click()
+            self.driver.find_element(*WindowCreateGroup.BUTTON_TEACHERS_ADD).click()
+            self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS).click()
             select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS))
             select.select_by_index(index)
             self.driver.find_element(*WindowCreateGroup.BUTTON_ACCEPT_TEACHER).click()
             return self
 
         def date_start_setting(self, start_date_value):
-            date_start_field=self.driver.find_element(*WindowCreateGroup.DATE_START)
+            date_start_field = self.driver.find_element(*WindowCreateGroup.DATE_START)
             date_start_field.send_keys(start_date_value)
+            date_finish_field = self.driver.find_element(*WindowCreateGroup.DATE_FINISH)
+            date_finish_field.send_keys(Keys.ENTER)
+            return self
+
+        def submit_group_creating(self):
+            self.driver.find_element(*WindowCreateGroup.BUTTON_SAVE).click()
+            return self
+
+        # def date_start_save_to_variable(self) -> str:
+        #     date_start = self.driver.find_element(*WindowCreateGroup.DATE_START)
+        #     date_start=date_start.find_element("value placeholder").text()
+        #     return date_start
 
     def group_location(self):
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text

@@ -9,6 +9,7 @@ from resource.users_base import first_admin
 from tests.test_base import TestBase
 
 TEST_GROUP_NAME = "Test group"
+TEST_START_DATE = "11/04/2018"
 
 
 class TestCreatingGroup(TestBase):
@@ -17,7 +18,7 @@ class TestCreatingGroup(TestBase):
         first_admin.auto_login_n_open_group_page(self.login_page)
         groups_page = GroupsPage(self.driver)
         left_menu = groups_page.left_menu_open()
-        time.sleep(2)
+        time.sleep(3)
         left_menu.create_group().click()
         WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "name")))
@@ -25,8 +26,9 @@ class TestCreatingGroup(TestBase):
         groups_page.WindowCreatingGroup().location_of_group_choosing()
         groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
         test_direction = groups_page.WindowCreatingGroup().direction_of_group_save_to_variable()
-        groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
-
+        groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
+        groups_page.WindowCreatingGroup().teachers_adding(1)
+        groups_page.WindowCreatingGroup().submit_group_creating()
         time.sleep(5)
         # self.assertEqual(self.driver.current_url, expected_page_url)
 

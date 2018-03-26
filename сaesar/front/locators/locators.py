@@ -120,10 +120,10 @@ class WindowCreateGroup(object):
     FIELD_GROUP_NAME = (By.NAME, 'name')
     SPINNER_DIRECTION = (By.NAME, 'direction')
     SPINNER_LOCATION = (By.NAME, 'location')
-    SPINNER_TEACHERS = (By.XPATH, "//div[@id='teachers']/div/div/span")
-    SELECT_TEACHER = (By.NAME, 'teacher')
+    BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')
+    SPINNER_TEACHERS = (By.NAME, 'teacher')
     BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
-    BUTTON_BUDGET_OWNER_SOFT_SERVE=(By.CLASS_NAME,'btn btn-default budget-option')
+    BUTTON_BUDGET_OWNER_SOFT_SERVE = (By.CLASS_NAME, 'btn btn-default budget-option')
     # BUTTON_BUDGET_OWNER_OPEN_GROUP=
     DATE_START = (By.NAME, 'startDate')
     DATE_FINISH = (By.NAME, 'finishDate')
