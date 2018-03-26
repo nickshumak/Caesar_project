@@ -51,7 +51,8 @@ class AdminPage(BasePage):
         back_home.click()
         return GroupsPage(self.driver)
 
-    def fill_user_fields(self, name, second_name, type_role, city, photo, log, secret):
+    def fill_user_fields(self, name, second_name, type_role, city, photo,
+                         log, secret):
         first_name = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "firstName")))
         first_name.click()
@@ -81,8 +82,9 @@ class AdminPage(BasePage):
         submit.click()
         return AdminPage(self.driver)
 
-    def fill_group_fields(self, name_group, geography, owner: False, direct, first_date,
-                          second_date, name_teacher, name_experts, level_stage):
+    def fill_group_fields(self, name_group, geography, owner: False,
+                          direct, first_date, second_date, name_teacher,
+                          name_experts, level_stage):
         name = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "name")))
         name.click()
@@ -164,12 +166,14 @@ class AdminPage(BasePage):
         return AdminPage(self.driver)
 
     def get_table(self, table: str):
-        ignored_exceptions = (NoSuchElementException, StaleElementReferenceException,)
-        wait_table = WebDriverWait(self.driver, 5, ignored_exceptions=ignored_exceptions).until(
+        ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
+        wait_table = WebDriverWait(
+            self.driver, 5, ignored_exceptions=ignored_exceptions).until(
             EC.presence_of_element_located((
                 By.XPATH, AdminPageLocators.get_request_table(table))))
-        web_table_elements = self.driver.find_elements(By.XPATH, AdminPageLocators.get_request_table(table))
-        table_text = [web_elements.text for web_elements in web_table_elements]
+        web_table = self.driver.find_elements(
+            By.XPATH, AdminPageLocators.get_request_table(table))
+        table_text = [web_element.text for web_element in web_table]
         actual_result = [each.split(',') for each in table_text]
         return actual_result
 
