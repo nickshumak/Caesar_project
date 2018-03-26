@@ -9,8 +9,11 @@ import time
 
 
 class GroupsPage(BasePage):
+    driver = None
+
     def __init__(self, driver):
         super().__init__(driver)
+        GroupsPage.driver = driver
 
     class LeftMenu(object):
         """inner classes"""
@@ -87,21 +90,36 @@ class GroupsPage(BasePage):
             time.sleep(1)
 
     class WindowCreatingGroup(object):
-        def __init__(self, driver):
-            self.driver = driver
+        def __init__(self):
+            self.driver = GroupsPage.driver
 
         def set_group_name(self, new_name):
             self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).send_keys(new_name)
             return self
 
-        def choose_direction_of_group(self):
+        def direction_of_group_choose(self):
             self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION).click()
             select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_DIRECTION))
-            select.first_selected_option()
+            select.select_by_index(2)
             return self
 
-        def choose_location_of_group(self):
+        def name_of_group_save_to_variable(self) -> str:
+            name_of_group = self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).get_attribute("value")
+            return name_of_group
+
+        def direction_of_group_save_to_variable(self) -> str:
+            location = self.driver.find_element(
+                *WindowCreateGroup.SPINNER_DIRECTION)
+            location.click()
+            Select(location).select_by_visible_text(city)
+            return name_of_group
+
+        def location_of_group_choosing(self):
             pass
+
+        def location_of_group_save_to_variable(self) -> str:
+            location = self.driver.find_element(*WindowCreateGroup.FIELD_GROUP_NAME).get_attribute("value")
+            return location
 
         def teachers_adding(self):
             pass
