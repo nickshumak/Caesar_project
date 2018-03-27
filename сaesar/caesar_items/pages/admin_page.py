@@ -167,7 +167,7 @@ class AdminPage(BasePage):
         return self
 
     def get_table(self, table: str):
-        """getting all row from table"""
+        """getting all rows from table"""
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
         wait_table = WebDriverWait(
             self.driver, 5, ignored_exceptions=ignored_exceptions).until(

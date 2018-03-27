@@ -1,9 +1,7 @@
-from caesar_items.locators import *
 from resource.users_base import *
 from tests.test_base import TestBase
 from caesar_items.pages.admin_page import *
 from resource.url_site import PathUrl
-import time
 
 
 class TestAdminPage(TestBase):
