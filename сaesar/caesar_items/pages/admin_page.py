@@ -1,9 +1,9 @@
 from selenium.webdriver.common.by import By
-from front.caesar_items.locators import AdminPageLocators, \
+from caesar_items.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
     CreateEditStudentsLocators
-from front.pages.base_page import BasePage
-from front.pages.groups_page import GroupsPage
+from caesar_items.pages.base_page import BasePage
+from caesar_items.pages.groups_page import GroupsPage
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait

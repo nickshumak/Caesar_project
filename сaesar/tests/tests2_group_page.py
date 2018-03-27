@@ -1,7 +1,7 @@
 from resource.users_base import *
 from tests.test_base import TestBase
-from front.pages.groups_page import GroupsPage
-from front.pages.login_page import LogInPage
+from caesar_items.pages.groups_page import GroupsPage
+from caesar_items.pages.login_page import LogInPage
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 

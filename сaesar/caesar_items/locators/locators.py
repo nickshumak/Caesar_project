@@ -52,7 +52,7 @@ class RightMenuLocators(object):
 
 
 class LeftMenuLocators(object):
-    BUTTON_CREATE_GROUP = (By.XPATH, '//*[@title = "Create"]')
+    BUTTON_CREATE_GROUP_XPATH = '//*[@title = "Create"]'
     BUTTON_SEARCH_GROUP = (By.XPATH, '//*[@title = "Search"]')
     BUTTON_EDIT_GROUP = (By.XPATH, '//*[@title = "Edit"]')
     BUTTON_DELETE_GROUP = (By.XPATH, '//*[@title = "Delete"]')
@@ -117,9 +117,9 @@ class CreateEditStudentsLocators(object):
 
 
 class WindowCreateGroup(object):
-    FIELD_GROUP_NAME = (By.NAME, 'name')
-    SPINNER_DIRECTION = (By.NAME, 'direction')
-    SPINNER_LOCATION = (By.NAME, 'location')
+    FIELD_NAME_GROUPS_NAME = 'name'
+    SPINNER_DIRECTION_NAME = 'direction'
+    SPINNER_LOCATION_NAME = 'location'
     BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')
     SPINNER_TEACHERS = (By.NAME, 'teacher')
     BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
@@ -127,5 +127,7 @@ class WindowCreateGroup(object):
     # BUTTON_BUDGET_OWNER_OPEN_GROUP=
     DATE_START = (By.NAME, 'startDate')
     DATE_FINISH = (By.NAME, 'finishDate')
-    BUTTON_ADD_EXPERT = (By.NAME, 'expert')
+    BUTTON_ADD_EXPERT = (By.CLASS_NAME, 'add-expert-btn')
+    FIELD_EXPERTS_NAME = (By.NAME, 'expert')
+    BUTTON_ACCEPT_EXPERT = (By.ID, 'acceptInput')
     BUTTON_SAVE = (By.ID, 'save')

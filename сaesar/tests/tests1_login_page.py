@@ -1,7 +1,7 @@
 import unittest
 from resource.users_base import *
 from tests.test_base import TestBase
-from front.pages.groups_page import GroupsPage
+from caesar_items.pages.groups_page import GroupsPage
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time

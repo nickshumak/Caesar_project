@@ -1,5 +1,5 @@
 import time
-from front.pages.groups_page import GroupsPage
+from caesar_items.pages.groups_page import GroupsPage
 
 
 class User(object):

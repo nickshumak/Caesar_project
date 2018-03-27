@@ -1,5 +1,5 @@
 
-from front.user import User
+from caesar_items.user import User
 
 """
 This file contains users on whose behalf the testing will be conducted
