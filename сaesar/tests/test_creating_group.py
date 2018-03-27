@@ -1,9 +1,3 @@
-import time
-from selenium.webdriver.support import expected_conditions as EC
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-
 from caesar_items.pages.groups_page import GroupsPage
 from resource.users_base import first_admin
 from tests.test_base import TestBase
@@ -15,76 +9,69 @@ TEST_START_DATE = "11/04/2018"
 
 class TestCreatingGroup(TestBase):
 
-    def test_create_group(self):
+    def test_is_group_creates(self):
         first_admin.auto_login_n_open_group_page(self.login_page)
         groups_page = GroupsPage(self.driver)
         left_menu = groups_page.left_menu_open()
         button_create_group = left_menu.create_group()
         button_create_group.click()
-        # WebDriverWait(self.driver, 20).until(
-        #     EC.element_to_be_clickable((By.NAME, "name")))
-        groups_page.WindowCreatingGroup().direction_of_group_choosing(2)
+        groups_page.WindowCreatingGroup().direction_of_group_select(2)
         groups_page.WindowCreatingGroup().location_of_group_random_select()
-        # groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
         test_direction = groups_page.WindowCreatingGroup().direction_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
         groups_page.WindowCreatingGroup().teachers_adding(1)
         name = groups_page.WindowCreatingGroup().name_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().submit_group_creating()
         self.assertTrue(name in self.driver.page_source)
-
         # self.assertEqual(self.driver.current_url, expected_page_url)
 
-    def test_entering_incorrect_name(self):
+    def test_is_group_creates_with_test_name(self):
         first_admin.auto_login_n_open_group_page(self.login_page)
         groups_page = GroupsPage(self.driver)
         left_menu = groups_page.left_menu_open()
-        time.sleep(3)
-        left_menu.create_group().click()
-        WebDriverWait(self.driver, 20).until(
-            EC.element_to_be_clickable((By.NAME, "name")))
-        groups_page.WindowCreatingGroup().direction_of_group_choosing(2)
-        groups_page.WindowCreatingGroup().location_of_group_choosing()
-        # groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
+        button_create_group = left_menu.create_group()
+        button_create_group.click()
+        groups_page.WindowCreatingGroup().direction_of_group_select(2)
+        groups_page.WindowCreatingGroup().location_of_group_random_select()
+        groups_page.WindowCreatingGroup().group_name_setting(TEST_GROUP_NAME)
+        groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
+        groups_page.WindowCreatingGroup().teachers_adding(1)
+        name = groups_page.WindowCreatingGroup().name_of_group_save_to_variable()
+        groups_page.WindowCreatingGroup().submit_group_creating()
+        try:
+            self.assertTrue(name in self.driver.page_source)
+        except:
+            self.assertFalse(name in self.driver.page_source)
+
+    def test_is_group_creates_with_test_location(self):
+        first_admin.auto_login_n_open_group_page(self.login_page)
+        groups_page = GroupsPage(self.driver)
+        left_menu = groups_page.left_menu_open()
+        button_create_group = left_menu.create_group()
+        button_create_group.click()
+        groups_page.WindowCreatingGroup().direction_of_group_select(2)
+        groups_page.WindowCreatingGroup().location_of_group_random_select()
+        location_of_group = groups_page.WindowCreatingGroup().location_of_group_save_to_variable()
+        groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
+        groups_page.WindowCreatingGroup().teachers_adding(1)
+        name = groups_page.WindowCreatingGroup().name_of_group_save_to_variable()
+        groups_page.WindowCreatingGroup().submit_group_creating()
+        try:
+            self.assertTrue(location_of_group in self.driver.page_source)
+        except:
+            self.assertFalse(location_of_group in self.driver.page_source)
+
+    def test_is_group_creates_with_correct_start_date(self):
+        first_admin.auto_login_n_open_group_page(self.login_page)
+        groups_page = GroupsPage(self.driver)
+        left_menu = groups_page.left_menu_open()
+        button_create_group = left_menu.create_group()
+        button_create_group.click()
+        groups_page.WindowCreatingGroup().direction_of_group_select(2)
+        groups_page.WindowCreatingGroup().location_of_group_random_select()
         test_direction = groups_page.WindowCreatingGroup().direction_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
         groups_page.WindowCreatingGroup().teachers_adding(1)
         name = groups_page.WindowCreatingGroup().name_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().submit_group_creating()
-        self.assertTrue(name in self.driver.page_source);
-        time.sleep(5)
-
-        # self.assertEqual(self.driver.current_url, expected_page_url)
-
-
-class CommentsList(object):
-    """
-    Class to find the required elements on all pages of the site
-    """
-
-    def __init__(self, web_driver):
-        self.__driver = web_driver
-
-    def search_by_comment(self) -> list:
-
-        """
-        Function-finder the required elements on all pages by entered comment
-        :return:
-        """
-
-        list_el = self.__driver.find_element_by_class_name(
-            "small-group-view col-md-6")
-        list_a = list_el.find_elements_by_tag_name("p")
-        href = set()
-        text_columns = list()
-        for link_a in list_a:
-            href.add(link_a.get_attribute("href"))
-
-        for ref in href:
-            self.__driver.get(ref)
-            list_columns = self.__driver.find_elements_by_class_name(
-                "textcolumn")
-            for column in list_columns:
-                text_columns.append(column.text)
-
-        return text_columns
+        self.assertTrue(TEST_START_DATE in self.driver.page_source)

@@ -104,6 +104,7 @@ class GroupsPage(BasePage):
         def group_name_setting(self, new_group_name):
             field_name_of_group = self.driver.find_element(
                 By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
+            field_name_of_group.clear()
             field_name_of_group.send_keys(new_group_name)
             return self
 
@@ -121,12 +122,23 @@ class GroupsPage(BasePage):
                     break
             return name_of_group
 
-        def direction_of_group_choosing(self, index) -> object:
+        def direction_of_group_select(self, index) -> object:
             spinner_direction = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((
                     By.NAME, WindowCreateGroup.SPINNER_DIRECTION_NAME)))
             select_direction = Select(spinner_direction)
             select_direction.select_by_index(index)
+            return self
+
+        def direction_of_group_random_select(self) -> object:
+            spinner_direction = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((
+                    By.NAME, WindowCreateGroup.SPINNER_DIRECTION_NAME)))
+            spinner_direction.click()
+            directions_list = spinner_direction.find_elements(By.TAG_NAME, 'option')
+            random_direction_index = random.randint(1, len(directions_list) - 1)
+            select_direction = Select(spinner_direction)
+            select_direction.select_by_index(random_direction_index)
             return self
 
         def direction_of_group_save_to_variable(self) -> str:
@@ -151,20 +163,26 @@ class GroupsPage(BasePage):
             return self
 
         def location_of_group_select_by_index(self, location_index) -> object:
-            self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION).click()
-            options_list = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION)
-            locations_list = options_list.find_elements(By.TAG_NAME, 'option')
-            random_location_index = random.randint(0, len(locations_list) - 1)
-            select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION))
-            select.select_by_index(random_location_index)
+            spinner_location = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((
+                    By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
+            spinner_location.click()
+            # options_list = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION)
+            select_location = Select(spinner_location)
+            select_location.select_by_index(location_index)
             return self
 
         def location_of_group_save_to_variable(self) -> str:
-            location_of_group = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION).get_attribute("value")
+            spinner_location_of_group = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((
+                    By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
+            location_of_group = spinner_location_of_group.get_attribute("value")
             return location_of_group
 
         def teachers_adding(self, index) -> object:
-            self.driver.find_element(*WindowCreateGroup.BUTTON_TEACHERS_ADD).click()
+            button_add_teacher = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.BUTTON_TEACHERS_ADD))
+            button_add_teacher.click()
             self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS).click()
             select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS))
             select.select_by_index(index)
@@ -172,14 +190,18 @@ class GroupsPage(BasePage):
             return self
 
         def date_start_setting(self, start_date_value):
-            date_start_field = self.driver.find_element(*WindowCreateGroup.DATE_START)
-            date_start_field.send_keys(start_date_value)
-            date_finish_field = self.driver.find_element(*WindowCreateGroup.DATE_FINISH)
-            date_finish_field.send_keys(Keys.ENTER)
+            field_date_start_field = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.DATE_START))
+            field_date_start_field.send_keys(start_date_value)
+            field_date_finish = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.DATE_FINISH))
+            field_date_finish.send_keys(Keys.ENTER)
             return self
 
         def submit_group_creating(self):
-            self.driver.find_element(*WindowCreateGroup.BUTTON_SAVE).click()
+            button_save_group = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.BUTTON_SAVE))
+            button_save_group.click()
             return self
 
         # def date_start_save_to_variable(self) -> str:
