@@ -1,6 +1,6 @@
-from front.pages.base_page import BasePage
-from front.pages.login_page import LogInPage
-from front.locators.locators import GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
+from caesar_items.pages.base_page import BasePage
+from caesar_items.pages.login_page import LogInPage
+from caesar_items.locators.locators import GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 

@@ -1,7 +1,7 @@
-from front.locators import *
+from caesar_items.locators import *
 from resource.users_base import *
 from tests.test_base import TestBase
-from front.pages.admin_page import *
+from caesar_items.pages.admin_page import *
 from resource.url_site import PathUrl
 import time
 

@@ -1,11 +1,11 @@
 from selenium.common.exceptions import NoSuchElementException, \
     StaleElementReferenceException
 from selenium.webdriver.common.by import By
-from front.locators.locators import AdminPageLocators, \
+from caesar_items.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
     CreateEditStudentsLocators
-from front.pages.base_page import BasePage
-from front.pages.groups_page import GroupsPage
+from caesar_items.pages.base_page import BasePage
+from caesar_items.pages.groups_page import GroupsPage
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -176,6 +176,7 @@ class AdminPage(BasePage):
         return AdminPage(self.driver)
 
     def get_table(self, table: str):
+        """getting all row from table"""
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
         wait_table = WebDriverWait(
             self.driver, 5, ignored_exceptions=ignored_exceptions).until(

@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
-from front.pages.login_page import *
+from caesar_items.pages.login_page import *
 
 
 class TestBase(unittest.TestCase):
