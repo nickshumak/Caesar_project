@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from front.locators.locators import AdminPageLocators, \
+from front.caesar_items.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
     CreateEditStudentsLocators
 from front.pages.base_page import BasePage

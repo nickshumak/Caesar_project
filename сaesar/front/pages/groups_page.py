@@ -7,7 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from front.pages.base_page import BasePage
 from front.pages.login_page import LogInPage
-from front.locators.locators import GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators, \
+from front.caesar_items.locators import GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators, \
     WindowCreateGroup
 from selenium.webdriver.common.action_chains import ActionChains
 import time

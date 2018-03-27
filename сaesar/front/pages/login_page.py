@@ -1,5 +1,5 @@
 from front.pages.base_page import BasePage
-from front.locators.locators import LogInLocators
+from front.caesar_items.locators import LogInLocators
 import time
 
 

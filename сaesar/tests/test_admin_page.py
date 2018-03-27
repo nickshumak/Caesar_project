@@ -2,7 +2,7 @@ import unittest
 from resource.users_base import *
 from tests.test_base import TestBase
 from front.pages.admin_page import *
-from front.locators import *
+from front.caesar_items import *
 import time
 
 
