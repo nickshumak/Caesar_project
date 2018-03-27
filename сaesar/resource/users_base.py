@@ -24,36 +24,41 @@ user_login_length_11 = User("", "", "", "", "vasyavasyvasya1", "1234")
 
 
 def create_8_users_for_tests(driver):
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
+        .add_entity_user().fill_user_fields(
+        '', "", "Teacher", "Dnipro", "", user_login_length_3.login,
+        user_login_length_3.password)
+
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
+        .add_entity_user().fill_user_fields(
+        '', "", "Teacher", "Dnipro", "", user_login_length_4.login,
+        user_login_length_4.password)
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
+        .add_entity_user().fill_user_fields(
+        '', "", "Teacher", "Dnipro", "", user_login_length_10.login,
+        user_login_length_10.password)
+
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
+        .add_entity_user().fill_user_fields(
+        '', "", "Teacher", "Dnipro", "", user_login_length_11.login,
+        user_login_length_11.password)
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
+        .add_entity_user().fill_user_fields(
+        '', "", "Teacher", "Dnipro", "", user_password_length_3.login,
+        user_password_length_3.password)
     AdminPage(driver). \
         get_page("http://localhost:3000/admin").tab_users() \
         .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_login_length_3.login, user_login_length_3.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
+        '', "", "Teacher", "Dnipro", "", user_password_length_4.login,
+        user_password_length_4.password)
+
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
         .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_login_length_4.login, user_login_length_4.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
+        '', "", "Teacher", "Dnipro", "", user_password_length_10.login,
+        user_password_length_10.password)
+
+    AdminPage(driver).get_page("http://localhost:3000/admin").tab_users() \
         .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_login_length_10.login, user_login_length_10.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
-        .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_login_length_11.login, user_login_length_11.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
-        .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_password_length_3.login, user_password_length_3.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
-        .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_password_length_4.login, user_password_length_4.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
-        .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_password_length_10.login, user_password_length_10.password)
-    AdminPage(driver). \
-        get_page("http://localhost:3000/admin").tab_users() \
-        .add_entity_user().fill_user_fields(
-        '', "", "Teacher", "Dnipro", "", user_password_length_11.login, user_password_length_11.password)
+        '', "", "Teacher", "Dnipro", "", user_password_length_11.login,
+        user_password_length_11.password)
     driver.quit()

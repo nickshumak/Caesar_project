@@ -1,6 +1,7 @@
 from caesar_items.pages.base_page import BasePage
 from caesar_items.pages.login_page import LogInPage
-from caesar_items.locators.locators import GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
+from caesar_items.locators.locators import \
+    GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -110,7 +111,8 @@ class GroupsPage(BasePage):
 
     def left_menu_open(self):
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
-        ActionChains(self.driver).move_to_element_with_offset(left_menu, 105, 300).perform()
+        ActionChains(self.driver).\
+            move_to_element_with_offset(left_menu, 105, 300).perform()
         self.driver.implicitly_wait(3)
         return self.LeftMenu(self.driver)
 

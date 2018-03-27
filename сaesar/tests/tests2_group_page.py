@@ -53,7 +53,8 @@ class TestGroupPageAdmin(unittest.TestCase):
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test20_open_schedule(self):
-        expected_page_url = 'http://localhost:3000/Schedule/' + first_admin.location
+        expected_page_url = 'http://localhost:3000/Schedule/' \
+                            + first_admin.location
         top_menu = self.group_page.top_menu_open()
         top_menu.schedule()
         self.assertEqual(self.driver.current_url, expected_page_url)
@@ -61,29 +62,34 @@ class TestGroupPageAdmin(unittest.TestCase):
     def test21_open_students(self):
         top_menu = self.group_page.top_menu_open()
         top_menu.students()
-        expected_page_url = 'http://localhost:3000/Students/' + first_admin.location
+        expected_page_url = 'http://localhost:3000/Students/' \
+                            + first_admin.location
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test22_open_groups(self):
-        expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location
+        expected_page_url = 'http://localhost:3000/Groups/' \
+                            + first_admin.location
         top_menu = self.group_page.top_menu_open()
         top_menu.groups()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test23_open_locations(self):
-        expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/locations'
+        expected_page_url = 'http://localhost:3000/Groups/' \
+                            + first_admin.location + '/locations'
         top_menu = self.group_page.top_menu_open()
         top_menu.locations()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test24_open_create_page(self):
-        expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/new'
+        expected_page_url = 'http://localhost:3000/Groups/' \
+                            + first_admin.location + '/new'
         left_menu = self.group_page.left_menu_open()
         left_menu.create_group().click()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test25_open_edit_group_left_menu(self):
-        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' + group_name + '/info/edit'
+        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
+                         + group_name + '/info/edit'
         self.group_page.select_group(group_name)
         left_menu = self.group_page.left_menu_open()
         left_menu.edit_group().click()
@@ -113,11 +119,13 @@ class TestGroupPageCoordinator(unittest.TestCase):
     def test26_open_create_page(self):
         left_menu = self.group_page.left_menu_open()
         left_menu.create_group().click()
-        expected_page_url = 'http://localhost:3000/Groups/' + coordinator.location + '/new'
+        expected_page_url = 'http://localhost:3000/Groups/' \
+                            + coordinator.location + '/new'
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test27_open_edit_group_left_menu(self):
-        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' + group_name + '/info/edit'
+        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
+                         + group_name + '/info/edit'
         top_menu = self.group_page.top_menu_open()
         top_menu.log_out_click()
         self.login_page.auto_login(coordinator)

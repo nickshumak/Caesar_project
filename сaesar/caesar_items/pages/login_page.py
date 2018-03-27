@@ -8,11 +8,13 @@ class LogInPage(BasePage):
 
     def enter_login(self, user_login=''):
         self.driver.find_element(*LogInLocators.LOGIN_FIELD).clear()
-        return self.driver.find_element(*LogInLocators.LOGIN_FIELD).send_keys(user_login)
+        return self.driver.find_element(*LogInLocators.LOGIN_FIELD).\
+            send_keys(user_login)
 
     def enter_password(self, user_password=''):
         self.driver.find_element(*LogInLocators.PASSWORD_FIELD).clear()
-        return self.driver.find_element(*LogInLocators.PASSWORD_FIELD).send_keys(user_password)
+        return self.driver.find_element(*LogInLocators.PASSWORD_FIELD).\
+            send_keys(user_password)
 
     def message(self):
         return self.driver.find_element(*LogInLocators.FIELD_MESSAGE).text
