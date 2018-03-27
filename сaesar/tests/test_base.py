@@ -15,3 +15,4 @@ class TestBase(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
+

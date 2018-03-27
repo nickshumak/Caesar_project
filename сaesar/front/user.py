@@ -12,16 +12,7 @@ class User(object):
         self.password = password
         self.full_name = first_name + '\n' + last_name
 
-    def auto_login_n_open_group_page(self, login_page):
-        """
 
-        This function auto login user and open Group page
-        :param login_page:
-        """
-        login_page.enter_login(self.login)
-        login_page.enter_password(self.password)
-        login_page.submit()
-        time.sleep(1)
 
 
 

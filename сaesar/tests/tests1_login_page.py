@@ -1,16 +1,28 @@
+from front.pages.login_page import LogInPage
 import unittest
 from resource.users_base import *
 from tests.test_base import TestBase
-from front.pages.groups_page import GroupsPage
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-import time
+from selenium import webdriver
+from resource.url_site import PathUrl
+from resource.path_driver import GetDriver
 
 expected_message = 'Incorrect login or password. Please, try again'
 expected_page_title = 'Caesar'
 
 
 class TestLoginPage(TestBase):
+    # @classmethod
+    # def setUpClass(cls):
+    #     cls.driver = webdriver.Chrome(
+    #         executable_path=GetDriver().DRIVER_CHROME)
+    #     cls.driver.get(PathUrl().URL_SITE)
+    #     cls.login_page = LogInPage(cls.driver)
+    #     cls.login_page.enter_login(first_admin.login)
+    #     cls.login_page.enter_password(first_admin.password)
+    #     cls.login_page.submit()
+    #     create_8_users_for_tests(cls.driver)
 
     def test01_submit_button_enabled(self):
         self.login_page.enter_login(first_admin.login)
@@ -72,8 +84,7 @@ class TestLoginPage(TestBase):
         self.assertEqual(self.driver.title, expected_page_title)
 
     def test09_auto_login_function(self):
-        first_admin.auto_login_n_open_group_page(self.login_page)
-        group_page = GroupsPage(self.driver)
+        self.login_page.auto_login(first_admin)
         self.assertEqual(self.driver.title, expected_page_title)
 
     def test10_sensitive_to_case(self):
@@ -82,7 +93,7 @@ class TestLoginPage(TestBase):
         self.login_page.submit()
         self.assertEqual(self.driver.title, expected_page_title)
 
-    def test11_enter_tab_button(self):
+    def test11_enter_tab_buttons(self):
         ActionChains(self.driver).send_keys(first_admin.login).send_keys(Keys.TAB)\
             .send_keys(first_admin.password).send_keys(Keys.ENTER).perform()
         time.sleep(1)
