@@ -68,3 +68,18 @@ class TestAdminPage(TestBase):
         actual_result = admin_page.get_table("students")
         expected_student = ['Victor']
         self.assertIn(expected_student, actual_result)
+
+    def test_create_edit_without_students(self):
+        """checking student after creating"""
+        self.login_page.enter_login(first_admin.login)
+        self.login_page.enter_password(first_admin.password)
+        self.login_page.submit()
+        admin_page = AdminPage(self.driver). \
+            get_page(PathUrl.ADMIN_PAGE).tab_students() \
+            .add_entity_student().fill_student_fields(
+            "", "", "", "",
+            "", "", "", "")
+
+        actual_result = admin_page.get_table("students")
+        expected_student = ['']
+        self.assertIn(expected_student, actual_result)
