@@ -1,3 +1,4 @@
+import os
 from front.pages.base_page import BasePage
 from front.locators.locators import StudentsListLocators, \
     EditStudentsListLocators, GroupPageLocators, HeaderBarLocators
@@ -21,7 +22,7 @@ class StudentsPage(BasePage):
     def click_button_students(self):
         actions = ActionChains(self.driver)
         actions.move_by_offset('256', '20')
-        students = WebDriverWait(self.driver, 20).\
+        students = WebDriverWait(self.driver, 30).\
             until(lambda driver: self.driver.find_element(*HeaderBarLocators.BUTTON_STUDENTS))
         actions.click(students)
         actions.perform()
@@ -42,8 +43,8 @@ class StudentsPage(BasePage):
         self.click_button_students()
         self.select_group_students()
 
-    def click_button_student_in_group(self):
-        return self.driver.find_element(*GroupPageLocators.BUTTON_STUDENTS_IN_GROUP).click()
+    # def click_button_student_in_group(self):
+    #     return self.driver.find_element(*GroupPageLocators.BUTTON_STUDENTS_IN_GROUP).click()
 
     def students_table(self):
         students_data = []
@@ -86,7 +87,7 @@ class StudentsPage(BasePage):
 
         # select_english_level
         self.driver.find_element(*EditStudentsListLocators.LIST_ENGLISH_LEVEL).click()
-        self.driver.find_element(*EditStudentsListLocators.INTERMEDIATE_LOW).click()
+        self.driver.find_element(*EditStudentsListLocators.PRE_INTERMEDIATE_LOW).click()
 
         self.driver.find_element(*EditStudentsListLocators.
                                  STUDENT_MARK_INCOMING_TEST).send_keys(student.incoming_mark)
@@ -101,9 +102,7 @@ class StudentsPage(BasePage):
         self.input_data_new_student(student)
         self.click_button_save_changes_data()
 
-    def edit_student(self, student):
-        self.click_button_edit_student()
-
+    def input_data_for_edit_student(self, student):
         self.driver.find_element(*EditStudentsListLocators.TEXT_FIELD_FIRST_NAME).clear()
         self.driver.find_element(*EditStudentsListLocators.
                                  TEXT_FIELD_FIRST_NAME).send_keys(student.first_name)
@@ -112,7 +111,7 @@ class StudentsPage(BasePage):
                                  TEXT_FIELD_LAST_NAME).send_keys(student.last_name)
         # select_english_level
         self.driver.find_element(*EditStudentsListLocators.LIST_ENGLISH_LEVEL).click()
-        self.driver.find_element(*EditStudentsListLocators.INTERMEDIATE_LOW).click()
+        self.driver.find_element(*EditStudentsListLocators.PRE_INTERMEDIATE_LOW).click()
 
         self.driver.find_element(*EditStudentsListLocators.STUDENT_MARK_INCOMING_TEST).clear()
         self.driver.find_element(*EditStudentsListLocators.
@@ -124,12 +123,40 @@ class StudentsPage(BasePage):
         self.driver.find_element(*EditStudentsListLocators.STUDENT_APPROVED_BY).click()
         self.driver.find_element(*EditStudentsListLocators.APPROVED_BY).click()
 
+    def edit_student(self, student):
+        self.click_button_edit_student()
+        self.input_data_for_edit_student(student)
         self.click_button_save_changes_data()
 
     def click_button_exit_editor_students_list(self):
         return self.driver.find_element(*EditStudentsListLocators.
                                         BUTTON_EXIT_EDIT_STUDENTS_LIST).click()
-    
+
+    def add_cv(self, path_file_cv):
+        self.driver.find_element(*EditStudentsListLocators.
+                                 BUTTON_ADDING_CV).click()
+        self.driver.find_element(*EditStudentsListLocators.
+                                 INPUT_ADDING_CV).send_keys(os.path.abspath(path_file_cv))
+
+    def edit_student_with_cv(self, path_file_cv):
+        self.click_button_edit_student()
+        self.add_cv(path_file_cv)
+
+    def get_name_cv_file(self):
+        return self.driver.find_element(*EditStudentsListLocators.FILE_NAME_CV).text
+
+    def add_photo(self, path_file_photo):
+        self.driver.find_element(*EditStudentsListLocators.BUTTON_ADDING_PHOTO).click()
+        self.driver.find_element(*EditStudentsListLocators.
+                                 INPUT_ADDING_PHOTO).send_keys(os.path.abspath(path_file_photo))
+
+    def edit_student_with_photo(self, path_file_photo):
+        self.click_button_edit_student()
+        self.add_photo(path_file_photo)
+
+    def get_name_photo_file(self):
+        return self.driver.find_elements(*EditStudentsListLocators.FILE_NAME_PHOTO)[-1].text
+
 
 def data_student_for_check(student):
     data_student = [student.last_name, student.first_name, 'Pre-intermediate low',
