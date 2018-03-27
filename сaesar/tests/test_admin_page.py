@@ -107,10 +107,10 @@ class TestAdminPage(TestBase):
         admin_page = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_users() \
             .add_entity_user().fill_user_fields(
-            'a'*11, 'a'*11, "Teacher", "Dnipro", "123", "123", "123") \
+            'Coder', 'Developerovich', "Teacher",
+            "Dnipro", "123", 'a' * 11, 'a' * 11) \
             .submit()
         admin_page = self.driver.find_element(
             *AdminPageLocators.BUTTON_SUBMIT)
         actual_result = admin_page.is_enabled()
         self.assertFalse(actual_result)
-
