@@ -1,7 +1,3 @@
-import time
-from front.pages.groups_page import GroupsPage
-
-
 class User(object):
     def __init__(self, first_name, last_name, role, location, login, password) -> None:
         self.first_name = first_name

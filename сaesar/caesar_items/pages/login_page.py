@@ -1,8 +1,5 @@
-from front.pages.base_page import BasePage
-from front.locators.locators import LogInLocators
-from selenium.webdriver.support.ui import WebDriverWait
-# from front.pages.groups_page import GroupsPage
-from selenium.webdriver.support import expected_conditions as EC
+from caesar_items.pages.base_page import BasePage
+from caesar_items.locators.locators import LogInLocators
 import time
 
 
@@ -33,6 +30,5 @@ class LogInPage(BasePage):
         self.enter_password(user.password)
         self.submit()
         self.driver.implicitly_wait(5)
-        # WebDriverWait(self.driver, 10).until(EC.title_is(GroupsPage.group_page_title))
 
 

@@ -1,4 +1,5 @@
-from front.pages.login_page import LogInPage
+from caesar_items.pages.login_page import LogInPage
+import time
 import unittest
 from resource.users_base import *
 from tests.test_base import TestBase
@@ -13,16 +14,16 @@ expected_page_title = 'Caesar'
 
 
 class TestLoginPage(TestBase):
-    # @classmethod
-    # def setUpClass(cls):
-    #     cls.driver = webdriver.Chrome(
-    #         executable_path=GetDriver().DRIVER_CHROME)
-    #     cls.driver.get(PathUrl().URL_SITE)
-    #     cls.login_page = LogInPage(cls.driver)
-    #     cls.login_page.enter_login(first_admin.login)
-    #     cls.login_page.enter_password(first_admin.password)
-    #     cls.login_page.submit()
-    #     create_8_users_for_tests(cls.driver)
+    @classmethod
+    def setUpClass(cls):
+        cls.driver = webdriver.Chrome(
+            executable_path=GetDriver().DRIVER_CHROME)
+        cls.driver.get(PathUrl().URL_SITE)
+        cls.login_page = LogInPage(cls.driver)
+        cls.login_page.enter_login(first_admin.login)
+        cls.login_page.enter_password(first_admin.password)
+        cls.login_page.submit()
+        create_8_users_for_tests(cls.driver)
 
     def test01_submit_button_enabled(self):
         self.login_page.enter_login(first_admin.login)

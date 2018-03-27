@@ -69,3 +69,54 @@ class TopMenuLocators(object):
     BUTTON_ABOUT = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(6)')
 
     BUTTON_LOGOUT = (By.CLASS_NAME, 'logout')
+
+
+class AdminPageLocators(object):
+    ADD_USER = (By.XPATH, ".//*[text()='Add user']")
+    ADD_GROUP = (By.XPATH, "/.//*[text()='Add group']")
+    ADD_STUDENT = (By.XPATH, ".//*[text()='Add student']")
+    TAB_USERS = (By.CSS_SELECTOR, "a[href*='users']")
+    TAB_GROUPS = (By.CSS_SELECTOR, "a[href*='groups']")
+    TAB_STUDENTS = (By.CSS_SELECTOR, "a[href*='students']")
+    BUTTON_ESCAPE = (By.CSS_SELECTOR, '.btn.btn-warning.home')
+    TITLE_ENTITY = (By.CSS_SELECTOR, '.modal-title')
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, ".btn.btn-primary.submit")
+
+    @staticmethod
+    def get_request_table(table):
+        table = ".//*[@id='{type}']/div/table/tbody//td[position()<last()]" \
+            .format(type=table)
+        return table
+
+
+class CreateEditUsersLocators(object):
+    FIRST_NAME = (By.NAME, "firstName")
+    LAST_NAME = (By.NAME, "lastName")
+    ROLE = (By.NAME, "role")
+    LOCATION = (By.NAME, "location")
+    PHOTO = (By.NAME, "photo")
+    LOGIN_FIELD = (By.NAME, "login")
+    PASSWORD_FIELD = (By.NAME, "password")
+
+
+class CreateEditGroupsLocators(object):
+    NAME = (By.NAME, "name")
+    LOCATION = (By.NAME, "location")
+    DIRECTION = (By.NAME, "direction")
+    START_DATE = (By.NAME, "startDate")
+    FINISH_DATE = (By.NAME, "finishDate")
+    TEACHERS = (By.NAME, "teachers")
+    EXPERTS = (By.NAME, "experts")
+    STAGE = (By.NAME, "stage")
+    BUDGET = (By.NAME, "budgetOwner")
+
+
+class CreateEditStudentsLocators(object):
+    GROUP_ID = (By.NAME, 'groupID')
+    NAME = (By.NAME, "name")
+    LAST_NAME = (By.NAME, "lastName")
+    ENGLISH_LEVEL = (By.NAME, "englishLevel")
+    CV_URL = (By.NAME, "CvUrl")
+    IMAGE = (By.NAME, "imageUrl")
+    ENTRY_SCORE = (By.NAME, "entryScore")
+    APPROVED_BY = (By.NAME, 'approvedBy')

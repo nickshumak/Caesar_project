@@ -1,9 +1,9 @@
 from resource.users_base import *
-from front.pages.groups_page import GroupsPage
+from caesar_items.pages.groups_page import GroupsPage
 from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
-from front.pages.login_page import *
+from caesar_items.pages.login_page import *
 import time
 
 
@@ -12,7 +12,6 @@ import unittest
 expected_url = 'http://localhost:3000/Groups/Dnipro'
 expected_title_login_page = 'Log in - Caesar'
 group_name = 'DP-093-JS'
-edit_group_url = 'http://localhost:3000/Groups/Dnipro/' + group_name + '/info/edit'
 
 
 class TestGroupPageAdmin(unittest.TestCase):
@@ -79,18 +78,13 @@ class TestGroupPageAdmin(unittest.TestCase):
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test24_open_create_page(self):
-        top_menu = self.group_page.top_menu_open()
-        top_menu.log_out_click()
-        self.login_page.auto_login(first_admin)
         expected_page_url = 'http://localhost:3000/Groups/' + first_admin.location + '/new'
         left_menu = self.group_page.left_menu_open()
         left_menu.create_group().click()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test25_open_edit_group_left_menu(self):
-        top_menu = self.group_page.top_menu_open()
-        top_menu.log_out_click()
-        self.login_page.auto_login(first_admin)
+        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' + group_name + '/info/edit'
         self.group_page.select_group(group_name)
         left_menu = self.group_page.left_menu_open()
         left_menu.edit_group().click()
@@ -124,6 +118,7 @@ class TestGroupPageCoordinator(unittest.TestCase):
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test27_open_edit_group_left_menu(self):
+        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' + group_name + '/info/edit'
         top_menu = self.group_page.top_menu_open()
         top_menu.log_out_click()
         self.login_page.auto_login(coordinator)
