@@ -17,42 +17,50 @@ class AdminPage(BasePage):
         super().__init__(driver)
 
     def tab_users(self):
+        """go to the users tab"""
         tab_users = self.driver.find_element(*AdminPageLocators.TAB_USERS)
         tab_users.click()
         return self
 
     def tab_groups(self):
+        """go to the groups tab"""
         tab_groups = self.driver.find_element(*AdminPageLocators.TAB_GROUPS)
         tab_groups.click()
         return self
 
     def tab_students(self):
+        """go to the students tab"""
         tab_students = self.driver.find_element(*AdminPageLocators.TAB_STUDENTS)
         tab_students.click()
         return self
 
     def add_entity_user(self):
+        """add user in table"""
         add_entity = self.driver.find_element(*AdminPageLocators.ADD_USER)
         add_entity.click()
         return self
 
     def add_entity_group(self):
+        """add group in table"""
         add_entity = self.driver.find_element(*AdminPageLocators.ADD_GROUP)
         add_entity.click()
         return self
 
     def add_entity_student(self):
+        """add student in table"""
         add_entity = self.driver.find_element(*AdminPageLocators.ADD_STUDENT)
         add_entity.click()
         return self
 
     def back_home(self):
+        """click on the button that will return to the Group page"""
         back_home = self.driver.find_element(*AdminPageLocators.BUTTON_ESCAPE)
         back_home.click()
         return GroupsPage(self.driver)
 
     def fill_user_fields(self, name, second_name, type_role, city, photo,
                          log, secret):
+        """filling user fields when adding new user"""
         first_name = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "firstName")))
         first_name.click()
@@ -85,6 +93,7 @@ class AdminPage(BasePage):
     def fill_group_fields(self, name_group, geography, owner: False,
                           direct, first_date, second_date, name_teacher,
                           name_experts, level_stage):
+        """filling group fields when adding new user"""
         name = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "name")))
         name.click()
@@ -127,6 +136,7 @@ class AdminPage(BasePage):
 
     def fill_student_fields(self, group, first_name, second_name, english,
                             curriculum_vitae, image, score, approved):
+        """filling student fields when adding new user"""
         group_id = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "groupId")))
         group_id.click()
