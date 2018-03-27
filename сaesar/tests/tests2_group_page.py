@@ -4,7 +4,6 @@ from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
 from caesar_items.pages.login_page import *
-import time
 
 
 import unittest
@@ -33,7 +32,7 @@ class TestGroupPageAdmin(unittest.TestCase):
 
     def tearDown(self):
         self.driver.get('http://localhost:3000/Groups/' + first_admin.location)
-        time.sleep(5)
+        self.driver.implicitly_wait(2)
 
     def test17_logout_top_menu(self):
         top_menu = self.group_page.top_menu_open()

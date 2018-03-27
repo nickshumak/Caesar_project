@@ -1,6 +1,5 @@
 from caesar_items.pages.base_page import BasePage
 from caesar_items.locators.locators import LogInLocators
-import time
 
 
 class LogInPage(BasePage):
@@ -23,7 +22,7 @@ class LogInPage(BasePage):
 
     def submit(self):
         self.driver.find_element(*LogInLocators.CONFIRM_ACTION).click()
-        time.sleep(2)
+        self.driver.implicitly_wait(2)
 
     def auto_login(self, user):
         self.enter_login(user.login)

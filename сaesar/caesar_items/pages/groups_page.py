@@ -2,7 +2,6 @@ from caesar_items.pages.base_page import BasePage
 from caesar_items.pages.login_page import LogInPage
 from caesar_items.locators.locators import GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
 from selenium.webdriver.common.action_chains import ActionChains
-import time
 
 
 class GroupsPage(BasePage):
@@ -35,7 +34,7 @@ class GroupsPage(BasePage):
 
         def log_out_click(self):
             self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
-            time.sleep(1)
+            self.driver.implicitly_wait(2)
             return LogInPage(self.driver)
 
         def user_full_name(self):
@@ -111,14 +110,13 @@ class GroupsPage(BasePage):
 
     def left_menu_open(self):
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
-        time.sleep(3)
         ActionChains(self.driver).move_to_element_with_offset(left_menu, 105, 300).perform()
-        time.sleep(3)
+        self.driver.implicitly_wait(3)
         return self.LeftMenu(self.driver)
 
     def right_menu_open(self):
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
-        time.sleep(3)
+        self.driver.implicitly_wait(2)
         return self.RightMenu(self.driver)
 
     def top_menu_open(self):
