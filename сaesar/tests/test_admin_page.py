@@ -95,8 +95,8 @@ class TestAdminPage(TestBase):
             "", "", "planned")
         admin_page = self.driver.find_element(
             *AdminPageLocators.BUTTON_SUBMIT)
-        actual = admin_page.is_enabled()
-        self.assertFalse(actual)
+        actual_result = admin_page.is_enabled()
+        self.assertFalse(actual_result)
 
     def test_create_edit_empty_fields_user(self):
         """checking user after creating with max length
@@ -111,6 +111,6 @@ class TestAdminPage(TestBase):
             .submit()
         admin_page = self.driver.find_element(
             *AdminPageLocators.BUTTON_SUBMIT)
-        actual = admin_page.is_enabled()
-        self.assertFalse(actual)
+        actual_result = admin_page.is_enabled()
+        self.assertFalse(actual_result)
 
