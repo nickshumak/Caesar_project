@@ -1,7 +1,7 @@
 import os
-from front.pages.base_page import BasePage
-from front.locators.locators import StudentsListLocators, \
-    EditStudentsListLocators, GroupPageLocators, HeaderBarLocators
+from caesar_items.pages.base_page import BasePage
+from caesar_items.locators.locators import StudentsListLocators, \
+    EditStudentsListLocators, GroupPageLocators, TopMenuLocators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -23,7 +23,7 @@ class StudentsPage(BasePage):
         actions = ActionChains(self.driver)
         actions.move_by_offset('256', '20')
         students = WebDriverWait(self.driver, 30).\
-            until(lambda driver: self.driver.find_element(*HeaderBarLocators.BUTTON_STUDENTS))
+            until(lambda driver: self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS))
         actions.click(students)
         actions.perform()
         return self
@@ -42,9 +42,6 @@ class StudentsPage(BasePage):
     def students_list(self):
         self.click_button_students()
         self.select_group_students()
-
-    # def click_button_student_in_group(self):
-    #     return self.driver.find_element(*GroupPageLocators.BUTTON_STUDENTS_IN_GROUP).click()
 
     def students_table(self):
         students_data = []

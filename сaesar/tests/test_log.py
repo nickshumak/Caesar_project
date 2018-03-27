@@ -1,5 +1,5 @@
 from tests.test_base import TestBase
-from front.pages.login_page import LogInPage
+from caesar_items.pages.login_page import LogInPage
 import time
 
 import unittest

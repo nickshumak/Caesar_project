@@ -1,5 +1,5 @@
 from tests.test_base import TestBase
-from front.pages.login_page import LogInPage
+from caesar_items.pages.login_page import LogInPage
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 import time
