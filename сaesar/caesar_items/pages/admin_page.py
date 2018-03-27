@@ -85,10 +85,7 @@ class AdminPage(BasePage):
             *CreateEditUsersLocators.PASSWORD_FIELD)
         password.click()
         password.send_keys(secret)
-        submit = self.driver.find_element(
-            *AdminPageLocators.BUTTON_SUBMIT)
-        submit.click()
-        return AdminPage(self.driver)
+        return self
 
     def fill_group_fields(self, name_group, geography, owner: False,
                           direct, first_date, second_date, name_teacher,
@@ -129,10 +126,7 @@ class AdminPage(BasePage):
             *CreateEditGroupsLocators.STAGE)
         Select(stage).select_by_visible_text(level_stage)
         stage.click()
-        submit = self.driver.find_element(
-            *AdminPageLocators.BUTTON_SUBMIT)
-        submit.click()
-        return AdminPage(self.driver)
+        return self
 
     def fill_student_fields(self, group, first_name, second_name, english,
                             curriculum_vitae, image, score, approved):
@@ -170,10 +164,7 @@ class AdminPage(BasePage):
             *CreateEditStudentsLocators.APPROVED_BY)
         approved_by.click()
         approved_by.send_keys(approved)
-        submit = self.driver.find_element(
-            *AdminPageLocators.BUTTON_SUBMIT)
-        submit.click()
-        return AdminPage(self.driver)
+        return self
 
     def get_table(self, table: str):
         """getting all row from table"""
@@ -187,6 +178,12 @@ class AdminPage(BasePage):
         table_text = [web_element.text for web_element in web_table]
         actual_result = [each.split(',') for each in table_text]
         return actual_result
+
+    def submit(self):
+        submit = self.driver.find_element(
+            *AdminPageLocators.BUTTON_SUBMIT)
+        submit.click()
+        return self
 
     def edit_entity(self):
         pass

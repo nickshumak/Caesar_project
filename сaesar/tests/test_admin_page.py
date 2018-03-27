@@ -36,7 +36,8 @@ class TestAdminPage(TestBase):
         admin_page = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_users() \
             .add_entity_user().fill_user_fields(
-            'Donald', 'Tramp', "Teacher", "Dnipro", "123", "123", "123")
+            'Donald', 'Tramp', "Teacher", "Dnipro", "123", "123", "123") \
+            .submit()
         expected_result = ["Donald"]
         actual_result = admin_page.get_table('users')
         self.assertIn(expected_result, actual_result)
@@ -50,7 +51,7 @@ class TestAdminPage(TestBase):
             get_page(PathUrl.ADMIN_PAGE).tab_groups() \
             .add_entity_group().fill_group_fields(
             'DP-095JS', "Dnipro", False, 'MQC', "2018-05-15", "2018-07-15",
-            "D. Petin", "M. Omel`chuk", "planned")
+            "D. Petin", "M. Omel`chuk", "planned").submit()
         actual_result = admin_page.get_table("groups")
         expected_result = ['DP-095JS']
         self.assertIn(expected_result, actual_result)
@@ -64,22 +65,54 @@ class TestAdminPage(TestBase):
             get_page(PathUrl.ADMIN_PAGE).tab_students() \
             .add_entity_student().fill_student_fields(
             "DP-095JS", "Victor", "Cesar", "Pre-intermediate",
-            "", "", "100", "N. Varenko")
+            "", "", "100", "N. Varenko").submit()
         actual_result = admin_page.get_table("students")
         expected_student = ['Victor']
         self.assertIn(expected_student, actual_result)
 
-    def test_create_edit_void_fields_student(self):
-        """checking student after creating"""
+    def test_create_edit_empty_fields_student(self):
+        """checking student after creating with empty fields"""
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
         admin_page = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_students() \
             .add_entity_student().fill_student_fields(
-            "", "", "", "",
+            "", "", "", "Pre-intermediate",
             "", "", "", "")
+        admin_page = self.driver.find_element(
+            *AdminPageLocators.BUTTON_SUBMIT)
+        actual_result = admin_page.is_enabled()
+        self.assertFalse(actual_result)
 
-        # actual_result = admin_page.get_table("students")
-        # expected_student = ['']
-        # self.assertIn(expected_student, actual_result)
+    def test_create_edit_empty_fields_group(self):
+        """checking group after creating group with empty fields"""
+        self.login_page.enter_login(first_admin.login)
+        self.login_page.enter_password(first_admin.password)
+        self.login_page.submit()
+        admin_page = AdminPage(self.driver). \
+            get_page(PathUrl.ADMIN_PAGE).tab_groups() \
+            .add_entity_group().fill_group_fields(
+            '', "Dnipro", False, 'MQC', "", "",
+            "", "", "planned")
+        admin_page = self.driver.find_element(
+            *AdminPageLocators.BUTTON_SUBMIT)
+        actual = admin_page.is_enabled()
+        self.assertFalse(actual)
+
+    def test_create_edit_empty_fields_user(self):
+        """checking user after creating with max length
+        max length login/password 10 symbols"""
+        self.login_page.enter_login(first_admin.login)
+        self.login_page.enter_password(first_admin.password)
+        self.login_page.submit()
+        admin_page = AdminPage(self.driver). \
+            get_page(PathUrl.ADMIN_PAGE).tab_users() \
+            .add_entity_user().fill_user_fields(
+            'a'*11, 'a'*11, "Teacher", "Dnipro", "123", "123", "123") \
+            .submit()
+        admin_page = self.driver.find_element(
+            *AdminPageLocators.BUTTON_SUBMIT)
+        actual = admin_page.is_enabled()
+        self.assertFalse(actual)
+
