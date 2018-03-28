@@ -5,13 +5,16 @@ with different roles(administrator, coordinator, teacher)
 """
 
 import unittest
-from caesar_items.pages.students_page import Student, data_student_for_check
-from resource.users_base import *
-from caesar_items.pages.students_page import StudentsPage
 from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
-from caesar_items.pages.login_page import *
+from caesar_items.pages.students_page import StudentsPage, Student, \
+    data_student_for_check
+from caesar_items.pages.login_page import LogInPage
+from resource.users_base import first_admin, coordinator, teacher
+
+# main url for tests
+url_for_continue = 'http://localhost:3000/Students/Dnipro/DP-093-JS/'
 
 # expected variables
 expected_url = 'http://localhost:3000/Students/Dnipro/DP-093-JS/list'
@@ -53,7 +56,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         cls.driver.quit()
 
     def tearDown(self):
-        self.driver.get('http://localhost:3000/Students/Dnipro/DP-093-JS/')
+        self.driver.get(url_for_continue)
         self.driver.implicitly_wait(2)
 
     def test_add_new_student_with_admin(self):
@@ -62,16 +65,19 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.students_page.click_button_exit_editor_students_list()
         student = data_student_for_check(first_new_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertIn(student, students_list)
 
     def test_edit_data_first_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.edit_student(first_new_data_student)
         self.students_page.click_button_exit_editor_students_list()
-        student_with_changes = data_student_for_check(first_new_data_student)
+        student_with_changes = \
+            data_student_for_check(first_new_data_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertIn(student_with_changes, students_list)
 
     def test_edit_cv_first_student_with_admin(self):
@@ -92,7 +98,8 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.students_page.click_button_delete_first_student()
         self.students_page.click_button_exit_editor_students_list()
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertNotIn(first_student, students_list)
 
 
@@ -115,7 +122,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         cls.driver.quit()
 
     def tearDown(self):
-        self.driver.get('http://localhost:3000/Students/Dnipro/DP-093-JS/')
+        self.driver.get(url_for_continue)
         self.driver.implicitly_wait(2)
 
     def test_add_new_student_with_coordinator(self):
@@ -124,16 +131,19 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.students_page.click_button_exit_editor_students_list()
         student = data_student_for_check(second_new_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertIn(student, students_list)
 
     def test_edit_data_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.edit_student(second_new_data_student)
         self.students_page.click_button_exit_editor_students_list()
-        student_with_changes = data_student_for_check(second_new_data_student)
+        student_with_changes = \
+            data_student_for_check(second_new_data_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertIn(student_with_changes, students_list)
 
     def test_edit_cv_first_student_with_coordinator(self):
@@ -154,7 +164,8 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.students_page.click_button_delete_first_student()
         self.students_page.click_button_exit_editor_students_list()
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertNotIn(first_student, students_list)
 
 
@@ -177,7 +188,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         cls.driver.quit()
 
     def tearDown(self):
-        self.driver.get('http://localhost:3000/Students/Dnipro/DP-093-JS/')
+        self.driver.get(url_for_continue)
         self.driver.implicitly_wait(2)
 
     def test_add_new_student_with_teacher(self):
@@ -186,16 +197,19 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.students_page.click_button_exit_editor_students_list()
         student = data_student_for_check(third_new_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertIn(student, students_list)
 
     def test_edit_data_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.edit_student(third_new_data_student)
         self.students_page.click_button_exit_editor_students_list()
-        student_with_changes = data_student_for_check(third_new_data_student)
+        student_with_changes = \
+            data_student_for_check(third_new_data_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertIn(student_with_changes, students_list)
 
     def test_edit_cv_first_student_with_teacher(self):
@@ -216,7 +230,8 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.students_page.click_button_delete_first_student()
         self.students_page.click_button_exit_editor_students_list()
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(), expected_url)
+        self.assertEqual(self.students_page.get_current_url(),
+                         expected_url)
         self.assertNotIn(first_student, students_list)
 
 
