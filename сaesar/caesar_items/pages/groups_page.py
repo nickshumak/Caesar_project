@@ -101,7 +101,12 @@ class GroupsPage(BasePage):
         def __init__(self):
             self.driver = GroupsPage.driver
 
-        def group_name_setting(self, new_group_name):
+        def field_group_name_appeal_to(self) -> object:
+            field_name_of_group = self.driver.find_element(
+                By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
+            return field_name_of_group
+
+        def field_group_name_setting(self, new_group_name) -> object:
             field_name_of_group = self.driver.find_element(
                 By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
             field_name_of_group.clear()
@@ -121,6 +126,12 @@ class GroupsPage(BasePage):
                 else:
                     break
             return name_of_group
+
+        def direction_of_group_appeal_to(self) -> object:
+            spinner_direction = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable((
+                    By.NAME, WindowCreateGroup.SPINNER_DIRECTION_NAME)))
+            return spinner_direction
 
         def direction_of_group_select(self, index) -> object:
             spinner_direction = WebDriverWait(self.driver, 20).until(
@@ -145,17 +156,19 @@ class GroupsPage(BasePage):
             spinner_direction = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((
                     By.NAME, WindowCreateGroup.SPINNER_DIRECTION_NAME)))
-            # spinner_direction = self.driver.find_element(
-            #     By.NAME, WindowCreateGroup.SPINNER_DIRECTION_NAME)
             direction_selected = spinner_direction.get_attribute("value")
             return direction_selected
+
+        def location_of_group_appeal_to(self) -> object:
+            spinner_location = self.driver.find_element(
+                By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)
+            return spinner_location
 
         def location_of_group_random_select(self) -> object:
             spinner_location = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable((
                     By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
             spinner_location.click()
-            # options_list = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION)
             locations_list = spinner_location.find_elements(By.TAG_NAME, 'option')
             random_location_index = random.randint(0, len(locations_list) - 1)
             select_location = Select(spinner_location)
@@ -167,7 +180,6 @@ class GroupsPage(BasePage):
                 EC.element_to_be_clickable((
                     By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
             spinner_location.click()
-            # options_list = self.driver.find_element(*WindowCreateGroup.SPINNER_LOCATION)
             select_location = Select(spinner_location)
             select_location.select_by_index(location_index)
             return self
