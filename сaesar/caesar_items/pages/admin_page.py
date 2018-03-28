@@ -30,7 +30,8 @@ class AdminPage(BasePage):
 
     def tab_students(self):
         """go to the students tab"""
-        tab_students = self.driver.find_element(*AdminPageLocators.TAB_STUDENTS)
+        tab_students = self.driver.find_element(
+            *AdminPageLocators.TAB_STUDENTS)
         tab_students.click()
         return self
 
@@ -172,38 +173,56 @@ class AdminPage(BasePage):
         stage.click()
         return self
 
-    def fill_student_fields(self, group, first_name, second_name, english,
-                            curriculum_vitae, image, score, approved):
-        """filling student fields when adding new user"""
+    def fill_student_group_id(self, group):
         group_id = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "groupId")))
         group_id.click()
         group_id.send_keys(group, Keys.ENTER)
+        return self
+
+    def fill_student_name(self, first_name):
         name = self.driver.find_element(
             *CreateEditStudentsLocators.NAME)
         name.click()
         name.send_keys(first_name)
+        return self
+
+    def fill_student_last_name(self, second_name):
         last_name = self.driver.find_element(
             *CreateEditStudentsLocators.LAST_NAME)
         last_name.click()
         last_name.send_keys(second_name)
+        return self
+
+    def fill_student_english_level(self, english):
         english_level = self.driver.find_element(
             *CreateEditStudentsLocators.ENGLISH_LEVEL)
         english_level.click()
         Select(english_level).select_by_visible_text(english)
-        english_level.click()
+        return self
+
+    def fill_student_cv_url(self, curriculum_vitae):
         cv_url = self.driver.find_element(
             *CreateEditStudentsLocators.CV_URL)
         cv_url.click()
         cv_url.send_keys(curriculum_vitae)
+        return self
+
+    def fill_student_image_url(self, image):
         image_url = self.driver.find_element(
             *CreateEditStudentsLocators.IMAGE)
         image_url.click()
         image_url.send_keys(image)
+        return self
+
+    def fill_student_entry_score(self, score):
         entry_score = self.driver.find_element(
             *CreateEditStudentsLocators.ENTRY_SCORE)
         entry_score.click()
         entry_score.send_keys(score)
+        return self
+
+    def fill_student_approved_by(self, approved):
         approved_by = self.driver.find_element(
             *CreateEditStudentsLocators.APPROVED_BY)
         approved_by.click()
@@ -212,8 +231,9 @@ class AdminPage(BasePage):
 
     def get_table(self, table: str):
         """getting all rows from table"""
-        ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
-        WebDriverWait(self.driver, 5, ignored_exceptions=ignored_exceptions). \
+        ignored_exceptions = (NoSuchElementException,
+                              StaleElementReferenceException)
+        WebDriverWait(self.driver, 10, ignored_exceptions=ignored_exceptions). \
             until(EC.presence_of_element_located((By.XPATH, AdminPageLocators.
                                                   get_request_table(table))))
         web_table = self.driver.find_elements(
