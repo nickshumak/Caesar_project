@@ -58,70 +58,114 @@ class AdminPage(BasePage):
         back_home.click()
         return GroupsPage(self.driver)
 
-    def fill_user_fields(self, name, second_name, type_role, city, photo,
-                         log, secret):
-        """filling user fields when adding new user"""
+    def fill_user_name(self, name):
         first_name = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "firstName")))
         first_name.click()
         first_name.send_keys(name, Keys.ENTER)
+        return self
+
+    def fill_user_second_name(self, second_name):
         last_name = self.driver.find_element(
             *CreateEditUsersLocators.LAST_NAME)
         last_name.click()
         last_name.send_keys(second_name)
+        return self
+
+    def fill_user_type_role(self, type_role):
         role = self.driver.find_element(
             *CreateEditUsersLocators.ROLE)
         role.click()
         Select(role).select_by_visible_text(type_role)
+        return self
+
+    def fill_user_city(self, city):
         location = self.driver.find_element(
             *CreateEditUsersLocators.LOCATION)
         location.click()
         Select(location).select_by_visible_text(city)
+        return self
+
+    def fill_user_photo(self, photo):
+        photograph = self.driver.find_element(*CreateEditUsersLocators.PHOTO)
+        photograph.click()
+        photograph.send_keys(photo)
+        return self
+
+    def fill_user_login(self, log_in):
         login = self.driver.find_element(
             *CreateEditUsersLocators.LOGIN_FIELD)
         login.click()
-        login.send_keys(log)
+        login.send_keys(log_in)
+        return self
+
+    def fill_user_password(self, secret):
         password = self.driver.find_element(
             *CreateEditUsersLocators.PASSWORD_FIELD)
         password.click()
         password.send_keys(secret)
         return self
 
-    def fill_group_fields(self, name_group, geography, owner: False,
-                          direct, first_date, second_date, name_teacher,
-                          name_experts, level_stage):
-        """filling group fields when adding new user"""
+    def get_condition_button(self):
+        return self.driver.find_element(
+            *AdminPageLocators.BUTTON_SUBMIT).is_enabled()
+
+    def fill_group_name(self, name_group):
         name = WebDriverWait(self.driver, 20).until(
             EC.element_to_be_clickable((By.NAME, "name")))
         name.click()
         name.send_keys(name_group, Keys.ENTER)
+        return self
+
+    def fill_group_geography(self, geography):
         location = self.driver.find_element(
             *CreateEditGroupsLocators.LOCATION)
         location.click()
         Select(location).select_by_visible_text(geography)
+        return self
+
+    def fill_group_owner(self, owner):
         if owner:
             budget_owner = self.driver.find_element(
                 *CreateEditGroupsLocators.BUDGET)
             budget_owner.click()
+        return self
+
+    def fill_group_direct(self, direct):
         direction = self.driver.find_element(
             *CreateEditGroupsLocators.DIRECTION)
         direction.click()
         Select(direction).select_by_visible_text(direct)
+        return self
+
+    def fill_group_first_date(self, first_date):
         start_date = self.driver.find_element(
             *CreateEditGroupsLocators.START_DATE)
         start_date.click()
         start_date.send_keys(first_date)
+        return self
+
+    def fill_group_second_date(self, second_date):
         finish_date = self.driver.find_element(
             *CreateEditGroupsLocators.FINISH_DATE)
         finish_date.send_keys(second_date)
+        return self
+
+    def fill_group_name_teacher(self, name_teacher):
         teachers = self.driver.find_element(
             *CreateEditGroupsLocators.TEACHERS)
         teachers.click()
         teachers.send_keys(name_teacher)
+        return self
+
+    def fill_group_name_experts(self, name_experts):
         expert = self.driver.find_element(
             *CreateEditGroupsLocators.EXPERTS)
         expert.click()
         expert.send_keys(name_experts)
+        return self
+
+    def fill_group_level_stage(self, level_stage):
         stage = self.driver.find_element(
             *CreateEditGroupsLocators.STAGE)
         Select(stage).select_by_visible_text(level_stage)
@@ -169,15 +213,14 @@ class AdminPage(BasePage):
     def get_table(self, table: str):
         """getting all rows from table"""
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
-        wait_table = WebDriverWait(
-            self.driver, 5, ignored_exceptions=ignored_exceptions).until(
-            EC.presence_of_element_located((
-                By.XPATH, AdminPageLocators.get_request_table(table))))
+        WebDriverWait(self.driver, 5, ignored_exceptions=ignored_exceptions). \
+            until(EC.presence_of_element_located((By.XPATH, AdminPageLocators.
+                                                  get_request_table(table))))
         web_table = self.driver.find_elements(
             By.XPATH, AdminPageLocators.get_request_table(table))
         table_text = [web_element.text for web_element in web_table]
-        actual_result = [each.split(',') for each in table_text]
-        return actual_result
+        table = [each.split(',') for each in table_text]
+        return table
 
     def submit(self):
         submit = self.driver.find_element(

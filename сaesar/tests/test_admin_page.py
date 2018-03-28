@@ -10,47 +10,62 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        admin_page = AdminPage(self.driver). \
+        title_page = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE) \
             .get_title_name()
-        self.assertIn("Caesar Admin Panel", admin_page)
+        print(title_page)
+
+        self.assertEqual("Caesar Admin Panel", title_page)
 
     def test_admin_escape_home_button(self):
         """Checking escape home button on admin page"""
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        admin_page = AdminPage(self.driver). \
+        title_page = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE). \
             back_home() \
             .get_title_name()
-        self.assertIn("Caesar", admin_page)
+        self.assertEqual("Caesar", title_page)
 
     def test_create_edit_users(self):
-        """checking user after creating"""
+        """checking user in user's table after creating"""
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        admin_page = AdminPage(self.driver). \
-            get_page(PathUrl.ADMIN_PAGE).tab_users() \
-            .add_entity_user().fill_user_fields(
-            'Donald', 'Tramp', "Teacher", "Dnipro", "123", "123", "123") \
-            .submit()
+        actual_table = AdminPage(self.driver). \
+            get_page(PathUrl.ADMIN_PAGE).tab_users(). \
+            add_entity_user(). \
+            fill_user_name('Donald'). \
+            fill_user_second_name('Tramp'). \
+            fill_user_type_role('Teacher'). \
+            fill_user_city('Dnipro'). \
+            fill_user_photo('photo'). \
+            fill_user_login('123'). \
+            fill_user_password('123'). \
+            submit().get_table('users')
         expected_result = ["Donald"]
-        actual_result = admin_page.get_table('users')
-        self.assertIn(expected_result, actual_result)
+        self.assertIn(expected_result, actual_table)
 
     def test_create_edit_groups(self):
         """checking group after creating"""
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        admin_page = AdminPage(self.driver). \
+        actual_table = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_groups() \
-            .add_entity_group().fill_group_fields(
-            'DP-095JS', "Dnipro", False, 'MQC', "2018-05-15", "2018-07-15",
-            "D. Petin", "M. Omel`chuk", "planned").submit()
-        actual_result = admin_page.get_table("groups")
+            .add_entity_group(). \
+            fill_group_name('DP-095JS'). \
+            fill_group_geography('Dnipro'). \
+            fill_group_owner(False). \
+            fill_group_direct('MQC'). \
+            fill_group_first_date('2018-05-15'). \
+            fill_group_second_date('2018-07-15'). \
+            fill_group_name_teacher('D. Petin'). \
+            fill_group_name_experts('M. Omel`chuk'). \
+            fill_group_level_stage('planned') \
+            .submit()
+        actual_result = actual_table.get_table("groups")
         expected_result = ['DP-095JS']
         self.assertIn(expected_result, actual_result)
 
@@ -88,29 +103,36 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        admin_page = AdminPage(self.driver). \
+        actual_condition_button = AdminPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_groups() \
-            .add_entity_group().fill_group_fields(
-            '', "Dnipro", False, 'MQC', "", "",
-            "", "", "planned")
-        admin_page = self.driver.find_element(
-            *AdminPageLocators.BUTTON_SUBMIT)
-        actual_result = admin_page.is_enabled()
-        self.assertFalse(actual_result)
+            .add_entity_group(). \
+            fill_group_name(''). \
+            fill_group_geography('Dnipro'). \
+            fill_group_owner(False). \
+            fill_group_direct('MQC'). \
+            fill_group_first_date(''). \
+            fill_group_second_date(''). \
+            fill_group_name_teacher(''). \
+            fill_group_name_experts(''). \
+            fill_group_level_stage('planned') \
+            .get_condition_button()
+        self.assertFalse(actual_condition_button)
 
-    def test_create_edit_empty_fields_user(self):
-        """checking user after creating with max length
+    def test_create_edit_max_length_fields_user(self):
+        """checking user after creating with more than max length
         max length login/password 10 symbols"""
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        admin_page = AdminPage(self.driver). \
-            get_page(PathUrl.ADMIN_PAGE).tab_users() \
-            .add_entity_user().fill_user_fields(
-            'Coder', 'Developerovich', "Teacher",
-            "Dnipro", "123", 'a' * 11, 'a' * 11) \
-            .submit()
-        admin_page = self.driver.find_element(
-            *AdminPageLocators.BUTTON_SUBMIT)
-        actual_result = admin_page.is_enabled()
-        self.assertFalse(actual_result)
+        actual_condition_button = AdminPage(self.driver). \
+            get_page(PathUrl.ADMIN_PAGE).tab_users(). \
+            add_entity_user(). \
+            fill_user_name('Coder'). \
+            fill_user_second_name('Developerovich'). \
+            fill_user_type_role('Teacher'). \
+            fill_user_city('Dnipro'). \
+            fill_user_photo('photo'). \
+            fill_user_login('b' * 11). \
+            fill_user_password('a' * 11) \
+            .get_condition_button()
+        self.assertFalse(actual_condition_button)
