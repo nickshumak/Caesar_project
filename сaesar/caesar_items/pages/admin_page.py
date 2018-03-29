@@ -247,9 +247,3 @@ class AdminPage(BasePage):
             *AdminPageLocators.BUTTON_SUBMIT)
         submit.click()
         return self
-
-    def edit_entity(self):
-        pass
-
-    def delete_entity(self):
-        pass
