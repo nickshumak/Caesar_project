@@ -118,13 +118,13 @@ class GroupsPage(BasePage):
                 By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
             name_of_group = field_name_of_group.get_attribute(
                 "value")
-            while len(name_of_group) > 20:
-                if len(name_of_group) > 20:
-                    field_name_of_group.send_keys(Keys.BACKSPACE)
-                    name_of_group = field_name_of_group.get_attribute(
-                        "value")
-                else:
-                    break
+            # while len(name_of_group) > 20:
+            #     if len(name_of_group) > 20:
+            #         field_name_of_group.send_keys(Keys.BACKSPACE)
+            #         name_of_group = field_name_of_group.get_attribute(
+            #             "value")
+            #     else:
+            #         break
             return name_of_group
 
         def direction_of_group_appeal_to(self) -> object:
@@ -220,6 +220,21 @@ class GroupsPage(BasePage):
         #     date_start = self.driver.find_element(*WindowCreateGroup.DATE_START)
         #     date_start=date_start.find_element("value placeholder").text()
         #     return date_start
+        def catch_hint(self) -> object:
+            # field_name_of_group = self.driver.find_element(
+            #     By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
+            # field_name_of_group.clear()
+            spinner_location = self.driver.find_elements(By.CLASS_NAME, 'hint')
+            for spinner in spinner_location:
+                sp = spinner.find_elements(By.TAG_NAME, 'p')
+                for s in sp:
+                    print(s.text)
+            # spinner_location = WebDriverWait(self.driver, 4).until(
+            #     EC.(By.CSS_SELECTOR, "#modal-window > section > section > section > div:nth-child(1) > div:nth-child(1) > div > div > div:nth-child(4)"))
+            # spinner_location.click()
+            # select_location = Select(spinner_location)
+            # select_location.select_by_index(location_index)
+            return self
 
     def group_location(self):
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text

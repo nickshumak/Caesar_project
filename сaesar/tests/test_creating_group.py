@@ -3,7 +3,7 @@ from resource.users_base import first_admin, coordinator
 from tests.test_base import TestBase
 
 TEST_GROUP_NAME = "Test group"
-TEST_TOO_LONG_GROUP_NAME = "12345678901234567890"
+TEST_TOO_LONG_GROUP_NAME = "12345678901234567890123123123123123123123123123"
 TEST_START_DATE = "11/04/2018"
 TEST_TEACHER_INDEX = 1
 TEST_FAILED_MESSAGE = "Test_failed"
@@ -33,7 +33,7 @@ class TestCreatingGroup(TestBase):
         name = groups_page.WindowCreatingGroup(). \
             name_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().submit_group_creating()
-        self.assertTrue(name in str(self.driver.page_source))
+        self.assertTrue(name in str(self.driver.page_source), "hfkdsfg")
 
     def test_is_group_creates_with_test_name(self):
         """
@@ -78,7 +78,7 @@ class TestCreatingGroup(TestBase):
         name = groups_page.WindowCreatingGroup(). \
             name_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().submit_group_creating()
-        self.assertIn(location_of_group, str(self.driver.page_source))
+        self.assertIn(location_of_group, str(self.driver.page_source), "asda")
 
     def test_is_group_creates_with_correct_start_date(self):
         """
@@ -100,7 +100,7 @@ class TestCreatingGroup(TestBase):
         groups_page.WindowCreatingGroup().teachers_adding(TEST_TEACHER_INDEX)
         name = groups_page.WindowCreatingGroup().name_of_group_save_to_variable()
         groups_page.WindowCreatingGroup().submit_group_creating()
-        self.assertIn(TEST_START_DATE, str(self.driver.page_source))
+        self.assertIn(TEST_START_DATE, self.driver.page_source, "message")
 
     def test_is_group_creates_direction_right(self):
         """
@@ -207,3 +207,18 @@ class TestCreatingGroup(TestBase):
         field_location = groups_page.WindowCreatingGroup(). \
             location_of_group_appeal_to()
         self.assertFalse(field_location.is_enabled())
+
+    def test_select_location_is_enabled_for_coordinatr(self):
+        first_admin.auto_login_n_open_group_page(self.login_page)
+        groups_page = GroupsPage(self.driver)
+        left_menu = groups_page.left_menu_open()
+        button_create_group = left_menu.create_group()
+        button_create_group.click()
+        # groups_page.WindowCreatingGroup().direction_of_group_random_select()
+        # groups_page.WindowCreatingGroup().location_of_group_random_select()
+        # test_direction = groups_page.WindowCreatingGroup(). \
+        #     direction_of_group_save_to_variable()
+        # groups_page.WindowCreatingGroup().teachers_adding(TEST_TEACHER_INDEX)
+        groups_page.WindowCreatingGroup().field_group_name_setting(TEST_TOO_LONG_GROUP_NAME)
+        groups_page.WindowCreatingGroup().submit_group_creating()
+        groups_page.WindowCreatingGroup().catch_hint()
