@@ -101,31 +101,21 @@ class GroupsPage(BasePage):
         def __init__(self):
             self.driver = GroupsPage.driver
 
-        def field_group_name_appeal_to(self) -> object:
-            field_name_of_group = self.driver.find_element(
+        def field_group_name_get(self) -> object:
+            return self.driver.find_element(
                 By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
-            return field_name_of_group
 
-        def field_group_name_setting(self, new_group_name) -> object:
+        def field_group_name_set(self, new_group_name) -> object:
             field_name_of_group = self.driver.find_element(
                 By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
             field_name_of_group.clear()
             field_name_of_group.send_keys(new_group_name)
             return self
 
-        def name_of_group_save_to_variable(self) -> str:
+        def field_group_name_value_get(self) -> str:
             field_name_of_group = self.driver.find_element(
                 By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
-            name_of_group = field_name_of_group.get_attribute(
-                "value")
-            # while len(name_of_group) > 20:
-            #     if len(name_of_group) > 20:
-            #         field_name_of_group.send_keys(Keys.BACKSPACE)
-            #         name_of_group = field_name_of_group.get_attribute(
-            #             "value")
-            #     else:
-            #         break
-            return name_of_group
+            return field_name_of_group.get_attribute("value")
 
         def direction_of_group_appeal_to(self) -> object:
             spinner_direction = WebDriverWait(self.driver, 20).until(
@@ -220,20 +210,22 @@ class GroupsPage(BasePage):
         #     date_start = self.driver.find_element(*WindowCreateGroup.DATE_START)
         #     date_start=date_start.find_element("value placeholder").text()
         #     return date_start
-        def catch_hint(self) -> object:
-            # field_name_of_group = self.driver.find_element(
-            #     By.NAME, WindowCreateGroup.FIELD_NAME_GROUPS_NAME)
-            # field_name_of_group.clear()
-            spinner_location = self.driver.find_elements(By.CLASS_NAME, 'hint')
-            for spinner in spinner_location:
-                sp = spinner.find_elements(By.TAG_NAME, 'p')
-                for s in sp:
-                    print(s.text)
-            # spinner_location = WebDriverWait(self.driver, 4).until(
-            #     EC.(By.CSS_SELECTOR, "#modal-window > section > section > section > div:nth-child(1) > div:nth-child(1) > div > div > div:nth-child(4)"))
-            # spinner_location.click()
-            # select_location = Select(spinner_location)
-            # select_location.select_by_index(location_index)
+        def warning_message_get(self) -> object:
+            hints = self.driver.find_elements(By.CLASS_NAME, 'hint')
+            for warning_messages in hints:
+                warning_message = warning_messages.find_elements(By.TAG_NAME, 'p')
+                for message_text in warning_message:
+                    print(message_text.text)
+            return self
+
+        def warning_message_gets(self) -> object:
+            form = self.driver.find_element(By.CSS_SELECTOR,
+                                            '#modal-window > section > section > section > div:nth-child(1) > div:nth-child(1) > div > div')
+            hints = form.find_elements(By.CLASS_NAME, 'hint')
+            for warning_messages in hints:
+                warning_message = warning_messages.find_elements(By.TAG_NAME, 'p')
+                for message_text in warning_message:
+                    print(message_text.text)
             return self
 
     def group_location(self):

@@ -117,6 +117,9 @@ class CreateEditStudentsLocators(object):
 
 
 class WindowCreateGroup(object):
+    FORM_NAME_GROUPS_NAME = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(1) > div:nth-child(1) > div > div')
     FIELD_NAME_GROUPS_NAME = 'name'
     SPINNER_DIRECTION_NAME = 'direction'
     SPINNER_LOCATION_NAME = 'location'
