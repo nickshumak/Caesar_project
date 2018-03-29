@@ -8,8 +8,9 @@ from caesar_items.locators.locators import \
 class GroupsPage(BasePage):
     group_page_title = 'Caesar'
 
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
+        self.driver = BasePage.driver
 
     class LeftMenu(object):
         """inner classes"""
@@ -41,7 +42,7 @@ class GroupsPage(BasePage):
             self.driver.find_element(*RightMenuLocators.
                                      BUTTON_LOGOUT).click()
             self.driver.implicitly_wait(2)
-            return LogInPage(self.driver)
+            return LogInPage()
 
         def user_full_name(self):
             return self.driver.find_element(*RightMenuLocators.
@@ -68,7 +69,7 @@ class GroupsPage(BasePage):
             self.driver.find_element(*TopMenuLocators.
                                      BUTTON_GROUPS).click()
             self.driver.implicitly_wait(2)
-            return GroupsPage(self.driver)
+            return GroupsPage()
 
         def students(self):
             self.driver.find_element(*TopMenuLocators.

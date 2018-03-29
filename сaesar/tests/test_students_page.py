@@ -42,22 +42,19 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
-        cls.login_page = LogInPage(cls.driver)
-        cls.driver.maximize_window()
+        cls.login_page = LogInPage()
         cls.login_page.auto_login(first_admin)
-        cls.students_page = StudentsPage(cls.driver)
-        cls.students_page.students_list()
+        cls.students_page = StudentsPage()
+        cls.students_page.click_button_students()
+        cls.students_page.select_group_students()
 
     @classmethod
     def tearDownClass(cls):
-        cls.driver.quit()
+        StudentsPage.driver.quit()
 
     def tearDown(self):
-        self.driver.get(url_for_continue)
-        self.driver.implicitly_wait(2)
+        self.students_page.driver.get(url_for_continue)
+        self.students_page.driver.implicitly_wait(2)
 
     def test_add_new_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
@@ -108,22 +105,19 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
-        cls.login_page = LogInPage(cls.driver)
-        cls.driver.maximize_window()
+        cls.login_page = LogInPage()
         cls.login_page.auto_login(coordinator)
-        cls.students_page = StudentsPage(cls.driver)
-        cls.students_page.students_list()
+        cls.students_page = StudentsPage()
+        cls.students_page.click_button_students()
+        cls.students_page.select_group_students()
 
     @classmethod
     def tearDownClass(cls):
-        cls.driver.quit()
+        StudentsPage.driver.quit()
 
     def tearDown(self):
-        self.driver.get(url_for_continue)
-        self.driver.implicitly_wait(2)
+        self.students_page.driver.get(url_for_continue)
+        self.students_page.driver.implicitly_wait(2)
 
     def test_add_new_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
@@ -174,22 +168,19 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
-        cls.login_page = LogInPage(cls.driver)
-        cls.driver.maximize_window()
+        cls.login_page = LogInPage()
         cls.login_page.auto_login(teacher)
-        cls.students_page = StudentsPage(cls.driver)
-        cls.students_page.students_list()
+        cls.students_page = StudentsPage()
+        cls.students_page.click_button_students()
+        cls.students_page.select_group_students()
 
     @classmethod
     def tearDownClass(cls):
-        cls.driver.quit()
+        StudentsPage.driver.quit()
 
     def tearDown(self):
-        self.driver.get(url_for_continue)
-        self.driver.implicitly_wait(2)
+        self.students_page.driver.get(url_for_continue)
+        self.students_page.driver.implicitly_wait(2)
 
     def test_add_new_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()

@@ -3,8 +3,9 @@ from caesar_items.locators.locators import LogInLocators
 
 
 class LogInPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self):
+        super().__init__()
+        self.driver = BasePage.driver
 
     def enter_login(self, user_login=''):
         self.driver.find_element(*LogInLocators.LOGIN_FIELD).clear()

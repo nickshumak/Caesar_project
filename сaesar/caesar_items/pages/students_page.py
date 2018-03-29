@@ -16,8 +16,10 @@ class Student(object):
 
 
 class StudentsPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+
+    def __init__(self):
+        super().__init__()
+        self.driver = BasePage.driver
 
     def click_button_students(self):
         actions = ActionChains(self.driver)
@@ -40,10 +42,6 @@ class StudentsPage(BasePage):
             else:
                 'There is no group with name "DP-093-JS"'
         return self
-
-    def students_list(self):
-        self.click_button_students()
-        self.select_group_students()
 
     def students_table(self):
         students_data = []
