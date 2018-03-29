@@ -22,7 +22,7 @@ class TestLoginPage(TestBase):
         cls.login_page = LogInPage(cls.driver)
         cls.login_page.enter_login(first_admin.login)
         cls.login_page.enter_password(first_admin.password)
-        cls.login_page.submit()
+        cls.login_page.open_group_page()
         create_8_users_for_tests(cls.driver)
 
     def test01_submit_button_enabled(self):
@@ -33,22 +33,20 @@ class TestLoginPage(TestBase):
     def test02_sign_in_as_admin(self):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, expected_page_title)
-        right_bar = group_page.right_menu_open()
-        self.assertEqual(right_bar.user_full_name(), first_admin.full_name)
-        self.assertEqual(right_bar.user_role(), first_admin.role)
+        group_page = self.login_page.open_group_page()
+        self.assertEqual(group_page.get_title_name(), expected_page_title)
+        right_menu = group_page.open_right_menu()
+        self.assertEqual(right_menu.user_full_name(), first_admin.full_name)
+        self.assertEqual(right_menu.user_role(), first_admin.role)
 
     def test03_sign_in_as_coordinator(self):
         self.login_page.enter_login(coordinator.login)
         self.login_page.enter_password(coordinator.password)
-        self.login_page.submit()
-        group_page = GroupsPage(self.driver)
-        self.assertEqual(self.driver.title, expected_page_title)
-        right_bar = group_page.right_menu_open()
-        self.assertEqual(right_bar.user_full_name(), coordinator.full_name)
-        self.assertEqual(right_bar.user_role(), coordinator.role)
+        group_page = self.login_page.open_group_page()
+        self.assertEqual(group_page.get_title_name(), expected_page_title)
+        right_menu = group_page.open_right_menu()
+        self.assertEqual(right_menu.user_full_name(), coordinator.full_name)
+        self.assertEqual(right_menu.user_role(), coordinator.role)
 
     def test04_sign_in_as_teacher(self):
         self.login_page.enter_login(teacher.login)
