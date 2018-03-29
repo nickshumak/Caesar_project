@@ -1,8 +1,10 @@
-from caesar_items.pages.base_page import BasePage
-from caesar_items.pages.login_page import LogInPage
+# from caesar_items.pages.login_page import LogInPage
 from caesar_items.locators.locators import \
     GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
+from caesar_items.pages.base_page import BasePage
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class LeftMenu(object):
@@ -31,7 +33,7 @@ class RightMenu(object):
     def log_out_click(self):
         self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
         self.driver.implicitly_wait(2)
-        return LogInPage(self.driver)
+        #return LogInPage(self.driver)
 
     def user_full_name(self):
         return self.driver.find_element(*RightMenuLocators.USER_NAME).text
@@ -55,7 +57,7 @@ class TopMenu(object):
     def groups(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_GROUPS).click()
         self.driver.implicitly_wait(2)
-        return GroupsPage(self.driver)
+        return GroupsPage()
 
     def students(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
@@ -124,13 +126,13 @@ class GroupsPage(BasePage):
 
     def open_right_menu(self):
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
-        self.driver.implicitly_wait(2)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
         return self.right_menu
 
     def open_top_menu(self):
         top_menu = self.driver.find_element(*GroupPageLocators.TOP_MENU)
         ActionChains(self.driver).move_to_element(top_menu).perform()
-        self.driver.implicitly_wait(2)
+        self.driver.implicitly_wait(3)
         return self.top_menu
 
     def get_current_url(self):

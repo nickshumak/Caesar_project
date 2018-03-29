@@ -156,7 +156,7 @@ class TestGroupPageTeacher(unittest.TestCase):
         self.driver.get('http://localhost:3000/Groups/Dnipro')
 
     def test28_disabled_create_button_for_teacher(self):
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
         try:
             left_menu.create_group().is_displayed()
             self.assertTrue(False)
