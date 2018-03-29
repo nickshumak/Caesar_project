@@ -5,15 +5,6 @@ from resource.url_site import PathUrl
 
 
 class TestAdminPage(TestBase):
-    def test_title_admin_page(self):
-        """Checking title Admin page after transition from Group page"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        title_page = GroupsPage(self.driver). \
-            get_page(PathUrl.ADMIN_PAGE). \
-            get_title_name()
-        self.assertEqual("Caesar Admin Panel", title_page)
 
     def test_admin_escape_home_button(self):
         """Checking escape home button on admin page"""
@@ -25,6 +16,16 @@ class TestAdminPage(TestBase):
             back_home(). \
             get_title_name()
         self.assertEqual("Caesar", title_page)
+
+    def test_title_admin_page(self):
+        """Checking title Admin page after transition from Group page"""
+        self.login_page.enter_login(first_admin.login)
+        self.login_page.enter_password(first_admin.password)
+        self.login_page.submit()
+        title_page = GroupsPage(self.driver). \
+            get_page(PathUrl.ADMIN_PAGE). \
+            get_title_name()
+        self.assertEqual("Caesar Admin Panel", title_page)
 
     def test_create_edit_users(self):
         """checking user in user's table after creating"""
