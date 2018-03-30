@@ -5,21 +5,20 @@ with different roles(administrator, coordinator, teacher)
 """
 
 import unittest
-from selenium import webdriver
-from resource.url_site import PathUrl
-from resource.path_driver import GetDriver
 from caesar_items.pages.students_page import StudentsPage, Student, \
     data_student_for_check
 from caesar_items.pages.login_page import LogInPage
+from caesar_items.pages.groups_page import GroupsPage, TopMenu
 from resource.users_base import first_admin, coordinator, teacher
 
 # main url for tests
-url_for_continue = 'http://localhost:3000/Students/Dnipro/DP-093-JS/'
+url_for_test_start = 'http://localhost:3000/Students/Dnipro/DP-093-JS/'
 
 # expected variables
 expected_url = 'http://localhost:3000/Students/Dnipro/DP-093-JS/list'
 expected_name_file_cv = 'cv.docx'
 expected_name_file_photo = 'photo.jpg'
+group_name = 'DP-093-JS'
 
 # data for adding new student
 first_new_student = Student(first_name='Vladyslava', last_name='Semmi',
@@ -44,21 +43,24 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
     def setUpClass(cls):
         cls.login_page = LogInPage()
         cls.login_page.auto_login(first_admin)
+        cls.main_page = GroupsPage()
+        cls.main_page.top_menu.click_button_students()
+        cls.main_page.select_group_students(group_name)
         cls.students_page = StudentsPage()
-        cls.students_page.click_button_students()
-        cls.students_page.select_group_students()
 
     @classmethod
     def tearDownClass(cls):
         StudentsPage.driver.quit()
 
     def tearDown(self):
-        self.students_page.driver.get(url_for_continue)
+        self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
     def test_add_new_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.add_new_student(first_new_student)
+        self.students_page.click_button_add_new_student()
+        self.students_page.enter_student_data(first_new_student)
+        self.students_page.click_button_save_changes_data()
         self.students_page.click_button_exit_editor_students_list()
         student = data_student_for_check(first_new_student)
         students_list = self.students_page.students_table()
@@ -68,7 +70,9 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
 
     def test_edit_data_first_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student(first_new_data_student)
+        self.students_page.click_button_edit_student()
+        self.students_page.enter_student_data(first_new_data_student)
+        self.students_page.click_button_save_changes_data()
         self.students_page.click_button_exit_editor_students_list()
         student_with_changes = \
             data_student_for_check(first_new_data_student)
@@ -107,21 +111,24 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
     def setUpClass(cls):
         cls.login_page = LogInPage()
         cls.login_page.auto_login(coordinator)
+        cls.main_page = GroupsPage()
+        cls.main_page.top_menu.click_button_students()
+        cls.main_page.select_group_students(group_name)
         cls.students_page = StudentsPage()
-        cls.students_page.click_button_students()
-        cls.students_page.select_group_students()
 
     @classmethod
     def tearDownClass(cls):
         StudentsPage.driver.quit()
 
     def tearDown(self):
-        self.students_page.driver.get(url_for_continue)
+        self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
     def test_add_new_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.add_new_student(second_new_student)
+        self.students_page.click_button_add_new_student()
+        self.students_page.enter_student_data(second_new_student)
+        self.students_page.click_button_save_changes_data()
         self.students_page.click_button_exit_editor_students_list()
         student = data_student_for_check(second_new_student)
         students_list = self.students_page.students_table()
@@ -131,7 +138,9 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
 
     def test_edit_data_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student(second_new_data_student)
+        self.students_page.click_button_edit_student()
+        self.students_page.enter_student_data(second_new_data_student)
+        self.students_page.click_button_save_changes_data()
         self.students_page.click_button_exit_editor_students_list()
         student_with_changes = \
             data_student_for_check(second_new_data_student)
@@ -170,21 +179,24 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
     def setUpClass(cls):
         cls.login_page = LogInPage()
         cls.login_page.auto_login(teacher)
+        cls.main_page = GroupsPage()
+        cls.main_page.top_menu.click_button_students()
+        cls.main_page.select_group_students(group_name)
         cls.students_page = StudentsPage()
-        cls.students_page.click_button_students()
-        cls.students_page.select_group_students()
 
     @classmethod
     def tearDownClass(cls):
         StudentsPage.driver.quit()
 
     def tearDown(self):
-        self.students_page.driver.get(url_for_continue)
+        self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
     def test_add_new_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.add_new_student(third_new_student)
+        self.students_page.click_button_add_new_student()
+        self.students_page.enter_student_data(third_new_student)
+        self.students_page.click_button_save_changes_data()
         self.students_page.click_button_exit_editor_students_list()
         student = data_student_for_check(third_new_student)
         students_list = self.students_page.students_table()
@@ -194,7 +206,9 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
 
     def test_edit_data_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student(third_new_data_student)
+        self.students_page.click_button_edit_student()
+        self.students_page.enter_student_data(third_new_data_student)
+        self.students_page.click_button_save_changes_data()
         self.students_page.click_button_exit_editor_students_list()
         student_with_changes = \
             data_student_for_check(third_new_data_student)
