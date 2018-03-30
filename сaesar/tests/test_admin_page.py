@@ -32,7 +32,7 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        actual_table = AdminPage(self.driver). \
+        actual_table = GroupsPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE). \
             tab_users(). \
             add_entity_user(). \
@@ -53,7 +53,7 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        actual_table = AdminPage(self.driver). \
+        actual_table = GroupsPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE). \
             tab_groups(). \
             add_entity_group(). \
@@ -76,7 +76,7 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        actual_table = AdminPage(self.driver). \
+        actual_table = GroupsPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_students() \
             .add_entity_student(). \
             fill_student_group_id('"DP-095JS'). \
@@ -96,7 +96,7 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        actual_condition_button = AdminPage(self.driver). \
+        actual_condition_button = GroupsPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_groups(). \
             add_entity_student(). \
             fill_student_group_id(''). \
@@ -114,7 +114,7 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        actual_condition_button = AdminPage(self.driver). \
+        actual_condition_button = GroupsPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_groups() \
             .add_entity_group(). \
             fill_group_name(''). \
@@ -135,7 +135,7 @@ class TestAdminPage(TestBase):
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
-        actual_condition_button = AdminPage(self.driver). \
+        actual_condition_button = GroupsPage(self.driver). \
             get_page(PathUrl.ADMIN_PAGE).tab_users(). \
             add_entity_user(). \
             fill_user_name('Coder'). \
