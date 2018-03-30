@@ -1,7 +1,7 @@
 from selenium.webdriver.common.action_chains import ActionChains
 from caesar_items.pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait
-from caesar_items.pages.login_page import LogInPage
+# from caesar_items.pages.login_page import LogInPage
 from caesar_items.locators.locators import \
     GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
 
@@ -209,7 +209,7 @@ class TopMenu(object):
     def groups(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_GROUPS).click()
         self.driver.implicitly_wait(2)
-        return GroupsPage()
+        return GroupsPage(self.driver)
 
     def students(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
@@ -249,9 +249,8 @@ class TopMenu(object):
 class GroupsPage(BasePage):
     group_page_title = 'Caesar'
 
-    def __init__(self):
-        super().__init__()
-        self.driver = BasePage.driver
+    def __init__(self, driver):
+        super().__init__(driver)
         self.left_menu = LeftMenu(self.driver)
         self.right_menu = RightMenu(self.driver)
         self.top_menu = TopMenu(self.driver)

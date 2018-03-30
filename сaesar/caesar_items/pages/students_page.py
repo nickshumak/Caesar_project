@@ -48,11 +48,8 @@ class Student(object):
 #
 
 class StudentsPage(BasePage):
-
-    def __init__(self):
-        super().__init__()
-        self.driver = BasePage.driver
-        # self.students_list = StudentsList(self.driver)
+    def __init__(self, driver):
+        super().__init__(driver)
 
     def students_table(self):
         students_data = []
