@@ -35,32 +35,32 @@ class TestGroupPageAdmin(unittest.TestCase):
         self.driver.implicitly_wait(2)
 
     def test17_logout_top_menu(self):
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.log_out_click()
         self.assertEqual(self.driver.title, expected_title_login_page)
         self.login_page.auto_login(first_admin)
 
     def test18_logout_right_menu(self):
-        right_menu = self.group_page.right_menu_open()
+        right_menu = self.group_page.open_right_menu()
         login_page = right_menu.log_out_click()
         self.assertEqual(login_page.get_title_name(), expected_title_login_page)
         self.login_page.auto_login(first_admin)
 
     def test19_open_about(self):
         expected_page_url = 'http://localhost:3000/About'
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.about()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test20_open_schedule(self):
         expected_page_url = 'http://localhost:3000/Schedule/' \
                             + first_admin.location
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.schedule()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test21_open_students(self):
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.students()
         expected_page_url = 'http://localhost:3000/Students/' \
                             + first_admin.location
@@ -69,21 +69,21 @@ class TestGroupPageAdmin(unittest.TestCase):
     def test22_open_groups(self):
         expected_page_url = 'http://localhost:3000/Groups/' \
                             + first_admin.location
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.groups()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test23_open_locations(self):
         expected_page_url = 'http://localhost:3000/Groups/' \
                             + first_admin.location + '/locations'
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.locations()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
     def test24_open_create_page(self):
         expected_page_url = 'http://localhost:3000/Groups/' \
                             + first_admin.location + '/new'
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
         left_menu.create_group().click()
         self.assertEqual(self.driver.current_url, expected_page_url)
 
@@ -91,7 +91,7 @@ class TestGroupPageAdmin(unittest.TestCase):
         edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
                          + group_name + '/info/edit'
         self.group_page.select_group(group_name)
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
         left_menu.edit_group().click()
         self.assertEqual(self.driver.current_url, edit_group_url)
 
@@ -117,7 +117,7 @@ class TestGroupPageCoordinator(unittest.TestCase):
         self.driver.get('http://localhost:3000/Groups/Dnipro')
 
     def test26_open_create_page(self):
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
         left_menu.create_group().click()
         expected_page_url = 'http://localhost:3000/Groups/' \
                             + coordinator.location + '/new'
@@ -126,11 +126,11 @@ class TestGroupPageCoordinator(unittest.TestCase):
     def test27_open_edit_group_left_menu(self):
         edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
                          + group_name + '/info/edit'
-        top_menu = self.group_page.top_menu_open()
+        top_menu = self.group_page.open_top_menu()
         top_menu.log_out_click()
         self.login_page.auto_login(coordinator)
         self.group_page.select_group(group_name)
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
         left_menu.edit_group().click()
         self.assertEqual(self.driver.current_url, edit_group_url)
 
@@ -165,7 +165,7 @@ class TestGroupPageTeacher(unittest.TestCase):
 
     def test29_disabled_delete_button_for_teacher(self):
         self.group_page.select_group(group_name)
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
         try:
             left_menu.delete_group().is_displayed()
             self.assertTrue(False)
@@ -174,7 +174,7 @@ class TestGroupPageTeacher(unittest.TestCase):
 
     def test30_disabled_left_menu_edit_button_for_teacher(self):
         self.group_page.select_group(group_name)
-        left_menu = self.group_page.left_menu_open()
+        left_menu = self.group_page.open_left_menu()
 
         try:
             left_menu.edit_group().is_displayed()
