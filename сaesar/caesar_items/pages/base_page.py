@@ -4,3 +4,7 @@ class BasePage(object):
 
     def get_title_name(self):
         return self.driver.title
+
+    def get_page(self, request):
+        self.driver.get(request)
+        return self

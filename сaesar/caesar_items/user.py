@@ -6,4 +6,10 @@ class User(object):
         self.location = location
         self.login = login
         self.password = password
-        """все поля внести сюда"""
+        self.full_name = first_name + '\n' + last_name
+
+
+
+
+
+
