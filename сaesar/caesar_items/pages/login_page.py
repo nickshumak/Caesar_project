@@ -29,7 +29,7 @@ class LogInPage(BasePage):
 
     def open_group_page(self):
         self.driver.find_element(*LogInLocators.CONFIRM_ACTION).click()
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(GroupPageLocators.USER_PHOTO))
+        WebDriverWait(self.driver, 30).until(EC.presence_of_element_located(GroupPageLocators.USER_PHOTO))
         return GroupsPage(self.driver)
 
     def auto_login(self, user):

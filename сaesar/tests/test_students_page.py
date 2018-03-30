@@ -3,14 +3,15 @@ Tests check the additional, removal and editing of
 student data, adding cv_files and photo in the list of students
 with different roles(administrator, coordinator, teacher)
 """
+
+import unittest
 from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
-import unittest
+from caesar_items.pages.login_page import LogInPage
+from caesar_items.pages.groups_page import GroupsPage
 from caesar_items.pages.students_page import StudentsPage, Student, \
     data_student_for_check
-from caesar_items.pages.login_page import LogInPage
-from caesar_items.pages.groups_page import GroupsPage, TopMenu
 from resource.users_base import first_admin, coordinator, teacher
 
 # main url for tests
@@ -50,29 +51,10 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         cls.login_page = LogInPage(cls.driver)
         cls.main_page = cls.login_page.auto_login(first_admin)
         cls.main_page = GroupsPage(cls.driver)
+        cls.main_page.open_top_menu()
         cls.main_page.top_menu.click_button_students()
-        cls.main_page.select_group_students(group_name)
+        cls.main_page.select_group(group_name)
         cls.students_page = StudentsPage(cls.driver)
-
-    #     cls.login_page = LogInPage()
-    #     cls.login_page.auto_login(first_admin)
-    #     cls.main_page = GroupsPage()
-    #     cls.main_page.top_menu.click_button_students()
-    #     cls.main_page.select_group_students(group_name)
-    #     cls.students_page = StudentsPage()
-
-    # def setUp(self):
-    #     self.driver = webdriver.Chrome(
-    #         executable_path=GetDriver().DRIVER_CHROME)
-    #     self.driver.get(PathUrl().URL_SITE)
-    #     self.driver.maximize_window()
-    #     self.login_page = LogInPage(self.driver)
-    #     self.main_page = self.login_page.auto_login(first_admin)
-    #     self.main_page = GroupsPage(self.driver)
-    #     self.main_page.top_menu.click_button_students()
-    #     self.main_page.select_group_students(group_name)
-    #     self.students_page = StudentsPage(self.driver)
-        # self.students_page = self.main_page.select_group_students(group_name)
 
     @classmethod
     def tearDownClass(cls):
@@ -82,51 +64,64 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
-    def test_add_new_student_with_admin(self):
+    def test01_add_new_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_add_new_student()
-        self.students_page.enter_student_data(first_new_student)
-        self.students_page.click_button_save_changes_data()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.click_button_add_new_student()
+        self.students_page.students_list.student_data.\
+            enter_student_data(first_new_student)
+        self.students_page.students_list.student_data.\
+            click_button_save_changes_data()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         student = data_student_for_check(first_new_student)
         students_list = self.students_page.students_table()
-        # self.assertEqual(self.students_page.get_current_url(),
-        #                  expected_url)
+        self.assertEqual(self.main_page.get_current_url(),
+                         expected_url)
         self.assertIn(student, students_list)
 
-    def test_edit_data_first_student_with_admin(self):
+    def test02_edit_data_first_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_edit_student()
-        self.students_page.enter_student_data(first_new_data_student)
-        self.students_page.click_button_save_changes_data()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.\
+            enter_student_data(first_new_data_student)
+        self.students_page.students_list.student_data.\
+            click_button_save_changes_data()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         student_with_changes = \
             data_student_for_check(first_new_data_student)
         students_list = self.students_page.students_table()
-        # self.assertEqual(self.students_page.get_current_url(),
-        #                  expected_url)
+        self.assertEqual(self.main_page.get_current_url(),
+                         expected_url)
         self.assertIn(student_with_changes, students_list)
 
-    def test_edit_cv_first_student_with_admin(self):
+    def test03_edit_cv_first_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student_with_cv(path_file_cv)
-        actual_name_file = self.students_page.get_name_cv_file()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.add_cv(path_file_cv)
+        actual_name_file = self.students_page.\
+            students_list.student_data.get_name_cv_file()
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
-    def test_edit_photo_first_student_with_admin(self):
+    def test04_edit_photo_first_student_with_admin(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student_with_photo(path_file_photo)
-        actual_name_file = self.students_page.get_name_photo_file()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.\
+            add_photo(path_file_photo)
+        actual_name_file = self.students_page.students_list.\
+            student_data.get_name_photo_file()
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
-    def test_remove_first_student_with_admin(self):
+    def test05_remove_first_student_with_admin(self):
         first_student = self.students_page.students_table()[0]
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_delete_first_student()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.\
+            click_button_delete_first_student()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         students_list = self.students_page.students_table()
-        # self.assertEqual(self.students_page.get_current_url(),
-        #                  expected_url)
+        self.assertEqual(self.main_page.get_current_url(),
+                         expected_url)
         self.assertNotIn(first_student, students_list)
 
 
@@ -135,65 +130,84 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.login_page = LogInPage()
-        cls.login_page.auto_login(coordinator)
-        cls.main_page = GroupsPage()
+        cls.driver = webdriver.Chrome(
+            executable_path=GetDriver().DRIVER_CHROME)
+        cls.driver.get(PathUrl().URL_SITE)
+        cls.driver.maximize_window()
+        cls.login_page = LogInPage(cls.driver)
+        cls.main_page = cls.login_page.auto_login(coordinator)
+        cls.main_page = GroupsPage(cls.driver)
+        cls.students_page = StudentsPage(cls.driver)
+        cls.main_page.open_top_menu()
         cls.main_page.top_menu.click_button_students()
-        cls.main_page.select_group_students(group_name)
-        cls.students_page = StudentsPage()
+        cls.main_page.select_group(group_name)
+        cls.students_page = StudentsPage(cls.driver)
 
     @classmethod
     def tearDownClass(cls):
-        StudentsPage.driver.quit()
+        cls.driver.quit()
 
     def tearDown(self):
         self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
-    def test_add_new_student_with_coordinator(self):
+    def test01_add_new_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_add_new_student()
-        self.students_page.enter_student_data(second_new_student)
-        self.students_page.click_button_save_changes_data()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.click_button_add_new_student()
+        self.students_page.students_list.student_data.\
+            enter_student_data(second_new_student)
+        self.students_page.students_list.student_data.\
+            click_button_save_changes_data()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         student = data_student_for_check(second_new_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(),
+        self.assertEqual(self.main_page.get_current_url(),
                          expected_url)
         self.assertIn(student, students_list)
 
-    def test_edit_data_first_student_with_coordinator(self):
+    def test02_edit_data_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_edit_student()
-        self.students_page.enter_student_data(second_new_data_student)
-        self.students_page.click_button_save_changes_data()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.\
+            enter_student_data(second_new_data_student)
+        self.students_page.students_list.student_data.\
+            click_button_save_changes_data()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         student_with_changes = \
             data_student_for_check(second_new_data_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(),
+        self.assertEqual(self.main_page.get_current_url(),
                          expected_url)
         self.assertIn(student_with_changes, students_list)
 
-    def test_edit_cv_first_student_with_coordinator(self):
+    def test03_edit_cv_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student_with_cv(path_file_cv)
-        actual_name_file = self.students_page.get_name_cv_file()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.add_cv(path_file_cv)
+        actual_name_file = self.students_page.\
+            students_list.student_data.get_name_cv_file()
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
-    def test_edit_photo_first_student_with_coordinator(self):
+    def test04_edit_photo_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student_with_photo(path_file_photo)
-        actual_name_file = self.students_page.get_name_photo_file()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.\
+            add_photo(path_file_photo)
+        actual_name_file = self.students_page.students_list.\
+            student_data.get_name_photo_file()
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
-    def test_remove_first_student_with_coordinator(self):
+    def test05_remove_first_student_with_coordinator(self):
         first_student = self.students_page.students_table()[0]
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_delete_first_student()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list. \
+            click_button_delete_first_student()
+        self.students_page.students_list. \
+            click_button_exit_editor_students_list()
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(),
+        self.assertEqual(self.main_page.get_current_url(),
                          expected_url)
         self.assertNotIn(first_student, students_list)
 
@@ -203,65 +217,83 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.login_page = LogInPage()
-        cls.login_page.auto_login(teacher)
-        cls.main_page = GroupsPage()
+        cls.driver = webdriver.Chrome(
+            executable_path=GetDriver().DRIVER_CHROME)
+        cls.driver.get(PathUrl().URL_SITE)
+        cls.driver.maximize_window()
+        cls.login_page = LogInPage(cls.driver)
+        cls.main_page = cls.login_page.auto_login(teacher)
+        cls.main_page = GroupsPage(cls.driver)
+        cls.main_page.open_top_menu()
         cls.main_page.top_menu.click_button_students()
-        cls.main_page.select_group_students(group_name)
-        cls.students_page = StudentsPage()
+        cls.main_page.select_group(group_name)
+        cls.students_page = StudentsPage(cls.driver)
 
     @classmethod
     def tearDownClass(cls):
-        StudentsPage.driver.quit()
+        cls.driver.quit()
 
     def tearDown(self):
         self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
-    def test_add_new_student_with_teacher(self):
+    def test01_add_new_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_add_new_student()
-        self.students_page.enter_student_data(third_new_student)
-        self.students_page.click_button_save_changes_data()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.click_button_add_new_student()
+        self.students_page.students_list.student_data.\
+            enter_student_data(third_new_student)
+        self.students_page.students_list.student_data.\
+            click_button_save_changes_data()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         student = data_student_for_check(third_new_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(),
+        self.assertEqual(self.main_page.get_current_url(),
                          expected_url)
         self.assertIn(student, students_list)
 
-    def test_edit_data_first_student_with_teacher(self):
+    def test02_edit_data_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_edit_student()
-        self.students_page.enter_student_data(third_new_data_student)
-        self.students_page.click_button_save_changes_data()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.\
+            enter_student_data(third_new_data_student)
+        self.students_page.students_list.student_data.\
+            click_button_save_changes_data()
+        self.students_page.students_list.\
+            click_button_exit_editor_students_list()
         student_with_changes = \
             data_student_for_check(third_new_data_student)
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(),
+        self.assertEqual(self.main_page.get_current_url(),
                          expected_url)
         self.assertIn(student_with_changes, students_list)
 
-    def test_edit_cv_first_student_with_teacher(self):
+    def test03_edit_cv_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student_with_cv(path_file_cv)
-        actual_name_file = self.students_page.get_name_cv_file()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.add_cv(path_file_cv)
+        actual_name_file = self.students_page.\
+            students_list.student_data.get_name_cv_file()
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
-    def test_edit_photo_first_student_with_teacher(self):
+    def test04_edit_photo_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
-        self.students_page.edit_student_with_photo(path_file_photo)
-        actual_name_file = self.students_page.get_name_photo_file()
+        self.students_page.students_list.click_button_edit_student()
+        self.students_page.students_list.student_data.\
+            add_photo(path_file_photo)
+        actual_name_file = self.students_page.students_list.\
+            student_data.get_name_photo_file()
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
-    def test_remove_first_student_with_teacher(self):
+    def test05_remove_first_student_with_teacher(self):
         first_student = self.students_page.students_table()[0]
         self.students_page.click_button_edit_students_list()
-        self.students_page.click_button_delete_first_student()
-        self.students_page.click_button_exit_editor_students_list()
+        self.students_page.students_list. \
+            click_button_delete_first_student()
+        self.students_page.students_list. \
+            click_button_exit_editor_students_list()
         students_list = self.students_page.students_table()
-        self.assertEqual(self.students_page.get_current_url(),
+        self.assertEqual(self.main_page.get_current_url(),
                          expected_url)
         self.assertNotIn(first_student, students_list)
 
