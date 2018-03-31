@@ -117,11 +117,11 @@ class CreateEditStudentsLocators(object):
 
 
 class WindowCreateGroup(object):
-    FORM_NAME_GROUPS_NAME = (
+    FORM_GROUP_NAME = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(1) > div:nth-child(1) > div > div')
-    FIELD_NAME_GROUPS_NAME = 'name'
-    SPINNER_DIRECTION_NAME = 'direction'
+    FIELD_GROUP_NAME = (By.NAME, 'name')
+    DROP_LIST_DIRECTION = (By.NAME,'direction')
     SPINNER_LOCATION_NAME = 'location'
     BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')
     SPINNER_TEACHERS = (By.NAME, 'teacher')
