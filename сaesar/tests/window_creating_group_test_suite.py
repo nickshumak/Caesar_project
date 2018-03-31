@@ -1,16 +1,6 @@
-from caesar_items.pages.groups_page import GroupsPage
-from resource.users_base import first_admin, coordinator
+from constants.for_window_creating_group import TEST_TOO_LONG_GROUP_NAME, MESSAGE_NAME_IS_MORE_20_CHAR
+from resource.users_base import first_admin
 from tests.test_base import TestBase
-
-TEST_GROUP_NAME = "Test group"
-TEST_TOO_LONG_GROUP_NAME = "12345678901234567890123123123123123123123123123"
-TEST_START_DATE = "11/04/2018"
-TEST_TEACHER_INDEX = 1
-TEST_FAILED_MESSAGE = "Test_failed"
-MESSAGE_NAME_IS_MORE_20_CHAR = 'Name must be at most 20 characters!'
-MESSAGE_DIRECTION_IS_NOT_SELECTED = 'Please, select direction!'
-MESSAGE_START_DATE_FIELD_IS_EMPTY = 'Start date is required!'
-MESSAGE_FINISH_DATE_FIELD_IS_EMPTY = 'Finish date is required!'
 
 
 class TestCreatingGroup(TestBase):
@@ -80,6 +70,16 @@ class TestCreatingGroup(TestBase):
         field_location = self.group_page.WindowCreatingGroup(). \
             location_of_group_get()
         self.assertTrue(field_location.is_enabled())
+
+    def test_create_group_with_more_20_char_name(self):
+        """
+        Try to create a group with more than 20 characters 'group name'
+        :return:
+        """
+        self.group_page.WindowCreatingGroup().field_group_name_set(TEST_TOO_LONG_GROUP_NAME)
+        self.group_page.WindowCreatingGroup().submit_group_creating()
+        message = self.group_page.WindowCreatingGroup().warning_message_gets()
+        self.assertEqual(message, MESSAGE_NAME_IS_MORE_20_CHAR)
 
     def test_select_location_is_enabled_for_coordinatr(self):
         """

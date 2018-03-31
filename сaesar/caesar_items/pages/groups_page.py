@@ -200,7 +200,7 @@ class GroupsPage(BasePage):
         def direction_of_group_value_get(self) -> str:
             return WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(
-                    WindowCreateGroup.DROP_LIST_DIRECTION)).\
+                    WindowCreateGroup.DROP_LIST_DIRECTION)). \
                 get_attribute("value")
 
         def location_of_group_get(self) -> object:
@@ -221,7 +221,7 @@ class GroupsPage(BasePage):
             spinner_location_of_group = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_LOCATION))
-            location_of_group = spinner_location_of_group.\
+            location_of_group = spinner_location_of_group. \
                 get_attribute("value")
             return location_of_group
 
@@ -264,14 +264,27 @@ class GroupsPage(BasePage):
                     print(message_text.text)
             return self
 
-        def warning_message_gets(self) -> object:
+        def warning_message_get(self) -> object:
+            warning_message = None
             form = WebDriverWait(self.driver, 20).until(
                 EC.visibility_of_element_located(WindowCreateGroup.
                                                  FORM_GROUP_NAME))
             hints = form.find_elements(By.CLASS_NAME, 'hint')
-            for warning_messages in hints:
-                warning_message = warning_messages.find_elements(
+            for hint in hints:
+                hint = hint.find_elements(
                     By.TAG_NAME, 'p')
-                for message_text in warning_message:
-                    print(message_text.text)
-            return self
+                for message_text in hint:
+                    warning_message = message_text.text
+            return warning_message
+
+        def warning_message_get_by_locator(self, locator) -> object:
+            warning_message = None
+            form = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located(locator))
+            hints = form.find_elements(By.CLASS_NAME, 'hint')
+            for hint in hints:
+                hint = hint.find_elements(
+                    By.TAG_NAME, 'p')
+                for message_text in hint:
+                    warning_message = message_text.text
+            return warning_message
