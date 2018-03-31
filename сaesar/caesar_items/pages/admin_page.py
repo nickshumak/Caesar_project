@@ -57,7 +57,7 @@ class AdminPage(BasePage):
         """click on the button that will return to the Group page"""
         back_home = self.driver.find_element(*AdminPageLocators.BUTTON_ESCAPE)
         back_home.click()
-        return self
+        return GroupsPage(self.driver)
 
     def fill_user_name(self, name):
         first_name = WebDriverWait(self.driver, 20).until(
