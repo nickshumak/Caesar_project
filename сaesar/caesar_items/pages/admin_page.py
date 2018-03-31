@@ -1,5 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException, \
-    StaleElementReferenceException
+    StaleElementReferenceException, ElementNotVisibleException
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from caesar_items.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
@@ -10,6 +11,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 
 class AdminPage(BasePage):
@@ -241,6 +243,23 @@ class AdminPage(BasePage):
         table_text = [web_element.text for web_element in web_table]
         table = [each.split(',') for each in table_text]
         return table
+
+    def delete_user(self):
+        path = self.count_button()
+        self.driver.find_element_by_xpath(path).click()
+        return self
+
+    def count_button(self):
+        WebDriverWait(self.driver, 20,
+                      ignored_exceptions=ElementNotVisibleException). \
+            until(EC.visibility_of_element_located
+                  ((By.XPATH, CreateEditUsersLocators.DELETE_BUTTONS)))
+        buttons = self.driver.find_elements \
+            (By.XPATH, CreateEditUsersLocators.DELETE_BUTTONS)
+        count_delete_buttons = \
+            len([z.text for z in buttons if z.text == 'Delete'])
+        return CreateEditUsersLocators.DELETE_BUTTONS + "[{}]".\
+            format(count_delete_buttons)
 
     def submit(self):
         submit = self.driver.find_element(
