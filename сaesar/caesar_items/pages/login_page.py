@@ -29,17 +29,24 @@ class LogInPage(BasePage):
 
     def submit(self):
         self.driver.find_element(*LogInLocators.CONFIRM_ACTION).click()
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(GroupPageLocators.USER_PHOTO))
+        try:
+            WebDriverWait(self.driver, 5).\
+                until(EC.visibility_of_element_located(GroupPageLocators.USER_PHOTO))
+            return GroupsPage(self.driver)
+        except Exception:
+            return self.message()
 
     def auto_login(self, user):
         self.enter_login(user.login)
         self.enter_password(user.password)
-        self.submit()
+        return self.submit()
 
     def login_use_tab_n_enter_keys(self, user):
         ActionChains(self.driver).send_keys(user.login).send_keys(Keys.TAB) \
             .send_keys(user.password).send_keys(Keys.ENTER).perform()
-        WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(GroupPageLocators.USER_PHOTO))
+        WebDriverWait(self.driver, 3).\
+            until(EC.visibility_of_element_located(GroupPageLocators.USER_PHOTO))
+        return GroupsPage(self.driver)
 
 
 
