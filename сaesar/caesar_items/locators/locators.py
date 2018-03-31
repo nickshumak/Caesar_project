@@ -127,6 +127,9 @@ class WindowCreateGroup(object):
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(1) > div:nth-child(1) > div > div')
     FIELD_GROUP_NAME = (By.NAME, 'name')
+    FORM_DIRECTION = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(3) > div:nth-child(1)')
     DROP_LIST_DIRECTION = (By.NAME, 'direction')
     DROP_LIST_LOCATION = (By.NAME, 'location')
     BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')

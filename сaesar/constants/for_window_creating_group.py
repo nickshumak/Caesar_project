@@ -4,6 +4,7 @@ TEST_START_DATE = "11/04/2018"
 TEST_TEACHER_INDEX = 1
 TEST_FAILED_MESSAGE = "Test_failed"
 MESSAGE_NAME_IS_MORE_20_CHAR = 'Name must be at most 20 characters!'
+MESSAGE_PLEASE_ENTER_THE_GROUP_NAME = 'Please, enter group name!'
 MESSAGE_DIRECTION_IS_NOT_SELECTED = 'Please, select direction!'
 MESSAGE_START_DATE_FIELD_IS_EMPTY = 'Start date is required!'
 MESSAGE_FINISH_DATE_FIELD_IS_EMPTY = 'Finish date is required!'

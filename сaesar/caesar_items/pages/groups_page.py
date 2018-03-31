@@ -178,6 +178,13 @@ class GroupsPage(BasePage):
             field_name_of_group.send_keys(new_group_name)
             return self
 
+        def field_group_name_clear(self) -> object:
+            field_name_of_group = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.
+                                           FIELD_GROUP_NAME))
+            field_name_of_group.clear()
+            return self
+
         def field_group_name_value_get(self) -> str:
             return WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(
