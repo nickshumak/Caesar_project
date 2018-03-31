@@ -158,4 +158,3 @@ def data_student_for_check(student):
                     student.entry_mark, 'N. Varenko']
     data_student = ' '.join(data_student)
     return data_student
-

@@ -52,7 +52,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         cls.main_page = cls.login_page.auto_login(first_admin)
         cls.main_page = GroupsPage(cls.driver)
         cls.main_page.open_top_menu()
-        cls.main_page.top_menu.click_button_students()
+        cls.main_page.top_menu.students()
         cls.main_page.select_group(group_name)
         cls.students_page = StudentsPage(cls.driver)
 
@@ -139,7 +139,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         cls.main_page = GroupsPage(cls.driver)
         cls.students_page = StudentsPage(cls.driver)
         cls.main_page.open_top_menu()
-        cls.main_page.top_menu.click_button_students()
+        cls.main_page.top_menu.students()
         cls.main_page.select_group(group_name)
         cls.students_page = StudentsPage(cls.driver)
 
@@ -151,7 +151,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
-    def test01_add_new_student_with_coordinator(self):
+    def test06_add_new_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_add_new_student()
         self.students_page.students_list.student_data.\
@@ -166,7 +166,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
                          expected_url)
         self.assertIn(student, students_list)
 
-    def test02_edit_data_first_student_with_coordinator(self):
+    def test07_edit_data_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_edit_student()
         self.students_page.students_list.student_data.\
@@ -182,7 +182,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
                          expected_url)
         self.assertIn(student_with_changes, students_list)
 
-    def test03_edit_cv_first_student_with_coordinator(self):
+    def test08_edit_cv_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_edit_student()
         self.students_page.students_list.student_data.add_cv(path_file_cv)
@@ -190,7 +190,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
             students_list.student_data.get_name_cv_file()
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
-    def test04_edit_photo_first_student_with_coordinator(self):
+    def test09_edit_photo_first_student_with_coordinator(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_edit_student()
         self.students_page.students_list.student_data.\
@@ -199,7 +199,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
             student_data.get_name_photo_file()
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
-    def test05_remove_first_student_with_coordinator(self):
+    def test10_remove_first_student_with_coordinator(self):
         first_student = self.students_page.students_table()[0]
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list. \
@@ -225,7 +225,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         cls.main_page = cls.login_page.auto_login(teacher)
         cls.main_page = GroupsPage(cls.driver)
         cls.main_page.open_top_menu()
-        cls.main_page.top_menu.click_button_students()
+        cls.main_page.top_menu.students()
         cls.main_page.select_group(group_name)
         cls.students_page = StudentsPage(cls.driver)
 
@@ -237,9 +237,11 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.students_page.driver.get(url_for_test_start)
         self.students_page.driver.implicitly_wait(2)
 
-    def test01_add_new_student_with_teacher(self):
+    def test11_add_new_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
+        print('ok')
         self.students_page.students_list.click_button_add_new_student()
+        print('ok')
         self.students_page.students_list.student_data.\
             enter_student_data(third_new_student)
         self.students_page.students_list.student_data.\
@@ -252,7 +254,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
                          expected_url)
         self.assertIn(student, students_list)
 
-    def test02_edit_data_first_student_with_teacher(self):
+    def test12_edit_data_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_edit_student()
         self.students_page.students_list.student_data.\
@@ -268,7 +270,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
                          expected_url)
         self.assertIn(student_with_changes, students_list)
 
-    def test03_edit_cv_first_student_with_teacher(self):
+    def test13_edit_cv_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_edit_student()
         self.students_page.students_list.student_data.add_cv(path_file_cv)
@@ -276,7 +278,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
             students_list.student_data.get_name_cv_file()
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
-    def test04_edit_photo_first_student_with_teacher(self):
+    def test14_edit_photo_first_student_with_teacher(self):
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list.click_button_edit_student()
         self.students_page.students_list.student_data.\
@@ -285,7 +287,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
             student_data.get_name_photo_file()
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
-    def test05_remove_first_student_with_teacher(self):
+    def test15_remove_first_student_with_teacher(self):
         first_student = self.students_page.students_table()[0]
         self.students_page.click_button_edit_students_list()
         self.students_page.students_list. \

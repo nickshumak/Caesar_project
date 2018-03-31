@@ -1,7 +1,6 @@
 from selenium.webdriver.common.action_chains import ActionChains
 from caesar_items.pages.base_page import BasePage
 from selenium.webdriver.support.ui import WebDriverWait
-# from caesar_items.pages.login_page import LogInPage
 from caesar_items.locators.locators import \
     GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
 
@@ -60,15 +59,15 @@ class TopMenu(object):
         self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
         self.driver.implicitly_wait(2)
 
-    def click_button_students(self):
-        actions = ActionChains(self.driver)
-        actions.move_by_offset('256', '20')
-        students = WebDriverWait(self.driver, 30).\
-            until(lambda driver: self.driver.find_element(*TopMenuLocators.
-                                                          BUTTON_STUDENTS))
-        actions.click(students)
-        actions.perform()
-        return self
+    # def click_button_students(self):
+    #     actions = ActionChains(self.driver)
+    #     actions.move_by_offset('256', '20')
+    #     students = WebDriverWait(self.driver, 30).\
+    #         until(lambda driver: self.driver.find_element(*TopMenuLocators.
+    #                                                       BUTTON_STUDENTS))
+    #     actions.click(students)
+    #     actions.perform()
+    #     return self
 
     def schedule(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_SCHEDULE).click()
