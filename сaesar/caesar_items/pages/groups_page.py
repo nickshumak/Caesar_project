@@ -16,11 +16,14 @@ class LeftMenu(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def create_group(self):
+    def button_create_group(self):
         try:
             return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
         except NoSuchElementException:
             raise NoSuchElementException
+
+    def create_group(self):
+        self.button_create_group().click()
 
     def search_group(self):
         return self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
@@ -146,6 +149,10 @@ class GroupsPage(BasePage):
         ActionChains(self.driver).move_to_element(top_menu).perform()
         self.driver.implicitly_wait(3)
         return self.top_menu
+
+    def open_admin_page(self):
+        self.driver.get(PathUrl().ADMIN_PAGE)
+        return AdminPage(self.driver)
 
     def get_current_url(self):
         return self.driver.current_url

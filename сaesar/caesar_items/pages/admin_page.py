@@ -5,7 +5,7 @@ from caesar_items.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
     CreateEditStudentsLocators
 from caesar_items.pages.base_page import BasePage
-from caesar_items.pages.groups_page import GroupsPage
+# from caesar_items.pages.groups_page import GroupsPage
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -56,7 +56,7 @@ class AdminPage(BasePage):
         """click on the button that will return to the Group page"""
         back_home = self.driver.find_element(*AdminPageLocators.BUTTON_ESCAPE)
         back_home.click()
-        return GroupsPage(self.driver)
+        # return GroupsPage(self.driver)
 
     def fill_user_fields(self, name, second_name, type_role, city, photo,
                          log, secret):
