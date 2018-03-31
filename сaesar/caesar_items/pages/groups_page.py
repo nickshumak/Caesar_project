@@ -102,8 +102,8 @@ class GroupsPage(BasePage):
             self.driver = GroupsPage.driver
 
         def field_group_name_get(self) -> object:
-            return self.driver.find_element(
-                WindowCreateGroup.FIELD_GROUP_NAME)
+            return WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.FIELD_GROUP_NAME))
 
         def field_group_name_set(self, new_group_name) -> object:
             field_name_of_group = WebDriverWait(self.driver, 20).until(
@@ -113,76 +113,74 @@ class GroupsPage(BasePage):
             return self
 
         def field_group_name_value_get(self) -> str:
-            field_name_of_group = self.driver.find_element(WindowCreateGroup.FIELD_GROUP_NAME)
-            return field_name_of_group.get_attribute("value")
+            return WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(
+                    WindowCreateGroup.FIELD_GROUP_NAME)). \
+                get_attribute("value")
 
-        def direction_of_group_appeal_to(self) -> object:
-            spinner_direction = WebDriverWait(self.driver, 20).until(
+        def direction_of_group_get(self) -> object:
+            return WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_DIRECTION))
-            return spinner_direction
 
-        def direction_of_group_select(self, index) -> object:
-            spinner_direction = WebDriverWait(self.driver, 20).until(
+        def direction_of_group_select(self, str_direction) -> object:
+            list_direction = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_DIRECTION))
-            select_direction = Select(spinner_direction)
-            select_direction.select_by_index(index)
+            select_direction = Select(list_direction)
+            select_direction.select_by_index(str_direction)
             return self
 
         def direction_of_group_random_select(self) -> object:
-            spinner_direction = WebDriverWait(self.driver, 20).until(
+            direction_get = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_DIRECTION))
-            spinner_direction.click()
-            directions_list = spinner_direction.find_elements(By.TAG_NAME, 'option')
+            direction_get.click()
+            directions_list = direction_get.find_elements(By.TAG_NAME, 'option')
             random_direction_index = random.randint(1, len(directions_list) - 1)
-            select_direction = Select(spinner_direction)
+            select_direction = Select(direction_get)
             select_direction.select_by_index(random_direction_index)
             return self
 
-        def direction_of_group_save_to_variable(self) -> str:
-            spinner_direction = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_DIRECTION))
-            direction_selected = spinner_direction.get_attribute("value")
-            return direction_selected
+        def direction_of_group_value_get(self) -> str:
+            return WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(
+                    WindowCreateGroup.DROP_LIST_DIRECTION)).get_attribute("value")
 
-        def location_of_group_appeal_to(self) -> object:
-            spinner_location = self.driver.find_element(
-                By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)
-            return spinner_location
+        def location_of_group_get(self) -> object:
+            return WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_LOCATION))
 
         def location_of_group_random_select(self) -> object:
-            spinner_location = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable((
-                    By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
-            spinner_location.click()
-            locations_list = spinner_location.find_elements(By.TAG_NAME, 'option')
+            locations_get = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_LOCATION))
+            locations_get.click()
+            locations_list = locations_get.find_elements(By.TAG_NAME, 'option')
             random_location_index = random.randint(0, len(locations_list) - 1)
-            select_location = Select(spinner_location)
+            select_location = Select(locations_get)
             select_location.select_by_index(random_location_index)
             return self
 
-        def location_of_group_select_by_index(self, location_index) -> object:
-            spinner_location = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable((
-                    By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
-            spinner_location.click()
-            select_location = Select(spinner_location)
+        def location_of_group_select(self, location_index) -> object:
+            locations_get = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_LOCATION))
+            locations_get.click()
+            select_location = Select(locations_get)
             select_location.select_by_index(location_index)
             return self
 
         def location_of_group_save_to_variable(self) -> str:
             spinner_location_of_group = WebDriverWait(self.driver, 20).until(
-                EC.element_to_be_clickable((
-                    By.NAME, WindowCreateGroup.SPINNER_LOCATION_NAME)))
+                EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_LOCATION))
             location_of_group = spinner_location_of_group.get_attribute("value")
             return location_of_group
 
-        def teachers_adding(self, index) -> object:
+        def teachers_adding(self, teacher_name) -> object:
             button_add_teacher = WebDriverWait(self.driver, 20).until(
                 EC.element_to_be_clickable(WindowCreateGroup.BUTTON_TEACHERS_ADD))
             button_add_teacher.click()
-            self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS).click()
-            select = Select(self.driver.find_element(*WindowCreateGroup.SPINNER_TEACHERS))
-            select.select_by_index(index)
+            drop_list_teachers = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(WindowCreateGroup.DROP_LIST_TEACHERS))
+            drop_list_teachers.click()
+            select = Select(drop_list_teachers)
+            select.select_by_index(teacher_name)
             self.driver.find_element(*WindowCreateGroup.BUTTON_ACCEPT_TEACHER).click()
             return self
 

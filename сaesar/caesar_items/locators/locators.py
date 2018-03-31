@@ -121,10 +121,10 @@ class WindowCreateGroup(object):
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(1) > div:nth-child(1) > div > div')
     FIELD_GROUP_NAME = (By.NAME, 'name')
-    DROP_LIST_DIRECTION = (By.NAME,'direction')
-    SPINNER_LOCATION_NAME = 'location'
+    DROP_LIST_DIRECTION = (By.NAME, 'direction')
+    DROP_LIST_LOCATION = (By.NAME, 'location')
     BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')
-    SPINNER_TEACHERS = (By.NAME, 'teacher')
+    DROP_LIST_TEACHERS = (By.NAME, 'teacher')
     BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
     BUTTON_BUDGET_OWNER_SOFT_SERVE = (By.CLASS_NAME, 'btn btn-default budget-option')
     # BUTTON_BUDGET_OWNER_OPEN_GROUP=

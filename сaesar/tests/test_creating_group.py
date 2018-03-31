@@ -31,7 +31,7 @@ class TestCreatingGroup(TestBase):
         groups_page.WindowCreatingGroup().direction_of_group_random_select()
         groups_page.WindowCreatingGroup().location_of_group_random_select()
         test_direction = groups_page.WindowCreatingGroup(). \
-            direction_of_group_save_to_variable()
+            direction_of_group_value_get()
         groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
         groups_page.WindowCreatingGroup().teachers_adding(TEST_TEACHER_INDEX)
         name = groups_page.WindowCreatingGroup(). \
@@ -99,7 +99,7 @@ class TestCreatingGroup(TestBase):
         groups_page.WindowCreatingGroup().direction_of_group_random_select()
         groups_page.WindowCreatingGroup().location_of_group_random_select()
         test_direction = groups_page.WindowCreatingGroup(). \
-            direction_of_group_save_to_variable()
+            direction_of_group_value_get()
         groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
         groups_page.WindowCreatingGroup().teachers_adding(TEST_TEACHER_INDEX)
         name = groups_page.WindowCreatingGroup().field_group_name_value_get()
@@ -120,7 +120,7 @@ class TestCreatingGroup(TestBase):
         groups_page.WindowCreatingGroup().direction_of_group_random_select()
         groups_page.WindowCreatingGroup().location_of_group_random_select()
         test_direction = groups_page.WindowCreatingGroup(). \
-            direction_of_group_save_to_variable()
+            direction_of_group_value_get()
         groups_page.WindowCreatingGroup().date_start_setting(TEST_START_DATE)
         groups_page.WindowCreatingGroup().teachers_adding(TEST_TEACHER_INDEX)
         name = groups_page.WindowCreatingGroup().field_group_name_value_get()
@@ -158,7 +158,7 @@ class TestCreatingGroup(TestBase):
         button_create_group = left_menu.create_group()
         button_create_group.click()
         field_direction = groups_page.WindowCreatingGroup(). \
-            direction_of_group_appeal_to()
+            direction_of_group_get()
         self.assertTrue(field_direction.is_enabled())
 
     def test_select_location_is_enabled_for_admin(self):
@@ -175,7 +175,7 @@ class TestCreatingGroup(TestBase):
         button_create_group = left_menu.create_group()
         button_create_group.click()
         field_location = groups_page.WindowCreatingGroup(). \
-            location_of_group_appeal_to()
+            location_of_group_get()
         self.assertTrue(field_location.is_enabled())
 
     def test_select_direction_is_enabled_for_coordinator(self):
@@ -192,7 +192,7 @@ class TestCreatingGroup(TestBase):
         button_create_group = left_menu.create_group()
         button_create_group.click()
         field_direction = groups_page.WindowCreatingGroup(). \
-            direction_of_group_appeal_to()
+            direction_of_group_get()
         self.assertTrue(field_direction.is_enabled())
 
     def test_select_location_is_enabled_for_coordinator(self):
@@ -209,7 +209,7 @@ class TestCreatingGroup(TestBase):
         button_create_group = left_menu.create_group()
         button_create_group.click()
         field_location = groups_page.WindowCreatingGroup(). \
-            location_of_group_appeal_to()
+            location_of_group_get()
         self.assertFalse(field_location.is_enabled())
 
     def test_select_location_is_enabled_for_coordinatr(self):
