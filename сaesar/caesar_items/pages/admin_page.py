@@ -244,21 +244,22 @@ class AdminPage(BasePage):
         table = [each.split(',') for each in table_text]
         return table
 
-    def delete_user(self):
+    def delete_entity(self):
         path = self.count_button()
         self.driver.find_element_by_xpath(path).click()
         return self
 
     def count_button(self):
+        """getting entity's delete button which has been created recently"""
         WebDriverWait(self.driver, 20,
                       ignored_exceptions=ElementNotVisibleException). \
             until(EC.visibility_of_element_located
                   ((By.XPATH, CreateEditUsersLocators.DELETE_BUTTONS)))
-        buttons = self.driver.find_elements \
-            (By.XPATH, CreateEditUsersLocators.DELETE_BUTTONS)
+        buttons = self.driver.find_elements(
+            By.XPATH, CreateEditUsersLocators.DELETE_BUTTONS)
         count_delete_buttons = \
             len([z.text for z in buttons if z.text == 'Delete'])
-        return CreateEditUsersLocators.DELETE_BUTTONS + "[{}]".\
+        return CreateEditUsersLocators.DELETE_BUTTONS + "[{}]". \
             format(count_delete_buttons)
 
     def submit(self):

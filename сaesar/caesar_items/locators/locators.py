@@ -97,6 +97,7 @@ class CreateEditUsersLocators(object):
     PHOTO = (By.NAME, "photo")
     LOGIN_FIELD = (By.NAME, "login")
     PASSWORD_FIELD = (By.NAME, "password")
+    DELETE_BUTTONS = "(//tbody//button[@class='btn btn-danger delete'])"
 
 
 class CreateEditGroupsLocators(object):
