@@ -138,6 +138,11 @@ class WindowCreateGroup(object):
     BUTTON_BUDGET_OWNER_SOFT_SERVE = (By.CLASS_NAME,
                                       'btn btn-default budget-option')
     # BUTTON_BUDGET_OWNER_OPEN_GROUP=
+    FORM_START_DATE = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(3) > '
+                         'div.form-group.col-xs-6.col-xs-offset-0.col-md-5.'
+                         'col-md-offset-1.col-lg-4.calendar-wrapper')
     DATE_START = (By.NAME, 'startDate')
     DATE_FINISH = (By.NAME, 'finishDate')
     BUTTON_ADD_EXPERT = (By.CLASS_NAME, 'add-expert-btn')

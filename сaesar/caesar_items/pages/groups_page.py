@@ -262,27 +262,18 @@ class GroupsPage(BasePage):
             button_save_group.click()
             return self
 
-        def warning_message_get(self) -> object:
-            hints = self.driver.find_elements(By.CLASS_NAME, 'hint')
-            for warning_messages in hints:
-                warning_message = warning_messages.find_elements(
-                    By.TAG_NAME, 'p')
-                for message_text in warning_message:
-                    print(message_text.text)
-            return self
-
-        def warning_message_get(self) -> object:
-            warning_message = None
-            form = WebDriverWait(self.driver, 20).until(
-                EC.visibility_of_element_located(WindowCreateGroup.
-                                                 FORM_GROUP_NAME))
-            hints = form.find_elements(By.CLASS_NAME, 'hint')
-            for hint in hints:
-                hint = hint.find_elements(
-                    By.TAG_NAME, 'p')
-                for message_text in hint:
-                    warning_message = message_text.text
-            return warning_message
+        # def warning_message_get(self) -> object:
+        #     warning_message = None
+        #     form = WebDriverWait(self.driver, 20).until(
+        #         EC.visibility_of_element_located(WindowCreateGroup.
+        #                                          FORM_GROUP_NAME))
+        #     hints = form.find_elements(By.CLASS_NAME, 'hint')
+        #     for hint in hints:
+        #         hint = hint.find_elements(
+        #             By.TAG_NAME, 'p')
+        #         for message_text in hint:
+        #             warning_message = message_text.text
+        #     return warning_message
 
         def warning_message_get_by_locator(self, locator) -> object:
             warning_message = None
