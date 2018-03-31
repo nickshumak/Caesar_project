@@ -132,7 +132,7 @@ class WindowCreateGroup(object):
                          'div:nth-child(3) > div:nth-child(1)')
     DROP_LIST_DIRECTION = (By.NAME, 'direction')
     DROP_LIST_LOCATION = (By.NAME, 'location')
-    BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')
+    BUTTON_ONE_MORE_TEACHER= (By.CLASS_NAME, 'add-teacher-btn')
     DROP_LIST_TEACHERS = (By.NAME, 'teacher')
     BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
     BUTTON_BUDGET_OWNER_SOFT_SERVE = (By.CLASS_NAME,

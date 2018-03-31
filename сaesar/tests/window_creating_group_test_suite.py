@@ -44,25 +44,28 @@ class TestCreatingGroup(TestBase):
             location_of_group_get()
         self.assertTrue(field_location.is_enabled())
 
-    def test04_select_direction_is_enabled_for_coordinator(self):
+    def test04_button_add_teacher_is_enabled(self):
         """
                 Test  is the field 'direction' enabled
                 :return:
 
                   """
-        field_direction = self.group_page.WindowCreatingGroup(). \
-            direction_of_group_get()
-        self.assertTrue(field_direction.is_enabled())
+        button_add_teacher = self.group_page.WindowCreatingGroup(). \
+            button_teacher_add_get()
+        self.assertTrue(button_add_teacher.is_enabled())
 
-    def test05_select_location_is_enabled_for_coordinator(self):
+    def test05_selecting_teacher_is_enabled(self):
         """
                 Test  is the field 'location' enabled
                 :return:
 
                   """
-        field_location = self.group_page.WindowCreatingGroup(). \
-            location_of_group_get()
-        self.assertTrue(field_location.is_enabled())
+        button_add_teacher = self.group_page.WindowCreatingGroup(). \
+            button_teacher_add_get()
+        button_add_teacher.click()
+        drop_list_teachers = self.group_page.WindowCreatingGroup(). \
+            drop_list_teacher_get()
+        self.assertTrue(drop_list_teachers.is_enabled())
 
     def test06_create_group_with_more_20_char_name(self):
         """
@@ -72,7 +75,7 @@ class TestCreatingGroup(TestBase):
         self.group_page.WindowCreatingGroup().field_group_name_set(
             TEST_TOO_LONG_GROUP_NAME)
         self.group_page.WindowCreatingGroup().submit_group_creating()
-        warning_message = self.group_page.WindowCreatingGroup().\
+        warning_message = self.group_page.WindowCreatingGroup(). \
             warning_message_get()
         self.assertEqual(warning_message, MESSAGE_NAME_IS_MORE_20_CHAR)
 
@@ -83,7 +86,7 @@ class TestCreatingGroup(TestBase):
         """
         self.group_page.WindowCreatingGroup().field_group_name_set('')
         self.group_page.WindowCreatingGroup().submit_group_creating()
-        warning_message = self.group_page.WindowCreatingGroup().\
+        warning_message = self.group_page.WindowCreatingGroup(). \
             warning_message_get()
         self.assertEqual(warning_message, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME)
 

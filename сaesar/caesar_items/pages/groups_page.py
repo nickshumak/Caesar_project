@@ -11,6 +11,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 
+from constants.constants_window_creating_group import TIME_TO_WAIT
+
 
 class LeftMenu(object):
     """inner classes"""
@@ -166,12 +168,12 @@ class GroupsPage(BasePage):
             self.driver = GroupsPage.driver
 
         def field_group_name_get(self) -> object:
-            return WebDriverWait(self.driver, 20).until(
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            FIELD_GROUP_NAME))
 
         def field_group_name_set(self, new_group_name) -> object:
-            field_name_of_group = WebDriverWait(self.driver, 20).until(
+            field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            FIELD_GROUP_NAME))
             field_name_of_group.clear()
@@ -179,25 +181,25 @@ class GroupsPage(BasePage):
             return self
 
         def field_group_name_clear(self) -> object:
-            field_name_of_group = WebDriverWait(self.driver, 20).until(
+            field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            FIELD_GROUP_NAME))
             field_name_of_group.clear()
             return self
 
         def field_group_name_value_get(self) -> str:
-            return WebDriverWait(self.driver, 20).until(
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     WindowCreateGroup.FIELD_GROUP_NAME)). \
                 get_attribute("value")
 
         def direction_of_group_get(self) -> object:
-            return WebDriverWait(self.driver, 20).until(
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_DIRECTION))
 
         def direction_of_group_select(self, str_direction) -> object:
-            list_direction = WebDriverWait(self.driver, 20).until(
+            list_direction = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_DIRECTION))
             select_direction = Select(list_direction)
@@ -205,18 +207,18 @@ class GroupsPage(BasePage):
             return self
 
         def direction_of_group_value_get(self) -> str:
-            return WebDriverWait(self.driver, 20).until(
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     WindowCreateGroup.DROP_LIST_DIRECTION)). \
                 get_attribute("value")
 
         def location_of_group_get(self) -> object:
-            return WebDriverWait(self.driver, 20).until(
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_LOCATION))
 
         def location_of_group_select(self, location_index) -> object:
-            locations_get = WebDriverWait(self.driver, 20).until(
+            locations_get = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_LOCATION))
             locations_get.click()
@@ -224,20 +226,35 @@ class GroupsPage(BasePage):
             select_location.select_by_index(location_index)
             return self
 
-        def location_of_group_save_to_variable(self) -> str:
-            spinner_location_of_group = WebDriverWait(self.driver, 20).until(
+        def location_of_group_value_get(self) -> str:
+            spinner_location_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_LOCATION))
             location_of_group = spinner_location_of_group. \
                 get_attribute("value")
             return location_of_group
 
-        def teachers_adding(self, teacher_name) -> object:
-            button_add_teacher = WebDriverWait(self.driver, 20).until(
+        def button_teacher_add_get(self) -> object:
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
-                                           BUTTON_TEACHERS_ADD))
+                                           BUTTON_ONE_MORE_TEACHER))
+
+        def drop_list_teacher_get(self) -> object:
+            button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(WindowCreateGroup.
+                                           BUTTON_ONE_MORE_TEACHER))
             button_add_teacher.click()
-            drop_list_teachers = WebDriverWait(self.driver, 20).until(
+            drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(WindowCreateGroup.
+                                           DROP_LIST_TEACHERS))
+            return drop_list_teachers
+
+        def teacher_select(self, teacher_name) -> object:
+            button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(WindowCreateGroup.
+                                           BUTTON_ONE_MORE_TEACHER))
+            button_add_teacher.click()
+            drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            DROP_LIST_TEACHERS))
             drop_list_teachers.click()
@@ -248,32 +265,19 @@ class GroupsPage(BasePage):
             return self
 
         def date_start_setting(self, start_date_value):
-            field_date_start_field = WebDriverWait(self.driver, 20).until(
+            field_date_start_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.DATE_START))
             field_date_start_field.send_keys(start_date_value)
-            field_date_finish = WebDriverWait(self.driver, 20).until(
+            field_date_finish = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.DATE_FINISH))
             field_date_finish.send_keys(Keys.ENTER)
             return self
 
-        def submit_group_creating(self):
-            button_save_group = WebDriverWait(self.driver, 20).until(
+        def button_submit_group_creating(self):
+            button_save_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.BUTTON_SAVE))
             button_save_group.click()
             return self
-
-        # def warning_message_get(self) -> object:
-        #     warning_message = None
-        #     form = WebDriverWait(self.driver, 20).until(
-        #         EC.visibility_of_element_located(WindowCreateGroup.
-        #                                          FORM_GROUP_NAME))
-        #     hints = form.find_elements(By.CLASS_NAME, 'hint')
-        #     for hint in hints:
-        #         hint = hint.find_elements(
-        #             By.TAG_NAME, 'p')
-        #         for message_text in hint:
-        #             warning_message = message_text.text
-        #     return warning_message
 
         def warning_message_get_by_locator(self, locator) -> object:
             warning_message = None
