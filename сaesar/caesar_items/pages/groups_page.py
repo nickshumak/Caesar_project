@@ -7,7 +7,6 @@ from caesar_items.pages.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
-import time
 
 
 class LeftMenu(object):
