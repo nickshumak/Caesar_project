@@ -1,4 +1,6 @@
 # from caesar_items.pages.login_page import LogInPage
+from selenium.common.exceptions import NoSuchElementException
+
 from caesar_items.locators.locators import \
     GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
 from caesar_items.pages.base_page import BasePage
@@ -14,26 +16,34 @@ class LeftMenu(object):
         self.driver = driver
 
     def create_group(self):
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
+        try:
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
+        except NoSuchElementException:
+            raise NoSuchElementException
 
     def search_group(self):
         return self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
 
     def edit_group(self):
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
+        try:
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
+        except NoSuchElementException:
+            raise NoSuchElementException
 
     def delete_group(self):
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
+        try:
+            return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
+        except NoSuchElementException:
+            raise NoSuchElementException
 
 
 class RightMenu(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def log_out_click(self):
-        self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
+    def logout(self):
         self.driver.implicitly_wait(2)
-        #return LogInPage(self.driver)
+        self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
 
     def user_full_name(self):
         return self.driver.find_element(*RightMenuLocators.USER_NAME).text
@@ -41,7 +51,7 @@ class RightMenu(object):
     def user_role(self):
         return self.driver.find_element(*RightMenuLocators.USER_ROLE).text
 
-    def button_user_edit(self):
+    def edit_user(self):
         self.driver.find_element(*RightMenuLocators.BUTTON_EDIT_PROFILE).click()
 
 
@@ -57,7 +67,6 @@ class TopMenu(object):
     def groups(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_GROUPS).click()
         self.driver.implicitly_wait(2)
-        return GroupsPage()
 
     def students(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
@@ -79,7 +88,7 @@ class TopMenu(object):
         self.driver.implicitly_wait(2)
         # return AboutPage(self.driver)
 
-    def log_out_click(self):
+    def logout(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_LOGOUT).click()
         self.driver.implicitly_wait(2)
 
@@ -121,12 +130,14 @@ class GroupsPage(BasePage):
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
         ActionChains(self.driver). \
             move_to_element_with_offset(left_menu, 105, 300).perform()
-        self.driver.implicitly_wait(3)
+        WebDriverWait(self.driver, 10)\
+            .until(EC.visibility_of_element_located(LeftMenuLocators.BUTTON_SEARCH_GROUP))
         return self.left_menu
 
     def open_right_menu(self):
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
-        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
+        self.driver.implicitly_wait(3)
+        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
         return self.right_menu
 
     def open_top_menu(self):
@@ -143,3 +154,5 @@ class GroupsPage(BasePage):
 
     def cancel_deletion(self):
         self.driver.find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION).click()
+
+
