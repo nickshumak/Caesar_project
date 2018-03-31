@@ -120,3 +120,24 @@ class CreateEditStudentsLocators(object):
     IMAGE = (By.NAME, "imageUrl")
     ENTRY_SCORE = (By.NAME, "entryScore")
     APPROVED_BY = (By.NAME, 'approvedBy')
+
+
+class WindowCreateGroup(object):
+    FORM_GROUP_NAME = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(1) > div:nth-child(1) > div > div')
+    FIELD_GROUP_NAME = (By.NAME, 'name')
+    DROP_LIST_DIRECTION = (By.NAME, 'direction')
+    DROP_LIST_LOCATION = (By.NAME, 'location')
+    BUTTON_TEACHERS_ADD = (By.CLASS_NAME, 'add-teacher-btn')
+    DROP_LIST_TEACHERS = (By.NAME, 'teacher')
+    BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
+    BUTTON_BUDGET_OWNER_SOFT_SERVE = (By.CLASS_NAME,
+                                      'btn btn-default budget-option')
+    # BUTTON_BUDGET_OWNER_OPEN_GROUP=
+    DATE_START = (By.NAME, 'startDate')
+    DATE_FINISH = (By.NAME, 'finishDate')
+    BUTTON_ADD_EXPERT = (By.CLASS_NAME, 'add-expert-btn')
+    FIELD_EXPERTS_NAME = (By.NAME, 'expert')
+    BUTTON_ACCEPT_EXPERT = (By.ID, 'acceptInput')
+    BUTTON_SAVE = (By.ID, 'save')
