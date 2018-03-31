@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b39f3109-d81b-4c32-a317-7f6ec192f6c7" name="Default" comment="refactoring">
+    <list default="true" id="b39f3109-d81b-4c32-a317-7f6ec192f6c7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py" />
+      <change beforePath="$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py" afterPath="$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,48 +13,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48533726">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="admin_page.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1530">
-                  <caret line="90" column="77" lean-forward="true" selection-start-line="90" selection-start-column="77" selection-end-line="90" selection-end-column="77" />
-                  <folding>
-                    <element signature="e#0#99#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="admin_page_test_suite.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="base_page.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/base_page.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="admin_page_test_suite.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="162" column="17" lean-forward="false" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin_page.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="241" column="56" lean-forward="false" selection-start-line="241" selection-start-column="56" selection-end-line="241" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#99#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -80,7 +62,7 @@
     </option>
     <push-targets>
       <push-target-info target-remote="origin" target-branch="Gene" repo="$PROJECT_DIR$" source="Gene_branch" />
-      <push-target-info target-remote="origin" target-branch="garbage" repo="$PROJECT_DIR$" source="garbage" />
+      <push-target-info target-remote="upstream" target-branch="garbage" repo="$PROJECT_DIR$" source="garbage" />
     </push-targets>
   </component>
   <component name="IdeDocumentHistory">
@@ -100,12 +82,12 @@
         <option value="$PROJECT_DIR$/сaesar/tests/tests1_login_page.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/test_admin_page.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/user.py" />
-        <option value="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
         <option value="$PROJECT_DIR$/сaesar/resource/users_base.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/tests2_group_page.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/login_page.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py" />
+        <option value="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py" />
       </list>
     </option>
@@ -219,7 +201,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page">
+  <component name="RunManager" selected="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_security_admin">
     <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -246,6 +228,20 @@
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;admin_page_test_suite.TestAdminPage.test_create_edit_max_length_fields_user&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/сaesar/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Caesar_project" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;admin_page_test_suite.TestAdminPage.test_security_admin&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -276,34 +272,20 @@
       <option name="_new_target" value="&quot;login_page_test_suite.TestLoginPage.test10_sensitive_to_case&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for tests.admin_page_test_suite.TestAdminPage" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/сaesar/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar_project" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.admin_page_test_suite.TestAdminPage&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for tests.admin_page_test_suite.TestAdminPage" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_create_edit_max_length_fields_user" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for login_page_test_suite.TestLoginPage.test10_sensitive_to_case" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_create_edit_max_length_fields_user" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for login_page_test_suite.TestLoginPage.test10_sensitive_to_case" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for login_page_test_suite.TestLoginPage.test10_sensitive_to_case" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_create_edit_max_length_fields_user" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for tests.admin_page_test_suite.TestAdminPage" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for login_page_test_suite.TestLoginPage.test10_sensitive_to_case" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for admin_page_test_suite.TestAdminPage.test_create_edit_max_length_fields_user" />
       </list>
     </recent_temporary>
   </component>
@@ -384,44 +366,50 @@
       <option name="project" value="LOCAL" />
       <updated>1522489530188</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactoring">
+      <created>1522491166503</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1522491166503</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_admin_escape_home_button - 2018.03.31 at 13h 05m 04s.xml">
-      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 20m 21s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_admin_escape_home_button - 2018.03.31 at 13h 05m 22s.xml">
-      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_admin_escape_home_button" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 37m 07s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_create_edit_max_length_fields_user - 2018.03.31 at 12h 42m 21s.xml">
-      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_create_edit_max_length_fields_user" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 38m 28s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_title_admin_page - 2018.03.31 at 13h 06m 36s.xml">
-      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_title_admin_page" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 39m 14s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_login_page_test_suite_TestLoginPage_test10_sensitive_to_case - 2018.03.31 at 12h 59m 23s.xml">
-      <configuration name="Unittests for login_page_test_suite.TestLoginPage.test10_sensitive_to_case" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 41m 34s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_admin_page_TestAdminPage - 2018.03.31 at 12h 39m 31s.xml">
-      <configuration name="Unittests for test_admin_page.TestAdminPage" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 43m 13s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.03.25 at 15h 05m 15s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 14h 43m 51s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.03.26 at 00h 25m 33s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 15h 26m 09s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.03.27 at 22h 28m 55s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 15h 28m 27s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.03.27 at 22h 47m 48s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
+    <history-entry file="Unittests_for_admin_page_test_suite_TestAdminPage_test_security_admin - 2018.03.31 at 16h 15m 35s.xml">
+      <configuration name="Unittests for admin_page_test_suite.TestAdminPage.test_security_admin" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18809524" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -493,16 +481,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/сaesar/resource/users_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="18" column="69" lean-forward="false" selection-start-line="18" selection-start-column="69" selection-end-line="18" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -544,6 +522,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -604,6 +583,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1029">
           <caret line="49" column="39" lean-forward="true" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -677,6 +657,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1029">
           <caret line="49" column="39" lean-forward="true" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,6 +721,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1029">
           <caret line="49" column="39" lean-forward="true" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -762,13 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="87" lean-forward="false" selection-start-line="1" selection-start-column="87" selection-end-line="1" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="86" column="77" lean-forward="true" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -830,22 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/base_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/login_page_test_suite.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1438">
@@ -856,13 +815,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/base_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="954" column="0" lean-forward="false" selection-start-line="954" selection-start-column="0" selection-end-line="954" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="82" column="64" lean-forward="true" selection-start-line="82" selection-start-column="64" selection-end-line="82" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="90" column="77" lean-forward="true" selection-start-line="90" selection-start-column="77" selection-end-line="90" selection-end-column="77" />
+        <state relative-caret-position="228">
+          <caret line="241" column="56" lean-forward="false" selection-start-line="241" selection-start-column="56" selection-end-line="241" selection-end-column="56" />
           <folding>
             <element signature="e#0#99#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="162" column="17" lean-forward="false" selection-start-line="162" selection-start-column="17" selection-end-line="162" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
