@@ -1,5 +1,5 @@
 from caesar_items.locators.locators import WindowCreateGroup
-from constants.constants_window_creating_group import TEST_TOO_LONG_GROUP_NAME, \
+from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_NAME_IS_MORE_20_CHAR, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME, MESSAGE_DIRECTION_IS_NOT_SELECTED, \
     MESSAGE_START_DATE_FIELD_IS_EMPTY
 from resource.users_base import first_admin
@@ -53,6 +53,9 @@ class TestCreatingGroup(TestBase):
         button_add_teacher = self.group_page.WindowCreatingGroup(). \
             button_teacher_add_get()
         self.assertTrue(button_add_teacher.is_enabled())
+
+    def test05_add_teachers(self):
+        pass
 
     def test05_selecting_teacher_is_enabled(self):
         """

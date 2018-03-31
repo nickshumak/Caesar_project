@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 
-from constants.constants_window_creating_group import TIME_TO_WAIT
+from resource.constants_creating_group import TIME_TO_WAIT
 
 
 class LeftMenu(object):
@@ -239,7 +239,7 @@ class GroupsPage(BasePage):
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            BUTTON_ONE_MORE_TEACHER))
 
-        def drop_list_teacher_get(self) -> object:
+        def list_of_added_teachers(self) -> list:
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(WindowCreateGroup.
                                            BUTTON_ONE_MORE_TEACHER))
