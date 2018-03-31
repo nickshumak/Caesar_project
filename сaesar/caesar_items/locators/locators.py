@@ -42,6 +42,8 @@ class GroupPageLocators(object):
     LEFT_MENU = (By.CSS_SELECTOR, '#left-menu > div')
     USER_PHOTO = (By.CLASS_NAME, 'user-photo')
     TOP_MENU = (By.CLASS_NAME, 'row')
+    BUTTON_CONFIRM_DELETION = (By.CLASS_NAME, 'fa fa-check-circle-o fa-3x')
+    BUTTON_CANCEL_DELETION = (By.CLASS_NAME, 'fa fa-times-circle-o fa-3x')
 
 
 class RightMenuLocators(object):
