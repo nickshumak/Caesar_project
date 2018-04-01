@@ -1,61 +1,193 @@
-# from caesar_items.pages.login_page import LogInPage
-from selenium.common.exceptions import NoSuchElementException
-
-from caesar_items.locators.locators import \
-    GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators
-from caesar_items.pages.base_page import BasePage
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
-import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
+
+from caesar_items.locators.locators import \
+    GroupPageLocators, LeftMenuLocators, RightMenuLocators,\
+    TopMenuLocators, WindowCreateGroup
+from caesar_items.pages.base_page import BasePage
+from caesar_items.pages.admin_page import AdminPage
+from resource.url_site import PathUrl
+from resource.constants_window_creating_group import *
 
 
-class LeftMenu(object):
-    """inner classes"""
-
+class CreatingGroupWindow(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def button_create_group(self):
-        try:
-            return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
-        except NoSuchElementException:
-            raise NoSuchElementException
+    def field_group_name_get(self) -> object:
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       FIELD_GROUP_NAME))
 
-    def create_group(self):
-        self.button_create_group().click()
+    def field_group_name_set(self, new_group_name) -> object:
+        field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       FIELD_GROUP_NAME))
+        field_name_of_group.clear()
+        field_name_of_group.send_keys(new_group_name)
+        return self
 
-    def search_group(self):
+    def field_group_name_clear(self) -> object:
+        field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       FIELD_GROUP_NAME))
+        field_name_of_group.clear()
+        return self
+
+    def field_group_name_value_get(self) -> str:
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(
+                WindowCreateGroup.FIELD_GROUP_NAME)). \
+            get_attribute("value")
+
+    def direction_of_group_get(self) -> object:
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_DIRECTION))
+
+    def direction_of_group_select(self, str_direction) -> object:
+        list_direction = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_DIRECTION))
+        select_direction = Select(list_direction)
+        select_direction.select_by_index(str_direction)
+        return self
+
+    def direction_of_group_value_get(self) -> str:
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(
+                WindowCreateGroup.DROP_LIST_DIRECTION)). \
+            get_attribute("value")
+
+    def location_of_group_get(self) -> object:
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_LOCATION))
+
+    def location_of_group_select(self, location_index) -> object:
+        locations_get = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_LOCATION))
+        locations_get.click()
+        select_location = Select(locations_get)
+        select_location.select_by_index(location_index)
+        return self
+
+    def location_of_group_value_get(self) -> str:
+        spinner_location_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_LOCATION))
+        location_of_group = spinner_location_of_group. \
+            get_attribute("value")
+        return location_of_group
+
+    def button_teacher_add_get(self) -> object:
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       BUTTON_ONE_MORE_TEACHER))
+
+    def list_of_added_teachers(self) -> list:
+        button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       BUTTON_ONE_MORE_TEACHER))
+        button_add_teacher.click()
+        drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_TEACHERS))
+        return drop_list_teachers
+
+    def teacher_select(self, teacher_name) -> object:
+        button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       BUTTON_ONE_MORE_TEACHER))
+        button_add_teacher.click()
+        drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.
+                                       DROP_LIST_TEACHERS))
+        drop_list_teachers.click()
+        select = Select(drop_list_teachers)
+        select.select_by_index(teacher_name)
+        self.driver.find_element(*WindowCreateGroup.
+                                 BUTTON_ACCEPT_TEACHER).click()
+        return self
+
+    def date_start_setting(self, start_date_value):
+        field_date_start_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.DATE_START))
+        field_date_start_field.send_keys(start_date_value)
+        field_date_finish = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.DATE_FINISH))
+        field_date_finish.send_keys(Keys.ENTER)
+        return self
+
+    def button_submit_group_creating(self):
+        button_save_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.element_to_be_clickable(WindowCreateGroup.BUTTON_SAVE))
+        button_save_group.click()
+        return self
+
+    def warning_message_get_by_locator(self, locator) -> object:
+        warning_message = None
+        form = WebDriverWait(self.driver, 20).until(
+            EC.visibility_of_element_located(locator))
+        hints = form.find_elements(By.CLASS_NAME, 'hint')
+        for hint in hints:
+            hint = hint.find_elements(
+                By.TAG_NAME, 'p')
+            for message_text in hint:
+                warning_message = message_text.text
+        return warning_message
+
+
+class LeftMenu(object):
+    def __init__(self, driver):
+        self.driver = driver
+        self.creating_group_window = CreatingGroupWindow(self.driver)
+
+    def create_group_button(self):
+        """
+        get create button web element
+        """
+        return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
+
+    def search_group_button(self):
+        """
+        get search button web element
+        """
         return self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
 
-    def edit_group(self):
-        try:
-            return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
-        except NoSuchElementException:
-            raise NoSuchElementException
+    def edit_group_button(self):
+        """
+        get edit button web element
+        """
+        return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
 
-    def delete_group(self):
-        try:
-            return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
-        except NoSuchElementException:
-            raise NoSuchElementException
+    def delete_group_button(self):
+        """
+        get delete button web element
+        """
+        return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
 
 
 class RightMenu(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def logout(self):
+    def click_logout_button(self):
         self.driver.implicitly_wait(2)
         self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
 
-    def user_full_name(self):
+    def get_user_full_name_text(self):
         return self.driver.find_element(*RightMenuLocators.USER_NAME).text
 
-    def user_role(self):
+    def get_user_role_text(self):
         return self.driver.find_element(*RightMenuLocators.USER_ROLE).text
 
-    def edit_user(self):
+    def click_edit_user_button(self):
         self.driver.find_element(*RightMenuLocators.BUTTON_EDIT_PROFILE).click()
 
 
@@ -63,36 +195,36 @@ class TopMenu(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def locations(self):
+    def click_locations_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_LOCATIONS).click()
         self.driver.implicitly_wait(2)
         # return LocationsPanel(self.driver)
 
-    def groups(self):
+    def click_groups_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_GROUPS).click()
         self.driver.implicitly_wait(2)
 
-    def students(self):
+    def click_students_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
         self.driver.implicitly_wait(2)
         # return StudentsPage(self.driver)
 
-    def schedule(self):
+    def click_schedule_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_SCHEDULE).click()
         self.driver.implicitly_wait(2)
         # return SchedulePage(self.driver)
 
-    def add(self):
+    def click_add_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_ADD).click()
         self.driver.implicitly_wait(2)
         # return AddPage(self.driver)
 
-    def about(self):
+    def click_about_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_ABOUT).click()
         self.driver.implicitly_wait(2)
         # return AboutPage(self.driver)
 
-    def logout(self):
+    def click_logout_button(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_LOGOUT).click()
         self.driver.implicitly_wait(2)
 
@@ -106,28 +238,28 @@ class GroupsPage(BasePage):
         self.right_menu = RightMenu(self.driver)
         self.top_menu = TopMenu(self.driver)
 
-    def group_location(self):
+    def get_group_location_text(self):
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text
 
-    def button_my_groups(self):
+    def my_group_button(self):
         return self.driver.find_element(*GroupPageLocators.BUTTON_MY_GROUPS)
 
-    def button_all_groups(self):
+    def all_groups_button(self):
         return self.driver.find_element(*GroupPageLocators.BUTTON_ALL_GROUPS)
 
-    def button_ended_groups(self):
+    def ended_groups_button(self):
         return self.driver.find_element(*GroupPageLocators.ENDED_GROUPS)
 
-    def button_current_groups(self):
+    def current_groups_button(self):
         return self.driver.find_element(*GroupPageLocators.CURRENT_GROUPS)
 
-    def button_future_groups(self):
-        return self.driver.find_element(*GroupPageLocators.FUTURE_GROUPS)
+    def button_boarding_groups(self):
+        return self.driver.find_element(*GroupPageLocators.BOARDING_GROUPS)
 
-    def select_group(self, group_title):
+    def select_group_by_name(self, group_name):
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
         for group in groups:
-            if group_title == group.text:
+            if group_name == group.text:
                 return group.click()
 
     def open_left_menu(self):
@@ -157,10 +289,14 @@ class GroupsPage(BasePage):
     def get_current_url(self):
         return self.driver.current_url
 
-    def confirm_deletion(self):
+    def get_group_stage_text(self):
+        group_stage = WebDriverWait(self.driver, 10)\
+            .until(EC.visibility_of_element_located(GroupPageLocators.GROUP_STAGE))
+        return group_stage.text
+
+    def click_confirm_deletion_button(self):
         self.driver.find_element(*GroupPageLocators.BUTTON_CONFIRM_DELETION).click()
 
-    def cancel_deletion(self):
+    def click_cancel_deletion_button(self):
         self.driver.find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION).click()
-
 

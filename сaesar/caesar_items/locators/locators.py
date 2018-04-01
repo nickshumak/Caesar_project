@@ -11,17 +11,13 @@ class LogInLocators(object):
 class GroupPageLocators(object):
     GROUP_LOCATION = (By.CLASS_NAME, 'groupLocation')
     BUTTON_SEARCH = (By.CSS_SELECTOR, 'div.search')
-
-    # GROUPS = (By.CLASS_NAME, 'group-collection row')
-
     BUTTON_MY_GROUPS = (By.CLASS_NAME, 'myGroups')
     BUTTON_ALL_GROUPS = (By.CLASS_NAME, 'allGroups')
     BUTTONS_STAGE_GROUPS = (By.CLASS_NAME, 'stage-toggle')
 
-    # надо определиться как делаем, так не красиво или через массив?селекторы проверила
     ENDED_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(2)')
     CURRENT_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(4)')
-    FUTURE_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
+    BOARDING_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
 
     GROUPS = (By.CLASS_NAME, 'small-group-view')
 

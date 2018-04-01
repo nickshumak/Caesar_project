@@ -1,6 +1,5 @@
 from resource.users_base import *
 from tests.test_base import TestBase
-from resource.url_site import PathUrl
 
 
 class TestAdminPage(TestBase):
@@ -30,7 +29,7 @@ class TestAdminPage(TestBase):
             fill_user_photo('photo'). \
             fill_user_login('123'). \
             fill_user_password('123'). \
-            submit(). \
+            submit. \
             get_table('users')
         expected_result = ["User"]
         self.assertIn(expected_result, actual_table)
@@ -49,7 +48,7 @@ class TestAdminPage(TestBase):
             fill_group_name_teacher('D. Petin'). \
             fill_group_name_experts('M. Omel`chuk'). \
             fill_group_level_stage('planned'). \
-            submit()
+            submit
         actual_result = actual_table.get_table("groups")
         expected_result = ['DP-095JS']
         self.assertIn(expected_result, actual_result)
@@ -66,7 +65,7 @@ class TestAdminPage(TestBase):
             fill_student_cv_url(''). \
             fill_student_entry_score('99'). \
             fill_student_approved_by('N. Varenko'). \
-            submit(). \
+            submit. \
             get_table('students')
         expected_student = ['Victor']
         self.assertIn(expected_student, actual_table)
