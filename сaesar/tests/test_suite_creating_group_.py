@@ -2,7 +2,7 @@ from caesar_items.locators.locators import CreateGroupWindowLocators
 from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_NAME_IS_MORE_20_CHAR, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME, \
     MESSAGE_DIRECTION_IS_NOT_SELECTED, \
-    MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE
+    MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE, TEST_GROUP_NAME, TIME_TO_WAIT
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -59,17 +59,21 @@ class TestCreatingGroup(TestBase):
         save_button = self.group_page.CreateGroupWindow().get_save_group_button()
         self.assertTrue(save_button.is_enabled)
 
-    def test05(self):
-        self.group_page.CreateGroupWindow().auto_fill_all_fields()
+    def test05_save_button_work(self):
+        self.group_page.CreateGroupWindow().auto_fill_all_fields(TEST_GROUP_NAME)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test06_cancel_button_is_enabled(self):
         cancel_button = self.group_page.CreateGroupWindow().cancel_button_get()
         self.assertTrue(cancel_button.is_enabled())
 
-    def test06_cancel_button_is_enabled(self):
+    def test06_cancel_button_work(self):
         cancel_button = self.group_page.CreateGroupWindow().cancel_button_get()
         self.assertTrue(cancel_button.is_enabled())
+
+    def test_button_click(self):
+        btn = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.BUDGET_SOFT_SERVE_BUTTON)).click()
 
     def test05_selecting_teacher_is_enabled(self):
         """
@@ -115,7 +119,7 @@ class TestCreatingGroup(TestBase):
         :return:
         """
         self.group_page.CreateGroupWindow().submit_group_creating_button()
-        locator_of_direction_form = CreateGroupWindowLocators.FORM_DIRECTION
+        locator_of_direction_form = CreateGroupWindowLocators.DIRECTION_FORM
         warning_message = self.group_page.CreateGroupWindow(). \
             warning_message_get_by_locator(locator_of_direction_form)
         self.assertEqual(warning_message, MESSAGE_DIRECTION_IS_NOT_SELECTED)
@@ -126,7 +130,7 @@ class TestCreatingGroup(TestBase):
         :return:
         """
         self.group_page.CreateGroupWindow().submit_group_creating_button()
-        locator_of_start_date_form = CreateGroupWindowLocators.FORM_START_DATE
+        locator_of_start_date_form = CreateGroupWindowLocators.START_DATE_FORM
         warning_message = self.group_page.CreateGroupWindow(). \
             warning_message_get_by_locator(locator_of_start_date_form)
         self.assertEqual(warning_message, MESSAGE_START_DATE_FIELD_IS_EMPTY)

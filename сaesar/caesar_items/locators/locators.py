@@ -127,29 +127,29 @@ class CreateGroupWindowLocators(object):
     GROUP_NAME_FORM = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(1) > div:nth-child(1) > div > div')
-    FIELD_GROUP_NAME = (By.NAME, 'name')
-    FORM_DIRECTION = (
+    GROUP_NAME_FIELD = (By.NAME, 'name')
+    DIRECTION_FORM = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(3) > div:nth-child(1)')
-    DROP_LIST_DIRECTION = (By.NAME, 'direction')
-    DROP_LIST_LOCATION = (By.NAME, 'location')
-    BUTTON_ONE_MORE_TEACHER = (By.CLASS_NAME, 'add-teacher-btn')
-    DROP_LIST_TEACHERS = (By.NAME, 'teacher')
-    BUTTON_ACCEPT_TEACHER = (By.ID, 'acceptSelect')
-    FORM_ADDED_TEACHERS = (By.CLASS_NAME, 'list-item')
-    BUTTON_BUDGET_OWNER_SOFT_SERVE = (By.CLASS_NAME,
-                                      'btn btn-default budget-option')
-    # BUTTON_BUDGET_OWNER_OPEN_GROUP=
-    FORM_START_DATE = (
+    DIRECTION_DROP_LIST = (By.NAME, 'direction')
+    LOCATION_DROP_LIST = (By.NAME, 'location')
+    ONE_MORE_TEACHER_BUTTON = (By.CLASS_NAME, 'add-teacher-btn')
+    TEACHERS_DROP_LIST = (By.NAME, 'teacher')
+    ACCEPT_TEACHER_BUTTON = (By.ID, 'acceptSelect')
+    ADDED_TEACHERS_FORM = (By.CLASS_NAME, 'list-item')
+    BUDGET_SOFT_SERVE_BUTTON = (By.CLASS_NAME,
+                                'btn btn-default budget-option active')
+    BUDGET_OPEN_GROUP_BUTTON = (By.CLASS_NAME, 'btn btn-default budget-option ')
+    START_DATE_FORM = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(3) > '
                          'div.form-group.col-xs-6.col-xs-offset-0.col-md-5.'
                          'col-md-offset-1.col-lg-4.calendar-wrapper')
-    DATE_START = (By.NAME, 'startDate')
-    DATE_FINISH = (By.NAME, 'finishDate')
-    BUTTON_ADD_EXPERT = (By.CLASS_NAME, 'add-expert-btn')
-    FIELD_EXPERTS_NAME = (By.NAME, 'expert')
-    BUTTON_ACCEPT_EXPERT = (By.ID, 'acceptInput')
+    START_DATE_FIELD = (By.NAME, 'startDate')
+    FINISH_DATE_FIELD = (By.NAME, 'finishDate')
+    ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
+    EXPERTS_NAME_FIELD = (By.NAME, 'expert')
+    ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
     SAVE_BUTTON = (By.ID, 'save')
     CANCEL_BUTTON = (By.ID, 'cancel')
 
