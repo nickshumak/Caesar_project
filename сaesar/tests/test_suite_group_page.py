@@ -188,7 +188,7 @@ class TestGroupPageCoordinator(TestBase):
         """
         edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
                          + group_name + '/info/edit'
-        self.group_page.select_group(group_name)
+        self.group_page.select_group_by_name(group_name)
         left_menu = self.group_page.open_left_menu()
         left_menu.edit_group_button().click()
         self.assertEqual(self.group_page.get_current_url(), edit_group_url)
