@@ -55,9 +55,17 @@ class TestCreatingGroup(TestBase):
             button_teacher_add_get()
         self.assertTrue(button_add_teacher.is_enabled())
 
-    def test0111(self):
+    def test051_save_button_is_enabled(self):
+        save_button = self.group_page.CreateGroupWindow().get_save_group_button()
+        self.assertTrue(save_button.is_enabled)
+
+    def test05(self):
         self.group_page.CreateGroupWindow().auto_fill_all_fields()
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
+
+    def test06_cancel_button_is_enabled(self):
+        cancel_button = self.group_page.CreateGroupWindow().cancel_button_get()
+        self.assertTrue(cancel_button.is_enabled())
 
     def test06_cancel_button_is_enabled(self):
         cancel_button = self.group_page.CreateGroupWindow().cancel_button_get()

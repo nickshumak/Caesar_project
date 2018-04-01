@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b39f3109-d81b-4c32-a317-7f6ec192f6c7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py" />
     </list>
@@ -26,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="310" column="84" lean-forward="false" selection-start-line="310" selection-start-column="84" selection-end-line="310" selection-end-column="84" />
+            <state relative-caret-position="297">
+              <caret line="296" column="26" lean-forward="false" selection-start-line="296" selection-start-column="26" selection-end-line="296" selection-end-column="26" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -48,23 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_suite_group_page.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_group_page.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_suite_creating_group_.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_suite_creating_group_.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="61" column="23" lean-forward="false" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+            <state relative-caret-position="178">
+              <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
               <folding>
                 <element signature="e#0#68#0" expanded="true" />
               </folding>
@@ -102,7 +89,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Gene" />
+        <entry key="$PROJECT_DIR$" value="garbage" />
       </map>
     </option>
     <push-targets>
@@ -142,8 +129,8 @@
         <option value="$PROJECT_DIR$/сaesar/tests/test_base.py" />
         <option value="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
-        <option value="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
+        <option value="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py" />
       </list>
     </option>
   </component>
@@ -480,7 +467,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522593147084</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactoring after review">
+      <created>1522597458492</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1522597458518</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -854,14 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/base_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_admin_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -878,16 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_group_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -896,22 +872,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py">
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_group_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="61" column="23" lean-forward="false" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+        <state relative-caret-position="-3732">
+          <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
           <folding>
-            <element signature="e#0#68#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/base_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="310" column="84" lean-forward="false" selection-start-line="310" selection-start-column="84" selection-end-line="310" selection-end-column="84" />
+        <state relative-caret-position="297">
+          <caret line="296" column="26" lean-forward="false" selection-start-line="296" selection-start-column="26" selection-end-line="296" selection-end-column="26" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="57" column="27" lean-forward="false" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
           </folding>
         </state>
       </provider>

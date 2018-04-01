@@ -294,6 +294,10 @@ class GroupsPage(BasePage):
             button_save_group.click()
             return self
 
+        def get_save_group_button(self):
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.SAVE_BUTTON))
+
         def warning_message_get_by_locator(self, locator) -> object:
             warning_message = None
             form = WebDriverWait(self.driver, 20).until(
@@ -308,7 +312,8 @@ class GroupsPage(BasePage):
 
         def cancel_button_get(self):
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.CANCEL_BUTTON))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           CANCEL_BUTTON))
 
         def auto_fill_all_fields(self):
             direction_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
