@@ -119,6 +119,22 @@ class GroupsPage(BasePage):
             if group_title == group.text:
                 return group.click()
 
+    def list_group_current(self):
+        groups_list = []
+        groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
+        for group in groups:
+            groups_list = group.text
+        return groups_list
+
+    def list_of_groups(self):
+        self.button_ended_groups().click()
+        list_of_groups = self.list_group_current()
+        self.button_current_groups()
+        list_of_groups += self.list_group_current()
+        self.button_future_groups()
+        list_of_groups += self.list_group_current()
+        return list_of_groups
+
     def select_group_students(self, group_name):
         groups_list = WebDriverWait(self.driver, 40).until(
                 lambda driver: self.driver.find_elements(*GroupPageLocators.
