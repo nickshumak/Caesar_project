@@ -3,7 +3,7 @@ from caesar_items.pages.groups_page import GroupsPage
 from tests.test_base import TestBase
 
 from selenium import webdriver
-from resource.url_site import PathUrl
+from resource.site_url import PathUrl
 from resource.path_driver import GetDriver
 from caesar_items.pages.login_page import *
 

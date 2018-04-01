@@ -2,7 +2,7 @@ from caesar_items.pages.login_page import LogInPage
 import unittest
 from resource.users_base import *
 from tests.test_base import TestBase
-from resource.url_site import PathUrl
+from resource.site_url import PathUrl
 from resource.path_driver import GetDriver
 from selenium import webdriver
 

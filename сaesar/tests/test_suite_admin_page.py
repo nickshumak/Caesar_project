@@ -1,10 +1,14 @@
 from resource.users_base import *
 from tests.test_base import TestBase
 from caesar_items.pages.admin_page import *
-from resource.url_site import PathUrl
+from resource.site_url import PathUrl
 
 
 class TestAdminPage(TestBase):
+    def setUp(self):
+        super().setUp()
+        self.group_page = self.login_page.auto_login(first_admin)
+        self.admin_page = self.group_page.open_admin_page()
 
     def test_admin_escape_home_button(self):
         """Checking escape home button on admin page"""
@@ -38,7 +42,7 @@ class TestAdminPage(TestBase):
             add_entity_user(). \
             fill_user_name('User'). \
             fill_user_second_name('Tramp'). \
-            fill_user_type_role('Teacher'). \
+            fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo('photo'). \
             fill_user_login('123'). \
@@ -64,9 +68,9 @@ class TestAdminPage(TestBase):
             fill_group_direct('MQC'). \
             fill_group_first_date('2018-05-15'). \
             fill_group_second_date('2018-07-15'). \
-            fill_group_name_teacher('D. Petin'). \
-            fill_group_name_experts('M. Omel`chuk'). \
-            fill_group_level_stage('planned'). \
+            fill_group_teacher_name('D. Petin'). \
+            fill_group_experts_name('M. Omel`chuk'). \
+            fill_group_stage_level('planned'). \
             submit()
         actual_result = actual_table.get_table("groups")
         expected_result = ['DP-095JS']
@@ -112,7 +116,7 @@ class TestAdminPage(TestBase):
             fill_student_cv_url(''). \
             fill_student_entry_score(''). \
             fill_student_approved_by(''). \
-            get_condition_button()
+            is_enabled_submit_button()
         self.assertFalse(actual_condition_button)
 
     def test_create_edit_empty_fields_group(self):
@@ -132,10 +136,10 @@ class TestAdminPage(TestBase):
             fill_group_direct('MQC'). \
             fill_group_first_date(''). \
             fill_group_second_date(''). \
-            fill_group_name_teacher(''). \
-            fill_group_name_experts(''). \
-            fill_group_level_stage('planned'). \
-            get_condition_button()
+            fill_group_teacher_name(''). \
+            fill_group_experts_name(''). \
+            fill_group_stage_level('planned'). \
+            is_enabled_submit_button()
         self.assertFalse(actual_condition_button)
 
     def test_create_edit_max_length_fields_user(self):
@@ -152,16 +156,17 @@ class TestAdminPage(TestBase):
             add_entity_user(). \
             fill_user_name('Coder'). \
             fill_user_second_name('Developerovich'). \
-            fill_user_type_role('Teacher'). \
+            fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo('photo'). \
             fill_user_login('b' * 11). \
             fill_user_password('a' * 11). \
-            get_condition_button()
+            is_enabled_submit_button()
         self.assertFalse(actual_condition_button)
 
     def test_delete_user_after_create(self):
-        """checking user table after deleting new user"""
+        """checking users' table after deleting
+        user who has been added recently"""
         self.login_page.enter_login(first_admin.login)
         self.login_page.enter_password(first_admin.password)
         self.login_page.submit()
@@ -172,11 +177,12 @@ class TestAdminPage(TestBase):
             add_entity_user(). \
             fill_user_name('Sergei'). \
             fill_user_second_name('D'). \
-            fill_user_type_role('Teacher'). \
+            fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo('photo'). \
-            fill_user_login('vlad'). \
+            fill_user_login('Vlad'). \
             fill_user_password('1234'). \
             submit(). \
-            delete_entity().get_table('users')
+            delete_last_entity().\
+            get_table('users')
         self.assertNotIn('Sergei', actual_table)
