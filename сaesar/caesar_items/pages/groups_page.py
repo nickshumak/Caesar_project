@@ -131,13 +131,21 @@ class RightMenu(object):
         self.driver = driver
 
     def click_logout_button(self):
-        self.driver.implicitly_wait(2)
+        """
+        click on logout web element
+        """
         self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
 
     def get_user_full_name_text(self):
+        """
+        get user name from left menu
+        """
         return self.driver.find_element(*RightMenuLocators.USER_NAME).text
 
     def get_user_role_text(self):
+        """
+        get user role from left menu
+        """
         return self.driver.find_element(*RightMenuLocators.USER_ROLE).text
 
     def click_edit_user_button(self):
@@ -150,36 +158,55 @@ class TopMenu(object):
         self.locations = LocationsWindow(self.driver)
 
     def click_locations_button(self):
+        """
+        click locations button on top menu and wait when save button appears
+        """
         self.driver.find_element(*TopMenuLocators.LOCATIONS_BUTTON).click()
         WebDriverWait(self.driver, 10) \
             .until(EC.visibility_of_element_located(LocationWindowLocators.SAVE_BUTTON))
         return LocationsWindow(self.driver)
 
     def click_groups_button(self):
+        """
+        click groups button on top menu
+        """
         self.driver.find_element(*TopMenuLocators.GROUPS_BUTTON_).click()
         self.driver.implicitly_wait(2)
 
     def click_students_button(self):
+        """
+        click students button on top menu
+        """
         self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON).click()
         self.driver.implicitly_wait(2)
-        # return StudentsPage(self.driver)
 
     def click_schedule_button(self):
+        """
+        click schedule button on top menu
+        """
         self.driver.find_element(*TopMenuLocators.SCHEDULE_BUTTON).click()
         self.driver.implicitly_wait(2)
         # return SchedulePage(self.driver)
 
     def click_add_button(self):
+        """
+        click add button on top menu
+        """
         self.driver.find_element(*TopMenuLocators.ADD_BUTTON).click()
         self.driver.implicitly_wait(2)
-        # return AddPage(self.driver)
 
     def click_about_button(self):
+        """
+        click about button on top menu
+        """
         self.driver.find_element(*TopMenuLocators.ABOUT_BUTTON).click()
         self.driver.implicitly_wait(2)
         # return AboutPage(self.driver)
 
     def click_logout_button(self):
+        """
+        click about button on top menu
+        """
         self.driver.find_element(*TopMenuLocators.BUTTON_LOGOUT).click()
         self.driver.implicitly_wait(2)
 
@@ -196,21 +223,39 @@ class GroupsPage(BasePage):
         self.top_menu = TopMenu(self.driver)
 
     def get_group_location_text(self):
+        """
+        get current locations from middle panel
+        """
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text
 
     def my_group_button(self):
+        """
+        get my group web element button
+        """
         return self.driver.find_element(*GroupPageLocators.BUTTON_MY_GROUPS)
 
     def all_groups_button(self):
+        """
+        get all groups web element button
+        """
         return self.driver.find_element(*GroupPageLocators.BUTTON_ALL_GROUPS)
 
     def ended_groups_button(self):
+        """
+        get finished groups web element button
+        """
         return self.driver.find_element(*GroupPageLocators.ENDED_GROUPS)
 
     def current_groups_button(self):
+        """
+        get current groups web element button
+        """
         return self.driver.find_element(*GroupPageLocators.CURRENT_GROUPS)
 
     def button_boarding_groups(self):
+        """
+        get boarding groups web element button
+        """
         return self.driver.find_element(*GroupPageLocators.BOARDING_GROUPS)
 
     def select_group_by_name(self, group_name):
@@ -222,6 +267,9 @@ class GroupsPage(BasePage):
         return "group not exist"
 
     def open_left_menu(self):
+        """
+        move mouse on left side page
+        """
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
         ActionChains(self.driver). \
             move_to_element_with_offset(left_menu, 105, 300).perform()
@@ -230,18 +278,27 @@ class GroupsPage(BasePage):
         return self.left_menu
 
     def open_right_menu(self):
+        """
+        click on user photo
+        """
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
         self.driver.implicitly_wait(3)
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
         return self.right_menu
 
     def open_top_menu(self):
+        """
+        move mouse on top page
+        """
         top_menu = self.driver.find_element(*GroupPageLocators.TOP_MENU)
         ActionChains(self.driver).move_to_element(top_menu).perform()
         self.driver.implicitly_wait(3)
         return self.top_menu
 
     def open_admin_page(self):
+        """
+        go to admin page panel
+        """
         self.driver.get(PathUrl().ADMIN_PAGE)
         return AdminPage(self.driver)
 
@@ -249,16 +306,25 @@ class GroupsPage(BasePage):
         return self.driver.current_url
 
     def get_group_stage_text(self):
+        """
+        get stage text from bottom of middle panel
+        """
         group_stage = WebDriverWait(self.driver, 10) \
             .until(
             EC.visibility_of_element_located(GroupPageLocators.GROUP_STAGE))
         return group_stage.text
 
     def confirm_deletion_button(self):
+        """
+        get confirm deletion web element button
+        """
         return self.driver.\
             find_element(*GroupPageLocators.BUTTON_CONFIRM_DELETION)
 
     def cancel_deletion_button(self):
+        """
+        get cancel deletion web element button
+        """
         return self.driver.\
             find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION)
 

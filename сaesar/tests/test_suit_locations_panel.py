@@ -33,7 +33,7 @@ class TestLocationWindow(TestBase):
         actual_result = self.group_page.get_group_location_text()
         self.assertEqual(actual_result, location_name)
 
-    def test03_two_locations(self):
+    def test03_select_two_locations(self):
         """
         check that user can select several locations
         """

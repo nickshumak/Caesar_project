@@ -18,6 +18,9 @@ group_to_delete_name = 'DP-098-JS'
 class TestGroupPageAdmin(TestBase):
     @classmethod
     def setUpClass(cls):
+        """
+        Create test group to delete
+        """
         driver = webdriver.Chrome(
             executable_path=GetDriver().CHROME_DRIVER)
         driver.get(PathUrl().SITE_URL)
