@@ -8,12 +8,91 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from caesar_items.locators.locators import \
     GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators, \
-    CreateGroupWindowLocators
+    CreateGroupWindowLocators, LocationWindowLocators
 from caesar_items.pages.base_page import BasePage
 from caesar_items.pages.admin_page import AdminPage
 from resource.url_site import PathUrl
 from resource.constants_creating_group import \
     TIME_TO_WAIT, TEST_TEACHER_INDEX, TEST_EXPERT_NAME, TEST_START_DATE
+
+
+class LocationsWindow(object):
+    def __init__(self, driver):
+        self.driver = driver
+
+    def select_dnipro_location(self):
+        """
+        click on location on location window
+        """
+        self.driver.find_element(
+            *LocationWindowLocators.DNIPRO_LOCATION).click()
+
+    def select_chernivtsy_location(self):
+        """
+        click on location on location window
+        """
+        self.driver.find_element(
+            *LocationWindowLocators.CHERNIVTSY_LOCATION).click()
+
+    def select_ivano_frankivsk_location(self):
+        """
+        click on location on location window
+        """
+        self.driver.find_element(
+            *LocationWindowLocators.IVANO_FRANKIVSK_LOCATION).click()
+
+    def select_kyiv_location(self):
+        """
+        click on location on location window
+        """
+        self.driver.find_element(
+            *LocationWindowLocators.KYIV_LOCATION).click()
+
+    def select_lviv_location(self):
+        """
+        click on location on location window
+        """
+        self.driver.find_element(
+            *LocationWindowLocators.LVIV_LOCATION).click()
+
+    def select_rivne_location(self):
+        """
+        click on location on location window
+        """
+        self.driver.find_element(
+            *LocationWindowLocators.RIVNE_LOCATION).click()
+
+    def select_sofia_location(self):
+        """
+        click on location on location window
+        """
+        return self.driver.find_element(
+            *LocationWindowLocators.SOFIA_LOCATION).click()
+
+    def save_button(self):
+        """
+        return save button web element
+        """
+        return self.driver.find_element(*LocationWindowLocators.SAVE_BUTTON)
+
+    def disabled_save_button(self):
+        """
+        return disabled save button web element
+        """
+        return self.driver.find_element(
+            *LocationWindowLocators.DISABLED_SAVE_BUTTON)
+
+    def cancel_button(self):
+        """
+        return cancel button web element
+        """
+        return self.driver.find_element(*LocationWindowLocators.CANCEL_BUTTON)
+
+    def get_current_url(self):
+        """
+        get url on current page
+        """
+        return self.driver.current_url
 
 
 class LeftMenu(object):
@@ -68,33 +147,35 @@ class RightMenu(object):
 class TopMenu(object):
     def __init__(self, driver):
         self.driver = driver
+        self.locations = LocationsWindow(self.driver)
 
     def click_locations_button(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_LOCATIONS).click()
-        self.driver.implicitly_wait(2)
-        # return LocationsPanel(self.driver)
+        self.driver.find_element(*TopMenuLocators.LOCATIONS_BUTTON).click()
+        WebDriverWait(self.driver, 10) \
+            .until(EC.visibility_of_element_located(LocationWindowLocators.SAVE_BUTTON))
+        return LocationsWindow(self.driver)
 
     def click_groups_button(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_GROUPS).click()
+        self.driver.find_element(*TopMenuLocators.GROUPS_BUTTON_).click()
         self.driver.implicitly_wait(2)
 
     def click_students_button(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
+        self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON).click()
         self.driver.implicitly_wait(2)
         # return StudentsPage(self.driver)
 
     def click_schedule_button(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_SCHEDULE).click()
+        self.driver.find_element(*TopMenuLocators.SCHEDULE_BUTTON).click()
         self.driver.implicitly_wait(2)
         # return SchedulePage(self.driver)
 
     def click_add_button(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_ADD).click()
+        self.driver.find_element(*TopMenuLocators.ADD_BUTTON).click()
         self.driver.implicitly_wait(2)
         # return AddPage(self.driver)
 
     def click_about_button(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_ABOUT).click()
+        self.driver.find_element(*TopMenuLocators.ABOUT_BUTTON).click()
         self.driver.implicitly_wait(2)
         # return AboutPage(self.driver)
 
@@ -139,8 +220,6 @@ class GroupsPage(BasePage):
                 group.click()
                 return 0
         return "group not exist"
-
-
 
     def open_left_menu(self):
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)

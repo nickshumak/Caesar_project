@@ -65,14 +65,40 @@ class LeftMenuLocators(object):
 
 
 class TopMenuLocators(object):
-    BUTTON_LOCATIONS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
-    BUTTON_GROUPS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
-    BUTTON_STUDENTS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
-    BUTTON_SCHEDULE = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
-    BUTTON_ADD = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')
-    BUTTON_ABOUT = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(6)')
+    LOCATIONS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
+    GROUPS_BUTTON_ = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
+    STUDENTS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
+    SCHEDULE_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
+    ADD_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')
+    ABOUT_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(6)')
 
     BUTTON_LOGOUT = (By.CLASS_NAME, 'logout')
+
+
+class LocationWindowLocators(object):
+    CHERNIVTSY_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[1]/p')
+    DNIPRO_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[2]/p')
+    IVANO_FRANKIVSK_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[3]/p')
+    KYIV_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[4]/p')
+    LVIV_LOCATION = \
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[5]/p')
+    RIVNE_LOCATION = \
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[6]/p')
+    SOFIA_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[7]/p')
+    SAVE_BUTTON = \
+        (By.CSS_SELECTOR, '#modal-window > div > div '
+                          '> div > div > button.save > i')
+    DISABLED_SAVE_BUTTON = \
+        (By.CSS_SELECTOR, '#modal-window > div '
+                          '> div > div > div > button.save.disabled')
+    CANCEL_BUTTON = \
+        (By.CSS_SELECTOR, '#modal-window > div > div '
+                          '> div > div > button.cancel > i')
 
 
 class AdminPageLocators(object):
@@ -158,7 +184,6 @@ class CreateGroupWindowLocators(object):
     CANCEL_BUTTON = (By.ID, 'cancel')
 
 
-# for students
 class StudentsListLocators(object):
     BUTTON_EDIT_STUDENTS_LIST = \
         (By.XPATH, './/*[@id="main-section"]/div/header/div[1]/button')
@@ -166,9 +191,8 @@ class StudentsListLocators(object):
     BUTTON_SCHEDULE_IN_STUDENTS = (By.CLASS_NAME, 'shedule')
     BUTTON_MESSAGE_IN_STUDENTS = (By.CLASS_NAME, 'message')
     STUDENTS_LISTS_ROWS = (By.CLASS_NAME, 'tableBodyStudents')
-
-
-class EditStudentsListLocators(object):
+    BUTTON_SORT_LIST_BY_NAME = (By.CLASS_NAME, 'fullName')
+    BUTTON_SORT_LIST_BY_ENGLISH_LEVEL = (By.CLASS_NAME, 'engLevel')
     NAME_STUDENT_LIST = \
         (By.CSS_SELECTOR, '.header-modal-editStudentlist > span:nth-child(1)')
     STUDENTS_TABLE = (By.CLASS_NAME, 'tableBodyStudents')
@@ -179,7 +203,8 @@ class EditStudentsListLocators(object):
         (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
     BUTTON_EDIT_STUDENT = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
 
-    # fields for student
+
+class StudentLocators(object):
     TEXT_FIELD_FIRST_NAME = \
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[1]/input')
     TEXT_FIELD_LAST_NAME = \
@@ -194,7 +219,8 @@ class EditStudentsListLocators(object):
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[2]/input')
     STUDENT_APPROVED_BY = \
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select')
-    APPROVED_BY = (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select/option[2]')
+    APPROVED_BY = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select/option[2]')
     BUTTON_SAVE_CHANGES = \
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[6]/button[1]')
     BUTTON_ADDING_CV = \
@@ -208,3 +234,5 @@ class EditStudentsListLocators(object):
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/input')
     FILE_NAME_PHOTO = \
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/ul/li/span[1]')
+    WARNINGS_ADDING_EMPTY_STUDENT_DATA = \
+        (By.CLASS_NAME, 'hint')
