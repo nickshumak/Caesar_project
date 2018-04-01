@@ -10,7 +10,7 @@ from caesar_items.pages.admin_page import AdminPage
 class TestBase(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(
-            executable_path=GetDriver.DRIVER_CHROME)
+            executable_path=GetDriver.CHROME_DRIVER)
         self.driver.get(PathUrl.SITE_URL)
         self.driver.maximize_window()
         self.login_page = LogInPage(self.driver)

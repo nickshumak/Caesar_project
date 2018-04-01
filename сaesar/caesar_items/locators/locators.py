@@ -123,7 +123,7 @@ class CreateEditStudentsLocators(object):
     APPROVED_BY = (By.NAME, 'approvedBy')
 
 
-class WindowCreateGroup(object):
+class CreateGroupWindowLocators(object):
     FORM_GROUP_NAME = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(1) > div:nth-child(1) > div > div')

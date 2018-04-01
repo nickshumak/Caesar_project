@@ -1,4 +1,4 @@
-from caesar_items.locators.locators import WindowCreateGroup
+from caesar_items.locators.locators import CreateGroupWindowLocators
 from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_NAME_IS_MORE_20_CHAR, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME, MESSAGE_DIRECTION_IS_NOT_SELECTED, \
     MESSAGE_START_DATE_FIELD_IS_EMPTY
@@ -54,6 +54,9 @@ class TestCreatingGroup(TestBase):
             button_teacher_add_get()
         self.assertTrue(button_add_teacher.is_enabled())
 
+    def test0111(self):
+        self.group_page.WindowCreatingGroup().auto_fill_all_fields()
+
     def test05_selecting_teacher_is_enabled(self):
         """
                 Test  is the field 'location' enabled
@@ -96,7 +99,7 @@ class TestCreatingGroup(TestBase):
         :return:
         """
         self.group_page.WindowCreatingGroup().submit_group_creating()
-        locator_of_direction_form = WindowCreateGroup.FORM_DIRECTION
+        locator_of_direction_form = CreateGroupWindowLocators.FORM_DIRECTION
         warning_message = self.group_page.WindowCreatingGroup(). \
             warning_message_get_by_locator(locator_of_direction_form)
         self.assertEqual(warning_message, MESSAGE_DIRECTION_IS_NOT_SELECTED)
@@ -107,7 +110,7 @@ class TestCreatingGroup(TestBase):
         :return:
         """
         self.group_page.WindowCreatingGroup().submit_group_creating()
-        locator_of_start_date_form = WindowCreateGroup.FORM_START_DATE
+        locator_of_start_date_form = CreateGroupWindowLocators.FORM_START_DATE
         warning_message = self.group_page.WindowCreatingGroup(). \
             warning_message_get_by_locator(locator_of_start_date_form)
         self.assertEqual(warning_message, MESSAGE_START_DATE_FIELD_IS_EMPTY)

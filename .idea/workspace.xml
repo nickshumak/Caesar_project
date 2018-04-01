@@ -3,17 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b39f3109-d81b-4c32-a317-7f6ec192f6c7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/Caesar_project.iml" afterPath="$PROJECT_DIR$/.idea/Caesar_project.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/pages/admin_page.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/constants/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/сaesar/constants/constants_window_creating_group.py" afterPath="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/resource/path_driver.py" afterPath="$PROJECT_DIR$/сaesar/resource/path_driver.py" />
+      <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
+      <change beforePath="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" afterPath="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/tests/test_base.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_base.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/tests/test_suit_students_page.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_suit_students_page.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/tests/test_suite_login_page.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_suite_login_page.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/tests/test_suite_window_creating_group.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_suite_window_creating_group.py" />
+      <change beforePath="$PROJECT_DIR$/сaesar/tests/window_creating_group_test_suite.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,71 +18,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="test_suit_students_page.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suit_students_page.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="47" column="53" lean-forward="false" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
-              <folding>
-                <element signature="e#182#197#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="url_site.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/resource/url_site.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_suite_admin_page.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_admin_page.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-168">
-              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="locators.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="155" column="14" lean-forward="false" selection-start-line="155" selection-start-column="14" selection-end-line="155" selection-end-column="14" />
-              <folding>
-                <marker date="1522586944113" expanded="true" signature="3628:3883" ph="..." />
-              </folding>
+            <state relative-caret-position="2125">
+              <caret line="125" column="31" lean-forward="false" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login_page.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/login_page.py">
+      <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="50" column="38" lean-forward="false" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#55#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="students_page.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/students_page.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3339">
-              <caret line="159" column="23" lean-forward="false" selection-start-line="159" selection-start-column="23" selection-end-line="159" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="17">
+              <caret line="318" column="0" lean-forward="false" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,8 +42,8 @@
       <file leaf-file-name="test_suite_group_page.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_group_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+            <state relative-caret-position="289">
+              <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -104,25 +51,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_suite_login_page.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_login_page.py">
+      <file leaf-file-name="test_suite_creating_group_.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-253">
-              <caret line="17" column="53" lean-forward="false" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+            <state relative-caret-position="884">
+              <caret line="57" column="45" lean-forward="false" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_suite_window_creating_group.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_window_creating_group.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1841">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#60#0" expanded="true" />
+                <element signature="e#0#68#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,8 +66,42 @@
       <file leaf-file-name="test_base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="102">
+              <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="path_driver.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/сaesar/resource/path_driver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login_page.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/login_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constants_creating_group.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/сaesar/resource/constants_creating_group.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -197,23 +166,25 @@
         <option value="$PROJECT_DIR$/сaesar/tests/test_creating_group_window.py" />
         <option value="$PROJECT_DIR$/сaesar/constants/for_window_creating_group.py" />
         <option value="$PROJECT_DIR$/сaesar/constants/constants_window_creating_group.py" />
-        <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/window_creating_group_test_suite.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/login_page.py" />
         <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/students_page.py" />
-        <option value="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
-        <option value="$PROJECT_DIR$/сaesar/tests/test_base.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/test_suit_students_page.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/test_suite_login_page.py" />
         <option value="$PROJECT_DIR$/сaesar/tests/test_suite_window_creating_group.py" />
+        <option value="$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py" />
+        <option value="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" />
+        <option value="$PROJECT_DIR$/сaesar/tests/test_base.py" />
+        <option value="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py" />
+        <option value="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-63" />
-    <option name="y" value="24" />
-    <option name="width" value="1622" />
-    <option name="height" value="795" />
+    <option name="x" value="356" />
+    <option name="y" value="34" />
+    <option name="width" value="877" />
+    <option name="height" value="816" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -249,6 +220,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -298,7 +270,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -321,7 +292,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator">
+  <component name="RunManager" selected="Python tests.Unittests for test_suite_creating_group_.TestCreatingGroup.test0111">
     <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -350,7 +321,7 @@
       <option name="_new_target" value="&quot;test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for window_creating_group_test_suite.TestCreatingGroup.test05_selecting_teacher_is_enabled" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -361,10 +332,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;window_creating_group_test_suite.TestCreatingGroup.test05_selecting_teacher_is_enabled&quot;" />
+      <option name="_new_target" value="&quot;test_suite_creating_group_.TestCreatingGroup.test0111&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for window_creating_group_test_suite.TestCreatingGroup.test_create_group_with_empty_start_date" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for tests.test_suite_creating_group_.TestCreatingGroup.test05_selecting_teacher_is_enabled" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -375,10 +346,10 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;window_creating_group_test_suite.TestCreatingGroup.test_create_group_with_empty_start_date&quot;" />
+      <option name="_new_target" value="&quot;tests.test_suite_creating_group_.TestCreatingGroup.test05_selecting_teacher_is_enabled&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests in window_creating_group_test_suite.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests in test_suite_creating_group_.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -389,23 +360,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/сaesar/tests/window_creating_group_test_suite.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in window_creating_group_test_suite.py" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for window_creating_group_test_suite.TestCreatingGroup.test_create_group_with_empty_start_date" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for window_creating_group_test_suite.TestCreatingGroup.test05_selecting_teacher_is_enabled" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_suite_creating_group_.py" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for tests.test_suite_creating_group_.TestCreatingGroup.test05_selecting_teacher_is_enabled" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for window_creating_group_test_suite.TestCreatingGroup.test05_selecting_teacher_is_enabled" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in window_creating_group_test_suite.py" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for window_creating_group_test_suite.TestCreatingGroup.test_create_group_with_empty_start_date" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for tests.test_suite_creating_group_.TestCreatingGroup.test05_selecting_teacher_is_enabled" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_suite_creating_group_.py" />
       </list>
     </recent_temporary>
   </component>
@@ -532,74 +503,60 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 21h 43m 04s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 21h 47m 16s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 21h 52m 16s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 21h 58m 28s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 22h 02m 44s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 22h 06m 33s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 22h 13m 42s.xml">
-      <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithAdmin_test05_remove_first_student_with_admin - 2018.03.31 at 22h 16m 20s.xml">
       <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithAdmin.test05_remove_first_student_with_admin" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_for_test_suit_students_page_TestStudentsPageWithCoordinator_test06_add_new_student_with_coordinator - 2018.03.31 at 22h 19m 20s.xml">
       <configuration name="Unittests for test_suit_students_page.TestStudentsPageWithCoordinator.test06_add_new_student_with_coordinator" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 16h 49m 17s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 16h 50m 03s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 16h 52m 42s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 16h 59m 49s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 17h 00m 23s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 17h 02m 50s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group__TestCreatingGroup_test0111 - 2018.04.01 at 17h 03m 22s.xml">
+      <configuration name="Unittests for test_suite_creating_group_.TestCreatingGroup.test0111" configurationId="tests" />
+    </history-entry>
     <history-entry file="Unittests_in_window_creating_group_test_suite_py - 2018.03.31 at 17h 19m 53s.xml">
       <configuration name="Unittests in window_creating_group_test_suite.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1618" height="918" extended-state="6" />
+    <frame x="-4" y="-4" width="1912" height="935" extended-state="6" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23943663" sideWeight="0.50498754" order="14" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20205921" sideWeight="0.49501246" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3963964" sideWeight="0.88" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.185625" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18592437" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42048192" sideWeight="0.1068814" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24066924" sideWeight="0.4975" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4215531" sideWeight="0.8931186" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4215531" sideWeight="0.1068814" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4215531" sideWeight="0.8931186" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24066924" sideWeight="0.4975" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18594436" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -653,14 +610,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -679,9 +628,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -715,7 +662,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -747,9 +696,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -773,7 +720,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -805,9 +754,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -842,13 +789,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/tests1_login_page.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/tests/tests2_group_page.py" />
-    <entry file="file://$PROJECT_DIR$/сaesar/resource/path_driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/resource/users_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -864,50 +804,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/admin_page_test_suite.py" />
-    <entry file="file://$PROJECT_DIR$/сaesar/constants/constants_window_creating_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/window_creating_group_test_suite.py" />
+    <entry file="file://$PROJECT_DIR$/сaesar/constants/constants_window_creating_group.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/tests/group_page_test_suite.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/base_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/сaesar/tests/login_page_test_suite.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/login_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="50" column="38" lean-forward="false" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+        <state relative-caret-position="323">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="155" column="14" lean-forward="false" selection-start-line="155" selection-start-column="14" selection-end-line="155" selection-end-column="14" />
-          <folding>
-            <marker date="1522586944113" expanded="true" signature="3628:3883" ph="..." />
           </folding>
         </state>
       </provider>
@@ -916,63 +828,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3339">
           <caret line="159" column="23" lean-forward="false" selection-start-line="159" selection-start-column="23" selection-end-line="159" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/resource/site_url.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/resource/site_url.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/resource/url_site.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_window_creating_group.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1841">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_window_creating_group.py" />
     <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_login_page.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-253">
           <caret line="17" column="53" lean-forward="false" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_group_page.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -980,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-168">
           <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -988,9 +858,68 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="47" column="53" lean-forward="false" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_group_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="50" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
           <folding>
-            <element signature="e#182#197#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/locators/locators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="125" column="31" lean-forward="false" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/resource/path_driver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/resource/constants_creating_group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="51" lean-forward="false" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group_.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="57" column="45" lean-forward="false" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="318" column="0" lean-forward="false" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
