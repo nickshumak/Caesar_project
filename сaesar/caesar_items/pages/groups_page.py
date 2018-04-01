@@ -304,16 +304,19 @@ class GroupsPage(BasePage):
 
         def auto_fill_all_fields(self):
             direction_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.DROP_LIST_DIRECTION))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           DROP_LIST_DIRECTION))
             direction_field.click()
-            directions_list = direction_field.find_elements(By.TAG_NAME, 'option')
-            random_direction_index = random.randint(1, len(directions_list) - 1)
+            directions_list = direction_field.find_elements(
+                By.TAG_NAME, 'option')
+            random_direction_index = random.randint(
+                1, len(directions_list) - 1)
             select_direction = Select(direction_field)
             select_direction.select_by_index(random_direction_index)
             location_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.DROP_LIST_LOCATION))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           DROP_LIST_LOCATION))
             location_field.click()
-            locations_list = location_field.find_elements(By.TAG_NAME, 'option')
             random_location_index = random.randint(0, 3)
             select_location = Select(location_field)
             select_location.select_by_index(random_location_index)
@@ -325,14 +328,19 @@ class GroupsPage(BasePage):
             drop_list_teachers.click()
             select = Select(drop_list_teachers)
             select.select_by_index(TEST_TEACHER_INDEX)
-            self.driver.find_element(CreateGroupWindowLocators.BUTTON_ACCEPT_TEACHER).click()
-            self.driver.find_element(CreateGroupWindowLocators.BUTTON_ADD_EXPERT).click()
-            self.driver.find_element(CreateGroupWindowLocators.FIELD_EXPERTS_NAME).send_keys(TEST_EXPERT_NAME)
-            self.driver.find_element(CreateGroupWindowLocators.BUTTON_ACCEPT_EXPERT)
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ACCEPT_TEACHER)).click()
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ADD_EXPERT)).click()
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.FIELD_EXPERTS_NAME)).send_keys(TEST_EXPERT_NAME)
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ACCEPT_EXPERT)).click()
             field_date_start_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.DATE_START))
             field_date_start_field.send_keys(TEST_START_DATE)
             field_date_finish = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.DATE_FINISH))
             field_date_finish.send_keys(Keys.ENTER)
-            self.driver.find_element(CreateGroupWindowLocators.BUTTON_SAVE).click()
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_SAVE)).click()

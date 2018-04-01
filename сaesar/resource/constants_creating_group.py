@@ -10,3 +10,4 @@ MESSAGE_START_DATE_FIELD_IS_EMPTY = 'Start date is required!'
 MESSAGE_FINISH_DATE_FIELD_IS_EMPTY = 'Finish date is required!'
 TIME_TO_WAIT = 10
 TEST_EXPERT_NAME = 'Nickolai'
+APP_TITLE = 'Caesar'

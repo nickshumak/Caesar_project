@@ -1,7 +1,8 @@
 from caesar_items.locators.locators import CreateGroupWindowLocators
 from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
-    MESSAGE_NAME_IS_MORE_20_CHAR, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME, MESSAGE_DIRECTION_IS_NOT_SELECTED, \
-    MESSAGE_START_DATE_FIELD_IS_EMPTY
+    MESSAGE_NAME_IS_MORE_20_CHAR, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME, \
+    MESSAGE_DIRECTION_IS_NOT_SELECTED, \
+    MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -56,6 +57,7 @@ class TestCreatingGroup(TestBase):
 
     def test0111(self):
         self.group_page.WindowCreatingGroup().auto_fill_all_fields()
+        self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test05_selecting_teacher_is_enabled(self):
         """
