@@ -260,7 +260,7 @@ class AdminPage(BasePage):
         """getting all rows from table"""
         ignored_exceptions = (NoSuchElementException,
                               StaleElementReferenceException)
-        WebDriverWait(self.driver, 10, ignored_exceptions=ignored_exceptions). \
+        WebDriverWait(self.driver, 20, ignored_exceptions=ignored_exceptions). \
             until(EC.presence_of_element_located((By.XPATH, AdminPageLocators.
                                                   get_request_table(table_name))))
         web_table = self.driver.find_elements(
@@ -277,7 +277,7 @@ class AdminPage(BasePage):
 
     def get_last_button(self):
         """path to entity delete button
-         who has been created recently"""
+         who has been created recently"""
         WebDriverWait(self.driver, 20,
                       ignored_exceptions=ElementNotVisibleException). \
             until(EC.visibility_of_element_located

@@ -15,8 +15,8 @@ class TestLoginPage(TestBase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
+            executable_path=GetDriver().CHROME_DRIVER)
+        cls.driver.get(PathUrl().SITE_URL)
         cls.login_page = LogInPage(cls.driver)
         cls.login_page.set_login_field_text(first_admin.login)
         cls.login_page.set_password_field_text(first_admin.password)
@@ -52,7 +52,6 @@ class TestLoginPage(TestBase):
         self.login_page.set_login_field_text(coordinator.login)
         self.login_page.set_password_field_text(coordinator.password)
         self.group_page = self.login_page.click_submit_button()
-        self.assertEqual(self.group_page.get_title_name(), expected_page_title)
         right_menu = self.group_page.open_right_menu()
         self.assertEqual(right_menu.get_user_full_name_text(), coordinator.full_name)
         self.assertEqual(right_menu.get_user_role_text(), coordinator.role)

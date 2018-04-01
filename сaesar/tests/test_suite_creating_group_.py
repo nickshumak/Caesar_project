@@ -107,7 +107,7 @@ class TestCreatingGroup(TestBase):
         :return:
         """
         self.group_page.CreateGroupWindow().submit_group_creating_button()
-        locator_of_direction_form = CreateGroupWindowLocators.FORM_DIRECTION
+        locator_of_direction_form = CreateGroupWindowLocators.DIRECTION_FORM
         warning_message = self.group_page.CreateGroupWindow(). \
             warning_message_get_by_locator(locator_of_direction_form)
         self.assertEqual(warning_message, MESSAGE_DIRECTION_IS_NOT_SELECTED)
@@ -118,7 +118,7 @@ class TestCreatingGroup(TestBase):
         :return:
         """
         self.group_page.CreateGroupWindow().submit_group_creating_button()
-        locator_of_start_date_form = CreateGroupWindowLocators.FORM_START_DATE
+        locator_of_start_date_form = CreateGroupWindowLocators.START_DATE_FIELD
         warning_message = self.group_page.CreateGroupWindow(). \
             warning_message_get_by_locator(locator_of_start_date_form)
         self.assertEqual(warning_message, MESSAGE_START_DATE_FIELD_IS_EMPTY)

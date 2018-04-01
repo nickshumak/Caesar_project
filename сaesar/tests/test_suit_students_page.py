@@ -45,7 +45,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
+            executable_path=GetDriver().CHROME_DRIVER)
         cls.driver.get(PathUrl().SITE_URL)
         cls.driver.maximize_window()
         cls.login_page = LogInPage(cls.driver)
@@ -131,7 +131,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
+            executable_path=GetDriver().CHROME_DRIVER)
         cls.driver.get(PathUrl().SITE_URL)
         cls.driver.maximize_window()
         cls.login_page = LogInPage(cls.driver)
@@ -218,7 +218,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
-            executable_path=GetDriver().DRIVER_CHROME)
+            executable_path=GetDriver().CHROME_DRIVER)
         cls.driver.get(PathUrl().SITE_URL)
         cls.driver.maximize_window()
         cls.login_page = LogInPage(cls.driver)

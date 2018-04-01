@@ -1,6 +1,5 @@
 from resource.users_base import *
 from tests.test_base import TestBase
-from resource.url_site import PathUrl
 
 
 class TestAdminPage(TestBase):
@@ -25,7 +24,7 @@ class TestAdminPage(TestBase):
             add_entity_user(). \
             fill_user_name('User'). \
             fill_user_second_name('Tramp'). \
-            fill_user_type_role('Teacher'). \
+            fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo('photo'). \
             fill_user_login('123'). \
@@ -46,9 +45,9 @@ class TestAdminPage(TestBase):
             fill_group_direct('MQC'). \
             fill_group_first_date('2018-05-15'). \
             fill_group_second_date('2018-07-15'). \
-            fill_group_name_teacher('D. Petin'). \
-            fill_group_name_experts('M. Omel`chuk'). \
-            fill_group_level_stage('planned'). \
+            fill_group_teacher_name('D. Petin'). \
+            fill_group_experts_name('M. Omel`chuk'). \
+            fill_group_stage_level('planned'). \
             submit()
         actual_result = actual_table.get_table("groups")
         expected_result = ['DP-095JS']
@@ -72,7 +71,7 @@ class TestAdminPage(TestBase):
         self.assertIn(expected_student, actual_table)
 
     def test_create_edit_empty_fields_student(self):
-        """checking student after creating with empty fields
+        """checking button after filling with empty fields
         It will be failed"""
         actual_condition_button = self.admin_page. \
             tab_students(). \
@@ -84,11 +83,11 @@ class TestAdminPage(TestBase):
             fill_student_cv_url(''). \
             fill_student_entry_score(''). \
             fill_student_approved_by(''). \
-            get_condition_button()
+            is_enabled_submit_button
         self.assertFalse(actual_condition_button)
 
     def test_create_edit_empty_fields_group(self):
-        """checking group after creating group with empty fields
+        """checking button after filling by empty fields
         It will be failed"""
         actual_condition_button = self.admin_page. \
             tab_groups(). \
@@ -99,25 +98,59 @@ class TestAdminPage(TestBase):
             fill_group_direct('MQC'). \
             fill_group_first_date(''). \
             fill_group_second_date(''). \
-            fill_group_name_teacher(''). \
-            fill_group_name_experts(''). \
-            fill_group_level_stage('planned'). \
-            get_condition_button()
+            fill_group_teacher_name(''). \
+            fill_group_experts_name(''). \
+            fill_group_stage_level('planned'). \
+            is_enabled_submit_button
         self.assertFalse(actual_condition_button)
 
     def test_create_edit_max_length_fields_user(self):
-        """checking user after creating with more than max length
+        """checking button after filling with more than max length
         P.S max length of login/password field is 10 symbols
         It will be failed"""
         actual_condition_button = self.admin_page. \
-            get_page(PathUrl.ADMIN_PAGE).tab_users(). \
+            tab_users(). \
             add_entity_user(). \
             fill_user_name('Coder'). \
             fill_user_second_name('Developerovich'). \
-            fill_user_type_role('Teacher'). \
+            fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo('photo'). \
             fill_user_login('b' * 11). \
             fill_user_password('a' * 11). \
-            get_condition_button()
+            is_enabled_submit_button()
         self.assertFalse(actual_condition_button)
+
+    def test_create_edit_symbols_user(self):
+        """checking button after filling with symbols
+        It will be failed"""
+        actual_condition_button = self.admin_page. \
+            tab_users(). \
+            add_entity_user(). \
+            fill_user_name('Coder'). \
+            fill_user_second_name('Developerovich'). \
+            fill_user_role_type('Teacher'). \
+            fill_user_city('Dnipro'). \
+            fill_user_photo('photo'). \
+            fill_user_login('b' * 11). \
+            fill_user_password('a' * 11). \
+            is_enabled_submit_button()
+        self.assertFalse(actual_condition_button)
+
+    def test_delete_user_after_create(self):
+        """checking users' table after deleting
+        user who has been added recently"""
+        actual_table = self.admin_page. \
+            tab_users(). \
+            add_entity_user(). \
+            fill_user_name('Sergei'). \
+            fill_user_second_name('D'). \
+            fill_user_role_type('Teacher'). \
+            fill_user_city('Dnipro'). \
+            fill_user_photo('photo'). \
+            fill_user_login('Vlad'). \
+            fill_user_password('1234'). \
+            submit(). \
+            delete_last_entity(). \
+            get_table('users')
+        self.assertNotIn('Sergei', actual_table)

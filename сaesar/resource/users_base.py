@@ -39,7 +39,7 @@ def create_8_users_for_tests(driver):
         admin_page = AdminPage(driver).add_entity_user()
         admin_page.fill_user_name(''). \
             fill_user_second_name(''). \
-            fill_user_type_role('Teacher'). \
+            fill_user_role_type('Teacher'). \
             fill_user_city('Dnipro'). \
             fill_user_photo(''). \
             fill_user_login(user.login). \

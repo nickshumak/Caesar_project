@@ -1,14 +1,34 @@
 import unittest
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+
+from resource.path_driver import GetDriver
 from resource.users_base import *
+from resource.url_site import PathUrl
+from caesar_items.pages.login_page import LogInPage
 from tests.test_base import TestBase
+
 
 expected_url = 'http://localhost:3000/Groups/Dnipro'
 expected_login_page_title = 'Log in - Caesar'
 group_name = 'DP-093-JS'
-group_to_delete_name = ''
+group_to_delete_name = 'DP-098-JS'
 
 
 class TestGroupPageAdmin(TestBase):
+    @classmethod
+    def setUpClass(cls):
+        driver = webdriver.Chrome(
+            executable_path=GetDriver().CHROME_DRIVER)
+        driver.get(PathUrl().SITE_URL)
+        driver.maximize_window()
+        login_page = LogInPage(driver)
+        group_page = login_page.auto_login(first_admin)
+        left_menu = group_page.open_left_menu()
+        left_menu.create_group_button().click()
+        group_page.CreateGroupWindow().auto_fill_all_fields(group_to_delete_name, first_admin.location)
+        driver.quit()
+
     def setUp(self):
         super().setUp()
         self.group_page = self.login_page.auto_login(first_admin)
@@ -124,11 +144,14 @@ class TestGroupPageAdmin(TestBase):
         """
         check that admin can delete group
         """
-        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
-                         + group_name + '/Search'
+        expected_string = "group not exist"
+        self.group_page.button_boarding_groups().click()
         self.group_page.select_group_by_name(group_to_delete_name)
         left_menu = self.group_page.open_left_menu()
-        # left_menu.delete_group_button().click()
+        left_menu.delete_group_button().click()
+        self.group_page.confirm_deletion_button().click()
+        self.assertEqual(self.group_page.select_group_by_name(group_to_delete_name),
+                         expected_string)
 
     def test13_groups_stage_in_progress_or_offering(self):
         """
@@ -147,8 +170,8 @@ class TestGroupPageAdmin(TestBase):
         check that groups placed in page with right stage status
         """
         expected_result = 'finished'
-        self.group_page.ended_groups_button().click()
         groups_in_ended_stage = ('DP-092-NET', 'DP-065-AQC', 'DP-027-JS')
+        self.group_page.ended_groups_button().click()
         for group in groups_in_ended_stage:
             self.group_page.select_group_by_name(group)
             actual_result = self.group_page.get_group_stage_text()
@@ -158,16 +181,29 @@ class TestGroupPageAdmin(TestBase):
         """
         check that groups placed in page with right stage status
         """
-        expected_result = 'boarding'
-        self.group_page.button_boarding_groups().click()
+        expected_result = ('boarding', 'planned')
         groups_in_boarding_stage = ('DP-097-QC', 'DP-095-JS')
+        self.group_page.button_boarding_groups().click()
         for group in groups_in_boarding_stage:
             self.group_page.select_group_by_name(group)
             actual_result = self.group_page.get_group_stage_text()
-            self.assertEqual(actual_result, expected_result)
+            self.assertIn(actual_result, expected_result)
 
 
 class TestGroupPageCoordinator(TestBase):
+    @classmethod
+    def setUpClass(cls):
+        driver = webdriver.Chrome(
+            executable_path=GetDriver().CHROME_DRIVER)
+        driver.get(PathUrl().SITE_URL)
+        driver.maximize_window()
+        login_page = LogInPage(driver)
+        group_page = login_page.auto_login(first_admin)
+        left_menu = group_page.open_left_menu()
+        left_menu.create_group_button().click()
+        group_page.CreateGroupWindow().auto_fill_all_fields(group_to_delete_name, first_admin.location)
+        driver.quit()
+
     def setUp(self):
         super().setUp()
         self.group_page = self.login_page.auto_login(coordinator)
@@ -207,12 +243,14 @@ class TestGroupPageCoordinator(TestBase):
         """
         check that coordinator can delete group
         """
-        edit_group_url = 'http://localhost:3000/Groups/Dnipro/' \
-                         + group_name + '/Search'
+        expected_string = "group not exist"
+        self.group_page.button_boarding_groups().click()
         self.group_page.select_group_by_name(group_to_delete_name)
         left_menu = self.group_page.open_left_menu()
-        # left_menu.delete_group_button().click()
-        # self.assertEqual(self.group_page.get_current_url(), edit_group_url)
+        left_menu.delete_group_button().click()
+        self.group_page.confirm_deletion_button().click()
+        self.assertEqual(self.group_page.select_group_by_name(group_to_delete_name),
+                         expected_string)
 
 
 class TestGroupPageTeacher(TestBase):
@@ -225,7 +263,7 @@ class TestGroupPageTeacher(TestBase):
         Check that teacher doen't have create button
         """
         left_menu = self.group_page.open_left_menu()
-        self.assertRaises(NoSuchElementException, left_menu.create_group_button)
+        self.assertRaises(TimeoutException, left_menu.create_group_button)
 
     def test21_delete_button_disabled_for_teacher(self):
         """
