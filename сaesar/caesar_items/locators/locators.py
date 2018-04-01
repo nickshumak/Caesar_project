@@ -132,11 +132,14 @@ class CreateGroupWindowLocators(object):
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(3) > div:nth-child(1)')
     DIRECTION_DROP_LIST = (By.NAME, 'direction')
+    LOCATION_FORM = (By.CSS_SELECTOR, '#modal-window > section > section > '
+                                      'section > div:nth-child(4) > '
+                                      'div:nth-child(1)')
     LOCATION_DROP_LIST = (By.NAME, 'location')
     ONE_MORE_TEACHER_BUTTON = (By.CLASS_NAME, 'add-teacher-btn')
     TEACHERS_DROP_LIST = (By.NAME, 'teacher')
+    ADDED_TEACHERS_FORM = (By.ID, 'teachers')
     ACCEPT_TEACHER_BUTTON = (By.ID, 'acceptSelect')
-    ADDED_TEACHERS_FORM = (By.CLASS_NAME, 'list-item')
     BUDGET_SOFT_SERVE_BUTTON = (By.CLASS_NAME,
                                 'btn btn-default budget-option active')
     BUDGET_OPEN_GROUP_BUTTON = (By.CLASS_NAME, 'btn btn-default budget-option ')
@@ -150,6 +153,10 @@ class CreateGroupWindowLocators(object):
     ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
     EXPERTS_NAME_FIELD = (By.NAME, 'expert')
     ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
+    EXPERTS_FORM = (By.CSS_SELECTOR, "#modal-window > section > section > "
+                                     "section > div:nth-child(6) > "
+                                     "div:nth-child(2)")
+    ADDED_EXPERTS_LIST = (By.CLASS_NAME, 'listExpert')
     SAVE_BUTTON = (By.ID, 'save')
     CANCEL_BUTTON = (By.ID, 'cancel')
 
