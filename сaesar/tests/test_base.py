@@ -11,7 +11,7 @@ class TestBase(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(
             executable_path=GetDriver.CHROME_DRIVER)
-        self.driver.get(PathUrl.URL_SITE)
+        self.driver.get(PathUrl.SITE_URL)
         self.driver.maximize_window()
         self.login_page = LogInPage(self.driver)
         self.group_page = GroupsPage(self.driver)
