@@ -1,38 +1,25 @@
 from resource.users_base import *
 from tests.test_base import TestBase
-from caesar_items.pages.admin_page import *
 from resource.url_site import PathUrl
 
 
 class TestAdminPage(TestBase):
+    def setUp(self):
+        super().setUp()
+        self.group_page = self.login_page.auto_login(first_admin)
+        self.admin_page = self.group_page.open_admin_page()
 
     def test_admin_escape_home_button(self):
         """Checking escape home button on admin page"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page.get_page(PathUrl.ADMIN_PAGE)
-        title_page = self.admin_page. \
-            back_home(). \
-            get_title_name()
-        self.assertEqual("Caesar", title_page)
+        self.admin_page.back_home()
+        self.assertEqual("Caesar", self.admin_page.get_title_name())
 
     def test_title_admin_page(self):
-        """Checking title Admin page after transition from Group page"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        title_page = self.group_page. \
-            get_page(PathUrl.ADMIN_PAGE). \
-            get_title_name()
+        title_page = self.admin_page.get_title_name()
         self.assertEqual("Caesar Admin Panel", title_page)
 
     def test_create_edit_users(self):
         """checking user in user's table after creating"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page.get_page(PathUrl.ADMIN_PAGE)
         actual_table = self.admin_page. \
             tab_users(). \
             add_entity_user(). \
@@ -50,11 +37,6 @@ class TestAdminPage(TestBase):
 
     def test_create_edit_groups(self):
         """checking group after creating"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page. \
-            get_page(PathUrl.ADMIN_PAGE)
         actual_table = self.admin_page. \
             tab_groups(). \
             add_entity_group(). \
@@ -74,11 +56,6 @@ class TestAdminPage(TestBase):
 
     def test_create_edit_students(self):
         """checking student after creating"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page. \
-            get_page(PathUrl.ADMIN_PAGE)
         actual_table = self.admin_page. \
             tab_students(). \
             add_entity_student(). \
@@ -97,11 +74,6 @@ class TestAdminPage(TestBase):
     def test_create_edit_empty_fields_student(self):
         """checking student after creating with empty fields
         It will be failed"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page. \
-            get_page(PathUrl.ADMIN_PAGE)
         actual_condition_button = self.admin_page. \
             tab_students(). \
             add_entity_student(). \
@@ -118,11 +90,6 @@ class TestAdminPage(TestBase):
     def test_create_edit_empty_fields_group(self):
         """checking group after creating group with empty fields
         It will be failed"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page. \
-            get_page(PathUrl.ADMIN_PAGE)
         actual_condition_button = self.admin_page. \
             tab_groups(). \
             add_entity_group(). \
@@ -142,11 +109,6 @@ class TestAdminPage(TestBase):
         """checking user after creating with more than max length
         P.S max length of login/password field is 10 symbols
         It will be failed"""
-        self.login_page.enter_login(first_admin.login)
-        self.login_page.enter_password(first_admin.password)
-        self.login_page.submit()
-        self.group_page. \
-            get_page(PathUrl.ADMIN_PAGE)
         actual_condition_button = self.admin_page. \
             get_page(PathUrl.ADMIN_PAGE).tab_users(). \
             add_entity_user(). \

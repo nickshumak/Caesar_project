@@ -46,14 +46,14 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
             executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
+        cls.driver.get(PathUrl().SITE_URL)
         cls.driver.maximize_window()
         cls.login_page = LogInPage(cls.driver)
         cls.main_page = cls.login_page.auto_login(first_admin)
         cls.main_page = GroupsPage(cls.driver)
         cls.main_page.open_top_menu()
-        cls.main_page.top_menu.click_button_students()
-        cls.main_page.select_group(group_name)
+        cls.main_page.top_menu.click_students_button()
+        cls.main_page.select_group_by_name(group_name)
         cls.students_page = StudentsPage(cls.driver)
 
     @classmethod
@@ -132,15 +132,15 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
             executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
+        cls.driver.get(PathUrl().SITE_URL)
         cls.driver.maximize_window()
         cls.login_page = LogInPage(cls.driver)
         cls.main_page = cls.login_page.auto_login(coordinator)
         cls.main_page = GroupsPage(cls.driver)
         cls.students_page = StudentsPage(cls.driver)
         cls.main_page.open_top_menu()
-        cls.main_page.top_menu.click_button_students()
-        cls.main_page.select_group(group_name)
+        cls.main_page.top_menu.click_students_button()
+        cls.main_page.select_group_by_name(group_name)
         cls.students_page = StudentsPage(cls.driver)
 
     @classmethod
@@ -219,14 +219,14 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(
             executable_path=GetDriver().DRIVER_CHROME)
-        cls.driver.get(PathUrl().URL_SITE)
+        cls.driver.get(PathUrl().SITE_URL)
         cls.driver.maximize_window()
         cls.login_page = LogInPage(cls.driver)
         cls.main_page = cls.login_page.auto_login(teacher)
         cls.main_page = GroupsPage(cls.driver)
         cls.main_page.open_top_menu()
-        cls.main_page.top_menu.click_button_students()
-        cls.main_page.select_group(group_name)
+        cls.main_page.top_menu.click_students_button()
+        cls.main_page.select_group_by_name(group_name)
         cls.students_page = StudentsPage(cls.driver)
 
     @classmethod

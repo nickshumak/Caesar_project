@@ -21,7 +21,7 @@ class GroupPageLocators(object):
     # надо определиться как делаем, так не красиво или через массив?селекторы проверила
     ENDED_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(2)')
     CURRENT_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(4)')
-    FUTURE_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
+    BOARDING_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
 
     GROUPS = (By.CLASS_NAME, 'small-group-view')
 
@@ -149,3 +149,55 @@ class WindowCreateGroup(object):
     FIELD_EXPERTS_NAME = (By.NAME, 'expert')
     BUTTON_ACCEPT_EXPERT = (By.ID, 'acceptInput')
     BUTTON_SAVE = (By.ID, 'save')
+
+
+# for students
+class StudentsListLocators(object):
+    BUTTON_EDIT_STUDENTS_LIST = \
+        (By.XPATH, './/*[@id="main-section"]/div/header/div[1]/button')
+    BUTTON_STUDENTS_IN_STUDENTS_LIST = (By.CLASS_NAME, 'students')
+    BUTTON_SCHEDULE_IN_STUDENTS = (By.CLASS_NAME, 'shedule')
+    BUTTON_MESSAGE_IN_STUDENTS = (By.CLASS_NAME, 'message')
+    STUDENTS_LISTS_ROWS = (By.CLASS_NAME, 'tableBodyStudents')
+
+
+class EditStudentsListLocators(object):
+    NAME_STUDENT_LIST = \
+        (By.CSS_SELECTOR, '.header-modal-editStudentlist > span:nth-child(1)')
+    STUDENTS_TABLE = (By.CLASS_NAME, 'tableBodyStudents')
+    BUTTON_EXIT_EDIT_STUDENTS_LIST = (By.CLASS_NAME, 'exit')
+    BUTTON_DELETE_STUDENT = (By.XPATH, './/*[@id="modal-window"]//td[6]/i')
+    BUTTON_CONFIRM_DELETING = (By.XPATH, './/*[@id="modal-window"]//button[1]')
+    BUTTON_ADD_NEW_STUDENT = \
+        (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
+    BUTTON_EDIT_STUDENT = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
+
+# fields for student
+    TEXT_FIELD_FIRST_NAME = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[1]/input')
+    TEXT_FIELD_LAST_NAME = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[1]/input')
+    LIST_ENGLISH_LEVEL = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[4]/div[1]/select')
+    PRE_INTERMEDIATE_LOW = \
+        (By.XPATH, './/*[@id = "modal-window"]/div/section/section/div[4]/div[1]/select/option[2]')
+    STUDENT_MARK_INCOMING_TEST = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[1]/div[2]/input')
+    STUDENT_ENTRY_SCORE = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[2]/input')
+    STUDENT_APPROVED_BY = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select')
+    APPROVED_BY = (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select/option[2]')
+    BUTTON_SAVE_CHANGES = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[6]/button[1]')
+    BUTTON_ADDING_CV = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[1]/button')
+    INPUT_ADDING_CV = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[1]/input')
+    FILE_NAME_CV = (By.CLASS_NAME, 'list-item')
+    BUTTON_ADDING_PHOTO = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/button')
+    INPUT_ADDING_PHOTO = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/input')
+    FILE_NAME_PHOTO = \
+        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/ul/li/span[1]')

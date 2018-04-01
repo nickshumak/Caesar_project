@@ -11,7 +11,7 @@ class TestCreatingGroup(TestBase):
         super().setUp()
         self.group_page = self.login_page.auto_login(first_admin)
         self.left_menu = self.group_page.open_left_menu()
-        self.left_menu.create_group().click()
+        self.left_menu.create_group_button().click()
 
     def test01_name_entering_is_enabled(self):
         """
