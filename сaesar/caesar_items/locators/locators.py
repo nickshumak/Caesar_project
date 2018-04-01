@@ -124,7 +124,7 @@ class CreateEditStudentsLocators(object):
 
 
 class CreateGroupWindowLocators(object):
-    FORM_GROUP_NAME = (
+    GROUP_NAME_FORM = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(1) > div:nth-child(1) > div > div')
     FIELD_GROUP_NAME = (By.NAME, 'name')
@@ -150,7 +150,8 @@ class CreateGroupWindowLocators(object):
     BUTTON_ADD_EXPERT = (By.CLASS_NAME, 'add-expert-btn')
     FIELD_EXPERTS_NAME = (By.NAME, 'expert')
     BUTTON_ACCEPT_EXPERT = (By.ID, 'acceptInput')
-    BUTTON_SAVE = (By.ID, 'save')
+    SAVE_BUTTON = (By.ID, 'save')
+    CANCEL_BUTTON = (By.ID, 'cancel')
 
 
 # for students
@@ -174,7 +175,7 @@ class EditStudentsListLocators(object):
         (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
     BUTTON_EDIT_STUDENT = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
 
-# fields for student
+    # fields for student
     TEXT_FIELD_FIRST_NAME = \
         (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[1]/input')
     TEXT_FIELD_LAST_NAME = \

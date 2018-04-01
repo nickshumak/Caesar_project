@@ -24,7 +24,8 @@ class LeftMenu(object):
         """
         get create button web element
         """
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_CREATE_GROUP)
+        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(LeftMenuLocators.BUTTON_CREATE_GROUP))
 
     def search_group_button(self):
         """
@@ -174,7 +175,7 @@ class GroupsPage(BasePage):
     def click_cancel_deletion_button(self):
         self.driver.find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION).click()
 
-    class WindowCreatingGroup(object):
+    class CreateGroupWindow(object):
         def __init__(self):
             self.driver = GroupsPage.driver
 
@@ -251,9 +252,12 @@ class GroupsPage(BasePage):
                                            BUTTON_ONE_MORE_TEACHER))
 
         def drop_list_teacher_get(self) -> object:
-            button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           BUTTON_ONE_MORE_TEACHER))
+            try:
+                button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                    EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                               BUTTON_ONE_MORE_TEACHER))
+            except:
+                button_add_teacher = self.driver.find_element(CreateGroupWindowLocators.BUTTON_ONE_MORE_TEACHER)
             button_add_teacher.click()
             drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
@@ -284,9 +288,9 @@ class GroupsPage(BasePage):
             field_date_finish.send_keys(Keys.ENTER)
             return self
 
-        def button_submit_group_creating(self):
+        def submit_group_creating_button(self):
             button_save_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_SAVE))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.SAVE_BUTTON))
             button_save_group.click()
             return self
 
@@ -301,6 +305,10 @@ class GroupsPage(BasePage):
                 for message_text in hint:
                     warning_message = message_text.text
             return warning_message
+
+        def cancel_button_get(self):
+            return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.CANCEL_BUTTON))
 
         def auto_fill_all_fields(self):
             direction_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
@@ -320,27 +328,38 @@ class GroupsPage(BasePage):
             random_location_index = random.randint(0, 3)
             select_location = Select(location_field)
             select_location.select_by_index(random_location_index)
-            button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ONE_MORE_TEACHER))
+            button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 BUTTON_ONE_MORE_TEACHER))
             button_add_teacher.click()
             drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.DROP_LIST_TEACHERS))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           DROP_LIST_TEACHERS))
             drop_list_teachers.click()
             select = Select(drop_list_teachers)
             select.select_by_index(TEST_TEACHER_INDEX)
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ACCEPT_TEACHER)).click()
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           BUTTON_ACCEPT_TEACHER)).click()
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ADD_EXPERT)).click()
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           BUTTON_ADD_EXPERT)).click()
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.FIELD_EXPERTS_NAME)).send_keys(TEST_EXPERT_NAME)
+                EC.element_to_be_clickable(
+                    CreateGroupWindowLocators.FIELD_EXPERTS_NAME)).send_keys(
+                TEST_EXPERT_NAME)
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_ACCEPT_EXPERT)).click()
-            field_date_start_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.DATE_START))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           BUTTON_ACCEPT_EXPERT)).click()
+            field_date_start_field = WebDriverWait(self.driver,
+                                                   TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           DATE_START))
             field_date_start_field.send_keys(TEST_START_DATE)
             field_date_finish = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.DATE_FINISH))
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           DATE_FINISH))
             field_date_finish.send_keys(Keys.ENTER)
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.BUTTON_SAVE)).click()
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           SAVE_BUTTON)).click()

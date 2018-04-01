@@ -20,7 +20,7 @@ class TestCreatingGroup(TestBase):
                 :return:
 
                   """
-        field_name_of_group = self.group_page.WindowCreatingGroup(). \
+        field_name_of_group = self.group_page.CreateGroupWindow(). \
             field_group_name_get()
         self.assertTrue(field_name_of_group.is_enabled())
 
@@ -31,7 +31,7 @@ class TestCreatingGroup(TestBase):
 
                   """
 
-        field_direction = self.group_page.WindowCreatingGroup(). \
+        field_direction = self.group_page.CreateGroupWindow(). \
             direction_of_group_get()
         self.assertTrue(field_direction.is_enabled())
 
@@ -41,7 +41,7 @@ class TestCreatingGroup(TestBase):
                 :return:
 
                   """
-        field_location = self.group_page.WindowCreatingGroup(). \
+        field_location = self.group_page.CreateGroupWindow(). \
             location_of_group_get()
         self.assertTrue(field_location.is_enabled())
 
@@ -51,13 +51,17 @@ class TestCreatingGroup(TestBase):
                 :return:
 
                   """
-        button_add_teacher = self.group_page.WindowCreatingGroup(). \
+        button_add_teacher = self.group_page.CreateGroupWindow(). \
             button_teacher_add_get()
         self.assertTrue(button_add_teacher.is_enabled())
 
     def test0111(self):
-        self.group_page.WindowCreatingGroup().auto_fill_all_fields()
+        self.group_page.CreateGroupWindow().auto_fill_all_fields()
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
+
+    def test06_cancel_button_is_enabled(self):
+        cancel_button = self.group_page.CreateGroupWindow().cancel_button_get()
+        self.assertTrue(cancel_button.is_enabled())
 
     def test05_selecting_teacher_is_enabled(self):
         """
@@ -65,10 +69,10 @@ class TestCreatingGroup(TestBase):
                 :return:
 
                   """
-        button_add_teacher = self.group_page.WindowCreatingGroup(). \
+        button_add_teacher = self.group_page.CreateGroupWindow(). \
             button_teacher_add_get()
         button_add_teacher.click()
-        drop_list_teachers = self.group_page.WindowCreatingGroup(). \
+        drop_list_teachers = self.group_page.CreateGroupWindow(). \
             drop_list_teacher_get()
         self.assertTrue(drop_list_teachers.is_enabled())
 
@@ -77,11 +81,12 @@ class TestCreatingGroup(TestBase):
         Try to create a group with more than 20 characters 'group name'
         :return:
         """
-        self.group_page.WindowCreatingGroup().field_group_name_set(
+        self.group_page.CreateGroupWindow().field_group_name_set(
             TEST_TOO_LONG_GROUP_NAME)
-        self.group_page.WindowCreatingGroup().submit_group_creating()
-        warning_message = self.group_page.WindowCreatingGroup(). \
-            warning_message_get()
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
+        form_group_name_locator = CreateGroupWindowLocators.GROUP_NAME_FORM
+        warning_message = self.group_page.CreateGroupWindow(). \
+            warning_message_get_by_locator(form_group_name_locator)
         self.assertEqual(warning_message, MESSAGE_NAME_IS_MORE_20_CHAR)
 
     def test_create_group_with_empty_field_group_name(self):
@@ -89,10 +94,11 @@ class TestCreatingGroup(TestBase):
         Try to create a group with empty field 'group name'
         :return:
         """
-        self.group_page.WindowCreatingGroup().field_group_name_set('')
-        self.group_page.WindowCreatingGroup().submit_group_creating()
-        warning_message = self.group_page.WindowCreatingGroup(). \
-            warning_message_get()
+        self.group_page.CreateGroupWindow().field_group_name_set('')
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
+        form_group_name_locator = CreateGroupWindowLocators.GROUP_NAME_FORM
+        warning_message = self.group_page.CreateGroupWindow(). \
+            warning_message_get_by_locator(form_group_name_locator)
         self.assertEqual(warning_message, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME)
 
     def test_create_group_with_empty_field_direction(self):
@@ -100,9 +106,9 @@ class TestCreatingGroup(TestBase):
         Try to create a group with empty field 'group name'
         :return:
         """
-        self.group_page.WindowCreatingGroup().submit_group_creating()
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
         locator_of_direction_form = CreateGroupWindowLocators.FORM_DIRECTION
-        warning_message = self.group_page.WindowCreatingGroup(). \
+        warning_message = self.group_page.CreateGroupWindow(). \
             warning_message_get_by_locator(locator_of_direction_form)
         self.assertEqual(warning_message, MESSAGE_DIRECTION_IS_NOT_SELECTED)
 
@@ -111,8 +117,8 @@ class TestCreatingGroup(TestBase):
         Try to create a group with empty field 'group name'
         :return:
         """
-        self.group_page.WindowCreatingGroup().submit_group_creating()
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
         locator_of_start_date_form = CreateGroupWindowLocators.FORM_START_DATE
-        warning_message = self.group_page.WindowCreatingGroup(). \
+        warning_message = self.group_page.CreateGroupWindow(). \
             warning_message_get_by_locator(locator_of_start_date_form)
         self.assertEqual(warning_message, MESSAGE_START_DATE_FIELD_IS_EMPTY)
