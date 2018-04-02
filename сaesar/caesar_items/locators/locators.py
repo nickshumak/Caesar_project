@@ -162,11 +162,14 @@ class CreateGroupWindowLocators(object):
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(3) > div:nth-child(1)')
     DIRECTION_DROP_LIST = (By.NAME, 'direction')
+    LOCATION_FORM = (By.CSS_SELECTOR, '#modal-window > section > section > '
+                                      'section > div:nth-child(4) > '
+                                      'div:nth-child(1)')
     LOCATION_DROP_LIST = (By.NAME, 'location')
     ONE_MORE_TEACHER_BUTTON = (By.CLASS_NAME, 'add-teacher-btn')
     TEACHERS_DROP_LIST = (By.NAME, 'teacher')
+    ADDED_TEACHERS_FORM = (By.ID, 'teachers')
     ACCEPT_TEACHER_BUTTON = (By.ID, 'acceptSelect')
-    ADDED_TEACHERS_FORM = (By.CLASS_NAME, 'list-item')
     BUDGET_SOFT_SERVE_BUTTON = (By.CLASS_NAME,
                                 'btn btn-default budget-option active')
     BUDGET_OPEN_GROUP_BUTTON = (By.CLASS_NAME, 'btn btn-default budget-option ')
@@ -180,59 +183,62 @@ class CreateGroupWindowLocators(object):
     ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
     EXPERTS_NAME_FIELD = (By.NAME, 'expert')
     ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
+    EXPERTS_FORM = (By.CSS_SELECTOR, "#modal-window > section > section > "
+                                     "section > div:nth-child(6) > "
+                                     "div:nth-child(2)")
+    ADDED_EXPERTS_LIST = (By.CLASS_NAME, 'listExpert')
     SAVE_BUTTON = (By.ID, 'save')
     CANCEL_BUTTON = (By.ID, 'cancel')
 
 
 class StudentsListLocators(object):
-    BUTTON_EDIT_STUDENTS_LIST = \
+    EDIT_STUDENTS_LIST_BUTTON = \
         (By.XPATH, './/*[@id="main-section"]/div/header/div[1]/button')
-    BUTTON_STUDENTS_IN_STUDENTS_LIST = (By.CLASS_NAME, 'students')
-    BUTTON_SCHEDULE_IN_STUDENTS = (By.CLASS_NAME, 'shedule')
-    BUTTON_MESSAGE_IN_STUDENTS = (By.CLASS_NAME, 'message')
+    STUDENTS_IN_STUDENTS_LIST_BUTTON = (By.CLASS_NAME, 'students')
+    SCHEDULE_IN_STUDENTS_BUTTON = (By.CLASS_NAME, 'shedule')
+    MESSAGE_IN_STUDENTS_BUTTON = (By.CLASS_NAME, 'message')
     STUDENTS_LISTS_ROWS = (By.CLASS_NAME, 'tableBodyStudents')
-    BUTTON_SORT_LIST_BY_NAME = (By.CLASS_NAME, 'fullName')
-    BUTTON_SORT_LIST_BY_ENGLISH_LEVEL = (By.CLASS_NAME, 'engLevel')
+    SORT_LIST_BY_NAME_BUTTON = (By.CLASS_NAME, 'fullName')
+    SORT_LIST_BY_ENGLISH_LEVEL_BUTTON = (By.CLASS_NAME, 'engLevel')
     NAME_STUDENT_LIST = \
         (By.CSS_SELECTOR, '.header-modal-editStudentlist > span:nth-child(1)')
     STUDENTS_TABLE = (By.CLASS_NAME, 'tableBodyStudents')
-    BUTTON_EXIT_EDIT_STUDENTS_LIST = (By.CLASS_NAME, 'exit')
-    BUTTON_DELETE_STUDENT = (By.XPATH, './/*[@id="modal-window"]//td[6]/i')
-    BUTTON_CONFIRM_DELETING = (By.XPATH, './/*[@id="modal-window"]//button[1]')
-    BUTTON_ADD_NEW_STUDENT = \
+    EXIT_EDIT_STUDENTS_LIST_BUTTON = (By.CLASS_NAME, 'exit')
+    DELETE_STUDENT_BUTTON = (By.XPATH, './/*[@id="modal-window"]//td[6]/i')
+    CONFIRM_DELETING_BUTTON = (By.XPATH, './/*[@id="modal-window"]//button[1]')
+    ADD_NEW_STUDENT_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
-    BUTTON_EDIT_STUDENT = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
+    EDIT_STUDENT_BUTTON = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
 
 
 class StudentLocators(object):
-    TEXT_FIELD_FIRST_NAME = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[1]/input')
-    TEXT_FIELD_LAST_NAME = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[1]/input')
+    FIRST_NAME_TEXT_FIELD = \
+        (By.XPATH, './/*[@id="modal-window"]//div[2]/div[1]/input')
+    LAST_NAME_TEXT_FIELD = \
+        (By.XPATH, './/*[@id="modal-window"]//div[3]/div[1]/input')
     LIST_ENGLISH_LEVEL = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[4]/div[1]/select')
+        (By.XPATH, './/*[@id="modal-window"]//div[4]/div[1]/select')
     PRE_INTERMEDIATE_LOW = \
-        (By.XPATH, './/*[@id = "modal-window"]/div/section/section/div[4]/div[1]/select/option[2]')
+        (By.XPATH, './/*[@id = "modal-window"]//div[4]/div[1]/select/option[2]')
     STUDENT_MARK_INCOMING_TEST = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[1]/div[2]/input')
+        (By.XPATH, './/*[@id="modal-window"]//div[1]/div[2]/input')
     STUDENT_ENTRY_SCORE = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[2]/div[2]/input')
+        (By.XPATH, './/*[@id="modal-window"]//div[2]/div[2]/input')
     STUDENT_APPROVED_BY = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select')
+        (By.XPATH, './/*[@id="modal-window"]//div[3]/div[2]/select')
     APPROVED_BY = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[3]/div[2]/select/option[2]')
-    BUTTON_SAVE_CHANGES = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[6]/button[1]')
-    BUTTON_ADDING_CV = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[1]/button')
-    INPUT_ADDING_CV = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[1]/input')
+        (By.XPATH, './/*[@id="modal-window"]//div[3]/div[2]/select/option[2]')
+    SAVE_CHANGES_BUTTON = \
+        (By.XPATH, './/*[@id="modal-window"]//div[6]/button[1]')
+    ADD_CV_BUTTON = \
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/button')
+    INPUT_PATH_CV_FILE = \
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/input')
     FILE_NAME_CV = (By.CLASS_NAME, 'list-item')
-    BUTTON_ADDING_PHOTO = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/button')
-    INPUT_ADDING_PHOTO = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/input')
+    ADD_PHOTO_BUTTON = \
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[2]/button')
+    INPUT_PATH_PHOTO_FILE = \
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[2]/input')
     FILE_NAME_PHOTO = \
-        (By.XPATH, './/*[@id="modal-window"]/div/section/section/div[5]/div[2]/ul/li/span[1]')
-    WARNINGS_ADDING_EMPTY_STUDENT_DATA = \
-        (By.CLASS_NAME, 'hint')
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[2]/ul/li/span[1]')
+    WARNINGS_ADD_EMPTY_STUDENT_DATA = (By.CLASS_NAME, 'hint')
