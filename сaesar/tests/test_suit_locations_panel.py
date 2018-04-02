@@ -27,28 +27,28 @@ class TestLocationWindow(TestBase):
         """
         check that user can select location
         """
-        location_name = 'Dnipro'
+        expexted_result = 'Dnipro'
         self.locations_window.select_dnipro_location()
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, location_name)
+        self.assertEqual(actual_result, expexted_result)
 
-    def test03_select_two_locations(self):
+    def test04_select_two_locations(self):
         """
         check that user can select several locations
         """
-        locations_name = '2 locations'
+        expexted_result = '2 locations'
         self.locations_window.select_dnipro_location()
         self.locations_window.select_kyiv_location()
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, locations_name)
+        self.assertEqual(actual_result, expexted_result)
 
-    def test04_select_all_locations(self):
+    def test05_select_all_locations(self):
         """
         check that user can select all locations
         """
-        locations_name = '7 locations'
+        expexted_result = '7 locations'
         self.locations_window.select_dnipro_location()
         self.locations_window.select_kyiv_location()
         self.locations_window.select_chernivtsy_location()
@@ -59,13 +59,13 @@ class TestLocationWindow(TestBase):
 
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, locations_name)
+        self.assertEqual(actual_result, expexted_result)
 
-    def test05_uncheck_location(self):
+    def test06_uncheck_location(self):
         """
         check that user can uncheck selected locations
         """
-        location_name = 'Dnipro'
+        expexted_result = 'Dnipro'
         self.locations_window.select_dnipro_location()
         self.locations_window.select_kyiv_location()
         self.locations_window.save_button().click()
@@ -74,4 +74,4 @@ class TestLocationWindow(TestBase):
         self.locations_window.select_kyiv_location()
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, location_name)
+        self.assertEqual(actual_result, expexted_result)
