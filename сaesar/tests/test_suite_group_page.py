@@ -200,9 +200,39 @@ class TestGroupPageAdmin(TestBase):
         self.assertEqual(right_menu.get_current_url(), expected_result)
 
     def test17_open_groups_info_panel(self):
+        expected_result = 'http://localhost:3000/Groups/Dnipro/' \
+                          + group_name + '/info'
         self.group_page.select_group_by_name(group_name)
-        self.group_page.
-        self.assertEqual(right_menu.get_current_url(), expected_result)
+        self.group_page.group_info_button().click()
+        self.assertEqual(self.group_page.get_current_url(), expected_result)
+
+    def test18_open_groups_students_panel(self):
+        expected_result = 'http://localhost:3000/Groups/Dnipro/' \
+                          + group_name + '/students'
+        self.group_page.select_group_by_name(group_name)
+        self.group_page.group_students_button().click()
+        self.assertEqual(self.group_page.get_current_url(), expected_result)
+
+    def test19_open_groups_schedule_panel(self):
+        expected_result = 'http://localhost:3000/Groups/Dnipro/' \
+                          + group_name + '/shedule'
+        self.group_page.select_group_by_name(group_name)
+        self.group_page.group_calendar_button().click()
+        self.assertEqual(self.group_page.get_current_url(), expected_result)
+
+    def test20_open_groups_message_panel(self):
+        expected_result = 'http://localhost:3000/Groups/Dnipro/' \
+                          + group_name + '/message'
+        self.group_page.select_group_by_name(group_name)
+        self.group_page.group_message_button().click()
+        self.assertEqual(self.group_page.get_current_url(), expected_result)
+
+    def test21_open_edit_group_from_info_panel(self):
+        expected_result = 'http://localhost:3000/Groups/Dnipro/' \
+                          + group_name + '/info/edit'
+        self.group_page.select_group_by_name(group_name)
+        self.group_page.group_edit_button().click()
+        self.assertEqual(self.group_page.get_current_url(), expected_result)
 
 
 class TestGroupPageCoordinator(TestBase):
@@ -224,7 +254,7 @@ class TestGroupPageCoordinator(TestBase):
         super().setUp()
         self.group_page = self.login_page.auto_login(coordinator)
 
-    def test16_open_create_page(self):
+    def test22_open_create_page(self):
         """
         open create group panel as coordinator and check url
         """
@@ -234,7 +264,7 @@ class TestGroupPageCoordinator(TestBase):
                             + coordinator.location + '/new'
         self.assertEqual(self.group_page.get_current_url(), expected_page_url)
 
-    def test17_open_edit_group_left_menu(self):
+    def test23_open_edit_group_left_menu(self):
         """
         open edit group panel as coordinator and check url
         """
@@ -245,7 +275,7 @@ class TestGroupPageCoordinator(TestBase):
         left_menu.edit_group_button().click()
         self.assertEqual(self.group_page.get_current_url(), edit_group_url)
 
-    def test18_open_search_panel_left_menu(self):
+    def test24_open_search_panel_left_menu(self):
         """
         open search panel and check url
         """
@@ -255,7 +285,7 @@ class TestGroupPageCoordinator(TestBase):
         left_menu.search_group_button().click()
         self.assertEqual(self.group_page.get_current_url(), edit_group_url)
 
-    def test19_delete_group_left_menu(self):
+    def test25_delete_group_left_menu(self):
         """
         check that coordinator can delete group
         """
@@ -274,14 +304,14 @@ class TestGroupPageTeacher(TestBase):
         super().setUp()
         self.group_page = self.login_page.auto_login(teacher)
 
-    def test20_disabled_create_button_for_teacher(self):
+    def test26_disabled_create_button_for_teacher(self):
         """
         Check that teacher doen't have create button
         """
         left_menu = self.group_page.open_left_menu()
         self.assertRaises(TimeoutException, left_menu.create_group_button)
 
-    def test21_delete_button_disabled_for_teacher(self):
+    def test27_delete_button_disabled_for_teacher(self):
         """
         Check that teacher doen't have delete button
         """
@@ -290,7 +320,7 @@ class TestGroupPageTeacher(TestBase):
         self.assertRaises(NoSuchElementException, left_menu.
                           delete_group_button)
 
-    def test22_left_menu_edit_button_disabled_for_teacher(self):
+    def test28_left_menu_edit_button_disabled_for_teacher(self):
         """
         Check that teacher doesn't have edit button
         """
@@ -298,7 +328,7 @@ class TestGroupPageTeacher(TestBase):
         left_menu = self.group_page.open_left_menu()
         self.assertRaises(NoSuchElementException, left_menu.edit_group_button)
 
-    def test23_open_search_panel_left_menu(self):
+    def test29_open_search_panel_left_menu(self):
         """
         open search panel and check url
         """

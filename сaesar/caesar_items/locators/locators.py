@@ -24,11 +24,11 @@ class GroupPageLocators(object):
 
     # main section
     GROUP_NAME = (By.CLASS_NAME, 'content-header-group-name')
-    BUTTON_EDIT_GROUP = (By.NAME, 'edit')
+    EDIT_GROUP_BUTTON = (By.NAME, 'edit')
     INFO_GROUP_BUTTON = (By.NAME, 'info')
-    BUTTON_STUDENTS_IN_GROUP = (By.NAME, 'students')
-    BUTTON_SCHEDULE_GROUP = (By.NAME, 'shedule')
-    BUTTON_MESSAGE_GROUP = (By.NAME, 'message')
+    STUDENTS_IN_GROUP_BUTTON = (By.NAME, 'students')
+    SCHEDULE_GROUP_BUTTON = (By.NAME, 'shedule')
+    MESSAGE_GROUP_BUTTON = (By.NAME, 'message')
 
     GROUP_COORDINATION = (By.CLASS_NAME, 'group_coordination')
     GROUP_INFO = (By.CLASS_NAME, 'group_info')

@@ -269,10 +269,17 @@ class GroupsPage(BasePage):
         for group in groups:
             if group_name == group.text:
                 group.click()
+                WebDriverWait(self.driver, 10). \
+                    until(EC.visibility_of_element_located(
+                    GroupPageLocators.GROUP_INFO))
                 return 0
         return "group not exist"
 
     def list_group_current(self):
+        """
+        get list of groups web element from current stage
+        :return:
+        """
         groups_list = []
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
         for group in groups:
@@ -280,6 +287,10 @@ class GroupsPage(BasePage):
         return groups_list
 
     def list_of_groups(self):
+        """
+        get all groups from all stages
+        :return:
+        """
         self.ended_groups_button().click()
         list_of_groups = self.list_group_current()
         self.current_groups_button().click()
@@ -339,22 +350,50 @@ class GroupsPage(BasePage):
         """
         get confirm deletion web element button
         """
-        return self.driver.\
+        return self.driver. \
             find_element(*GroupPageLocators.BUTTON_CONFIRM_DELETION)
 
     def cancel_deletion_button(self):
         """
         get cancel deletion web element button
         """
-        return self.driver.\
+        return self.driver. \
             find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION)
 
     def group_info_button(self):
-        return self.driver.find_element(GroupPageLocators.INFO_GROUP_BUTTON)
+        """
+        get group's info button
+        :return:
+        """
+        return self.driver.find_element(*GroupPageLocators.INFO_GROUP_BUTTON)
 
     def group_students_button(self):
-        return self.driver.find_element(GroupPageLocators.BUTTON_STUDENTS_IN_GROUP)
+        """
+        get group's students button
+        :return:
+        """
+        return self.driver.find_element(*GroupPageLocators.STUDENTS_IN_GROUP_BUTTON)
 
+    def group_schedule_button(self):
+        """
+        get group's schedule button
+        :return:
+        """
+        return self.driver.find_element(*GroupPageLocators.SCHEDULE_GROUP_BUTTON)
+
+    def group_message_button(self):
+        """
+        get group's message button
+        :return:
+        """
+        return self.driver.find_element(*GroupPageLocators.MESSAGE_GROUP_BUTTON)
+
+    def group_edit_button(self):
+        """
+        get group edit button from info panel
+        :return:
+        """
+        return self.driver.find_element(*GroupPageLocators.MESSAGE_GROUP_BUTTON)
 
     class CreateGroupWindow(object):
         def __init__(self):
