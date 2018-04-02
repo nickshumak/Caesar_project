@@ -588,7 +588,7 @@ class GroupsPage(BasePage):
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.EXPERTS_NAME_FIELD)).send_keys(
-                TEST_EXPERT_NAME)
+                TEST_FIRST_EXPERT_NAME)
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ACCEPT_EXPERT_BUTTON)).click()
