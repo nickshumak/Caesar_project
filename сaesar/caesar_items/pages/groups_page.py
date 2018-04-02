@@ -151,6 +151,12 @@ class RightMenu(object):
     def click_edit_user_button(self):
         self.driver.find_element(*RightMenuLocators.BUTTON_EDIT_PROFILE).click()
 
+    def get_current_url(self):
+        """
+        get current url of page
+        """
+        return self.driver.current_url
+
 
 class TopMenu(object):
     def __init__(self, driver):
@@ -266,6 +272,22 @@ class GroupsPage(BasePage):
                 return 0
         return "group not exist"
 
+    def list_group_current(self):
+        groups_list = []
+        groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
+        for group in groups:
+            groups_list = group.text
+        return groups_list
+
+    def list_of_groups(self):
+        self.ended_groups_button().click()
+        list_of_groups = self.list_group_current()
+        self.current_groups_button().click()
+        list_of_groups += self.list_group_current()
+        self.button_boarding_groups().click()
+        list_of_groups += self.list_group_current()
+        return list_of_groups
+
     def open_left_menu(self):
         """
         move mouse on left side page
@@ -326,6 +348,13 @@ class GroupsPage(BasePage):
         """
         return self.driver.\
             find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION)
+
+    def group_info_button(self):
+        return self.driver.find_element(GroupPageLocators.INFO_GROUP_BUTTON)
+
+    def group_students_button(self):
+        return self.driver.find_element(GroupPageLocators.BUTTON_STUDENTS_IN_GROUP)
+
 
     class CreateGroupWindow(object):
         def __init__(self):
@@ -558,7 +587,7 @@ class GroupsPage(BasePage):
             directions_list = direction_field.find_elements(
                 By.TAG_NAME, 'option')
             random_direction_index = random.randint(
-                1, len(directions_list) - 1)
+                1, 3)
             select_direction = Select(direction_field)
             select_direction.select_by_index(random_direction_index)
             location_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(

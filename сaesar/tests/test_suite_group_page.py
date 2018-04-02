@@ -29,7 +29,8 @@ class TestGroupPageAdmin(TestBase):
         group_page = login_page.auto_login(first_admin)
         left_menu = group_page.open_left_menu()
         left_menu.create_group_button().click()
-        group_page.CreateGroupWindow().auto_fill_all_fields(group_to_delete_name, first_admin.location)
+        group_page.CreateGroupWindow().auto_fill_all_fields(
+            group_to_delete_name, first_admin.location)
         driver.quit()
 
     def setUp(self):
@@ -153,8 +154,8 @@ class TestGroupPageAdmin(TestBase):
         left_menu = self.group_page.open_left_menu()
         left_menu.delete_group_button().click()
         self.group_page.confirm_deletion_button().click()
-        self.assertEqual(self.group_page.select_group_by_name(group_to_delete_name),
-                         expected_string)
+        self.assertEqual(self.group_page.select_group_by_name(
+            group_to_delete_name), expected_string)
 
     def test13_groups_stage_in_progress_or_offering(self):
         """
@@ -192,6 +193,17 @@ class TestGroupPageAdmin(TestBase):
             actual_result = self.group_page.get_group_stage_text()
             self.assertIn(actual_result, expected_result)
 
+    def test16_open_edit_user_panel(self):
+        expected_result = 'http://localhost:3000/EditProfile'
+        right_menu = self.group_page.open_right_menu()
+        right_menu.click_edit_user_button()
+        self.assertEqual(right_menu.get_current_url(), expected_result)
+
+    def test17_open_groups_info_panel(self):
+        self.group_page.select_group_by_name(group_name)
+        self.group_page.
+        self.assertEqual(right_menu.get_current_url(), expected_result)
+
 
 class TestGroupPageCoordinator(TestBase):
     @classmethod
@@ -204,7 +216,8 @@ class TestGroupPageCoordinator(TestBase):
         group_page = login_page.auto_login(first_admin)
         left_menu = group_page.open_left_menu()
         left_menu.create_group_button().click()
-        group_page.CreateGroupWindow().auto_fill_all_fields(group_to_delete_name, first_admin.location)
+        group_page.CreateGroupWindow().auto_fill_all_fields(
+            group_to_delete_name, first_admin.location)
         driver.quit()
 
     def setUp(self):
@@ -252,8 +265,8 @@ class TestGroupPageCoordinator(TestBase):
         left_menu = self.group_page.open_left_menu()
         left_menu.delete_group_button().click()
         self.group_page.confirm_deletion_button().click()
-        self.assertEqual(self.group_page.select_group_by_name(group_to_delete_name),
-                         expected_string)
+        self.assertEqual(self.group_page.select_group_by_name(
+            group_to_delete_name), expected_string)
 
 
 class TestGroupPageTeacher(TestBase):
@@ -274,11 +287,12 @@ class TestGroupPageTeacher(TestBase):
         """
         self.group_page.select_group_by_name(group_name)
         left_menu = self.group_page.open_left_menu()
-        self.assertRaises(NoSuchElementException, left_menu.delete_group_button)
+        self.assertRaises(NoSuchElementException, left_menu.
+                          delete_group_button)
 
     def test22_left_menu_edit_button_disabled_for_teacher(self):
         """
-        Check that teacher doen't have edit button
+        Check that teacher doesn't have edit button
         """
         self.group_page.select_group_by_name(group_name)
         left_menu = self.group_page.open_left_menu()

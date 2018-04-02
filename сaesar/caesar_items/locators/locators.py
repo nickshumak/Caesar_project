@@ -25,7 +25,7 @@ class GroupPageLocators(object):
     # main section
     GROUP_NAME = (By.CLASS_NAME, 'content-header-group-name')
     BUTTON_EDIT_GROUP = (By.NAME, 'edit')
-    BUTTON_INFO_GROUP = (By.NAME, 'info')
+    INFO_GROUP_BUTTON = (By.NAME, 'info')
     BUTTON_STUDENTS_IN_GROUP = (By.NAME, 'students')
     BUTTON_SCHEDULE_GROUP = (By.NAME, 'shedule')
     BUTTON_MESSAGE_GROUP = (By.NAME, 'message')
