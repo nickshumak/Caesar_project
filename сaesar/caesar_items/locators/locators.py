@@ -18,7 +18,7 @@ class GroupPageLocators(object):
 
     ENDED_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(2)')
     CURRENT_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(4)')
-    FUTURE_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
+    BOARDING_GROUPS = (By.CSS_SELECTOR, '.stage-toggle > label:nth-child(6)')
 
     GROUPS = (By.CLASS_NAME, 'small-group-view')
 
@@ -39,8 +39,12 @@ class GroupPageLocators(object):
     LEFT_MENU = (By.CSS_SELECTOR, '#left-menu > div')
     USER_PHOTO = (By.CLASS_NAME, 'user-photo')
     TOP_MENU = (By.CLASS_NAME, 'row')
-    BUTTON_CONFIRM_DELETION = (By.CLASS_NAME, 'fa fa-check-circle-o fa-3x')
-    BUTTON_CANCEL_DELETION = (By.CLASS_NAME, 'fa fa-times-circle-o fa-3x')
+    BUTTON_CONFIRM_DELETION = \
+        (By.CSS_SELECTOR, '#modal-window > div > div >'
+                          ' div > div > button.btn.btn-delete > i')
+    BUTTON_CANCEL_DELETION = \
+        (By.CSS_SELECTOR, '#modal-window > div > div >'
+                          ' div > div > button.btn.btn-cancel > i')
 
 
 class RightMenuLocators(object):
@@ -58,14 +62,40 @@ class LeftMenuLocators(object):
 
 
 class TopMenuLocators(object):
-    BUTTON_LOCATIONS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
-    BUTTON_GROUPS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
-    BUTTON_STUDENTS = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
-    BUTTON_SCHEDULE = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
-    BUTTON_ADD = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')
-    BUTTON_ABOUT = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(6)')
+    LOCATIONS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
+    GROUPS_BUTTON_ = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
+    STUDENTS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
+    SCHEDULE_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
+    ADD_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')
+    ABOUT_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(6)')
 
     BUTTON_LOGOUT = (By.CLASS_NAME, 'logout')
+
+
+class LocationWindowLocators(object):
+    CHERNIVTSY_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[1]/p')
+    DNIPRO_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[2]/p')
+    IVANO_FRANKIVSK_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[3]/p')
+    KYIV_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[4]/p')
+    LVIV_LOCATION = \
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[5]/p')
+    RIVNE_LOCATION = \
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[6]/p')
+    SOFIA_LOCATION =\
+        (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[7]/p')
+    SAVE_BUTTON = \
+        (By.CSS_SELECTOR, '#modal-window > div > div '
+                          '> div > div > button.save > i')
+    DISABLED_SAVE_BUTTON = \
+        (By.CSS_SELECTOR, '#modal-window > div '
+                          '> div > div > div > button.save.disabled')
+    CANCEL_BUTTON = \
+        (By.CSS_SELECTOR, '#modal-window > div > div '
+                          '> div > div > button.cancel > i')
 
 
 class AdminPageLocators(object):
@@ -94,6 +124,7 @@ class CreateEditUsersLocators(object):
     PHOTO = (By.NAME, "photo")
     LOGIN_FIELD = (By.NAME, "login")
     PASSWORD_FIELD = (By.NAME, "password")
+    DELETE_BUTTONS = "(//tbody//button[@class='btn btn-danger delete'])"
 
 
 class CreateEditGroupsLocators(object):
@@ -106,6 +137,38 @@ class CreateEditGroupsLocators(object):
     EXPERTS = (By.NAME, "experts")
     STAGE = (By.NAME, "stage")
     BUDGET = (By.NAME, "budgetOwner")
+
+
+class CreateGroupWindowLocators(object):
+    GROUP_NAME_FORM = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(1) > div:nth-child(1) > div > div')
+    GROUP_NAME_FIELD = (By.NAME, 'name')
+    DIRECTION_FORM = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(3) > div:nth-child(1)')
+    DIRECTION_DROP_LIST = (By.NAME, 'direction')
+    LOCATION_DROP_LIST = (By.NAME, 'location')
+    ONE_MORE_TEACHER_BUTTON = (By.CLASS_NAME, 'add-teacher-btn')
+    TEACHERS_DROP_LIST = (By.NAME, 'teacher')
+    ACCEPT_TEACHER_BUTTON = (By.ID, 'acceptSelect')
+    ADDED_TEACHERS_FORM = (By.CLASS_NAME, 'list-item')
+    BUDGET_SOFT_SERVE_BUTTON = (By.CLASS_NAME,
+                                'btn btn-default budget-option active')
+    BUDGET_OPEN_GROUP_BUTTON = \
+        (By.CLASS_NAME, 'btn btn-default budget-option ')
+    START_DATE_FORM = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(3) > '
+                         'div.form-group.col-xs-6.col-xs-offset-0.col-md-5.'
+                         'col-md-offset-1.col-lg-4.calendar-wrapper')
+    START_DATE_FIELD = (By.NAME, 'startDate')
+    FINISH_DATE_FIELD = (By.NAME, 'finishDate')
+    ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
+    EXPERTS_NAME_FIELD = (By.NAME, 'expert')
+    ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
+    SAVE_BUTTON = (By.ID, 'save')
+    CANCEL_BUTTON = (By.ID, 'cancel')
 
 
 class CreateEditStudentsLocators(object):
@@ -136,7 +199,8 @@ class StudentsListLocators(object):
     CONFIRM_DELETING_BUTTON = (By.XPATH, './/*[@id="modal-window"]//button[1]')
     ADD_NEW_STUDENT_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
-    EDIT_STUDENT_BUTTON = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
+    EDIT_STUDENT_BUTTON = \
+        (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
 
 
 class StudentLocators(object):
@@ -147,7 +211,8 @@ class StudentLocators(object):
     LIST_ENGLISH_LEVEL = \
         (By.XPATH, './/*[@id="modal-window"]//div[4]/div[1]/select')
     PRE_INTERMEDIATE_LOW = \
-        (By.XPATH, './/*[@id = "modal-window"]//div[4]/div[1]/select/option[2]')
+        (By.XPATH, './/*[@id = "modal-window"]//div[4]/div[1]/'
+                   'select/option[2]')
     STUDENT_MARK_INCOMING_TEST = \
         (By.XPATH, './/*[@id="modal-window"]//div[1]/div[2]/input')
     STUDENT_ENTRY_SCORE = \

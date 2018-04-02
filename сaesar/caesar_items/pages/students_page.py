@@ -20,6 +20,7 @@ class StudentData(object):
         self.driver = driver
 
     def click_save_data_changes_button(self):
+        """click button to save changes in student data"""
         WebDriverWait(self.driver, 20). \
             until(lambda driver: self.driver.
                   find_element(*StudentLocators.
@@ -27,6 +28,7 @@ class StudentData(object):
         return self
 
     def enter_student_first_name(self, student):
+        """enter student first name in window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  FIRST_NAME_TEXT_FIELD).clear()
         self.driver.find_element(*StudentLocators.
@@ -34,6 +36,7 @@ class StudentData(object):
             send_keys(student.first_name)
 
     def enter_student_last_name(self, student):
+        """enter student last name in window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  LAST_NAME_TEXT_FIELD).clear()
         self.driver.find_element(*StudentLocators.
@@ -41,12 +44,16 @@ class StudentData(object):
             send_keys(student.last_name)
 
     def select_english_level_pre_intermediate(self):
+        """enter student's english level pre-intermediate in
+        window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  LIST_ENGLISH_LEVEL).click()
         self.driver.find_element(*StudentLocators.
                                  PRE_INTERMEDIATE_LOW).click()
 
     def enter_student_mark_incoming_test(self, student):
+        """enter student's mark of incoming test in
+        window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  STUDENT_MARK_INCOMING_TEST). \
             clear()
@@ -55,6 +62,8 @@ class StudentData(object):
             send_keys(student.incoming_mark)
 
     def enter_student_entry_mark(self, student):
+        """enter student's entry mark in
+        window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  STUDENT_ENTRY_SCORE).clear()
         self.driver.find_element(*StudentLocators.
@@ -62,12 +71,16 @@ class StudentData(object):
             send_keys(student.entry_mark)
 
     def select_approved_by_varenko(self):
+        """enter approved by N. Varenko in
+        window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  STUDENT_APPROVED_BY).click()
         self.driver.find_element(*StudentLocators.
                                  APPROVED_BY).click()
 
     def enter_student_data(self, student):
+        """common function for enter all necessary fields for
+        student data"""
         self.enter_student_first_name(student)
         self.enter_student_last_name(student)
         self.select_english_level_pre_intermediate()
@@ -76,6 +89,7 @@ class StudentData(object):
         self.select_approved_by_varenko()
 
     def add_cv(self, path_file_cv):
+        """input cv file for student data"""
         self.driver.find_element(*StudentLocators.
                                  ADD_CV_BUTTON).click()
         self.driver.find_element(*StudentLocators.
@@ -83,10 +97,12 @@ class StudentData(object):
             send_keys(os.path.abspath(path_file_cv))
 
     def get_name_cv_file(self):
+        """get name of cv file, which is input in student data"""
         return self.driver.find_element(*StudentLocators.
                                         FILE_NAME_CV).text
 
     def add_photo(self, path_file_photo):
+        """input photo file for student data"""
         self.driver.find_element(*StudentLocators.
                                  ADD_PHOTO_BUTTON).click()
         self.driver.find_element(*StudentLocators.
@@ -94,6 +110,7 @@ class StudentData(object):
             send_keys(os.path.abspath(path_file_photo))
 
     def get_name_photo_file(self):
+        """get name of photo file, which is input in student data"""
         return self.driver.find_elements(*StudentLocators.
                                          FILE_NAME_PHOTO)[-1].text
 
@@ -118,6 +135,8 @@ class StudentsList(object):
         self.student_data = StudentData(self.driver)
 
     def click_delete_first_student_button(self):
+        """click on button for deleting first student
+        from the student's list"""
         self.driver.find_element(*StudentsListLocators.
                                  DELETE_STUDENT_BUTTON).click()
         WebDriverWait(self.driver, 20). \
@@ -127,21 +146,27 @@ class StudentsList(object):
         return self
 
     def click_add_new_student_button(self):
+        """click on button for opening window for adding
+        new student's data"""
         self.driver.find_element(*StudentsListLocators.
                                  ADD_NEW_STUDENT_BUTTON).click()
         return self
 
     def click_edit_student_button(self):
+        """click on button for opening window for editing
+        student's data"""
         self.driver.find_element(*StudentsListLocators.
                                  EDIT_STUDENT_BUTTON).click()
         return self
 
     def click_exit_editor_students_list_button(self):
+        """click on button for exit from the student's list editor"""
         return self.driver.find_element(*StudentsListLocators.
                                         EXIT_EDIT_STUDENTS_LIST_BUTTON). \
             click()
 
     def click_students_list_sort_by_name_button(self):
+        """click on button for sorting student's list by name"""
         WebDriverWait(self.driver, 20). \
             until(lambda driver:
                   self.driver.find_element(*StudentsListLocators.
@@ -166,11 +191,13 @@ class StudentsPage(BasePage):
         return students_data
 
     def click_edit_students_list_button(self):
+        """click on button for entering student's list editor"""
         self.driver.find_element(*StudentsListLocators.
                                  EDIT_STUDENTS_LIST_BUTTON).click()
         return self
 
     def get_current_url(self):
+        """page's current url"""
         return self.driver.get_url()
 
 

@@ -1,7 +1,9 @@
 """
-Tests check the additional, removal and editing of
+Tests check the adding, removal and editing of
 student data, adding cv_files and photo in the list of students
-with different roles(administrator, coordinator, teacher)
+with different roles(administrator, coordinator, teacher),
+also check the opportunity of adding new student with empty data and
+sorting student's list by name
 """
 
 import unittest
@@ -50,6 +52,8 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """log in by administrator, open top menu,select
+        button 'students', select the group"""
         cls.driver = webdriver.Chrome(
             executable_path=GetDriver().DRIVER_CHROME)
         cls.driver.get(PathUrl().URL_SITE)
@@ -72,6 +76,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.students_page.driver.implicitly_wait(2)
 
     def test01_add_new_student_with_admin(self):
+        """check is new student added by administrator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_add_new_student_button()
         self.students_page.students_list.student_data.\
@@ -87,6 +92,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.assertIn(student, students_list)
 
     def test02_edit_data_first_student_with_admin(self):
+        """check is first student editing by administrator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.\
@@ -103,6 +109,8 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.assertIn(student_with_changes, students_list)
 
     def test03_edit_cv_first_student_with_admin(self):
+        """check is cv file added to the student's data
+        by administrator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.add_cv(path_file_cv)
@@ -111,6 +119,8 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
     def test04_edit_photo_first_student_with_admin(self):
+        """check is photo file added to the student's data
+        by administrator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.\
@@ -120,6 +130,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
     def test05_students_list_sort_by_name(self):
+        """check with role administrator is student's list sorting by name"""
         unsorted_students_list = self.students_page.students_table()
         self.students_page.students_list.\
             click_students_list_sort_by_name_button()
@@ -132,6 +143,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.assertEqual(sorted_list_by_button, sorted_list_by_function)
 
     def test06_add_student_with_empty_fields(self):
+        """check adding new student with empty fields by administrator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_add_new_student_button()
         self.students_page.students_list.student_data.\
@@ -141,6 +153,8 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
         self.assertEqual(actual_warnings, expected_warnings)
 
     def test07_remove_first_student_with_admin(self):
+        """check deleting first student from the student's list
+        by administrator"""
         first_student = self.students_page.students_table()[0]
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.\
@@ -158,6 +172,8 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """log in by coordinator, open top menu,select
+        button 'students', select the group"""
         cls.driver = webdriver.Chrome(
             executable_path=GetDriver().DRIVER_CHROME)
         cls.driver.get(PathUrl().URL_SITE)
@@ -180,6 +196,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.students_page.driver.implicitly_wait(2)
 
     def test08_add_new_student_with_coordinator(self):
+        """check is new student added by coordinator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_add_new_student_button()
         self.students_page.students_list.student_data.\
@@ -195,6 +212,7 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.assertIn(student, students_list)
 
     def test09_edit_data_first_student_with_coordinator(self):
+        """check is first student editing by coordinator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.\
@@ -211,6 +229,8 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.assertIn(student_with_changes, students_list)
 
     def test10_edit_cv_first_student_with_coordinator(self):
+        """check is cv file added to the student's data
+        by coordinator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.add_cv(path_file_cv)
@@ -219,6 +239,8 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
     def test11_edit_photo_first_student_with_coordinator(self):
+        """check is photo file added to the student's data
+        by coordinator"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.\
@@ -228,6 +250,8 @@ class TestStudentsPageWithCoordinator(unittest.TestCase):
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
     def test12_remove_first_student_with_coordinator(self):
+        """check deleting first student from the student's list
+        by coordinator"""
         first_student = self.students_page.students_table()[0]
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list. \
@@ -245,6 +269,8 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """log in by teacher, open top menu,select
+        button 'students', select the group"""
         cls.driver = webdriver.Chrome(
             executable_path=GetDriver().DRIVER_CHROME)
         cls.driver.get(PathUrl().URL_SITE)
@@ -267,6 +293,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.students_page.driver.implicitly_wait(2)
 
     def test13_add_new_student_with_teacher(self):
+        """check is new student added by teacher"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_add_new_student_button()
         self.students_page.students_list.student_data.\
@@ -282,6 +309,7 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.assertIn(student, students_list)
 
     def test14_edit_data_first_student_with_teacher(self):
+        """check is first student editing by teacher"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.\
@@ -298,6 +326,8 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.assertIn(student_with_changes, students_list)
 
     def test15_edit_cv_first_student_with_teacher(self):
+        """check is cv file added to the student's data
+        by teacher"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.add_cv(path_file_cv)
@@ -306,6 +336,8 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.assertEqual(actual_name_file, expected_name_file_cv)
 
     def test16_edit_photo_first_student_with_teacher(self):
+        """check is photo file added to the student's data
+        by teacher"""
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list.click_edit_student_button()
         self.students_page.students_list.student_data.\
@@ -315,6 +347,8 @@ class TestStudentsPageWithTeacher(unittest.TestCase):
         self.assertEqual(actual_name_file, expected_name_file_photo)
 
     def test17_remove_first_student_with_teacher(self):
+        """check deleting first student from the student's list
+        by teacher"""
         first_student = self.students_page.students_table()[0]
         self.students_page.click_edit_students_list_button()
         self.students_page.students_list. \

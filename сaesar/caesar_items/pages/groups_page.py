@@ -51,23 +51,13 @@ class TopMenu(object):
         self.driver.implicitly_wait(2)
 
     def groups(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_GROUPS).click()
+        self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON).click()
         self.driver.implicitly_wait(2)
         return GroupsPage(self.driver)
 
     def students(self):
-        self.driver.find_element(*TopMenuLocators.BUTTON_STUDENTS).click()
+        self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON).click()
         self.driver.implicitly_wait(2)
-
-    # def click_button_students(self):
-    #     actions = ActionChains(self.driver)
-    #     actions.move_by_offset('256', '20')
-    #     students = WebDriverWait(self.driver, 30).\
-    #         until(lambda driver: self.driver.find_element(*TopMenuLocators.
-    #                                                       BUTTON_STUDENTS))
-    #     actions.click(students)
-    #     actions.perform()
-    #     return self
 
     def schedule(self):
         self.driver.find_element(*TopMenuLocators.BUTTON_SCHEDULE).click()
