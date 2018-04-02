@@ -282,7 +282,6 @@ class GroupsPage(BasePage):
         click on user photo
         """
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
-        self.driver.implicitly_wait(3)
         WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
         return self.right_menu
 

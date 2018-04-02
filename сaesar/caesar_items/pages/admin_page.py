@@ -1,17 +1,14 @@
 from selenium.common.exceptions import NoSuchElementException, \
     StaleElementReferenceException, ElementNotVisibleException
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from caesar_items.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
     CreateEditStudentsLocators
 from caesar_items.pages.base_page import BasePage
-# from caesar_items.pages.groups_page import GroupsPage
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
 
 
 class AdminPage(BasePage):
@@ -59,7 +56,6 @@ class AdminPage(BasePage):
         """click on the button that will return to the Group page"""
         back_home = self.driver.find_element(*AdminPageLocators.BUTTON_ESCAPE)
         back_home.click()
-        # return GroupsPage(self.driver)
 
     def fill_user_name(self, name):
         """filling user name field"""
@@ -257,7 +253,9 @@ class AdminPage(BasePage):
         return self
 
     def get_table(self, table_name: str):
-        """getting all rows from table"""
+        """
+        getting all rows from table
+        """
         ignored_exceptions = (NoSuchElementException,
                               StaleElementReferenceException)
         WebDriverWait(self.driver, 20, ignored_exceptions=ignored_exceptions). \
@@ -270,14 +268,18 @@ class AdminPage(BasePage):
         return table
 
     def delete_last_entity(self):
-        """deleting last entity who has been added recently"""
-        button_path = self.get_last_button()
+        """
+        deleting last entity who has been added recently
+        """
+        button_path = self.get_last_delete_button()
         self.driver.find_element_by_xpath(button_path).click()
         return self
 
-    def get_last_button(self):
-        """path to entity delete button
-         who has been created recently"""
+    def get_last_delete_button(self):
+        """
+        path to entity delete button
+        who has been created recently
+        """
         WebDriverWait(self.driver, 20,
                       ignored_exceptions=ElementNotVisibleException). \
             until(EC.visibility_of_element_located
@@ -290,6 +292,7 @@ class AdminPage(BasePage):
             format(number_delete_buttons)
 
     def submit(self):
+        """confirmation of entered data"""
         submit = self.driver.find_element(
             *AdminPageLocators.BUTTON_SUBMIT)
         submit.click()

@@ -13,7 +13,8 @@ class TestLocationWindow(TestBase):
         """
         check that save button disabled when no one location was selected
         """
-        self.assertFalse(self.locations_window.disabled_save_button().is_enabled())
+        self.assertFalse(self.locations_window.disabled_save_button().
+                         is_enabled())
 
     def test02_return_group_page_using_cancel_button(self):
         """
@@ -37,18 +38,18 @@ class TestLocationWindow(TestBase):
         """
         check that user can select several locations
         """
-        expexted_result = '2 locations'
+        expected_result = '2 locations'
         self.locations_window.select_dnipro_location()
         self.locations_window.select_kyiv_location()
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, expexted_result)
+        self.assertEqual(actual_result, expected_result)
 
     def test05_select_all_locations(self):
         """
         check that user can select all locations
         """
-        expexted_result = '7 locations'
+        expected_result = '7 locations'
         self.locations_window.select_dnipro_location()
         self.locations_window.select_kyiv_location()
         self.locations_window.select_chernivtsy_location()
@@ -59,13 +60,13 @@ class TestLocationWindow(TestBase):
 
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, expexted_result)
+        self.assertEqual(actual_result, expected_result)
 
     def test06_uncheck_location(self):
         """
         check that user can uncheck selected locations
         """
-        expexted_result = 'Dnipro'
+        expected_result = 'Dnipro'
         self.locations_window.select_dnipro_location()
         self.locations_window.select_kyiv_location()
         self.locations_window.save_button().click()
@@ -74,4 +75,4 @@ class TestLocationWindow(TestBase):
         self.locations_window.select_kyiv_location()
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
-        self.assertEqual(actual_result, expexted_result)
+        self.assertEqual(actual_result, expected_result)
