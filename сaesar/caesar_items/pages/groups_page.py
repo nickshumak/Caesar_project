@@ -143,13 +143,15 @@ class GroupsPage(BasePage):
         ActionChains(self.driver). \
             move_to_element_with_offset(left_menu, 105, 300).perform()
         WebDriverWait(self.driver, 10) \
-            .until(EC.visibility_of_element_located(LeftMenuLocators.BUTTON_SEARCH_GROUP))
+            .until(EC.visibility_of_element_located(
+                LeftMenuLocators.BUTTON_SEARCH_GROUP))
         return self.left_menu
 
     def open_right_menu(self):
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
         self.driver.implicitly_wait(3)
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
+        WebDriverWait(self.driver, 10). \
+            until(EC.visibility_of_element_located(RightMenuLocators.BUTTON_LOGOUT))
         return self.right_menu
 
     def open_top_menu(self):
@@ -182,15 +184,19 @@ class GroupsPage(BasePage):
 
         def get_group_name_field(self) -> object:
             """
-                    direct access to GROUP_NAME_FIELD
-
-                    :return: WebElement GROUP_NAME_FIELD
-                    """
+                            function to get group name field
+                            :return: web element group name field
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            GROUP_NAME_FIELD))
 
         def set_group_name(self, new_group_name) -> object:
+            """
+                            function to set group name
+                            :param new_group_name: entered name of group
+                            :return:  web page with changed group name field
+                            """
             field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            GROUP_NAME_FIELD))
@@ -199,6 +205,10 @@ class GroupsPage(BasePage):
             return self
 
         def clear_group_name_field(self) -> object:
+            """
+                            function to clear group name field
+                            :return:  web page with empty group name field
+                            """
             field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            GROUP_NAME_FIELD))
@@ -206,42 +216,74 @@ class GroupsPage(BasePage):
             return self
 
         def get_group_name_form(self) -> object:
+            """
+                            function to get group name form
+                            :return: web element group name form
+                             """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                GROUP_NAME_FORM))
 
         def get_group_direction_form(self) -> object:
+            """
+                            function to get direction form
+                            :return: web element direction form
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                DIRECTION_FORM))
 
         def get_group_location_form(self) -> object:
+            """
+                            function to get location form
+                            :return: web element location form
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                LOCATION_FORM))
 
         def get_start_date_form(self) -> object:
+            """
+                            function to get start date form
+                            :return: web element start date form
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                START_DATE_FORM))
 
         def get_experts_form(self) -> object:
+            """
+                            function to get expert form
+                             :return: web element expert form
+                             """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                EXPERTS_FORM))
 
         def get_value_group_name_field(self) -> str:
+            """
+                            function to get value of group name field
+                             :return: string with value of group name
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.GROUP_NAME_FIELD)). \
                 get_attribute("value")
 
         def get_group_direction(self) -> object:
+            """
+                            function to get  group direction
+                            :return: web element direction
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            DIRECTION_DROP_LIST))
 
         def set_group_direction(self, str_direction) -> object:
+            """
+                            function to set  chosen group direction
+                            :return: web page with chosen direction
+                            """
             list_direction = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            DIRECTION_DROP_LIST))
@@ -250,17 +292,29 @@ class GroupsPage(BasePage):
             return self
 
         def get_value_of_direction(self) -> str:
+            """
+                             function to get value of group direction field
+                            :return: string with value of group direction
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.DIRECTION_DROP_LIST)). \
                 get_attribute("value")
 
         def get_group_location(self) -> object:
+            """
+                             function to get  group location
+                            :return: web element location
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            LOCATION_DROP_LIST))
 
         def set_group_location(self, location_index) -> object:
+            """
+                            function to set  chosen group location
+                            :return: web page with chosen location
+                            """
             locations_get = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            LOCATION_DROP_LIST))
@@ -270,7 +324,12 @@ class GroupsPage(BasePage):
             return self
 
         def get_value_of_location(self) -> str:
-            spinner_location_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            """
+                             function to get value of group location field
+                             :return: string with value of group location
+                             """
+            spinner_location_of_group = WebDriverWait(self.driver,
+                                                      TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            LOCATION_DROP_LIST))
             location_of_group = spinner_location_of_group. \
@@ -278,11 +337,19 @@ class GroupsPage(BasePage):
             return location_of_group
 
         def get_teacher_add_button(self) -> object:
+            """
+                            function to get  teacher add button
+                            :return: web element teacher add button
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
 
         def get_teachers_drop_list(self) -> object:
+            """
+                             function to get  teachers drop down list
+                             :return: web element teachers drop down list
+                             """
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
@@ -293,6 +360,10 @@ class GroupsPage(BasePage):
             return drop_list_teachers
 
         def select_teacher(self, teacher_name) -> object:
+            """
+                            function to  chose teacher from teachers drop down list
+                            :return: web page with chosen teacher in teachers drop down list
+                            """
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
@@ -308,6 +379,10 @@ class GroupsPage(BasePage):
             return self
 
         def add_teacher(self) -> object:
+            """
+                            function to  accept choosing teacher from teachers drop down list
+                            :return: web page with chosen teacher in form added teachers list
+                            """
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
