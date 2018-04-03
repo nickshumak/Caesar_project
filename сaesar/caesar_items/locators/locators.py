@@ -117,6 +117,14 @@ class AboutPageLocators(object):
         (By.CSS_SELECTOR, '#content-section '
                           '> div > div.content-header-group-name')
 
+    DEVELOPMENT_TEAM_PHOTOS_PANEL = \
+        (By.CSS_SELECTOR, '#modal-window > div > div '
+                          '> div > div.row.photosContainer')
+
+    PHOTO = (By.CLASS_NAME, 'contributorPhoto')
+
+    TEAMMATE_NAME = (By.CLASS_NAME, 'contributorsName')
+
 
 class DevelopmentPanelLocators(object):
     TEAM_DOLOTO_ICON = (By.CSS_SELECTOR, '#main-section >'

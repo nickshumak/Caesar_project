@@ -1,6 +1,5 @@
 from resource.users_base import *
 from tests.test_base import TestBase
-from resource.url_site import PathUrl
 
 
 class TestAdminPage(TestBase):
