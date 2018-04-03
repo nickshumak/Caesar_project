@@ -144,7 +144,7 @@ class GroupsPage(BasePage):
             move_to_element_with_offset(left_menu, 105, 300).perform()
         WebDriverWait(self.driver, 10) \
             .until(EC.visibility_of_element_located(
-                LeftMenuLocators.BUTTON_SEARCH_GROUP))
+            LeftMenuLocators.BUTTON_SEARCH_GROUP))
         return self.left_menu
 
     def open_right_menu(self):
@@ -392,7 +392,11 @@ class GroupsPage(BasePage):
                                            ACCEPT_TEACHER_BUTTON)).click()
             return self
 
-        def get_added_teachers_list(self) -> list:
+        def get_values_from_added_teachers_list(self) -> list:
+            """
+                            function to  get values from "added teachers" list
+                            :return:  list of values from added teachers
+                            """
             added_teachers_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                ADDED_TEACHERS_FORM))
@@ -403,6 +407,10 @@ class GroupsPage(BasePage):
             return list_of_teachers_values
 
         def set_start_date(self, start_date_value) -> object:
+            """
+                            function to  set  "start date" field
+                            :return:  web page with entered start date
+                            """
             field_date_start_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            START_DATE_FIELD))
@@ -414,6 +422,10 @@ class GroupsPage(BasePage):
             return self
 
         def submit_group_creating_button(self) -> object:
+            """
+                            function to  end group creating and save all fields
+                            :return:  web page after  clicking "Save" button
+                            """
             button_save_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            SAVE_BUTTON))
@@ -421,11 +433,20 @@ class GroupsPage(BasePage):
             return self
 
         def get_save_group_button(self) -> object:
+            """
+                            function to get "Save" button
+                            :return: web element  "Save" button
+                            """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            SAVE_BUTTON))
 
         def get_warning_message_by_form(self, form) -> object:
+            """
+                            function to get  pop-up warning message
+                            :param form:  The form to which the message is attached
+                            :return:  web element warning message
+                            """
             warning_message = None
             hints = form.find_elements(By.CLASS_NAME, 'hint')
             for hint in hints:
@@ -436,11 +457,22 @@ class GroupsPage(BasePage):
             return warning_message
 
         def cancel_button_get(self) -> object:
+            """
+                             function to get "Cancel" button
+                             :return: web element  "Cancel" button
+                             """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            CANCEL_BUTTON))
 
         def add_expert(self, expert_name) -> object:
+            """
+                            function to add expert - first click the "+
+                            one more expert" button, then set expert's name
+                            and then click  "accept  expert" button
+                            :param expert_name:  name if expert to set
+                            :return:  web page with expert added to experts list
+                            """
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.ADD_EXPERT_BUTTON)).click()
@@ -454,6 +486,10 @@ class GroupsPage(BasePage):
             return self
 
         def get_added_experts_list(self) -> list:
+            """
+                            function to  get values from "added experts" list
+                            :return:  list of values from added experts
+                            """
             added_experts_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                ADDED_EXPERTS_LIST))
@@ -463,7 +499,13 @@ class GroupsPage(BasePage):
                 list_of_values.append(added_expert.text)
             return list_of_values
 
-        def auto_fill_all_fields(self, new_group_name) -> object:
+        def auto_fill_all_fields(self, new_group_name) -> None:
+            """
+                            function to auto fill  all fields, to create some group,
+                            function used to test deleting of groups
+                            :param new_group_name:  set name of  group that would be created
+                            :return:  None. Just auto fill all fields
+                            """
             direction_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            DIRECTION_DROP_LIST))

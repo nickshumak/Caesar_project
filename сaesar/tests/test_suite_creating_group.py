@@ -41,7 +41,7 @@ class TestCreatingGroup(TestBase):
             self.group_page.CreateGroupWindow().add_teacher()
             i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
-            get_added_teachers_list()
+            get_values_from_added_teachers_list()
         self.assertEqual(teachers_list, set(teachers_list))
 
     def test05_save_button_is_enabled(self):
@@ -145,12 +145,11 @@ class TestCreatingGroup(TestBase):
         self.assertEqual(warning_message, MESSAGE_INVALID_EXPERT_NAME)
 
     def test17_add_empty_teacher(self):
-        """ Check  adding more 5 teachers, while there is only 5 teachers
-        are presented in drop list"""
+        """ Check  adding  teacher, with empty name"""
         i = TEST_ITERATIONS
         while i > 0:
             self.group_page.CreateGroupWindow().add_teacher()
             i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
-            get_added_teachers_list()
+            get_values_from_added_teachers_list()
         self.assertIn('', teachers_list)
