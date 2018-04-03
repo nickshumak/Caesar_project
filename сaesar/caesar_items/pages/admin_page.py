@@ -1,5 +1,5 @@
-from selenium.common.exceptions import NoSuchElementException, \
-    StaleElementReferenceException, ElementNotVisibleException
+from selenium.common.exceptions import StaleElementReferenceException,\
+    ElementNotVisibleException
 from selenium.webdriver.common.by import By
 from caesar_items.locators.locators import AdminPageLocators, \
     CreateEditUsersLocators, CreateEditGroupsLocators, \
@@ -227,12 +227,12 @@ class AdminPage(BasePage):
         cv_url.send_keys(curriculum_vitae)
         return self
 
-    def fill_student_image_url(self, image):
-        """filling path to image by url"""
-        image_url = self.driver.find_element(
+    def fill_student_image(self, image_path):
+        """filling path to image"""
+        image = self.driver.find_element(
             *CreateEditStudentsLocators.IMAGE)
-        image_url.click()
-        image_url.send_keys(image)
+        image.click()
+        image.send_keys(image_path)
         return self
 
     def fill_student_entry_score(self, score):
@@ -256,11 +256,11 @@ class AdminPage(BasePage):
         """
         getting all rows from table
         """
-        ignored_exceptions = (NoSuchElementException,
-                              StaleElementReferenceException)
-        WebDriverWait(self.driver, 20, ignored_exceptions=ignored_exceptions). \
-            until(EC.presence_of_element_located((By.XPATH, AdminPageLocators.
-                                                  get_request_table(table_name))))
+
+        WebDriverWait(self.driver, 20,
+                      ignored_exceptions=StaleElementReferenceException). \
+            until(EC.presence_of_element_located((
+            By.XPATH, AdminPageLocators.get_request_table(table_name))))
         web_table = self.driver.find_elements(
             By.XPATH, AdminPageLocators.get_request_table(table_name))
         table_text = [web_element.text for web_element in web_table]

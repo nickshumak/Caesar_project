@@ -1,6 +1,7 @@
 import unittest
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException,\
+    NoSuchElementException
 
 from resource.path_driver import GetDriver
 from resource.users_base import *

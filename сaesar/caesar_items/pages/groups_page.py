@@ -24,7 +24,6 @@ class AboutPage(object):
     def development_research_button(self):
         """
         Get Development & Research button from about page
-        :return:
         """
         return self.driver.find_element(*AboutPageLocators.
                                         DEVELOPMENT_RESEARCH_BUTTON)
@@ -32,7 +31,6 @@ class AboutPage(object):
     def quality_assurance_button(self):
         """
         Get Quality Assurance button from about page
-        :return:
         """
         return self.driver.find_element(*AboutPageLocators.
                                         QUALITY_ASSURANCE)
@@ -40,7 +38,6 @@ class AboutPage(object):
     def management_button(self):
         """
         Get Management and Mentoring button from about page
-        :return:
         """
         return self.driver.find_element(*AboutPageLocators.
                                         MANAGEMENT_MENTORING_BUTTON)
@@ -48,7 +45,6 @@ class AboutPage(object):
     def additional_thanks_button(self):
         """
         Get Additional Thanks button from about page
-        :return:
         """
         return self.driver.find_element(*AboutPageLocators.
                                         ADDITIONAL_THANKS_BUTTON)
@@ -56,7 +52,6 @@ class AboutPage(object):
     def team_doloto_icon(self):
         """
         Get Team Doloto icon from Development & Research
-        :return:
         """
         return self.driver.find_element(*DevelopmentPanelLocators.
                                         TEAM_DOLOTO_ICON)
@@ -64,7 +59,6 @@ class AboutPage(object):
     def get_department_text(self):
         """
         Get current department text
-        :return:
         """
         return self.driver.find_element(*AboutPageLocators.DEPARTMENT_NAME). \
             text
@@ -72,7 +66,6 @@ class AboutPage(object):
     def floppy_drive_team_icon(self):
         """
         Get Floppy Drive 8 team icon from Development & Research
-        :return:
         """
         return self.driver.find_element(*DevelopmentPanelLocators.
                                         FLOPPY_DRIVE_TEAM_ICON)
@@ -80,7 +73,6 @@ class AboutPage(object):
     def fix_machine_icon(self):
         """
         Get Fix Machine team icon from Development & Research
-        :return:
         """
         return self.driver.find_element(*DevelopmentPanelLocators.
                                         FIX_MACHINE_TEAM_ICON)
@@ -88,7 +80,6 @@ class AboutPage(object):
     def light_side_icon(self):
         """
         Get The Light Side team icon from Quality Assurance
-        :return:
         """
         return self.driver.find_element(*QualityAssurancePanelLocators.
                                         LIGHT_SIDE_ICON)
@@ -96,7 +87,6 @@ class AboutPage(object):
     def fluffy_dots_icon(self):
         """
         Get Fluffy Dots team icon from Quality Assurance
-        :return:
         """
         return self.driver.find_element(*QualityAssurancePanelLocators.
                                         FLUFFY_DOTS_ICON)
@@ -104,7 +94,6 @@ class AboutPage(object):
     def charming_chaos_icon(self):
         """
         Get Charming Chaos team icon from Quality Assurance
-        :return:
         """
         return self.driver.find_element(*QualityAssurancePanelLocators.
                                         CHARMIN_CHAOS_ICON)
@@ -119,14 +108,12 @@ class AboutPage(object):
     def get_all_photos(self):
         """
         Get all teammates photos when open team window
-        :return:
         """
         return self.driver.find_elements(*AboutPageLocators.PHOTO)
 
     def get_teammate_name_text(self):
         """
         Get teammate name from panel with  photos
-        :return:
         """
         return self.driver.find_element(*AboutPageLocators.TEAMMATE_NAME).text
 
@@ -399,7 +386,6 @@ class GroupsPage(BasePage):
     def list_group_current(self):
         """
         get list of groups web element from current stage
-        :return:
         """
         groups_list = []
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
@@ -493,7 +479,6 @@ class GroupsPage(BasePage):
     def group_students_button(self):
         """
         get group's students button
-        :return:
         """
         return self.driver.find_element(*GroupPageLocators.
                                         STUDENTS_IN_GROUP_BUTTON)
@@ -501,7 +486,6 @@ class GroupsPage(BasePage):
     def group_schedule_button(self):
         """
         get group's schedule button
-        :return:
         """
         return self.driver.find_element(*GroupPageLocators.
                                         SCHEDULE_GROUP_BUTTON)
@@ -509,7 +493,6 @@ class GroupsPage(BasePage):
     def group_message_button(self):
         """
         get group's message button
-        :return:
         """
         return self.driver.find_element(*GroupPageLocators.
                                         MESSAGE_GROUP_BUTTON)
@@ -517,7 +500,6 @@ class GroupsPage(BasePage):
     def group_edit_button(self):
         """
         get group edit button from info panel
-        :return:
         """
         return self.driver.find_element(*GroupPageLocators.
                                         MESSAGE_GROUP_BUTTON)

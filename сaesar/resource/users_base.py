@@ -4,8 +4,6 @@ import time
 
 """
 This file contains users on whose behalf the testing will be conducted
-Этот файл содержит пользователей, от имени которых будет проводиться 
-    тестирование
 """
 
 first_admin =\

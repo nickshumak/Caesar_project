@@ -13,23 +13,40 @@ class LogInPage(BasePage):
         super().__init__(driver)
 
     def set_login_field_text(self, user_login=''):
+        """
+        input user login in login field
+        :param user_login:
+        """
         login_field = self.driver.find_element(*LogInLocators.LOGIN_FIELD)
         login_field.clear()
         login_field.send_keys(user_login)
 
     def set_password_field_text(self, user_password=''):
+        """
+        input user password in password field
+        :param user_password:
+        """
         password_field = self.driver.\
             find_element(*LogInLocators.PASSWORD_FIELD)
         password_field.clear()
         password_field.send_keys(user_password)
 
     def get_message_text(self):
+        """
+        get error message above login field
+        """
         return self.driver.find_element(*LogInLocators.FIELD_MESSAGE).text
 
     def submit_button(self):
+        """
+        get submit button web element
+        """
         return self.driver.find_element(*LogInLocators.CONFIRM_ACTION)
 
     def click_submit_button(self):
+        """
+        click on submit button and wait for user photo
+        """
         self.driver.find_element(*LogInLocators.CONFIRM_ACTION).click()
         try:
             WebDriverWait(self.driver, 5).until(
@@ -39,11 +56,19 @@ class LogInPage(BasePage):
             return self.get_message_text()
 
     def auto_login(self, user):
+        """
+        custom function to login on site
+        :param user:
+        """
         self.set_login_field_text(user.login)
         self.set_password_field_text(user.password)
         return self.click_submit_button()
 
     def login_use_tab_n_enter_keys(self, user):
+        """
+        login on site using Enter and Tab keys
+        :param user:
+        """
         ActionChains(self.driver).send_keys(user.login).send_keys(Keys.TAB) \
             .send_keys(user.password).send_keys(Keys.ENTER).perform()
         WebDriverWait(self.driver, 3).\
