@@ -185,7 +185,9 @@ class CreateEditStudentsLocators(object):
 class StudentsListLocators(object):
     EDIT_STUDENTS_LIST_BUTTON = \
         (By.XPATH, './/*[@id="main-section"]/div/header/div[1]/button')
-    STUDENTS_IN_STUDENTS_LIST_BUTTON = (By.CLASS_NAME, 'students')
+    GROUP_INFO_BUTTON = (By.CSS_SELECTOR, '.btn.infoBtn.active')
+    STUDENTS_IN_STUDENTS_LIST_BUTTON = \
+        (By.XPATH, './/*[@id="main-section"]/div/header/div[2]/button[2]')
     SCHEDULE_IN_STUDENTS_BUTTON = (By.CLASS_NAME, 'shedule')
     MESSAGE_IN_STUDENTS_BUTTON = (By.CLASS_NAME, 'message')
     STUDENTS_LISTS_ROWS = (By.CLASS_NAME, 'tableBodyStudents')
@@ -227,7 +229,9 @@ class StudentLocators(object):
         (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/button')
     INPUT_PATH_CV_FILE = \
         (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/input')
-    FILE_NAME_CV = (By.CLASS_NAME, 'list-item')
+    FILE_CV = \
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/ul/li')
+    FILE_NAME_CV = (By.CSS_SELECTOR, 'span')
     ADD_PHOTO_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]//div[5]/div[2]/button')
     INPUT_PATH_PHOTO_FILE = \

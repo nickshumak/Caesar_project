@@ -19,6 +19,13 @@ class StudentData(object):
     def __init__(self, driver):
         self.driver = driver
 
+    def save_data_changes_button(self):
+        """button to save changes in student data"""
+        return WebDriverWait(self.driver, 10). \
+            until(lambda driver: self.driver.
+                  find_element(*StudentLocators.
+                               SAVE_CHANGES_BUTTON))
+
     def click_save_data_changes_button(self):
         """click button to save changes in student data"""
         WebDriverWait(self.driver, 20). \
@@ -80,7 +87,7 @@ class StudentData(object):
 
     def enter_student_data(self, student):
         """common function for enter all necessary fields for
-        student data"""
+        student's data"""
         self.enter_student_first_name(student)
         self.enter_student_last_name(student)
         self.select_english_level_pre_intermediate()
@@ -97,9 +104,11 @@ class StudentData(object):
             send_keys(os.path.abspath(path_file_cv))
 
     def get_name_cv_file(self):
-        """get name of cv file, which is input in student data"""
-        return self.driver.find_element(*StudentLocators.
-                                        FILE_NAME_CV).text
+        """get name of last cv file, which is input in student data"""
+        cv_names_list = []
+        for cv in self.driver.find_elements(*StudentLocators.FILE_CV):
+            cv_names_list.append(cv.find_element(*StudentLocators.FILE_NAME_CV).text)
+        return cv_names_list[-1]
 
     def add_photo(self, path_file_photo):
         """input photo file for student data"""
@@ -110,7 +119,7 @@ class StudentData(object):
             send_keys(os.path.abspath(path_file_photo))
 
     def get_name_photo_file(self):
-        """get name of photo file, which is input in student data"""
+        """get name of last photo file, which is input in student data"""
         return self.driver.find_elements(*StudentLocators.
                                          FILE_NAME_PHOTO)[-1].text
 
@@ -152,6 +161,12 @@ class StudentsList(object):
                                  ADD_NEW_STUDENT_BUTTON).click()
         return self
 
+    def add_new_student_button(self):
+        """button for opening window for adding
+        new student's data"""
+        return self.driver.find_element(*StudentsListLocators.
+                                        ADD_NEW_STUDENT_BUTTON)
+
     def click_edit_student_button(self):
         """click on button for opening window for editing
         student's data"""
@@ -159,7 +174,7 @@ class StudentsList(object):
                                  EDIT_STUDENT_BUTTON).click()
         return self
 
-    def click_exit_editor_students_list_button(self):
+    def click_exit_students_list_editor_button(self):
         """click on button for exit from the student's list editor"""
         return self.driver.find_element(*StudentsListLocators.
                                         EXIT_EDIT_STUDENTS_LIST_BUTTON). \
@@ -195,6 +210,13 @@ class StudentsPage(BasePage):
         self.driver.find_element(*StudentsListLocators.
                                  EDIT_STUDENTS_LIST_BUTTON).click()
         return self
+
+    def click_students_from_group_button(self):
+        """click on button students after selecting group"""
+        WebDriverWait(self.driver, 20). \
+            until(lambda driver: self.driver.
+                  find_element(*StudentsListLocators.
+                               STUDENTS_IN_STUDENTS_LIST_BUTTON)).click()
 
     def get_current_url(self):
         """page's current url"""
