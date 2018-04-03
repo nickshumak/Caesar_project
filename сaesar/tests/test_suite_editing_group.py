@@ -1,4 +1,8 @@
-from resource.constants_creating_group import *
+from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
+    MESSAGE_NAME_IS_MORE_20_CHAR, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME, \
+    APP_TITLE, TEST_GROUP_NAME, \
+    TEST_ITERATIONS, MESSAGE_EMPTY_EXPERT_NAME, TEST_SECOND_EXPERT_NAME, \
+    MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, EXISTED_GROUP_NAME
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -7,8 +11,9 @@ class TestCreatingGroup(TestBase):
     def setUp(self):
         super().setUp()
         self.group_page = self.login_page.auto_login(first_admin)
+        self.group_page.select_group_by_name(EXISTED_GROUP_NAME)
         self.left_menu = self.group_page.open_left_menu()
-        self.left_menu.create_group_button().click()
+        self.left_menu.edit_group_button().click()
 
     def test01_name_entering_is_enabled(self):
         """ Check  the field 'name'  is enabled"""
@@ -37,7 +42,9 @@ class TestCreatingGroup(TestBase):
             i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
             get_added_teachers_list()
-        self.assertEqual(teachers_list, set(teachers_list))
+        teachers_set = set(self.group_page.CreateGroupWindow(). \
+                           get_added_teachers_list())
+        self.assertEquals(len(teachers_list), len(teachers_set))
 
     def test05_save_button_is_enabled(self):
         """ Check  the field 'save' button  is enabled"""
@@ -48,7 +55,7 @@ class TestCreatingGroup(TestBase):
     def test06_save_button_is_working(self):
         """ Check  the field 'save' button  work correct """
         self.group_page.CreateGroupWindow().auto_fill_all_fields(
-            TEST_GROUP_NAME, LOCATION)
+            TEST_GROUP_NAME)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test07_cancel_button_is_enabled(self):
@@ -64,7 +71,7 @@ class TestCreatingGroup(TestBase):
         cancel_button.click()
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
-    def test09_create_group_with_more_20_char_name(self):
+    def test09_edit_group_name_with_more_20_char(self):
         """ Check  the creating of group when the length of name is more than 20 characters"""
         self.group_page.CreateGroupWindow().set_group_name(
             TEST_TOO_LONG_GROUP_NAME)
@@ -85,25 +92,7 @@ class TestCreatingGroup(TestBase):
             get_warning_message_by_form(form_group_name)
         self.assertEqual(warning_message, MESSAGE_PLEASE_ENTER_THE_GROUP_NAME)
 
-    def test11_create_group_with_empty_field_direction(self):
-        """ Check  the creating of group when the  field 'direction' is empty"""
-        self.group_page.CreateGroupWindow().submit_group_creating_button()
-        direction_form = self.group_page.CreateGroupWindow(). \
-            get_group_direction_form()
-        warning_message = self.group_page.CreateGroupWindow(). \
-            get_warning_message_by_form(direction_form)
-        self.assertEqual(warning_message, MESSAGE_DIRECTION_IS_NOT_SELECTED)
-
-    def test12_create_group_with_empty_start_date(self):
-        """ Check  the creating of group when the  field 'start date' is empty"""
-        self.group_page.CreateGroupWindow().submit_group_creating_button()
-        start_date_form = self.group_page.CreateGroupWindow(). \
-            get_start_date_form()
-        warning_message = self.group_page.CreateGroupWindow(). \
-            get_warning_message_by_form(start_date_form)
-        self.assertEqual(warning_message, MESSAGE_START_DATE_FIELD_IS_EMPTY)
-
-    def test13_add_expert_without_name(self):
+    def test11_add_expert_without_name(self):
         """ Check  the adding of expert with empty field 'name'"""
         self.group_page.CreateGroupWindow().add_expert('')
         expert_form = self.group_page.CreateGroupWindow().get_experts_form()
@@ -111,7 +100,7 @@ class TestCreatingGroup(TestBase):
             get_warning_message_by_form(expert_form)
         self.assertEqual(warning_message, MESSAGE_EMPTY_EXPERT_NAME)
 
-    def test14_add_expert_non_valid_name(self):
+    def test12_add_expert_non_valid_name(self):
         """ Check  the adding of expert with number in field 'name'"""
         self.group_page.CreateGroupWindow().add_expert(TEST_SECOND_EXPERT_NAME)
         expert_form = self.group_page.CreateGroupWindow().get_experts_form()
@@ -119,8 +108,8 @@ class TestCreatingGroup(TestBase):
             get_warning_message_by_form(expert_form)
         self.assertEqual(warning_message, MESSAGE_INVALID_EXPERT_NAME)
 
-    def test15_adding_more_5_same_expert(self):
-        """ Check  the adding of 20 experts with same value in field 'name'"""
+    def test13_adding_more_5_same_expert(self):
+        """ Check  the adding of  experts with same value in field 'name'"""
         i = TEST_ITERATIONS
         while i > 0:
             self.group_page.CreateGroupWindow().add_expert(
@@ -130,7 +119,7 @@ class TestCreatingGroup(TestBase):
             get_added_experts_list()
         self.assertEqual(experts_list, set(experts_list))
 
-    def test16_add_expert_empty_name(self):
+    def test14_add_expert_empty_name(self):
         """ Check  the adding of expert with empty field 'name'"""
         self.group_page.CreateGroupWindow().add_expert(
             TEST_THIRD_EXPERT_NAME)
@@ -139,7 +128,7 @@ class TestCreatingGroup(TestBase):
             get_warning_message_by_form(expert_form)
         self.assertEqual(warning_message, MESSAGE_INVALID_EXPERT_NAME)
 
-    def test17_add_empty_teacher(self):
+    def test15_add_empty_teacher(self):
         """ Check  adding more 5 teachers, while there is only 5 teachers
         are presented in drop list"""
         i = TEST_ITERATIONS
@@ -149,3 +138,4 @@ class TestCreatingGroup(TestBase):
         teachers_list = self.group_page.CreateGroupWindow(). \
             get_added_teachers_list()
         self.assertIn('', teachers_list)
+

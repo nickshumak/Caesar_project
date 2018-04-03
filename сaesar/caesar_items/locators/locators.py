@@ -73,19 +73,19 @@ class TopMenuLocators(object):
 
 
 class LocationWindowLocators(object):
-    CHERNIVTSY_LOCATION =\
+    CHERNIVTSY_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[1]/p')
-    DNIPRO_LOCATION =\
+    DNIPRO_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[2]/p')
-    IVANO_FRANKIVSK_LOCATION =\
+    IVANO_FRANKIVSK_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[3]/p')
-    KYIV_LOCATION =\
+    KYIV_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[4]/p')
     LVIV_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[5]/p')
     RIVNE_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[6]/p')
-    SOFIA_LOCATION =\
+    SOFIA_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[7]/p')
     SAVE_BUTTON = \
         (By.CSS_SELECTOR, '#modal-window > div > div '
@@ -96,6 +96,44 @@ class LocationWindowLocators(object):
     CANCEL_BUTTON = \
         (By.CSS_SELECTOR, '#modal-window > div > div '
                           '> div > div > button.cancel > i')
+
+
+class AboutPageLocators(object):
+    DEVELOPMENT_RESEARCH_BUTTON = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.javascript.menuAbout')
+    QUALITY_ASSURANCE = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.mqc.menuAbout > p')
+    MANAGEMENT_MENTORING_BUTTON = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.softserve.menuAbout > p')
+    ADDITIONAL_THANKS_BUTTON = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.other.menuAbout > p')
+    GROUP_NAME = (By.CSS_SELECTOR, '#content-section > div > div.stageView')
+
+    DEPARTMENT_NAME = \
+        (By.CSS_SELECTOR, '#content-section '
+                          '> div > div.content-header-group-name')
+
+
+class DevelopmentPanelLocators(object):
+    TEAM_DOLOTO_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                         ' div > div:nth-child(1)')
+    FLOPPY_DRIVE_TEAM_ICON = (By.CSS_SELECTOR, '#main-section > '
+                                               'div > div:nth-child(1)')
+    FIX_MACHINE_TEAM_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                              ' div > div:nth-child(1)')
+
+
+class QualityAssurancePanelLocators(object):
+    LIGHT_SIDE_ICON = (By.CSS_SELECTOR, '#main-section > '
+                                        'div > div:nth-child(1)')
+    FLUFFY_DOTS_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                         ' div > div:nth-child(2)')
+    CHARMIN_CHAOS_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                           ' div > div:nth-child(3)')
 
 
 class AdminPageLocators(object):
@@ -191,7 +229,9 @@ class CreateGroupWindowLocators(object):
 class StudentsListLocators(object):
     EDIT_STUDENTS_LIST_BUTTON = \
         (By.XPATH, './/*[@id="main-section"]/div/header/div[1]/button')
-    STUDENTS_IN_STUDENTS_LIST_BUTTON = (By.CLASS_NAME, 'students')
+    GROUP_INFO_BUTTON = (By.CSS_SELECTOR, '.btn.infoBtn.active')
+    STUDENTS_IN_STUDENTS_LIST_BUTTON = \
+        (By.XPATH, './/*[@id="main-section"]/div/header/div[2]/button[2]')
     SCHEDULE_IN_STUDENTS_BUTTON = (By.CLASS_NAME, 'shedule')
     MESSAGE_IN_STUDENTS_BUTTON = (By.CLASS_NAME, 'message')
     STUDENTS_LISTS_ROWS = (By.CLASS_NAME, 'tableBodyStudents')
@@ -205,7 +245,8 @@ class StudentsListLocators(object):
     CONFIRM_DELETING_BUTTON = (By.XPATH, './/*[@id="modal-window"]//button[1]')
     ADD_NEW_STUDENT_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
-    EDIT_STUDENT_BUTTON = (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
+    EDIT_STUDENT_BUTTON = \
+        (By.XPATH, './/*[@id="modal-window"]/section//td[5]/i')
 
 
 class StudentLocators(object):
@@ -216,7 +257,8 @@ class StudentLocators(object):
     LIST_ENGLISH_LEVEL = \
         (By.XPATH, './/*[@id="modal-window"]//div[4]/div[1]/select')
     PRE_INTERMEDIATE_LOW = \
-        (By.XPATH, './/*[@id = "modal-window"]//div[4]/div[1]/select/option[2]')
+        (By.XPATH, './/*[@id = "modal-window"]//div[4]/div[1]/'
+                   'select/option[2]')
     STUDENT_MARK_INCOMING_TEST = \
         (By.XPATH, './/*[@id="modal-window"]//div[1]/div[2]/input')
     STUDENT_ENTRY_SCORE = \
@@ -231,7 +273,9 @@ class StudentLocators(object):
         (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/button')
     INPUT_PATH_CV_FILE = \
         (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/input')
-    FILE_NAME_CV = (By.CLASS_NAME, 'list-item')
+    FILE_CV = \
+        (By.XPATH, './/*[@id="modal-window"]//div[5]/div[1]/ul/li')
+    FILE_NAME_CV = (By.CSS_SELECTOR, 'span')
     ADD_PHOTO_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]//div[5]/div[2]/button')
     INPUT_PATH_PHOTO_FILE = \

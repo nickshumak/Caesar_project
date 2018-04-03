@@ -39,9 +39,9 @@ class TestLocationWindow(TestBase):
         check that user can select several locations
         """
         expected_result = '2 locations'
-        self.locations_window.select_dnipro_location()
-        self.locations_window.select_kyiv_location()
-        self.locations_window.save_button().click()
+        self.locations_window.select_dnipro_location()\
+            .select_kyiv_location()\
+            .save_button().click()
         actual_result = self.group_page.get_group_location_text()
         self.assertEqual(actual_result, expected_result)
 
@@ -50,14 +50,13 @@ class TestLocationWindow(TestBase):
         check that user can select all locations
         """
         expected_result = '7 locations'
-        self.locations_window.select_dnipro_location()
-        self.locations_window.select_kyiv_location()
-        self.locations_window.select_chernivtsy_location()
-        self.locations_window.select_ivano_frankivsk_location()
-        self.locations_window.select_lviv_location()
-        self.locations_window.select_rivne_location()
-        self.locations_window.select_sofia_location()
-
+        self.locations_window.select_dnipro_location()\
+            .select_kyiv_location()\
+            .select_chernivtsy_location()\
+            .select_ivano_frankivsk_location()\
+            .select_lviv_location()\
+            .select_rivne_location()\
+            .select_sofia_location()
         self.locations_window.save_button().click()
         actual_result = self.group_page.get_group_location_text()
         self.assertEqual(actual_result, expected_result)
@@ -67,8 +66,8 @@ class TestLocationWindow(TestBase):
         check that user can uncheck selected locations
         """
         expected_result = 'Dnipro'
-        self.locations_window.select_dnipro_location()
-        self.locations_window.select_kyiv_location()
+        self.locations_window.select_dnipro_location()\
+            .select_kyiv_location()
         self.locations_window.save_button().click()
         top_menu = self.group_page.open_top_menu()
         top_menu.click_locations_button()
