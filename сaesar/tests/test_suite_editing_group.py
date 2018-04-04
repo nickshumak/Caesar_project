@@ -42,9 +42,9 @@ class TestCreatingGroup(TestBase):
             self.group_page.CreateGroupWindow().add_teacher()
             i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
-            get_added_teachers_list()
+            get_added_teachers_list_values()
         teachers_set = set(self.group_page.CreateGroupWindow(). \
-                           get_added_teachers_list())
+                           get_added_teachers_list_values())
         self.assertEquals(len(teachers_list), len(teachers_set))
 
     def test05_save_button_is_enabled(self):
@@ -137,7 +137,7 @@ class TestCreatingGroup(TestBase):
             self.group_page.CreateGroupWindow().add_teacher()
             i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
-            get_added_teachers_list()
+            get_added_teachers_list_values()
         self.assertIn('', teachers_list)
 
 
