@@ -9,16 +9,17 @@ class TestAdminPage(TestBase):
         self.admin_page = self.group_page.open_admin_page()
 
     def test01_admin_escape_home_button(self):
-        """Checking escape home button on admin page"""
+        """ Checking escape home button on admin page."""
         self.admin_page.back_home()
         self.assertEqual("Caesar", self.admin_page.get_title_name())
 
     def test02_title_admin_page(self):
+        """ Checking admin's title name."""
         title_page = self.admin_page.get_title_name()
         self.assertEqual("Caesar Admin Panel", title_page)
 
     def test03_create_edit_users(self):
-        """checking user in user's table after creating"""
+        """ Checking user in user's table after creating."""
         actual_table = self.admin_page. \
             tab_users(). \
             add_entity_user(). \
@@ -35,7 +36,7 @@ class TestAdminPage(TestBase):
         self.assertIn(expected_result, actual_table)
 
     def test04_create_edit_groups(self):
-        """checking group after creating"""
+        """ Checking group after creating."""
         actual_table = self.admin_page. \
             tab_groups(). \
             add_entity_group(). \
@@ -54,7 +55,7 @@ class TestAdminPage(TestBase):
         self.assertIn(expected_result, actual_result)
 
     def test05_create_edit_students(self):
-        """checking student after creating"""
+        """ Checking student after creating."""
         actual_table = self.admin_page. \
             tab_students(). \
             add_entity_student(). \
@@ -71,8 +72,8 @@ class TestAdminPage(TestBase):
         self.assertIn(expected_student, actual_table)
 
     def test06_create_edit_empty_fields_student(self):
-        """checking button after filling with empty fields
-        It will be failed"""
+        """ Checking button after filling with empty fields.
+        It will be failed."""
         is_enabled_submit_button = self.admin_page. \
             tab_students(). \
             add_entity_student(). \
@@ -87,8 +88,8 @@ class TestAdminPage(TestBase):
         self.assertFalse(is_enabled_submit_button)
 
     def test07_create_edit_empty_fields_group(self):
-        """checking button after filling by empty fields
-        It will be failed"""
+        """ Checking button after filling by empty fields.
+        It will be failed."""
         is_enabled_submit_button = self.admin_page. \
             tab_groups(). \
             add_entity_group(). \
@@ -105,9 +106,9 @@ class TestAdminPage(TestBase):
         self.assertFalse(is_enabled_submit_button)
 
     def test08_create_edit_max_length_fields_user(self):
-        """checking button after filling with more than max length
-        P.S max length of login/password field is 10 symbols
-        It will be failed"""
+        """ Checking button after filling with more than max length.
+        P.S max length of login/password field is 10 symbols.
+        It will be failed."""
         is_enabled_submit_button = self.admin_page. \
             tab_users(). \
             add_entity_user(). \
@@ -122,8 +123,8 @@ class TestAdminPage(TestBase):
         self.assertFalse(is_enabled_submit_button)
 
     def test09_create_edit_symbols_user(self):
-        """checking button after filling with symbols
-        It will be failed"""
+        """ Checking button after filling with symbols
+        It will be failed."""
         is_enabled_submit_button = self.admin_page. \
             tab_users(). \
             add_entity_user(). \
@@ -138,8 +139,8 @@ class TestAdminPage(TestBase):
         self.assertFalse(is_enabled_submit_button)
 
     def test10_delete_user_after_create(self):
-        """checking users' table after deleting
-        user who has been added recently"""
+        """ Checking users' table after deleting
+        user who has been added recently."""
         actual_table = self.admin_page. \
             tab_users(). \
             add_entity_user(). \

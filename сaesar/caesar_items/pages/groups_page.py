@@ -22,99 +22,71 @@ class AboutPage(object):
         self.driver = driver
 
     def development_research_button(self):
-        """
-        Get Development & Research button from about page
-        """
+        """ Get Development & Research button from about page."""
         return self.driver.find_element(*AboutPageLocators.
                                         DEVELOPMENT_RESEARCH_BUTTON)
 
     def quality_assurance_button(self):
-        """
-        Get Quality Assurance button from about page
-        """
+        """ Get Quality Assurance button from about page."""
         return self.driver.find_element(*AboutPageLocators.
                                         QUALITY_ASSURANCE)
 
     def management_button(self):
-        """
-        Get Management and Mentoring button from about page
-        """
+        """ Get Management and Mentoring button from about page."""
         return self.driver.find_element(*AboutPageLocators.
                                         MANAGEMENT_MENTORING_BUTTON)
 
     def additional_thanks_button(self):
-        """
-        Get Additional Thanks button from about page
-        """
+        """ Get Additional Thanks button from about page."""
         return self.driver.find_element(*AboutPageLocators.
                                         ADDITIONAL_THANKS_BUTTON)
 
     def team_doloto_icon(self):
-        """
-        Get Team Doloto icon from Development & Research
-        """
+        """ Get Team Doloto icon from Development & Research."""
         return self.driver.find_element(*DevelopmentPanelLocators.
                                         TEAM_DOLOTO_ICON)
 
     def get_department_text(self):
-        """
-        Get current department text
-        """
+        """ Get current department text. """
         return self.driver.find_element(*AboutPageLocators.DEPARTMENT_NAME). \
             text
 
     def floppy_drive_team_icon(self):
-        """
-        Get Floppy Drive 8 team icon from Development & Research
-        """
+        """ Get Floppy Drive 8 team icon from Development & Research."""
         return self.driver.find_element(*DevelopmentPanelLocators.
                                         FLOPPY_DRIVE_TEAM_ICON)
 
     def fix_machine_icon(self):
-        """
-        Get Fix Machine team icon from Development & Research
-        """
+        """ Get Fix Machine team icon from Development & Research."""
         return self.driver.find_element(*DevelopmentPanelLocators.
                                         FIX_MACHINE_TEAM_ICON)
 
     def light_side_icon(self):
-        """
-        Get The Light Side team icon from Quality Assurance
-        """
+        """ Get The Light Side team icon from Quality Assurance."""
         return self.driver.find_element(*QualityAssurancePanelLocators.
                                         LIGHT_SIDE_ICON)
 
     def fluffy_dots_icon(self):
-        """
-        Get Fluffy Dots team icon from Quality Assurance
-        """
+        """ Get Fluffy Dots team icon from Quality Assurance."""
         return self.driver.find_element(*QualityAssurancePanelLocators.
                                         FLUFFY_DOTS_ICON)
 
     def charming_chaos_icon(self):
-        """
-        Get Charming Chaos team icon from Quality Assurance
-        """
+        """ Get Charming Chaos team icon from Quality Assurance."""
         return self.driver.find_element(*QualityAssurancePanelLocators.
                                         CHARMIN_CHAOS_ICON)
 
     def get_panel_with_photos(self):
-        """
-        Get panel where placed photo of teammates
-        """
+        """ Get panel where placed photo of teammates."""
         return self.driver.find_element(*AboutPageLocators.
                                         DEVELOPMENT_TEAM_PHOTOS_PANEL)
 
     def get_all_photos(self):
-        """
-        Get all teammates photos when open team window
-        """
+        """ Get all teammates photos when open team window."""
         return self.driver.find_elements(*AboutPageLocators.PHOTO)
 
     def get_teammate_name_text(self):
-        """
-        Get teammate name from panel with  photos
-        """
+        """ Get teammate name from panel with  photos."""
         return self.driver.find_element(*AboutPageLocators.TEAMMATE_NAME).text
 
 
@@ -123,84 +95,62 @@ class LocationsWindow(object):
         self.driver = driver
 
     def select_dnipro_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.DNIPRO_LOCATION).click()
         return self
 
     def select_chernivtsy_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.CHERNIVTSY_LOCATION).click()
         return self
 
     def select_ivano_frankivsk_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.IVANO_FRANKIVSK_LOCATION).click()
         return self
 
     def select_kyiv_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.KYIV_LOCATION).click()
         return self
 
     def select_lviv_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.LVIV_LOCATION).click()
         return self
 
     def select_rivne_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.RIVNE_LOCATION).click()
         return self
 
     def select_sofia_location(self):
-        """
-        click on location on location window
-        """
+        """ Click on location on location window."""
         self.driver.find_element(
             *LocationWindowLocators.SOFIA_LOCATION).click()
         return self
 
     def save_button(self):
-        """
-        return save button web element
-        """
+        """ Return save button web element."""
         return self.driver.find_element(*LocationWindowLocators.SAVE_BUTTON)
 
     def disabled_save_button(self):
-        """
-        return disabled save button web element
-        """
+        """ Return disabled save button web element."""
         return self.driver.find_element(
             *LocationWindowLocators.DISABLED_SAVE_BUTTON)
 
     def cancel_button(self):
-        """
-        return cancel button web element
-        """
+        """ Return cancel button web element."""
         return self.driver.find_element(*LocationWindowLocators.CANCEL_BUTTON)
 
     def get_current_url(self):
-        """
-        get url on current page
-        """
+        """ Get url on current page."""
         return self.driver.current_url
 
 
@@ -209,29 +159,21 @@ class LeftMenu(object):
         self.driver = driver
 
     def create_group_button(self):
-        """
-        get create button web element
-        """
+        """ Get create button web element."""
         return WebDriverWait(self.driver, TIME_TO_WAIT).until(
             EC.visibility_of_element_located(
                 LeftMenuLocators.BUTTON_CREATE_GROUP))
 
     def search_group_button(self):
-        """
-        get search button web element
-        """
+        """ Get search button web element."""
         return self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
 
     def edit_group_button(self):
-        """
-        get edit button web element
-        """
+        """ Get edit button web element."""
         return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
 
     def delete_group_button(self):
-        """
-        get delete button web element
-        """
+        """ Get delete button web element."""
         return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
 
 
@@ -240,30 +182,23 @@ class RightMenu(object):
         self.driver = driver
 
     def click_logout_button(self):
-        """
-        click on logout web element
-        """
+        """ Click on logout web element."""
         self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
 
     def get_user_full_name_text(self):
-        """
-        get user name from left menu
-        """
+        """ Get user name from left menu."""
         return self.driver.find_element(*RightMenuLocators.USER_NAME).text
 
     def get_user_role_text(self):
-        """
-        get user role from left menu
-        """
+        """ Get user role from left menu."""
         return self.driver.find_element(*RightMenuLocators.USER_ROLE).text
 
     def click_edit_user_button(self):
+        """ Click on edit user button on right menu."""
         self.driver.find_element(*RightMenuLocators.BUTTON_EDIT_PROFILE).click()
 
     def get_current_url(self):
-        """
-        get current url of page
-        """
+        """ Get current url of page."""
         return self.driver.current_url
 
 
@@ -274,9 +209,7 @@ class TopMenu(object):
         self.about = AboutPage(self.driver)
 
     def click_locations_button(self):
-        """
-        click locations button on top menu and wait when save button appears
-        """
+        """ Click locations button on top menu and wait when save button appears."""
         self.driver.find_element(*TopMenuLocators.LOCATIONS_BUTTON).click()
         WebDriverWait(self.driver, TIME_TO_WAIT) \
             .until(EC.visibility_of_element_located(LocationWindowLocators.
@@ -284,46 +217,33 @@ class TopMenu(object):
         return LocationsWindow(self.driver)
 
     def click_groups_button(self):
-        """
-        click groups button on top menu
-        """
+        """ Click groups button on top menu."""
         self.driver.find_element(*TopMenuLocators.GROUPS_BUTTON_).click()
         self.driver.implicitly_wait(2)
 
     def click_students_button(self):
-        """
-        click students button on top menu
-        """
+        """ Click students button on top menu."""
         self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON).click()
         self.driver.implicitly_wait(2)
 
     def click_schedule_button(self):
-        """
-        click schedule button on top menu
-        """
+        """ Click schedule button on top menu."""
         self.driver.find_element(*TopMenuLocators.SCHEDULE_BUTTON).click()
         self.driver.implicitly_wait(2)
-        # return SchedulePage(self.driver)
 
     def click_add_button(self):
-        """
-        click add button on top menu
-        """
+        """ Click add button on top menu."""
         self.driver.find_element(*TopMenuLocators.ADD_BUTTON).click()
         self.driver.implicitly_wait(2)
 
     def click_about_button(self):
-        """
-        click about button on top menu
-        """
+        """ Click about button on top menu."""
         self.driver.find_element(*TopMenuLocators.ABOUT_BUTTON).click()
         self.driver.implicitly_wait(2)
         return AboutPage(self.driver)
 
     def click_logout_button(self):
-        """
-        click about button on top menu
-        """
+        """ Click about button on top menu."""
         self.driver.find_element(*TopMenuLocators.BUTTON_LOGOUT).click()
         self.driver.implicitly_wait(2)
 
@@ -340,42 +260,31 @@ class GroupsPage(BasePage):
         self.top_menu = TopMenu(self.driver)
 
     def get_group_location_text(self):
-        """
-        get current locations from middle panel
-        """
+        """ Get current locations from middle panel."""
         return self.driver.find_element(*GroupPageLocators.GROUP_LOCATION).text
 
     def my_group_button(self):
-        """
-        get my group web element button
-        """
+        """ Get my group web element button."""
         return self.driver.find_element(*GroupPageLocators.BUTTON_MY_GROUPS)
 
     def all_groups_button(self):
-        """
-        get all groups web element button
-        """
+        """ Get all groups web element button."""
         return self.driver.find_element(*GroupPageLocators.BUTTON_ALL_GROUPS)
 
     def ended_groups_button(self):
-        """
-        get finished groups web element button
-        """
+        """ Get finished groups web element button."""
         return self.driver.find_element(*GroupPageLocators.ENDED_GROUPS)
 
     def current_groups_button(self):
-        """
-        get current groups web element button
-        """
+        """ Get current groups web element button."""
         return self.driver.find_element(*GroupPageLocators.CURRENT_GROUPS)
 
     def button_boarding_groups(self):
-        """
-        get boarding groups web element button
-        """
+        """ Get boarding groups web element button."""
         return self.driver.find_element(*GroupPageLocators.BOARDING_GROUPS)
 
     def select_group_by_name(self, group_name):
+        """ Find group by name and click on it."""
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
         for group in groups:
             if group_name == group.text:
@@ -384,9 +293,7 @@ class GroupsPage(BasePage):
         return "group not exist"
 
     def list_group_current(self):
-        """
-        get list of groups web element from current stage
-        """
+        """ Get list of groups web element from current stage."""
         groups_list = []
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
         for group in groups:
@@ -394,10 +301,7 @@ class GroupsPage(BasePage):
         return groups_list
 
     def list_of_groups(self):
-        """
-        get all groups from all stages
-        :return:
-        """
+        """ Get all groups from all stages."""
         self.ended_groups_button().click()
         list_of_groups = self.list_group_current()
         self.current_groups_button().click()
@@ -407,9 +311,7 @@ class GroupsPage(BasePage):
         return list_of_groups
 
     def open_left_menu(self):
-        """
-        move mouse on left side page
-        """
+        """ Move mouse on left side page."""
         left_menu = self.driver.find_element(*GroupPageLocators.LEFT_MENU)
         ActionChains(self.driver). \
             move_to_element_with_offset(left_menu, 105, 300).perform()
@@ -419,88 +321,62 @@ class GroupsPage(BasePage):
         return self.left_menu
 
     def open_right_menu(self):
-        """
-        click on user photo
-        """
+        """ Click on user photo."""
         self.driver.find_element(*GroupPageLocators.USER_PHOTO).click()
         WebDriverWait(self.driver, TIME_TO_WAIT). \
-            until(EC.visibility_of_element_located(
-            RightMenuLocators.BUTTON_LOGOUT))
+            until(EC.visibility_of_element_located(RightMenuLocators.
+                                                   BUTTON_LOGOUT))
         return self.right_menu
 
     def open_top_menu(self):
-        """
-        move mouse on top page
-        """
+        """ Move mouse on top page."""
         top_menu = self.driver.find_element(*GroupPageLocators.TOP_MENU)
         ActionChains(self.driver).move_to_element(top_menu).perform()
         return self.top_menu
 
     def open_admin_page(self):
-        """
-        go to admin page panel
-        """
+        """ Open admin page panel."""
         self.driver.get(PathUrl().ADMIN_PAGE)
         return AdminPage(self.driver)
 
-    def get_current_url(self):
-        return self.driver.current_url
-
     def get_group_stage_text(self):
-        """
-        get stage text from bottom of middle panel
-        """
+        """ Get stage text from bottom of middle panel."""
         group_stage = WebDriverWait(self.driver, TIME_TO_WAIT) \
             .until(
             EC.visibility_of_element_located(GroupPageLocators.GROUP_STAGE))
         return group_stage.text
 
     def confirm_deletion_button(self):
-        """
-        get confirm deletion web element button
-        """
+        """ Get confirm deletion web element button."""
         return self.driver. \
             find_element(*GroupPageLocators.BUTTON_CONFIRM_DELETION)
 
     def cancel_deletion_button(self):
-        """
-        get cancel deletion web element button
-        """
+        """ Get cancel deletion web element button."""
         return self.driver. \
             find_element(*GroupPageLocators.BUTTON_CANCEL_DELETION)
 
     def group_info_button(self):
-        """
-        get group's info button
-        :return:
-        """
+        """ Get group's info button."""
         return self.driver.find_element(*GroupPageLocators.INFO_GROUP_BUTTON)
 
     def group_students_button(self):
-        """
-        get group's students button
-        """
+        """ Get group's students button."""
         return self.driver.find_element(*GroupPageLocators.
                                         STUDENTS_IN_GROUP_BUTTON)
 
     def group_schedule_button(self):
-        """
-        get group's schedule button
-        """
+        """ Get group's schedule button."""
         return self.driver.find_element(*GroupPageLocators.
                                         SCHEDULE_GROUP_BUTTON)
 
     def group_message_button(self):
-        """
-        get group's message button
-        """
+        """ Get group's message button."""
         return self.driver.find_element(*GroupPageLocators.
                                         MESSAGE_GROUP_BUTTON)
 
     def group_edit_button(self):
-        """
-        get group edit button from info panel
-        """
+        """ Get group edit button from info panel."""
         return self.driver.find_element(*GroupPageLocators.
                                         MESSAGE_GROUP_BUTTON)
 
@@ -509,20 +385,13 @@ class GroupsPage(BasePage):
             self.driver = GroupsPage.driver
 
         def get_group_name_field(self) -> object:
-            """
-                            function to get group name field
-                            :return: web element group name field
-                            """
+            """ Get group name field web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            GROUP_NAME_FIELD))
 
         def set_group_name(self, new_group_name) -> object:
-            """
-                            function to set group name
-                            :param new_group_name: entered name of group
-                            :return:  web page with changed group name field
-                            """
+            """ Set group name using entered value."""
             field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            GROUP_NAME_FIELD))
@@ -531,10 +400,7 @@ class GroupsPage(BasePage):
             return self
 
         def clear_group_name_field(self) -> object:
-            """
-                            function to clear group name field
-                            :return:  web page with empty group name field
-                            """
+            """ Clear group name field."""
             field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            GROUP_NAME_FIELD))
@@ -542,74 +408,50 @@ class GroupsPage(BasePage):
             return self
 
         def get_group_name_form(self) -> object:
-            """
-                            function to get group name form
-                            :return: web element group name form
-                             """
+            """ Get group name form web element. """
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                GROUP_NAME_FORM))
 
         def get_group_direction_form(self) -> object:
-            """
-                            function to get direction form
-                            :return: web element direction form
-                            """
+            """ Get direction form web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                DIRECTION_FORM))
 
         def get_group_location_form(self) -> object:
-            """
-                            function to get location form
-                            :return: web element location form
-                            """
+            """ Get location form web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                LOCATION_FORM))
 
         def get_start_date_form(self) -> object:
-            """
-                            function to get start date form
-                            :return: web element start date form
-                            """
+            """ Get start date form web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                START_DATE_FORM))
 
         def get_experts_form(self) -> object:
-            """
-                            function to get expert form
-                             :return: web element expert form
-                             """
+            """ Get expert form web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                EXPERTS_FORM))
 
         def get_value_group_name_field(self) -> str:
-            """
-                            function to get value of group name field
-                             :return: string with value of group name
-                            """
+            """ Get value from group name field."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.GROUP_NAME_FIELD)). \
                 get_attribute("value")
 
         def get_group_direction(self) -> object:
-            """
-                            function to get  group direction
-                            :return: web element direction
-                            """
+            """ Get  group direction web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            DIRECTION_DROP_LIST))
 
         def set_group_direction(self, str_direction) -> object:
-            """
-                            function to set  chosen group direction
-                            :return: web page with chosen direction
-                            """
+            """ Set  chosen group direction."""
             list_direction = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            DIRECTION_DROP_LIST))
@@ -618,29 +460,20 @@ class GroupsPage(BasePage):
             return self
 
         def get_value_of_direction(self) -> str:
-            """
-                             function to get value of group direction field
-                            :return: string with value of group direction
-                            """
+            """ Get value of group from direction field."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.DIRECTION_DROP_LIST)). \
                 get_attribute("value")
 
         def get_group_location(self) -> object:
-            """
-                             function to get  group location
-                            :return: web element location
-                            """
+            """ Get  group location web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            LOCATION_DROP_LIST))
 
         def set_group_location(self, location_index) -> object:
-            """
-                            function to set  chosen group location
-                            :return: web page with chosen location
-                            """
+            """ Set  chosen group location."""
             locations_get = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            LOCATION_DROP_LIST))
@@ -650,32 +483,23 @@ class GroupsPage(BasePage):
             return self
 
         def get_value_of_location(self) -> str:
-            """
-                             function to get value of group location field
-                             :return: string with value of group location
-                             """
-            spinner_location_of_group = WebDriverWait(self.driver,
-                                                      TIME_TO_WAIT).until(
+            """ Get value from group location field."""
+            drop_list_location_of_group = WebDriverWait(self.driver,
+                                                        TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            LOCATION_DROP_LIST))
-            location_of_group = spinner_location_of_group. \
+            location_of_group = drop_list_location_of_group. \
                 get_attribute("value")
             return location_of_group
 
         def get_teacher_add_button(self) -> object:
-            """
-                            function to get  teacher add button
-                            :return: web element teacher add button
-                            """
+            """ Get  teacher add button web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
 
         def get_teachers_drop_list(self) -> object:
-            """
-                             function to get  teachers drop down list
-                             :return: web element teachers drop down list
-                             """
+            """ Get  teachers drop down list web element ."""
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
@@ -686,10 +510,7 @@ class GroupsPage(BasePage):
             return drop_list_teachers
 
         def select_teacher(self, teacher_name) -> object:
-            """
-                            function to  chose teacher from teachers drop down list
-                            :return: web page with chosen teacher in teachers drop down list
-                            """
+            """ Select teacher from teachers drop down list."""
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
@@ -705,10 +526,7 @@ class GroupsPage(BasePage):
             return self
 
         def add_teacher(self) -> object:
-            """
-                            function to  accept choosing teacher from teachers drop down list
-                            :return: web page with chosen teacher in form added teachers list
-                            """
+            """ Accept choosing teacher from teachers drop down list."""
             button_add_teacher = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ONE_MORE_TEACHER_BUTTON))
@@ -718,17 +536,20 @@ class GroupsPage(BasePage):
                                            ACCEPT_TEACHER_BUTTON)).click()
             return self
 
-        def get_added_teachers_list(self) -> list:
+        def get_values_from_added_teachers_list(self) -> list:
+            """ Get values from "added teachers" list."""
             added_teachers_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                ADDED_TEACHERS_FORM))
-            added_teachers_list = added_teachers_form.find_elements(By.CLASS_NAME, 'list-item')
+            added_teachers_list = added_teachers_form.\
+                find_elements(By.CLASS_NAME, 'list-item')
             list_of_teachers_values = []
             for added_teacher in added_teachers_list:
                 list_of_teachers_values.append(added_teacher.text)
             return list_of_teachers_values
 
         def set_start_date(self, start_date_value) -> object:
+            """ Set value to "start date" field."""
             field_date_start_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            START_DATE_FIELD))
@@ -740,6 +561,7 @@ class GroupsPage(BasePage):
             return self
 
         def submit_group_creating_button(self) -> object:
+            """ End group creating and save all fields."""
             button_save_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            SAVE_BUTTON))
@@ -747,11 +569,13 @@ class GroupsPage(BasePage):
             return self
 
         def get_save_group_button(self) -> object:
+            """ Get "Save" button web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            SAVE_BUTTON))
 
         def get_warning_message_by_form(self, form) -> object:
+            """ Get  pop-up warning message web element, attached to this form."""
             warning_message = None
             hints = form.find_elements(By.CLASS_NAME, 'hint')
             for hint in hints:
@@ -762,11 +586,14 @@ class GroupsPage(BasePage):
             return warning_message
 
         def cancel_button_get(self) -> object:
+            """ Get "Cancel" button web element."""
             return WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            CANCEL_BUTTON))
 
         def add_expert(self, expert_name) -> object:
+            """ Add expert - first click the "+one more expert" button, then set
+            expert's name and then click  "accept  expert" button."""
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(
                     CreateGroupWindowLocators.ADD_EXPERT_BUTTON)).click()
@@ -780,16 +607,20 @@ class GroupsPage(BasePage):
             return self
 
         def get_added_experts_list(self) -> list:
+            """ Get values from "added experts" list."""
             added_experts_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.presence_of_element_located(CreateGroupWindowLocators.
                                                ADDED_EXPERTS_LIST))
-            added_experts_list = added_experts_form.find_elements(By.CLASS_NAME, 'list-item')
+            added_experts_list = added_experts_form.\
+                find_elements(By.CLASS_NAME, 'list-item')
             list_of_values = []
             for added_expert in added_experts_list:
                 list_of_values.append(added_expert.text)
             return list_of_values
 
         def auto_fill_all_fields(self, new_group_name, location):
+            """ Fill  all fields, to create some group,
+                            function used to test deleting of groups."""
             if location == "Chernivtsy":
                 location_index = 0
             elif location == "Dnipro":
