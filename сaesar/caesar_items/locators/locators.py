@@ -210,19 +210,18 @@ class StudentLocators(object):
         (By.XPATH, './/*[@id="modal-window"]//div[2]/div[1]/input')
     LAST_NAME_TEXT_FIELD = \
         (By.XPATH, './/*[@id="modal-window"]//div[3]/div[1]/input')
-    LIST_ENGLISH_LEVEL = \
+    OPEN_ENGLISH_LEVELS_LIST = \
         (By.XPATH, './/*[@id="modal-window"]//div[4]/div[1]/select')
-    PRE_INTERMEDIATE_LOW = \
-        (By.XPATH, './/*[@id = "modal-window"]//div[4]/div[1]/'
-                   'select/option[2]')
+    ENGLISH_LEVELS_LIST = (By.TAG_NAME, 'option')
     STUDENT_MARK_INCOMING_TEST = \
         (By.XPATH, './/*[@id="modal-window"]//div[1]/div[2]/input')
     STUDENT_ENTRY_SCORE = \
         (By.XPATH, './/*[@id="modal-window"]//div[2]/div[2]/input')
-    STUDENT_APPROVED_BY = \
+    OPEN_LIST_APPROVED_BY = \
         (By.XPATH, './/*[@id="modal-window"]//div[3]/div[2]/select')
-    APPROVED_BY = \
-        (By.XPATH, './/*[@id="modal-window"]//div[3]/div[2]/select/option[2]')
+    LIST_WHO_APPROVED = (By.TAG_NAME, 'option')
+    APPROVED_BY_CUSTOM = \
+        (By.XPATH, './/*[@id="modal-window"]//div[4]/div[2]/input')
     SAVE_CHANGES_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]//div[6]/button[1]')
     ADD_CV_BUTTON = \

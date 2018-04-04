@@ -7,11 +7,16 @@ from caesar_items.locators.locators import StudentsListLocators, \
 
 class Student(object):
 
-    def __init__(self, first_name, last_name, incoming_mark, entry_mark):
+    def __init__(self, first_name, last_name, incoming_mark,
+                 entry_mark, english_level, approved_by,
+                 approved_by_custom=None):
         self.first_name = first_name
         self.last_name = last_name
         self.incoming_mark = incoming_mark
         self.entry_mark = entry_mark
+        self.english_level = english_level
+        self.approved_by = approved_by
+        self.approved_by_custom = approved_by_custom
 
 
 class StudentData(object):
@@ -20,83 +25,101 @@ class StudentData(object):
         self.driver = driver
 
     def save_data_changes_button(self):
-        """button to save changes in student data"""
+        """Return button to save changes in student data"""
         return WebDriverWait(self.driver, 10). \
             until(lambda driver: self.driver.
                   find_element(*StudentLocators.
                                SAVE_CHANGES_BUTTON))
 
     def click_save_data_changes_button(self):
-        """click button to save changes in student data"""
+        """Click button to save changes in student data"""
         WebDriverWait(self.driver, 20). \
             until(lambda driver: self.driver.
                   find_element(*StudentLocators.
                                SAVE_CHANGES_BUTTON)).click()
         return self
 
-    def enter_student_first_name(self, student):
-        """enter student first name in window 'student data'"""
+    def enter_student_first_name(self, first_name):
+        """Enter student first name in window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  FIRST_NAME_TEXT_FIELD).clear()
         self.driver.find_element(*StudentLocators.
                                  FIRST_NAME_TEXT_FIELD). \
-            send_keys(student.first_name)
+            send_keys(first_name)
 
-    def enter_student_last_name(self, student):
-        """enter student last name in window 'student data'"""
+    def enter_student_last_name(self, last_name):
+        """Enter student last name in window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  LAST_NAME_TEXT_FIELD).clear()
         self.driver.find_element(*StudentLocators.
                                  LAST_NAME_TEXT_FIELD). \
-            send_keys(student.last_name)
+            send_keys(last_name)
 
-    def select_english_level_pre_intermediate(self):
-        """enter student's english level pre-intermediate in
-        window 'student data'"""
+    def select_english_level(self, english_level):
+        """Enter student's english level in
+        window 'student data'
+        """
         self.driver.find_element(*StudentLocators.
-                                 LIST_ENGLISH_LEVEL).click()
-        self.driver.find_element(*StudentLocators.
-                                 PRE_INTERMEDIATE_LOW).click()
+                                 OPEN_ENGLISH_LEVELS_LIST).click()
+        english_levels_list = \
+            self.driver.find_elements(*StudentLocators.
+                                      ENGLISH_LEVELS_LIST)
+        for level in english_levels_list:
+            if level.text == english_level:
+                level.click()
 
-    def enter_student_mark_incoming_test(self, student):
-        """enter student's mark of incoming test in
+    def enter_student_mark_incoming_test(self, incoming_mark):
+        """Enter student's mark of incoming test in
         window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  STUDENT_MARK_INCOMING_TEST). \
             clear()
         self.driver.find_element(*StudentLocators.
                                  STUDENT_MARK_INCOMING_TEST). \
-            send_keys(student.incoming_mark)
+            send_keys(incoming_mark)
 
-    def enter_student_entry_mark(self, student):
-        """enter student's entry mark in
+    def enter_student_entry_mark(self, entry_mark):
+        """Enter student's entry mark in
         window 'student data'"""
         self.driver.find_element(*StudentLocators.
                                  STUDENT_ENTRY_SCORE).clear()
         self.driver.find_element(*StudentLocators.
                                  STUDENT_ENTRY_SCORE). \
-            send_keys(student.entry_mark)
+            send_keys(entry_mark)
 
-    def select_approved_by_varenko(self):
-        """enter approved by N. Varenko in
-        window 'student data'"""
+    def select_who_approved(self, approved_by):
+        """Enter who approved student in
+        window 'student data'
+        """
         self.driver.find_element(*StudentLocators.
-                                 STUDENT_APPROVED_BY).click()
+                                 OPEN_LIST_APPROVED_BY).click()
+        list_who_approved = \
+            self.driver.find_elements(*StudentLocators.
+                                      LIST_WHO_APPROVED)
+        for person in list_who_approved:
+            if person.text == approved_by:
+                person.click()
+
+    def enter_name_approved_by_custom(self, approved_by_custom):
+        """Enter approved by custom(name) student in
+        window 'student data'
+        """
         self.driver.find_element(*StudentLocators.
-                                 APPROVED_BY).click()
+                                 APPROVED_BY_CUSTOM).\
+            send_keys(approved_by_custom)
 
     def enter_student_data(self, student):
-        """common function for enter all necessary fields for
+        """Common function for enter all necessary fields for
         student's data"""
-        self.enter_student_first_name(student)
-        self.enter_student_last_name(student)
-        self.select_english_level_pre_intermediate()
-        self.enter_student_mark_incoming_test(student)
-        self.enter_student_entry_mark(student)
-        self.select_approved_by_varenko()
+        self.enter_student_first_name(student.first_name)
+        self.enter_student_last_name(student.last_name)
+        self.select_english_level(student.english_level)
+        self.enter_student_mark_incoming_test(student.incoming_mark)
+        self.enter_student_entry_mark(student.entry_mark)
+        self.select_who_approved(student.approved_by)
 
     def add_cv(self, path_file_cv):
-        """input cv file for student data"""
+        """Input cv file for student data"""
         self.driver.find_element(*StudentLocators.
                                  ADD_CV_BUTTON).click()
         self.driver.find_element(*StudentLocators.
@@ -104,14 +127,15 @@ class StudentData(object):
             send_keys(os.path.abspath(path_file_cv))
 
     def get_name_cv_file(self):
-        """get name of last cv file, which is input in student data"""
+        """Return name of last cv file, which is input in student data"""
         cv_names_list = []
         for cv in self.driver.find_elements(*StudentLocators.FILE_CV):
-            cv_names_list.append(cv.find_element(*StudentLocators.FILE_NAME_CV).text)
+            cv_names_list.append(cv.find_element(*StudentLocators.
+                                                 FILE_NAME_CV).text)
         return cv_names_list[-1]
 
     def add_photo(self, path_file_photo):
-        """input photo file for student data"""
+        """Input photo file for student data"""
         self.driver.find_element(*StudentLocators.
                                  ADD_PHOTO_BUTTON).click()
         self.driver.find_element(*StudentLocators.
@@ -119,14 +143,12 @@ class StudentData(object):
             send_keys(os.path.abspath(path_file_photo))
 
     def get_name_photo_file(self):
-        """get name of last photo file, which is input in student data"""
+        """Return name of last photo file, which is input in student data"""
         return self.driver.find_elements(*StudentLocators.
                                          FILE_NAME_PHOTO)[-1].text
 
     def warnings_text_for_adding_student_with_empty_fields(self):
-        """
-        :return: warnings text after adding student with empty fields
-        """
+        """Return warnings text after adding student with empty fields"""
         warnings_text = []
         warnings = WebDriverWait(self.driver, 20). \
             until(lambda driver: self.driver.
@@ -144,7 +166,7 @@ class StudentsList(object):
         self.student_data = StudentData(self.driver)
 
     def click_delete_first_student_button(self):
-        """click on button for deleting first student
+        """Click on button for deleting first student
         from the student's list"""
         self.driver.find_element(*StudentsListLocators.
                                  DELETE_STUDENT_BUTTON).click()
@@ -155,33 +177,33 @@ class StudentsList(object):
         return self
 
     def click_add_new_student_button(self):
-        """click on button for opening window for adding
+        """Click on button for opening window for adding
         new student's data"""
         self.driver.find_element(*StudentsListLocators.
                                  ADD_NEW_STUDENT_BUTTON).click()
         return self
 
     def add_new_student_button(self):
-        """button for opening window for adding
+        """Return button for opening window for adding
         new student's data"""
         return self.driver.find_element(*StudentsListLocators.
                                         ADD_NEW_STUDENT_BUTTON)
 
     def click_edit_student_button(self):
-        """click on button for opening window for editing
+        """Click on button for opening window for editing
         student's data"""
         self.driver.find_element(*StudentsListLocators.
                                  EDIT_STUDENT_BUTTON).click()
         return self
 
     def click_exit_students_list_editor_button(self):
-        """click on button for exit from the student's list editor"""
+        """Click on button for exit from the student's list editor"""
         return self.driver.find_element(*StudentsListLocators.
                                         EXIT_EDIT_STUDENTS_LIST_BUTTON). \
             click()
 
     def click_students_list_sort_by_name_button(self):
-        """click on button for sorting student's list by name"""
+        """Click on button for sorting student's list by name"""
         WebDriverWait(self.driver, 20). \
             until(lambda driver:
                   self.driver.find_element(*StudentsListLocators.
@@ -194,9 +216,7 @@ class StudentsPage(BasePage):
         self.students_list = StudentsList(self.driver)
 
     def students_table(self):
-        """
-        :return: list of students data
-        """
+        """Return list of students data"""
         students_data = []
         list_rows = \
             self.driver.find_elements(*StudentsListLocators.
@@ -206,49 +226,43 @@ class StudentsPage(BasePage):
         return students_data
 
     def click_edit_students_list_button(self):
-        """click on button for entering student's list editor"""
+        """Click on button for entering student's list editor"""
         self.driver.find_element(*StudentsListLocators.
                                  EDIT_STUDENTS_LIST_BUTTON).click()
         return self
 
     def click_students_from_group_button(self):
-        """click on button students after selecting group"""
+        """Click on button students after selecting group"""
         WebDriverWait(self.driver, 20). \
             until(lambda driver: self.driver.
                   find_element(*StudentsListLocators.
                                STUDENTS_IN_STUDENTS_LIST_BUTTON)).click()
 
-    def get_current_url(self):
-        """page's current url"""
-        return self.driver.get_url()
-
 
 def data_student_for_check(student):
-    """
-    :param student:
-    :return: student's data after adding student
-    """
-    data_student = [student.last_name, student.first_name,
-                    'Pre-intermediate low', student.incoming_mark,
-                    student.entry_mark, 'N. Varenko']
-    data_student = ' '.join(data_student)
-    return data_student
+    """Return student's data after adding student"""
+    if student.approved_by_custom is None:
+        data_student = [student.last_name, student.first_name,
+                        student.english_level, student.incoming_mark,
+                        student.entry_mark, student.approved_by]
+        data_student = ' '.join(data_student)
+        return data_student
+    elif student.approved_by_custom is not None:
+        data_student = [student.last_name, student.first_name,
+                        student.english_level, student.incoming_mark,
+                        student.entry_mark, student.approved_by_custom]
+        data_student = ' '.join(data_student)
+        return data_student
 
 
 def remove_none_from_list(students_list):
-    """
-    :param students_list:
-    :return: students list without None
-    """
+    """Return students list without None"""
     students_list = list(filter(None, students_list))
     return students_list
 
 
 def sorted_students_list(students_list):
-    """
-    :param students_list:
-    :return: sorted students list
-    """
+    """Return sorted students list"""
     remove_none_from_list(students_list)
     students_list = sorted(students_list)
     return students_list
