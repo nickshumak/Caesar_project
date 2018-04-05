@@ -17,6 +17,19 @@ from resource.constants_creating_group import TIME_TO_WAIT, \
     TEST_TEACHER_INDEX, TEST_FIRST_EXPERT_NAME, TEST_START_DATE
 
 
+class DepartmentBaseClass(object):
+    def __init__(self, driver):
+        self.driver = driver
+
+    def click_on_team_icon(self, team_icon):
+        """ Click on team icon and open team panel."""
+        team_icon.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(
+                AboutPageLocators.PHOTO))
+        return TeamPanel(self.driver)
+
+
 class TeamPanel(object):
     def __init__(self, driver):
         self.driver = driver
@@ -24,41 +37,25 @@ class TeamPanel(object):
         self.teammate_name = self.driver.find_element(*AboutPageLocators.TEAMMATE_NAME).text
 
 
-class DevelopmentDepartment(object):
+class DevelopmentDepartment(DepartmentBaseClass):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
         self.team_doloto_icon = self.driver.find_element(DevelopmentPanelLocators.TEAM_DOLOTO_ICON)
         self.floppy_drive_icon = self.driver.find_element(DevelopmentPanelLocators.FLOPPY_DRIVE_TEAM_ICON)
         self.fix_machine_icon = self.driver.find_element(DevelopmentPanelLocators.FIX_MACHINE_TEAM_ICON)
 
-    def click_on_team_icon(self, team_icon):
-        """ Click on team icon and open team panel."""
-        team_icon.click()
-        WebDriverWait(self.driver, TIME_TO_WAIT).until(
-            EC.visibility_of_element_located(
-                AboutPageLocators.PHOTO))
-        return TeamPanel(self.driver)
 
-
-class QADepartment(object):
+class QADepartment(DepartmentBaseClass):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
         self.light_side_team_icon = self.driver.find_element(QualityAssurancePanelLocators.LIGHT_SIDE_ICON)
-        self.fluffy_dots = self.driver.find_element(QualityAssurancePanelLocators.FLUFFY_DOTS_ICON)
-        self.charming_chaos = self.driver.find_element(QualityAssurancePanelLocators.CHARMIN_CHAOS_ICON)
-
-    def click_on_team_icon(self, team_icon):
-        """ Click on team icon and open team panel."""
-        team_icon.click()
-        WebDriverWait(self.driver, TIME_TO_WAIT).until(
-            EC.visibility_of_element_located(
-                AboutPageLocators.PHOTO))
-        return TeamPanel(self.driver)
+        self.fluffy_dots_icon = self.driver.find_element(QualityAssurancePanelLocators.FLUFFY_DOTS_ICON)
+        self.charming_chaos_icon = self.driver.find_element(QualityAssurancePanelLocators.CHARMIN_CHAOS_ICON)
 
 
-class ManagementDepartment(object):
+class ManagementDepartment(DepartmentBaseClass):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
 
 
 class AdditionalThanksPage(object):
@@ -682,11 +679,6 @@ class GroupsPage(BasePage):
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            FINISH_DATE_FIELD))
             field_date_finish.send_keys(Keys.ENTER)
-            field_name_of_group = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           GROUP_NAME_FIELD))
-            field_name_of_group.clear()
-            field_name_of_group.send_keys(new_group_name)
-            WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           SAVE_BUTTON)).click()
+
+            self.set_group_name(new_group_name)
+            self.submit_group_creating_button()
