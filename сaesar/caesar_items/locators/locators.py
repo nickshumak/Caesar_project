@@ -64,7 +64,7 @@ class LeftMenuLocators(object):
 
 class TopMenuLocators(object):
     LOCATIONS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
-    GROUPS_BUTTON_ = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
+    GROUPS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
     STUDENTS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
     SCHEDULE_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
     ADD_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')

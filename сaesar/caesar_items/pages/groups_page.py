@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from caesar_items.locators.locators import \
     GroupPageLocators, LeftMenuLocators, RightMenuLocators, TopMenuLocators, \
     CreateGroupWindowLocators, LocationWindowLocators, AboutPageLocators, \
-    DevelopmentPanelLocators, QualityAssurancePanelLocators
+    DevelopmentPanelLocators, QualityAssurancePanelLocators, LogInLocators
 from caesar_items.pages.base_page import BasePage
 from caesar_items.pages.admin_page import AdminPage
 from resource.url_site import PathUrl
@@ -17,235 +17,234 @@ from resource.constants_creating_group import TIME_TO_WAIT, \
     TEST_TEACHER_INDEX, TEST_FIRST_EXPERT_NAME, TEST_START_DATE
 
 
-class AboutPage(object):
+class TeamPanel(object):
+    def __init__(self, driver):
+        self.driver = driver
+        self.team_photos = self.driver.find_elements(*AboutPageLocators.PHOTO)
+        self.teammate_name = self.driver.find_element(*AboutPageLocators.TEAMMATE_NAME).text
+
+
+class DevelopmentDepartment(object):
+    def __init__(self, driver):
+        self.driver = driver
+        self.team_doloto_icon = self.driver.find_element(DevelopmentPanelLocators.TEAM_DOLOTO_ICON)
+        self.floppy_drive_icon = self.driver.find_element(DevelopmentPanelLocators.FLOPPY_DRIVE_TEAM_ICON)
+        self.fix_machine_icon = self.driver.find_element(DevelopmentPanelLocators.FIX_MACHINE_TEAM_ICON)
+
+    def click_on_team_icon(self, team_icon):
+        """ Click on team icon and open team panel."""
+        team_icon.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(
+                AboutPageLocators.PHOTO))
+        return TeamPanel(self.driver)
+
+
+class QADepartment(object):
+    def __init__(self, driver):
+        self.driver = driver
+        self.light_side_team_icon = self.driver.find_element(QualityAssurancePanelLocators.LIGHT_SIDE_ICON)
+        self.fluffy_dots = self.driver.find_element(QualityAssurancePanelLocators.FLUFFY_DOTS_ICON)
+        self.charming_chaos = self.driver.find_element(QualityAssurancePanelLocators.CHARMIN_CHAOS_ICON)
+
+    def click_on_team_icon(self, team_icon):
+        """ Click on team icon and open team panel."""
+        team_icon.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(
+                AboutPageLocators.PHOTO))
+        return TeamPanel(self.driver)
+
+
+class ManagementDepartment(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def development_research_button(self):
+
+class AdditionalThanksPage(object):
+    def __init__(self, driver):
+        self.driver = driver
+
+
+class AboutPage(object):
+    def __init__(self, driver):
+        self.driver = driver
+        self.development_research_button = \
+            self.driver.find_element(*AboutPageLocators.
+                                     DEVELOPMENT_RESEARCH_BUTTON)
+        self.quality_assurance_button = \
+            self.driver.find_element(*AboutPageLocators.
+                                     QUALITY_ASSURANCE)
+        self.management_button = \
+            self.driver.find_element(*AboutPageLocators.
+                                     MANAGEMENT_MENTORING_BUTTON)
+        self.additional_thanks_button = \
+            self.driver.find_element(*AboutPageLocators.
+                                     ADDITIONAL_THANKS_BUTTON)
+
+    def open_development_research_department(self):
         """ Get Development & Research button from about page."""
-        return self.driver.find_element(*AboutPageLocators.
-                                        DEVELOPMENT_RESEARCH_BUTTON)
+        self.development_research_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(
+                DevelopmentPanelLocators.FIX_MACHINE_TEAM_ICON))
+        return DevelopmentDepartment(self.driver)
 
-    def quality_assurance_button(self):
+    def open_quality_assurance_department(self):
         """ Get Quality Assurance button from about page."""
-        return self.driver.find_element(*AboutPageLocators.
-                                        QUALITY_ASSURANCE)
+        self.quality_assurance_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(
+                QualityAssurancePanelLocators.CHARMIN_CHAOS_ICON))
+        return QADepartment(self.driver)
 
-    def management_button(self):
+    def open_management_department(self):
         """ Get Management and Mentoring button from about page."""
-        return self.driver.find_element(*AboutPageLocators.
-                                        MANAGEMENT_MENTORING_BUTTON)
+        self.management_button.click()
+        return ManagementDepartment(self.driver)
 
-    def additional_thanks_button(self):
+    def open_additional_thanks_page(self):
         """ Get Additional Thanks button from about page."""
-        return self.driver.find_element(*AboutPageLocators.
-                                        ADDITIONAL_THANKS_BUTTON)
-
-    def team_doloto_icon(self):
-        """ Get Team Doloto icon from Development & Research."""
-        return self.driver.find_element(*DevelopmentPanelLocators.
-                                        TEAM_DOLOTO_ICON)
-
-    def get_department_text(self):
-        """ Get current department text. """
-        return self.driver.find_element(*AboutPageLocators.DEPARTMENT_NAME). \
-            text
-
-    def floppy_drive_team_icon(self):
-        """ Get Floppy Drive 8 team icon from Development & Research."""
-        return self.driver.find_element(*DevelopmentPanelLocators.
-                                        FLOPPY_DRIVE_TEAM_ICON)
-
-    def fix_machine_icon(self):
-        """ Get Fix Machine team icon from Development & Research."""
-        return self.driver.find_element(*DevelopmentPanelLocators.
-                                        FIX_MACHINE_TEAM_ICON)
-
-    def light_side_icon(self):
-        """ Get The Light Side team icon from Quality Assurance."""
-        return self.driver.find_element(*QualityAssurancePanelLocators.
-                                        LIGHT_SIDE_ICON)
-
-    def fluffy_dots_icon(self):
-        """ Get Fluffy Dots team icon from Quality Assurance."""
-        return self.driver.find_element(*QualityAssurancePanelLocators.
-                                        FLUFFY_DOTS_ICON)
-
-    def charming_chaos_icon(self):
-        """ Get Charming Chaos team icon from Quality Assurance."""
-        return self.driver.find_element(*QualityAssurancePanelLocators.
-                                        CHARMIN_CHAOS_ICON)
-
-    def get_panel_with_photos(self):
-        """ Get panel where placed photo of teammates."""
-        return self.driver.find_element(*AboutPageLocators.
-                                        DEVELOPMENT_TEAM_PHOTOS_PANEL)
-
-    def get_all_photos(self):
-        """ Get all teammates photos when open team window."""
-        return self.driver.find_elements(*AboutPageLocators.PHOTO)
-
-    def get_teammate_name_text(self):
-        """ Get teammate name from panel with  photos."""
-        return self.driver.find_element(*AboutPageLocators.TEAMMATE_NAME).text
+        self.additional_thanks_button.click()
+        return AdditionalThanksPage(self.driver)
 
 
 class LocationsWindow(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def select_dnipro_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.DNIPRO_LOCATION).click()
-        return self
+        self.dnipro_location = self.driver.find_element(
+            *LocationWindowLocators.DNIPRO_LOCATION)
 
-    def select_chernivtsy_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.CHERNIVTSY_LOCATION).click()
-        return self
+        self.chernivtsy_location = self.driver.find_element(
+            *LocationWindowLocators.CHERNIVTSY_LOCATION)
 
-    def select_ivano_frankivsk_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.IVANO_FRANKIVSK_LOCATION).click()
-        return self
+        self.kyiv_location = self.driver.find_element(
+            *LocationWindowLocators.KYIV_LOCATION)
 
-    def select_kyiv_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.KYIV_LOCATION).click()
-        return self
+        self.ivano_frankivsk_location = self.driver.find_element(
+            *LocationWindowLocators.IVANO_FRANKIVSK_LOCATION)
 
-    def select_lviv_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.LVIV_LOCATION).click()
-        return self
+        self.lviv_location = self.driver.find_element(
+            *LocationWindowLocators.LVIV_LOCATION)
 
-    def select_rivne_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.RIVNE_LOCATION).click()
-        return self
+        self.rivne_location = self.driver.find_element(
+            *LocationWindowLocators.RIVNE_LOCATION)
 
-    def select_sofia_location(self):
-        """ Click on location on location window."""
-        self.driver.find_element(
-            *LocationWindowLocators.SOFIA_LOCATION).click()
-        return self
+        self.sofia_location = self.driver.find_element(
+            *LocationWindowLocators.SOFIA_LOCATION)
 
-    def save_button(self):
-        """ Return save button web element."""
-        return self.driver.find_element(*LocationWindowLocators.SAVE_BUTTON)
+        self.save_button = self.driver.find_element(*LocationWindowLocators.SAVE_BUTTON)
 
-    def disabled_save_button(self):
-        """ Return disabled save button web element."""
-        return self.driver.find_element(
-            *LocationWindowLocators.DISABLED_SAVE_BUTTON)
-
-    def cancel_button(self):
-        """ Return cancel button web element."""
-        return self.driver.find_element(*LocationWindowLocators.CANCEL_BUTTON)
-
-    def get_current_url(self):
-        """ Get url on current page."""
-        return self.driver.current_url
+        self.cancel_button = self.driver.find_element(*LocationWindowLocators.CANCEL_BUTTON)
 
 
-class LeftMenu(object):
+class LeftMenu(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
+        self.create_button = self.driver.find_element(LeftMenuLocators.BUTTON_CREATE_GROUP)
+        self.search_button = self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
+        self.edit_button = self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
+        self.delete_button = self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
 
     def create_group_button(self):
         """ Get create button web element."""
-        return WebDriverWait(self.driver, TIME_TO_WAIT).until(
+        self.create_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
             EC.visibility_of_element_located(
-                LeftMenuLocators.BUTTON_CREATE_GROUP))
-
-    def search_group_button(self):
-        """ Get search button web element."""
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_SEARCH_GROUP)
+                CreateGroupWindowLocators.SAVE_BUTTON))
+        # return CreateGroupWindow(self.diver)
 
     def edit_group_button(self):
         """ Get edit button web element."""
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_EDIT_GROUP)
+        self.edit_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT).until(
+            EC.visibility_of_element_located(
+                CreateGroupWindowLocators.SAVE_BUTTON))
+        # return CreateGroupWindow(self.diver)
 
     def delete_group_button(self):
         """ Get delete button web element."""
-        return self.driver.find_element(*LeftMenuLocators.BUTTON_DELETE_GROUP)
+        self.delete_button.click()
 
 
-class RightMenu(object):
+class RightMenu(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
+        self.logout_button = self.\
+            driver.find_element(*RightMenuLocators.BUTTON_LOGOUT)
+
+        self.edit_user_button = self.\
+            driver.find_element(*RightMenuLocators.BUTTON_EDIT_PROFILE)
+
+        self.user_full_name = self.\
+            driver.find_element(*RightMenuLocators.USER_NAME).text
+
+        self.user_role = self.\
+            driver.find_element(*RightMenuLocators.USER_ROLE).text
 
     def click_logout_button(self):
-        """ Click on logout web element."""
-        self.driver.find_element(*RightMenuLocators.BUTTON_LOGOUT).click()
-
-    def get_user_full_name_text(self):
-        """ Get user name from left menu."""
-        return self.driver.find_element(*RightMenuLocators.USER_NAME).text
-
-    def get_user_role_text(self):
-        """ Get user role from left menu."""
-        return self.driver.find_element(*RightMenuLocators.USER_ROLE).text
-
-    def click_edit_user_button(self):
-        """ Click on edit user button on right menu."""
-        self.driver.find_element(*RightMenuLocators.BUTTON_EDIT_PROFILE).click()
-
-    def get_current_url(self):
-        """ Get current url of page."""
-        return self.driver.current_url
+        """ Click on logout web element and wait for
+        Login Page."""
+        self.logout_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(LogInLocators.CONFIRM_ACTION))
 
 
-class TopMenu(object):
+class TopMenu(BasePage):
     def __init__(self, driver):
-        self.driver = driver
-        self.locations = LocationsWindow(self.driver)
-        self.about = AboutPage(self.driver)
+        super().__init__(driver)
+        self.locations_button = self.driver.find_element(*TopMenuLocators.LOCATIONS_BUTTON)
+        self.groups_button = self.driver.find_element(*TopMenuLocators.GROUPS_BUTTON)
+        self.students_button = self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON)
+        self.schedule_button = self.driver.find_element(*TopMenuLocators.SCHEDULE_BUTTON)
+        self.add_button = self.driver.find_element(*TopMenuLocators.ADD_BUTTON)
+        self.about_button = self.driver.find_element(*TopMenuLocators.ABOUT_BUTTON)
+        self.logout_button = self.driver.find_element(*TopMenuLocators.BUTTON_LOGOUT)
 
     def click_locations_button(self):
         """ Click locations button on top menu and wait when save button appears."""
-        self.driver.find_element(*TopMenuLocators.LOCATIONS_BUTTON).click()
+        self.locations_button.click()
         WebDriverWait(self.driver, TIME_TO_WAIT) \
-            .until(EC.visibility_of_element_located(LocationWindowLocators.
-                                                    SAVE_BUTTON))
+            .until(EC.visibility_of_element_located(LocationWindowLocators.SAVE_BUTTON))
         return LocationsWindow(self.driver)
 
     def click_groups_button(self):
         """ Click groups button on top menu."""
-        self.driver.find_element(*TopMenuLocators.GROUPS_BUTTON_).click()
-        self.driver.implicitly_wait(2)
+        self.groups_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(GroupPageLocators.BUTTON_MY_GROUPS))
 
     def click_students_button(self):
         """ Click students button on top menu."""
-        self.driver.find_element(*TopMenuLocators.STUDENTS_BUTTON).click()
-        self.driver.implicitly_wait(2)
+        self.students_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(GroupPageLocators.BUTTON_ALL_GROUPS))
 
     def click_schedule_button(self):
         """ Click schedule button on top menu."""
-        self.driver.find_element(*TopMenuLocators.SCHEDULE_BUTTON).click()
-        self.driver.implicitly_wait(2)
+        self.schedule_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(GroupPageLocators.BUTTON_MY_GROUPS))
 
     def click_add_button(self):
         """ Click add button on top menu."""
-        self.driver.find_element(*TopMenuLocators.ADD_BUTTON).click()
-        self.driver.implicitly_wait(2)
+        self.add_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(CreateGroupWindowLocators.SAVE_BUTTON))
 
     def click_about_button(self):
         """ Click about button on top menu."""
-        self.driver.find_element(*TopMenuLocators.ABOUT_BUTTON).click()
-        self.driver.implicitly_wait(2)
+        self.about_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(AboutPageLocators.DEVELOPMENT_RESEARCH_BUTTON))
         return AboutPage(self.driver)
 
     def click_logout_button(self):
         """ Click about button on top menu."""
-        self.driver.find_element(*TopMenuLocators.BUTTON_LOGOUT).click()
-        self.driver.implicitly_wait(2)
+        self.logout_button.click()
+        WebDriverWait(self.driver, TIME_TO_WAIT). \
+            until(EC.visibility_of_element_located(LogInLocators.CONFIRM_ACTION))
 
 
 class GroupsPage(BasePage):
@@ -255,9 +254,6 @@ class GroupsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         GroupsPage.driver = driver
-        self.left_menu = LeftMenu(self.driver)
-        self.right_menu = RightMenu(self.driver)
-        self.top_menu = TopMenu(self.driver)
 
     def get_group_location_text(self):
         """ Get current locations from middle panel."""
@@ -297,7 +293,7 @@ class GroupsPage(BasePage):
         groups_list = []
         groups = self.driver.find_elements(*GroupPageLocators.GROUPS)
         for group in groups:
-            groups_list = group.text
+            groups_list.append(group.text)
         return groups_list
 
     def list_of_groups(self):
@@ -318,7 +314,7 @@ class GroupsPage(BasePage):
         WebDriverWait(self.driver, TIME_TO_WAIT) \
             .until(EC.visibility_of_element_located(LeftMenuLocators.
                                                     BUTTON_SEARCH_GROUP))
-        return self.left_menu
+        return LeftMenu(self.driver)
 
     def open_right_menu(self):
         """ Click on user photo."""
@@ -326,13 +322,13 @@ class GroupsPage(BasePage):
         WebDriverWait(self.driver, TIME_TO_WAIT). \
             until(EC.visibility_of_element_located(RightMenuLocators.
                                                    BUTTON_LOGOUT))
-        return self.right_menu
+        return RightMenu(self.driver)
 
     def open_top_menu(self):
         """ Move mouse on top page."""
         top_menu = self.driver.find_element(*GroupPageLocators.TOP_MENU)
         ActionChains(self.driver).move_to_element(top_menu).perform()
-        return self.top_menu
+        return TopMenu(self.driver)
 
     def open_admin_page(self):
         """ Open admin page panel."""
