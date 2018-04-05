@@ -86,14 +86,11 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
 
     def test01_add_new_student_with_admin(self):
         """Check is new student added by administrator."""
-        self.students_page.click_edit_students_list_button()
-        self.students_page.students_list.click_add_new_student_button()
-        self.students_page.students_list.student_data. \
-            enter_student_data(first_new_student)
-        self.students_page.students_list.student_data. \
-            click_save_data_changes_button()
-        self.students_page.students_list. \
-            click_exit_students_list_editor_button()
+        self.students_page.click_edit_students_list_button()\
+            .click_add_new_student_button()\
+            .enter_student_data(first_new_student)\
+            .click_save_data_changes_button()\
+            .click_exit_students_list_editor_button()
         student = data_student_for_check(first_new_student)
         students_list = self.students_page.students_table()
         self.assertEqual(self.main_page.get_current_url(),
@@ -102,14 +99,11 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
 
     def test02_edit_data_first_student_with_admin(self):
         """Check is first student editing by administrator."""
-        self.students_page.click_edit_students_list_button()
-        self.students_page.students_list.click_edit_student_button()
-        self.students_page.students_list.student_data. \
-            enter_student_data(first_new_data_student)
-        self.students_page.students_list.student_data. \
-            click_save_data_changes_button()
-        self.students_page.students_list. \
-            click_exit_students_list_editor_button()
+        self.students_page.click_edit_students_list_button()\
+            .click_edit_student_button()\
+            .enter_student_data(first_new_data_student)\
+            .click_save_data_changes_button()\
+            .click_exit_students_list_editor_button()
         student_with_changes = \
             data_student_for_check(first_new_data_student)
         students_list = self.students_page.students_table()
@@ -120,9 +114,9 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
     def test03_edit_cv_first_student_with_admin(self):
         """Check is cv file added to the student's data
         by administrator."""
-        self.students_page.click_edit_students_list_button()
-        self.students_page.students_list.click_edit_student_button()
-        self.students_page.students_list.student_data.add_cv(path_file_cv)
+        self.students_page.click_edit_students_list_button()\
+            .click_edit_student_button()\
+            .add_cv(path_file_cv)
         actual_name_file = self.students_page. \
             students_list.student_data.get_name_cv_file()
         self.assertEqual(actual_name_file, expected_name_file_cv)
@@ -141,7 +135,7 @@ class TestStudentsPageWithAdmin(unittest.TestCase):
     def test05_students_list_sort_by_name(self):
         """Check with role administrator is student's list sorting by name."""
         unsorted_students_list = self.students_page.students_table()
-        self.students_page.students_list. \
+        self.students_page.click_edit_students_list_button().\
             click_students_list_sort_by_name_button()
         # get sorted list with button without None
         sorted_list_by_button = \
