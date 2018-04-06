@@ -105,6 +105,7 @@ class StudentData(object):
         self.driver.find_element(*StudentLocators.
                                  INPUT_PATH_CV_FILE). \
             send_keys(os.path.abspath(path_file_cv))
+        return self
 
     def get_name_cv_file(self):
         """Return name of last cv file, which is input in student data."""
@@ -120,6 +121,7 @@ class StudentData(object):
         self.driver.find_element(*StudentLocators.
                                  INPUT_PATH_PHOTO_FILE). \
             send_keys(os.path.abspath(path_file_photo))
+        return self
 
     def get_name_photo_file(self):
         """Return name of last photo file, which is input in student data."""
@@ -146,7 +148,6 @@ class StudentsList(object):
         self.edit_student_button = self.driver.find_element(*StudentsListLocators.EDIT_STUDENT_BUTTON)
         self.delete_first_student_button = self.driver.find_element(*StudentsListLocators.DELETE_STUDENT_BUTTON)
         self.exit_students_list_editor_button = self.driver.find_element(*StudentsListLocators.EXIT_EDIT_STUDENTS_LIST_BUTTON)
-        self.students_list_sort_by_name_button = WebDriverWait(self.driver, 20).until(lambda driver:self.driver.find_element(*StudentsListLocators.SORT_LIST_BY_NAME_BUTTON))
 
     def click_delete_first_student_button(self):
         """Click on button for deleting first student
@@ -173,16 +174,14 @@ class StudentsList(object):
     def click_exit_students_list_editor_button(self):
         """Click on button for exit from the student's list editor."""
         self.exit_students_list_editor_button.click()
-        return self
-
-    def click_students_list_sort_by_name_button(self):
-        """Click on button for sorting student's list by name."""
-        self.students_list_sort_by_name_button.click()
+        return StudentsPage(self.driver)
 
 
 class StudentsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
+        self.students_list_sort_by_name_button = WebDriverWait(self.driver, 20).until(lambda driver:self.driver.find_element(*StudentsListLocators.SORT_LIST_BY_NAME_BUTTON))
+
         # self.students_list = StudentsList(self.driver)
 
     def students_table(self):
@@ -208,6 +207,11 @@ class StudentsPage(BasePage):
                   find_element(*StudentsListLocators.
                                STUDENTS_IN_STUDENTS_LIST_BUTTON)).click()
 
+    def click_students_list_sort_by_name_button(self):
+        """Click on button for sorting student's list by name."""
+        self.students_list_sort_by_name_button.click()
+        return self
+
 
 def data_student_for_check(student):
     """Return student's data after adding student."""
@@ -228,11 +232,4 @@ def data_student_for_check(student):
 def remove_none_from_list(students_list):
     """Return students list without None."""
     students_list = list(filter(None, students_list))
-    return students_list
-
-
-def sorted_students_list(students_list):
-    """Return sorted students list."""
-    remove_none_from_list(students_list)
-    students_list = sorted(students_list)
     return students_list
