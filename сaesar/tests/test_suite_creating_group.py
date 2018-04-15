@@ -3,7 +3,7 @@ from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_DIRECTION_IS_NOT_SELECTED, \
     MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE, TEST_GROUP_NAME, \
     TEST_ITERATIONS, MESSAGE_EMPTY_EXPERT_NAME, TEST_SECOND_EXPERT_NAME, \
-    MESSAGE_INVALID_EXPERT_NAME, TEST_FIRST_EXPERT_NAME, TEST_THIRD_EXPERT_NAME
+    MESSAGE_INVALID_EXPERT_NAME, TEST_FIRST_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -53,7 +53,7 @@ class TestCreatingGroup(TestBase):
     def test06_save_button_is_working(self):
         """ Check  the field 'save' button  work correct """
         self.group_page.CreateGroupWindow().auto_fill_all_fields(
-            TEST_GROUP_NAME)
+            TEST_GROUP_NAME,TEST_LOCATION)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test07_cancel_button_is_enabled(self):
