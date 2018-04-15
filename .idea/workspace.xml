@@ -4,7 +4,6 @@
     <list default="true" id="b39f3109-d81b-4c32-a317-7f6ec192f6c7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" afterPath="$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py" />
-      <change beforePath="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" afterPath="$PROJECT_DIR$/сaesar/resource/constants_creating_group.py" />
       <change beforePath="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group.py" afterPath="$PROJECT_DIR$/сaesar/tests/test_suite_creating_group.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="groups_page.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="184" column="77" lean-forward="false" selection-start-line="184" selection-start-column="77" selection-end-line="184" selection-end-column="77" />
+            <state relative-caret-position="943">
+              <caret line="224" column="22" lean-forward="false" selection-start-line="224" selection-start-column="22" selection-end-line="224" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -36,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_suite_creating_group.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_suite_creating_group.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="52" column="29" lean-forward="false" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+            <state relative-caret-position="-1913">
+              <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -84,8 +83,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="Nickolai Shumakov &lt;mastershumakov@gmail.com&gt;" />
         <option value="nshumakov &lt;mastershumakov@gmail.com&gt;" />
+        <option value="Nickolai Shumakov &lt;mastershumakov@gmail.com&gt;" />
       </list>
     </option>
     <option name="UPDATE_TYPE" value="REBASE" />
@@ -251,7 +250,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_suite_creating_group.py">
+  <component name="RunManager" selected="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers">
+    <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/сaesar/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Caesar_project" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
     <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -266,7 +279,7 @@
       <option name="_new_target" value="&quot;test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
-    <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test10_create_group_with_empty_field_group_name" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test15_adding_more_5_same_expert" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -277,7 +290,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_suite_creating_group.TestCreatingGroup.test10_create_group_with_empty_field_group_name&quot;" />
+      <option name="_new_target" value="&quot;test_suite_creating_group.TestCreatingGroup.test15_adding_more_5_same_expert&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -292,20 +305,6 @@
       <module name="Caesar_project" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests for test_suite_editing_group.TestCreatingGroup.test16_create_group_with_empty_start_date" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/сaesar/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Caesar_project" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_suite_editing_group.TestCreatingGroup.test16_create_group_with_empty_start_date&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     </configuration>
     <configuration name="Unittests in test_suite_creating_group.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -323,19 +322,19 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_editing_group.TestCreatingGroup.test16_create_group_with_empty_start_date" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test10_create_group_with_empty_field_group_name" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_suite_creating_group.py" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_suite_creating_group.py" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test15_adding_more_5_same_expert" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_suite_creating_group.py" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test10_create_group_with_empty_field_group_name" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_editing_group.TestCreatingGroup.test16_create_group_with_empty_start_date" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test15_adding_more_5_same_expert" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_suite_creating_group.py" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" />
       </list>
     </recent_temporary>
   </component>
@@ -500,21 +499,28 @@
       <option name="project" value="LOCAL" />
       <updated>1522750731145</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refactored WindowCreatingGroup Page Object">
+      <created>1523779568243</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1523779568244</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test04_adding_more_5_teachers - 2018.04.15 at 11h 13m 16s.xml">
+      <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test04_adding_more_5_teachers - 2018.04.15 at 11h 14m 12s.xml">
+      <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test04_adding_more_5_teachers" configurationId="tests" />
+    </history-entry>
     <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test06_save_button_is_working - 2018.04.15 at 10h 51m 15s.xml">
       <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test06_save_button_is_working" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test10_create_group_with_empty_field_group_name - 2018.04.15 at 09h 53m 45s.xml">
-      <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test10_create_group_with_empty_field_group_name" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test17_add_empty_teacher - 2018.04.15 at 10h 08m 39s.xml">
-      <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test17_add_empty_teacher - 2018.04.15 at 10h 16m 52s.xml">
-      <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" configurationId="tests" />
+    <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test15_adding_more_5_same_expert - 2018.04.15 at 11h 11m 58s.xml">
+      <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test15_adding_more_5_same_expert" configurationId="tests" />
     </history-entry>
     <history-entry file="Unittests_for_test_suite_creating_group_TestCreatingGroup_test17_add_empty_teacher - 2018.04.15 at 10h 18m 33s.xml">
       <configuration name="Unittests for test_suite_creating_group.TestCreatingGroup.test17_add_empty_teacher" configurationId="tests" />
@@ -605,7 +611,8 @@
     <MESSAGE value="Update" />
     <MESSAGE value="Refactoring after review" />
     <MESSAGE value="Some docstrings added to group page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some docstrings added to group page" />
+    <MESSAGE value="Refactored WindowCreatingGroup Page Object" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored WindowCreatingGroup Page Object" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -884,18 +891,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group.py">
+    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="52" column="29" lean-forward="false" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        <state relative-caret-position="943">
+          <caret line="224" column="22" lean-forward="false" selection-start-line="224" selection-start-column="22" selection-end-line="224" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/сaesar/caesar_items/pages/groups_page.py">
+    <entry file="file://$PROJECT_DIR$/сaesar/tests/test_suite_creating_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="184" column="77" lean-forward="false" selection-start-line="184" selection-start-column="77" selection-end-line="184" selection-end-column="77" />
+        <state relative-caret-position="-1913">
+          <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
           <folding />
         </state>
       </provider>

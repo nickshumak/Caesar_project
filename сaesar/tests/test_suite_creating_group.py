@@ -3,7 +3,7 @@ from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_DIRECTION_IS_NOT_SELECTED, \
     MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE, TEST_GROUP_NAME, \
     TEST_ITERATIONS, MESSAGE_EMPTY_EXPERT_NAME, TEST_SECOND_EXPERT_NAME, \
-    MESSAGE_INVALID_EXPERT_NAME, TEST_FIRST_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION
+    MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -42,7 +42,7 @@ class TestCreatingGroup(TestBase):
             i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
             get_values_from_added_teachers_list()
-        self.assertEqual(teachers_list, set(teachers_list))
+        self.assertEqual(teachers_list.sort(), list(set(teachers_list)).sort())
 
     def test05_save_button_is_enabled(self):
         """ Check  the field 'save' button  is enabled"""
@@ -53,7 +53,7 @@ class TestCreatingGroup(TestBase):
     def test06_save_button_is_working(self):
         """ Check  the field 'save' button  work correct """
         self.group_page.CreateGroupWindow().auto_fill_all_fields(
-            TEST_GROUP_NAME,TEST_LOCATION)
+            TEST_GROUP_NAME, TEST_LOCATION)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test07_cancel_button_is_enabled(self):
@@ -133,7 +133,7 @@ class TestCreatingGroup(TestBase):
             i -= 1
         experts_list = self.group_page.CreateGroupWindow(). \
             get_added_experts_list()
-        self.assertEqual(experts_list, set(experts_list))
+        self.assertEqual(experts_list, list(set(experts_list)))
 
     def test16_add_expert_empty_name(self):
         """ Check  the adding of expert with empty field 'name'"""

@@ -182,48 +182,48 @@ class GroupsPage(BasePage):
     class CreateGroupWindow(object):
         def __init__(self):
             self.driver = GroupsPage.driver
-            self.group_name_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           GROUP_NAME_FIELD))
-            self.group_name_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.presence_of_element_located(CreateGroupWindowLocators.
-                                               GROUP_NAME_FORM))
-            self.group_direction_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.presence_of_element_located(CreateGroupWindowLocators.
-                                               DIRECTION_FORM))
-            self.group_location_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.presence_of_element_located(CreateGroupWindowLocators.
-                                               LOCATION_FORM))
-            self.start_date_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.presence_of_element_located(CreateGroupWindowLocators.
-                                               START_DATE_FORM))
-            self.experts_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.presence_of_element_located(CreateGroupWindowLocators.
-                                               EXPERTS_FORM))
-            self.group_direction_list = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           DIRECTION_DROP_LIST))
-            self.group_location_list = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           LOCATION_DROP_LIST))
-            self.teacher_add_button = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           ONE_MORE_TEACHER_BUTTON))
-            self.start_date_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           START_DATE_FIELD))
-            self.finish_date_field = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           FINISH_DATE_FIELD))
-            self.save_group_button = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           SAVE_BUTTON))
-            self.cancel_button = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           CANCEL_BUTTON))
-            self.add_expert_button = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(
-                    CreateGroupWindowLocators.ADD_EXPERT_BUTTON))
+            self.group_name_field = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 GROUP_NAME_FIELD))
+            self.group_name_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.presence_of_element_located(CreateGroupWindowLocators.
+                                                     GROUP_NAME_FORM))
+            self.group_direction_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.presence_of_element_located(CreateGroupWindowLocators.
+                                                     DIRECTION_FORM))
+            self.group_location_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.presence_of_element_located(CreateGroupWindowLocators.
+                                                     LOCATION_FORM))
+            self.start_date_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.presence_of_element_located(CreateGroupWindowLocators.
+                                                     START_DATE_FORM))
+            self.experts_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.presence_of_element_located(CreateGroupWindowLocators.
+                                                     EXPERTS_FORM))
+            self.group_direction_list = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 DIRECTION_DROP_LIST))
+            self.group_location_list = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 LOCATION_DROP_LIST))
+            self.teacher_add_button = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 ONE_MORE_TEACHER_BUTTON))
+            self.start_date_field = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 START_DATE_FIELD))
+            self.finish_date_field = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 FINISH_DATE_FIELD))
+            self.save_group_button = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 SAVE_BUTTON))
+            self.cancel_button = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 CANCEL_BUTTON))
+            self.add_expert_button = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.element_to_be_clickable(
+                CreateGroupWindowLocators.ADD_EXPERT_BUTTON))
 
         def get_group_name_field(self) -> object:
             """ Get group name field web element."""
