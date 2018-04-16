@@ -1,8 +1,5 @@
 *** Settings ***
 Documentation     Tests check the adding, removal and editing of student data, adding cv_files and photo in the list of students with \ role administrator also check the opportunity of adding new student with empty data and sorting student's list by name.
-Suite Setup       Open site
-Test Setup        LogIn
-Test Teardown     Close Browser
 Library           Selenium2Library
 
 *** Variables ***
@@ -21,7 +18,8 @@ ${english level first new student}    Pre-intermediate
 test01_new_student
     [Documentation]    Check adding new student by administrator.
     [Tags]    add student
-    [Setup]
+    [Setup]    Open site
+    LogIn
     Open Top Menu
     Click Groups Button
     Select Group
@@ -31,20 +29,26 @@ test01_new_student
     Click Save Data Changes Button
     Click Exit Students List Editor
     Check Is New Student Added
+    Close Browser
     [Teardown]
 
 test02_del_student
     [Documentation]    Check deleting first student from the student's list by administrator.
     [Tags]    del student
+    [Setup]    Open site
+    LogIn
     Open Top Menu
     Click Groups Button
     Select Group
     Click Edit Students List Button
     Deleting First Student
+    Close Browser
 
 test03_adding_cv
     [Documentation]    Check is cv file added to the student's data \ by administrator.
     [Tags]    CV
+    [Setup]    Open site
+    LogIn
     Open Top Menu
     Click Groups Button
     Select Group
@@ -52,10 +56,13 @@ test03_adding_cv
     Click Add New Student Button
     Add CV File
     Page Should Contain    cv.docx    CV is not download.
+    Close Browser
 
 test04_add_student_empty_data
     [Documentation]    Check adding new student with empty fields by administrator
     [Tags]    empty data
+    [Setup]    Open site
+    LogIn
     Open Top Menu
     Click Groups Button
     Select Group
@@ -63,6 +70,7 @@ test04_add_student_empty_data
     Click Add New Student Button
     Click Save Data Changes Button
     Should Be Equal    Expected List    @{warnind`s list}
+    Close Browser
 
 *** Keywords ***
 LogIn
@@ -88,7 +96,7 @@ Open site
     Maximize Browser Window
 
 Click Groups Button
-    Click Element    css:div.itemMenu:nth-child(3)
+    Click Element    xpath://*[@id="top-menu"]/div[1]/div[2]/i
 
 Click Edit Students List Button
     Click Element    xpath://*[@id="main-section"]/div/header/div[1]/button
@@ -125,5 +133,5 @@ Expected List
     [Arguments]    ${arg1}
     @{Warnings}    Get WebElements    class:hint
     ${Warning}    Get WebElement    class:hint
-    :FOR    ${Warning}    IN    @{Warnings}
+    : FOR    ${Warning}    IN    @{Warnings}
     \    Create List    Get Text    ${Warning}

@@ -6,8 +6,9 @@ from resource.path_driver import GetDriver
 from caesar_items.pages.login_page import LogInPage
 from caesar_items.pages.groups_page import GroupsPage
 from caesar_items.pages.students_page import StudentsPage
+from selenium.webdriver.support.ui import WebDriverWait
 
-url_for_test_start = 'http://localhost:3000/Students/Dnipro/DP-093-JS/'
+url_for_test_start = 'http://localhost:3000/Students/Dnipro/DP-093-JS/list'
 
 
 class TestBaseSetUP(unittest.TestCase):
@@ -34,6 +35,5 @@ class TestBaseSetUP(unittest.TestCase):
         cls.driver.quit()
 
     def tearDown(self):
-        self.students_page.driver.get(url_for_test_start)
-        self.students_page.driver.implicitly_wait(10)
-        return self.students_page
+        self.driver.get(url_for_test_start)
+        self.students_page = StudentsPage(self.driver)

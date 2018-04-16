@@ -201,16 +201,6 @@ class StudentsList(object):
 class StudentsPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        self.edit_students_list_button = \
-            WebDriverWait(self.
-                          driver, 20).until(lambda driver: self.driver.
-                                            find_element(*StudentsListLocators.
-                                                         EDIT_STUDENTS_LIST_BUTTON))
-        self.students_list_sort_by_name_button = \
-            WebDriverWait(self.
-                          driver, 20).until(lambda driver: self.driver.
-                                            find_element(*StudentsListLocators.
-                                                         SORT_LIST_BY_NAME_BUTTON))
 
     def students_table(self):
         """ Return list of students data."""
@@ -225,8 +215,9 @@ class StudentsPage(BasePage):
     def click_edit_students_list_button(self):
         """ Click on button for entering student's list editor."""
         WebDriverWait(self.driver,
-                      20).until(lambda driver: self.edit_students_list_button).\
-            click()
+                      20).until(lambda driver: self.driver.
+                                            find_element(*StudentsListLocators.
+                                                         EDIT_STUDENTS_LIST_BUTTON)).click()
         return StudentsList(self.driver)
 
     def click_students_from_group_button(self):
@@ -239,7 +230,10 @@ class StudentsPage(BasePage):
 
     def click_students_list_sort_by_name_button(self):
         """ Click on button for sorting student's list by name."""
-        self.students_list_sort_by_name_button.click()
+        WebDriverWait(self.
+                      driver, 20).until(lambda driver: self.driver.
+                                        find_element(*StudentsListLocators.
+                                                     SORT_LIST_BY_NAME_BUTTON)).click()
         return self
 
     def get_url(self, url):
