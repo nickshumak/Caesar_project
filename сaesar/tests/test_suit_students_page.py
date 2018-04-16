@@ -8,10 +8,6 @@ sorting student's list by name.
 
 import unittest
 import logging
-from selenium import webdriver
-from resource.url_site import PathUrl
-from resource.path_driver import GetDriver
-from caesar_items.pages.login_page import LogInPage
 from caesar_items.pages.groups_page import GroupsPage
 from caesar_items.pages.students_page import StudentsPage,\
     data_student_for_check, remove_none_from_list
@@ -100,7 +96,8 @@ class TestStudentsPageWithAdmin(TestBaseSetUP):
             remove_none_from_list(sorted(self.students_page.students_table()))
         # get sorted list with button without None
         sorted_list_by_button = \
-            remove_none_from_list(self.students_page.click_students_list_sort_by_name_button().
+            remove_none_from_list(self.students_page.
+                                  click_students_list_sort_by_name_button().
                                   students_table())
         self.assertEqual(sorted_list_by_button, sorted_list_by_function)
 
