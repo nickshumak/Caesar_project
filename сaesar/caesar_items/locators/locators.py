@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.common.by import By
 
 
@@ -24,11 +25,11 @@ class GroupPageLocators(object):
 
     # main section
     GROUP_NAME = (By.CLASS_NAME, 'content-header-group-name')
-    BUTTON_EDIT_GROUP = (By.NAME, 'edit')
-    BUTTON_INFO_GROUP = (By.NAME, 'info')
-    BUTTON_STUDENTS_IN_GROUP = (By.NAME, 'students')
-    BUTTON_SCHEDULE_GROUP = (By.NAME, 'shedule')
-    BUTTON_MESSAGE_GROUP = (By.NAME, 'message')
+    EDIT_GROUP_BUTTON = (By.NAME, 'edit')
+    INFO_GROUP_BUTTON = (By.NAME, 'info')
+    STUDENTS_IN_GROUP_BUTTON = (By.NAME, 'students')
+    SCHEDULE_GROUP_BUTTON = (By.NAME, 'shedule')
+    MESSAGE_GROUP_BUTTON = (By.NAME, 'message')
 
     GROUP_COORDINATION = (By.CLASS_NAME, 'group_coordination')
     GROUP_INFO = (By.CLASS_NAME, 'group_info')
@@ -63,7 +64,7 @@ class LeftMenuLocators(object):
 
 class TopMenuLocators(object):
     LOCATIONS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
-    GROUPS_BUTTON_ = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
+    GROUPS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
     STUDENTS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
     SCHEDULE_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
     ADD_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')
@@ -73,19 +74,19 @@ class TopMenuLocators(object):
 
 
 class LocationWindowLocators(object):
-    CHERNIVTSY_LOCATION =\
+    CHERNIVTSY_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[1]/p')
-    DNIPRO_LOCATION =\
+    DNIPRO_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[2]/p')
-    IVANO_FRANKIVSK_LOCATION =\
+    IVANO_FRANKIVSK_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[3]/p')
-    KYIV_LOCATION =\
+    KYIV_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[4]/p')
     LVIV_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[5]/p')
     RIVNE_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[6]/p')
-    SOFIA_LOCATION =\
+    SOFIA_LOCATION = \
         (By.XPATH, '//*[@id="modal-window"]/div/div/div/ul/li[7]/p')
     SAVE_BUTTON = \
         (By.CSS_SELECTOR, '#modal-window > div > div '
@@ -96,6 +97,52 @@ class LocationWindowLocators(object):
     CANCEL_BUTTON = \
         (By.CSS_SELECTOR, '#modal-window > div > div '
                           '> div > div > button.cancel > i')
+
+
+class AboutPageLocators(object):
+    DEVELOPMENT_RESEARCH_BUTTON = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.javascript.menuAbout')
+    QUALITY_ASSURANCE = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.mqc.menuAbout > p')
+    MANAGEMENT_MENTORING_BUTTON = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.softserve.menuAbout > p')
+    ADDITIONAL_THANKS_BUTTON = \
+        (By.CSS_SELECTOR, '#left-side-bar > div '
+                          '> div.other.menuAbout > p')
+    GROUP_NAME = (By.CSS_SELECTOR, '#content-section > div > div.stageView')
+
+    DEPARTMENT_NAME = \
+        (By.CSS_SELECTOR, '#content-section '
+                          '> div > div.content-header-group-name')
+
+    DEVELOPMENT_TEAM_PHOTOS_PANEL = \
+        (By.CSS_SELECTOR, '#modal-window > div > div '
+                          '> div > div.row.photosContainer')
+
+    PHOTO = (By.CLASS_NAME, 'contributorPhoto')
+
+    TEAMMATE_NAME = (By.CLASS_NAME, 'contributorsName')
+
+
+class DevelopmentPanelLocators(object):
+    TEAM_DOLOTO_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                         ' div > div:nth-child(1)')
+    FLOPPY_DRIVE_TEAM_ICON = (By.CSS_SELECTOR, '#main-section > '
+                                               'div > div:nth-child(1)')
+    FIX_MACHINE_TEAM_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                              ' div > div:nth-child(1)')
+
+
+class QualityAssurancePanelLocators(object):
+    LIGHT_SIDE_ICON = (By.CSS_SELECTOR, '#main-section > '
+                                        'div > div:nth-child(1)')
+    FLUFFY_DOTS_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                         ' div > div:nth-child(2)')
+    CHARMIN_CHAOS_ICON = (By.CSS_SELECTOR, '#main-section >'
+                                           ' div > div:nth-child(3)')
 
 
 class AdminPageLocators(object):
@@ -126,6 +173,10 @@ class CreateEditUsersLocators(object):
     PASSWORD_FIELD = (By.NAME, "password")
     DELETE_BUTTONS = "(//tbody//button[@class='btn btn-danger delete'])"
 
+    @staticmethod
+    def wait_all_table():
+        time.sleep(1)
+
 
 class CreateEditGroupsLocators(object):
     NAME = (By.NAME, "name")
@@ -139,6 +190,17 @@ class CreateEditGroupsLocators(object):
     BUDGET = (By.NAME, "budgetOwner")
 
 
+class CreateEditStudentsLocators(object):
+    GROUP_ID = (By.NAME, 'groupID')
+    NAME = (By.NAME, "name")
+    LAST_NAME = (By.NAME, "lastName")
+    ENGLISH_LEVEL = (By.NAME, "englishLevel")
+    CV_URL = (By.NAME, "CvUrl")
+    IMAGE = (By.NAME, "imageUrl")
+    ENTRY_SCORE = (By.NAME, "entryScore")
+    APPROVED_BY = (By.NAME, 'approvedBy')
+
+
 class CreateGroupWindowLocators(object):
     GROUP_NAME_FORM = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
@@ -148,15 +210,17 @@ class CreateGroupWindowLocators(object):
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(3) > div:nth-child(1)')
     DIRECTION_DROP_LIST = (By.NAME, 'direction')
+    LOCATION_FORM = (By.CSS_SELECTOR, '#modal-window > section > section > '
+                                      'section > div:nth-child(4) > '
+                                      'div:nth-child(1)')
     LOCATION_DROP_LIST = (By.NAME, 'location')
     ONE_MORE_TEACHER_BUTTON = (By.CLASS_NAME, 'add-teacher-btn')
     TEACHERS_DROP_LIST = (By.NAME, 'teacher')
+    ADDED_TEACHERS_FORM = (By.ID, 'teachers')
     ACCEPT_TEACHER_BUTTON = (By.ID, 'acceptSelect')
-    ADDED_TEACHERS_FORM = (By.CLASS_NAME, 'list-item')
     BUDGET_SOFT_SERVE_BUTTON = (By.CLASS_NAME,
                                 'btn btn-default budget-option active')
-    BUDGET_OPEN_GROUP_BUTTON = \
-        (By.CLASS_NAME, 'btn btn-default budget-option ')
+    BUDGET_OPEN_GROUP_BUTTON = (By.CLASS_NAME, 'btn btn-default budget-option ')
     START_DATE_FORM = (
         By.CSS_SELECTOR, '#modal-window > section > section > section > '
                          'div:nth-child(3) > '
@@ -167,19 +231,12 @@ class CreateGroupWindowLocators(object):
     ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
     EXPERTS_NAME_FIELD = (By.NAME, 'expert')
     ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
+    EXPERTS_FORM = (By.CSS_SELECTOR, "#modal-window > section > section > "
+                                     "section > div:nth-child(6) > "
+                                     "div:nth-child(2)")
+    ADDED_EXPERTS_LIST = (By.CLASS_NAME, 'listExpert')
     SAVE_BUTTON = (By.ID, 'save')
     CANCEL_BUTTON = (By.ID, 'cancel')
-
-
-class CreateEditStudentsLocators(object):
-    GROUP_ID = (By.NAME, 'groupID')
-    NAME = (By.NAME, "name")
-    LAST_NAME = (By.NAME, "lastName")
-    ENGLISH_LEVEL = (By.NAME, "englishLevel")
-    CV_URL = (By.NAME, "CvUrl")
-    IMAGE = (By.NAME, "imageUrl")
-    ENTRY_SCORE = (By.NAME, "entryScore")
-    APPROVED_BY = (By.NAME, 'approvedBy')
 
 
 class StudentsListLocators(object):

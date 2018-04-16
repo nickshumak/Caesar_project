@@ -8,3 +8,11 @@ class BasePage(object):
     def get_page(self, request):
         self.driver.get(request)
         return self
+
+    def get_current_url(self):
+        return self.driver.current_url
+
+
+
+
+

@@ -1,2 +1,3 @@
 class PathUrl(object):
-    URL_SITE = 'http://localhost:3000/'
+    SITE_URL = 'http://localhost:3000/'
+    ADMIN_PAGE = SITE_URL + 'admin'
