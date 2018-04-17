@@ -90,13 +90,14 @@ Select Group
 
 Open Top Menu
     Click Element At Coordinates    id=top-menu    200    20
+    Wait Until Element Is Enabled    class:.itemMenu.activeItem.open    10
 
 Open site
     Open Browser    ${site_url}    chrome
     Maximize Browser Window
 
 Click Groups Button
-    Click Element    xpath://*[@id="top-menu"]/div[1]/div[2]/i
+    Click Element    class:.itemMenu.activeItem.open
 
 Click Edit Students List Button
     Click Element    xpath://*[@id="main-section"]/div/header/div[1]/button

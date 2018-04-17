@@ -9,7 +9,7 @@ ${first_name}     Vladyslava
 ${last_name}      Semmi
 ${incoming_mark}    111
 ${entry_mark}     5
-${new student}     Semmi Vladyslava \
+${new student}    Semmi Vladyslava \
 ${english level first new student}    Pre-intermediate
 
 *** Keywords ***
@@ -36,7 +36,7 @@ Open site
     Maximize Browser Window
 
 Click Groups Button
-    Click Element    css:div.itemMenu:nth-child(3)
+    Click Element    css:.itemMenu.activeItem.open
 
 Click Edit Students List Button
     Click Element    xpath://*[@id="main-section"]/div/header/div[1]/button
@@ -45,12 +45,12 @@ Click Add New Student Button
     Click Element    xpath://*[@id="modal-window"]/section//button[1]
 
 Enter Student data
-    Input Text    xpath://*[@id="modal-window"]//div[2]/div[1]/input     ${first_name}
-    Input Text    xpath://*[@id="modal-window"]//div[3]/div[1]/input     ${last_name}
+    Input Text    xpath://*[@id="modal-window"]//div[2]/div[1]/input    ${first_name}
+    Input Text    xpath://*[@id="modal-window"]//div[3]/div[1]/input    ${last_name}
     Click Element    xpath://*[@id="modal-window"]//div[4]/div[1]/select
     Select From List By Value    value:${english level first new student}    ${english level first new student}
-    Input Text    xpath://*[@id="modal-window"]//div[1]/div[2]/input     ${incoming_mark}
-    Input Text    xpath://*[@id="modal-window"]//div[2]/div[2]/input     ${entry_mark}
+    Input Text    xpath://*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
+    Input Text    xpath://*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
 
 Click Save Data Changes Button
     Click Element    xpath://*[@id="modal-window"]//div[6]/button[1]
@@ -67,5 +67,4 @@ Deleting First Student
 
 Add CV File
     Click Element    xpath://*[@id="modal-window"]//div[5]/div[1]/button
-    Input Text    xpath://*[@id="modal-window"]//div[5]/div[1]/input     cv.docx
-
+    Input Text    xpath://*[@id="modal-window"]//div[5]/div[1]/input    cv.docx

@@ -17,8 +17,8 @@ from tests.test_base import TestBase
 from resource.data_for_test_suit_students_page import data
 
 
-logging.basicConfig(filename='test.log', level=logging.INFO,
-                    format='%(asctime)s:%(levelname)s:%(message)s')
+# logging.basicConfig(filename='test.log', level=logging.INFO,
+#                     format='%(asctime)s:%(levelname)s:%(message)s')
 
 
 class TestStudentsPageWithAdmin(TestBaseSetUP):
@@ -32,9 +32,11 @@ class TestStudentsPageWithAdmin(TestBaseSetUP):
 
     @classmethod
     def tearDownClass(cls):
+        """Close browser."""
         super().tearDownClass()
 
     def tearDown(self):
+        """Go to the test start page."""
         super().tearDown()
 
     def test01_add_new_student_with_admin(self):
@@ -92,17 +94,21 @@ class TestStudentsPageWithAdmin(TestBaseSetUP):
     def test05_students_list_sort_by_name(self):
         """Check with role administrator is student's list sorting by name."""
         # get sorted list with function without None
+        students_table = self.students_page.students_table()
         sorted_list_by_function = \
-            remove_none_from_list(sorted(self.students_page.students_table()))
+            remove_none_from_list(sorted(students_table))
+        print(sorted_list_by_function)
+
         # get sorted list with button without None
         sorted_list_by_button = \
             remove_none_from_list(self.students_page.
                                   click_students_list_sort_by_name_button().
                                   students_table())
+        print(sorted_list_by_button)
         self.assertEqual(sorted_list_by_button, sorted_list_by_function)
 
     def test06_add_student_with_empty_fields(self):
-        """Check adding new student with empty fields by administrator"""
+        """Check adding new student with empty fields by administrator."""
         student_data = self.students_page.\
             click_edit_students_list_button(). \
             click_add_new_student_button()
@@ -114,6 +120,7 @@ class TestStudentsPageWithAdmin(TestBaseSetUP):
     def test07_remove_first_student_with_admin(self):
         """Check deleting first student from the student's list
         by administrator."""
+        print(self.students_page.students_table())
         first_student = self.students_page.students_table()[0]
         students_list_without_first_student = self.students_page.\
             click_edit_students_list_button().\
@@ -152,9 +159,11 @@ class TestStudentsPageWithCoordinator(TestBaseSetUP):
 
     @classmethod
     def tearDownClass(cls):
+        """Close browser."""
         super().tearDownClass()
 
     def tearDown(self):
+        """Go to the test start page."""
         super().tearDown()
 
     def test09_add_new_student_with_coordinator(self):
@@ -233,9 +242,11 @@ class TestStudentsPageWithTeacher(TestBaseSetUP):
 
     @classmethod
     def tearDownClass(cls):
+        """Close browser."""
         super().tearDownClass()
 
     def tearDown(self):
+        """Go to the test start page."""
         super().tearDown()
 
     def test14_add_new_student_with_teacher(self):
@@ -320,6 +331,7 @@ class TestStudentsPageFromGroupWithAdmin(TestBase):
         self.students_page = StudentsPage(self.driver)
 
     def tearDown(self):
+        """ Close browser."""
         super().tearDown()
 
     def test19_opening_students_list_editor_after_selecting_group(self):

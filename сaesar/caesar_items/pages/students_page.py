@@ -205,9 +205,9 @@ class StudentsPage(BasePage):
     def students_table(self):
         """ Return list of students data."""
         students_data = []
-        list_rows = \
-            self.driver.find_elements(*StudentsListLocators.
-                                      STUDENTS_LISTS_ROWS)
+        list_rows = WebDriverWait(self.driver, 20). \
+            until(lambda driver: self.driver.
+                  find_elements(*StudentsListLocators.STUDENTS_LISTS_ROWS))
         for rows in list_rows:
             students_data.append(rows.text)
         return students_data
@@ -234,10 +234,6 @@ class StudentsPage(BasePage):
                       driver, 20).until(lambda driver: self.driver.
                                         find_element(*StudentsListLocators.
                                                      SORT_LIST_BY_NAME_BUTTON)).click()
-        return self
-
-    def get_url(self, url):
-        self.driver.get(url)
         return self
 
 
