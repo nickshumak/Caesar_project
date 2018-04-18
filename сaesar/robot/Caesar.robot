@@ -13,12 +13,13 @@ ${first_name}     Vladyslava
 ${last_name}      Semmi
 ${incoming_mark}    111
 ${entry_mark}     5
-${new student}    Semmi Vladyslava
+${new student}    Semmi Vladyslava Pre-intermediate 111 5 Not approved
 ${english level first new student}    Pre-intermediate
-@{warnind`s list}    ['You can use only letters, space and "-"',    'You can use only letters, space and "-"', 'You can use only letters, space and "-"', 'You can use only letters, space and "-"', 'You can use only letters, space and "-"', 'You can use only letters, space and "-"']
-${cv_path}        C:\\Python27\\cv.docx
+@{warnind`s list}    'You can use only letters, space and "-"'    'You can use only letters, space and "-"'    'You can use only letters, space and "-"'    'You can use only letters, space and "-"'    'You can use only letters, space and "-"'    'You can use only letters, space and "-"'
+${cv_path}        ${CURDIR}\\cv.docx
 ${url_for_start_test}    http://localhost:3000/Students/Dnipro/DP-093-JS/list
-${photo_path}     C:\\Python27\\photo.jpg
+${photo_path}     ${CURDIR}\\photo.jpg
+@{data new student}    'Semmi Vladyslava'    'Pre-intermediate'    111    5
 
 *** Test Cases ***
 test01_new_student
@@ -36,7 +37,10 @@ test02_del_student
     [Documentation]    Check deleting first student from the student's list by administrator.
     [Tags]    del student
     Click Edit Students List Button
+    ${First Student}    Get Text    css=#main-section > div > div > table > tbody:nth-child(2) > tr
     Deleting First Student
+    Click Exit Students List Editor
+    Page Should Not Contain    ${First Student}
 
 test03_adding_cv
     [Documentation]    Check is cv file added to the student's data \ by administrator.
@@ -52,7 +56,9 @@ test04_add_student_empty_data
     Click Edit Students List Button
     Click Add New Student Button
     Click Save Data Changes Button
-    Should Be Equal    Expected List    @{warnind`s list}
+    Wait Until Element Is Visible    css=.hint
+    @{actual warnings}    Create List    css=.hint
+    Page Should Contain Element    @{actual warnings}
 
 test05_add_photo
     [Documentation]    Check is photo file added to the student's data \ by administrator.
@@ -60,6 +66,16 @@ test05_add_photo
     Click Add New Student Button
     Add Photo File
     Page Should Contain    photo.jpg    Photo is not download.
+
+test06_adding_equal_students
+    Click Edit Students List Button
+    Click Add New Student Button
+    Enter Student data
+    Click Save Data Changes Button
+    Click Add New Student Button
+    Enter Student data
+    Click Save Data Changes Button
+    Element Should Be Enabled    xpath=//*[@id="modal-window"]//div[6]/button[1]
 
 *** Keywords ***
 LogIn
@@ -69,17 +85,17 @@ LogIn
     Wait Until Element Is Visible    xpath=//*[@id="icon"]/div/img    30    Element user image not found.
 
 Select Group
-    @{Groups}    Get WebElements    class:small-group-view
+    Wait Until Element Is Visible    css=.small-group-view    10
+    @{Groups}    Get WebElements    css=.small-group-view
     Log Many    @{Groups}
-    ${Group}    Get WebElement    class:small-group-view
+    ${Group}    Get WebElement    css=.small-group-view
     : FOR    ${Group}    IN    @{Groups}
     \    ${GroupName}    Get Text    ${Group}
-    \    Log    ${GroupName}
     \    Run Keyword If    '${GroupName}'=='DP-093-JS'    Click Element    ${Group}
 
 Open Top Menu
     Click Element At Coordinates    id=top-menu    200    20
-    Wait Until Element Is Enabled    css=div.itemMenu:nth-child(3)     5
+    Wait Until Element Is Enabled    css=div.itemMenu:nth-child(3)    5
 
 Open site
     Open Browser    ${site_url}    chrome
@@ -89,33 +105,49 @@ Click Groups Button
     Click Element    css=div.itemMenu:nth-child(3)
 
 Click Edit Students List Button
-    Click Element    xpath://*[@id="main-section"]/div/header/div[1]/button
+    Wait Until Element Is Enabled    xpath=//*[@id="main-section"]/div/header/div[1]/button    5
+    Click Button    xpath=//*[@id="main-section"]/div/header/div[1]/button
 
 Click Add New Student Button
-    Click Element    xpath://*[@id="modal-window"]/section//button[1]
+    Wait Until Element Is Enabled    xpath=//*[@id="modal-window"]/section//button[1]    5
+    Click Element    xpath=//*[@id="modal-window"]/section//button[1]
 
 Enter Student data
-    Input Text    xpath://*[@id="modal-window"]//div[2]/div[1]/input    ${first_name}
-    Input Text    xpath://*[@id="modal-window"]//div[3]/div[1]/input    ${last_name}
+    Wait Until Element Is Enabled    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    5
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    ${first_name}
+    Input Text    css=.lastName    ${last_name}
     Select From List By Label    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level first new student}
-    Input Text    xpath://*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
-    Input Text    xpath://*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
+    Input Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
+    Comment    Select From List By Label
 
 Click Save Data Changes Button
-    Click Element    xpath://*[@id="modal-window"]//div[6]/button[1]
+    Click Element    xpath=//*[@id="modal-window"]//div[6]/button[1]
 
 Click Exit Students List Editor
-    Click Element    class:exit
+    Wait Until Element Is Enabled    css=.exit    5
+    Click Button    css=.exit
 
 Check Is New Student Added
-    Page Should Contain    ${new student}    New student is not added
+    Wait Until Element Is Visible    xpath=//*[@id="main-section"]/div/header/div[1]/button    5
+    @{Students}    Get WebElements    css=.tableBodyStudents
+    ${Student}    Get WebElement    css=.tableBodyStudents
+    : FOR    ${Student}    IN    @{Students}
+    \    ${Student Data}    Get Text    ${Student}
+    \    Comment    Convert To String    ${Student Data}
+    \    ${String Student Data}    Convert To String    ${Student Data}
+    \    Convert To String    ${new student}
+    \    Comment    Exit For Loop If    ${Student Data}===${new student}
+    \    Run Keyword If    ${Student Data}==${new student}    Click Edit Students List Button
 
 Deleting First Student
-    Click Element    xpath://*[@id="modal-window"]//td[6]/i
-    Confirm Action
+    Click Element    css=#modal-window > section > section > section > table > tbody > tr:nth-child(2) > td:nth-child(6) > i
+    Comment    Confirm Action
+    Click Element    css=#modal-window > div > div > div > div > button.btn.btn-delete > i
 
 Add CV File
-    Choose File    xpath://*[@id="modal-window"]/div/section/section/div[5]/div[1]/input    ${cv_path}
+    Wait Until Element Is Enabled    css=#modal-window > div > section > section > div:nth-child(5) > div:nth-child(1) > input    5
+    Choose File    css=#modal-window > div > section > section > div:nth-child(5) > div:nth-child(1) > input    ${cv_path}
 
 Expected List
     [Arguments]    ${arg1}
@@ -136,4 +168,5 @@ Url for start next test
     Go To    ${url_for_start_test}
 
 Add Photo File
-    Choose File    xpath://*[@id="modal-window"]/div/section/section/div[5]/div[2]/input    ${photo_path}
+    Wait Until Element Is Enabled    css=#modal-window > div > section > section > div:nth-child(5) > div:nth-child(2) > input    5
+    Choose File    css=#modal-window > div > section > section > div:nth-child(5) > div:nth-child(2) > input    ${photo_path}
