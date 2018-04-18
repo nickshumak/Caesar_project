@@ -4,6 +4,7 @@ Suite Setup       Prepare for Tests
 Suite Teardown    Close Browser
 Test Teardown     Url for start next test    ${url_for_start_test}
 Library           Selenium2Library
+Library           Collections
 
 *** Variables ***
 ${user}           qwerty
@@ -130,15 +131,13 @@ Click Exit Students List Editor
 
 Check Is New Student Added
     Wait Until Element Is Visible    xpath=//*[@id="main-section"]/div/header/div[1]/button    5
+    @{Students list}=    Create List
     @{Students}    Get WebElements    css=.tableBodyStudents
     ${Student}    Get WebElement    css=.tableBodyStudents
     : FOR    ${Student}    IN    @{Students}
-    \    ${Student Data}    Get Text    ${Student}
-    \    Comment    Convert To String    ${Student Data}
-    \    ${String Student Data}    Convert To String    ${Student Data}
-    \    Convert To String    ${new student}
-    \    Comment    Exit For Loop If    ${Student Data}===${new student}
-    \    Run Keyword If    ${Student Data}==${new student}    Click Edit Students List Button
+    \    ${Student Data}=    Get Text    ${Student}
+    \    Collections.Append To List    ${Students list}    ${Student Data}
+    List Should Contain Value    ${Students list}    ${Student Data}
 
 Deleting First Student
     Click Element    css=#modal-window > section > section > section > table > tbody > tr:nth-child(2) > td:nth-child(6) > i
