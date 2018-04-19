@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Tests check the adding, removal and editing of student data, adding cv_files and photo in the list of students with \ role administrator also check the opportunity of adding new student with empty data and sorting student's list by name.
-Suite Setup       Prepare for Tests
+Suite Setup       Prepare for Tests by Administrator
 Suite Teardown    Close Browser
 Test Teardown     Url for start next test    ${url_for_start_test}
 Library           Selenium2Library
@@ -22,7 +22,7 @@ test02_new_student
     [Tags]    add student
     Click Edit Students List Button
     Click Add New Student Button
-    Enter Student data
+    Enter Student Data With Administrator
     Click Save Data Changes Button
     Click Exit Students List Editor
     @{Students list}=    Students list
@@ -66,10 +66,10 @@ test07_adding_equal_students
     [Documentation]    Check opportunity of adding two equal students by administrator.
     Click Edit Students List Button
     Click Add New Student Button
-    Enter Student data
+    Enter Student Data With Administrator
     Click Save Data Changes Button
     Click Add New Student Button
-    Enter Student data
+    Enter Student Data With Administrator
     Click Save Data Changes Button
     Element Should Be Enabled    xpath=//*[@id="modal-window"]//div[6]/button[1]
 
@@ -77,7 +77,7 @@ test08_editing_first_student
     [Documentation]    Check is first student editing by administrator.
     Click Edit Students List Button
     Click Editing First Student
-    Edit Student Data
+    Edit Student Data With Administrator
     Click Save Data Changes Button
     Click Exit Students List Editor
     @{Students list}=    Students list

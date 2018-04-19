@@ -7,6 +7,8 @@ sorting student's list by name.
 """
 
 import unittest
+# from pyunitreport import HTMLTestRunner
+import HtmlTestRunner
 import logging
 from caesar_items.pages.groups_page import GroupsPage
 from caesar_items.pages.students_page import StudentsPage,\
@@ -347,4 +349,4 @@ class TestStudentsPageFromGroupWithAdmin(TestBase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:'))
