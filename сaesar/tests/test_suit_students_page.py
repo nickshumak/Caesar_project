@@ -7,9 +7,6 @@ sorting student's list by name.
 """
 
 import unittest
-# from pyunitreport import HTMLTestRunner
-import HtmlTestRunner
-import logging
 from caesar_items.pages.groups_page import GroupsPage
 from caesar_items.pages.students_page import StudentsPage,\
     data_student_for_check, remove_none_from_list
@@ -17,10 +14,6 @@ from resource.users_base import first_admin, coordinator, teacher
 from tests.test_base_set_up_class import TestBaseSetUP
 from tests.test_base import TestBase
 from resource.data_for_test_suit_students_page import data
-
-
-# logging.basicConfig(filename='test.log', level=logging.INFO,
-#                     format='%(asctime)s:%(levelname)s:%(message)s')
 
 
 class TestStudentsPageWithAdmin(TestBaseSetUP):
@@ -349,4 +342,4 @@ class TestStudentsPageFromGroupWithAdmin(TestBase):
 
 
 if __name__ == '__main__':
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='C:'))
+    unittest.main()
