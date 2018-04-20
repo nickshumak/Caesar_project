@@ -15,7 +15,7 @@ from caesar_items.pages.base_page import BasePage
 from caesar_items.pages.admin_page import AdminPage
 from resource.url_site import PathUrl
 from resource.constants_creating_group import TIME_TO_WAIT, TEST_TEACHER_INDEX, \
-    TEST_FIRST_EXPERT_NAME, TEST_START_DATE
+    TEST_FIRST_EXPERT_NAME, TEST_START_DATE, TEST_DIRECTION
 
 
 class LeftMenu(object):
@@ -271,7 +271,7 @@ class GroupsPage(BasePage):
         def set_group_direction(self, str_direction) -> object:
             """ Set  chosen group direction."""
             select_direction = Select(self.group_direction_list)
-            select_direction.select_by_index(str_direction)
+            select_direction.select_by_value(str_direction)
             return self
 
         def get_value_of_direction(self) -> str:
@@ -282,11 +282,11 @@ class GroupsPage(BasePage):
             """ Get  group location web element."""
             return self.group_location_list
 
-        def set_group_location(self, location_index) -> object:
+        def set_group_location(self, location_value) -> object:
             """ Set  chosen group location."""
             self.group_location_list.click()
             select_location = Select(self.group_location_list)
-            select_location.select_by_index(location_index)
+            select_location.select_by_visible_text(location_value)
             return self
 
         def get_value_of_location(self) -> str:
@@ -389,16 +389,11 @@ class GroupsPage(BasePage):
                 list_of_values.append(added_expert.text)
             return list_of_values
 
-        def auto_fill_all_fields(self, new_group_name, group_location) -> None:
+        def auto_fill_all_fields(self, new_group_name, group_location, group_direction) -> None:
             """ Fill  all fields, to create some group,
                             function used to test deleting of groups."""
             self.group_direction_list.click()
-            directions_list = self.group_direction_list.find_elements(
-                By.TAG_NAME, 'option')
-            random_direction_index = random.randint(
-                1, len(directions_list) - 1)
-            select_direction = Select(self.group_direction_list)
-            select_direction.select_by_index(random_direction_index)
+            self.set_group_direction(group_direction)
             self.group_location_list.click()
             select_location = Select(self.group_location_list)
             select_location.select_by_value(group_location)
@@ -412,14 +407,7 @@ class GroupsPage(BasePage):
             WebDriverWait(self.driver, TIME_TO_WAIT).until(
                 EC.element_to_be_clickable(CreateGroupWindowLocators.
                                            ACCEPT_TEACHER_BUTTON)).click()
-            self.add_expert_button.click()
-            WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(
-                    CreateGroupWindowLocators.EXPERTS_NAME_FIELD)).send_keys(
-                TEST_FIRST_EXPERT_NAME)
-            WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           ACCEPT_EXPERT_BUTTON)).click()
+            self.add_expert(TEST_FIRST_EXPERT_NAME)
             self.start_date_field.send_keys(TEST_START_DATE)
             self.finish_date_field.send_keys(Keys.ENTER)
             self.group_name_field.clear()

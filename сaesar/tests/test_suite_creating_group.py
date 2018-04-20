@@ -3,7 +3,7 @@ from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_DIRECTION_IS_NOT_SELECTED, \
     MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE, TEST_GROUP_NAME, \
     TEST_ITERATIONS, MESSAGE_EMPTY_EXPERT_NAME, TEST_SECOND_EXPERT_NAME, \
-    MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION
+    MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION, TEST_DIRECTION
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -53,7 +53,7 @@ class TestCreatingGroup(TestBase):
     def test06_save_button_is_working(self):
         """ Check  the field 'save' button  work correct """
         self.group_page.CreateGroupWindow().auto_fill_all_fields(
-            TEST_GROUP_NAME, TEST_LOCATION)
+            TEST_GROUP_NAME, TEST_LOCATION, TEST_DIRECTION)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test07_cancel_button_is_enabled(self):
@@ -126,11 +126,9 @@ class TestCreatingGroup(TestBase):
 
     def test15_adding_more_5_same_expert(self):
         """ Check  the adding of 20 experts with same value in field 'name'"""
-        i = TEST_ITERATIONS
-        while i > 0:
+        for i in range(0, TEST_ITERATIONS):
             self.group_page.CreateGroupWindow().add_expert(
                 TEST_THIRD_EXPERT_NAME)
-            i -= 1
         experts_list = self.group_page.CreateGroupWindow(). \
             get_added_experts_list()
         self.assertEqual(experts_list, list(set(experts_list)))
@@ -146,10 +144,8 @@ class TestCreatingGroup(TestBase):
 
     def test17_add_empty_teacher(self):
         """ Check  adding  teacher, with empty name"""
-        i = TEST_ITERATIONS
-        while i > 0:
+        for i in range(0, TEST_ITERATIONS):
             self.group_page.CreateGroupWindow().add_teacher()
-            i -= 1
         teachers_list = self.group_page.CreateGroupWindow(). \
             get_values_from_added_teachers_list()
         self.assertIn('', teachers_list)
