@@ -64,7 +64,7 @@ class LeftMenuLocators(object):
 
 class TopMenuLocators(object):
     LOCATIONS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(1)')
-    GROUPS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
+    GROUPS_BUTTON_ = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(2)')
     STUDENTS_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(3)')
     SCHEDULE_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(4)')
     ADD_BUTTON = (By.CSS_SELECTOR, 'div.itemMenu:nth-child(5)')
@@ -227,13 +227,16 @@ class CreateGroupWindowLocators(object):
                          'div.form-group.col-xs-6.col-xs-offset-0.col-md-5.'
                          'col-md-offset-1.col-lg-4.calendar-wrapper')
     START_DATE_FIELD = (By.NAME, 'startDate')
+    FINISH_DATE_FORM = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(4) > div.form-group.col-xs-6.'
+                         'col-xs-offset-0.col-md-5.col-md-offset-1.col-lg-4'
+                         '.calendar-wrapper')
     FINISH_DATE_FIELD = (By.NAME, 'finishDate')
     ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
     EXPERTS_NAME_FIELD = (By.NAME, 'expert')
     ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
-    EXPERTS_FORM = (By.CSS_SELECTOR, "#modal-window > section > section > "
-                                     "section > div:nth-child(6) > "
-                                     "div:nth-child(2)")
+    EXPERTS_FORM = (By.CSS_SELECTOR, "#experts > div")
     ADDED_EXPERTS_LIST = (By.CLASS_NAME, 'listExpert')
     SAVE_BUTTON = (By.ID, 'save')
     CANCEL_BUTTON = (By.ID, 'cancel')

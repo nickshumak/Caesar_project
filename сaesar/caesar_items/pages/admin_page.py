@@ -9,24 +9,28 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from resource.error_handler import logger_exception
 
 
 class AdminPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    @logger_exception
     def tab_users(self):
         """ Go to the users tab."""
         tab_users = self.driver.find_element(*AdminPageLocators.TAB_USERS)
         tab_users.click()
         return self
 
+    @logger_exception
     def tab_groups(self):
         """ Go to the groups tab."""
         tab_groups = self.driver.find_element(*AdminPageLocators.TAB_GROUPS)
         tab_groups.click()
         return self
 
+    @logger_exception
     def tab_students(self):
         """ Go to the students tab."""
         tab_students = self.driver.find_element(
@@ -34,29 +38,34 @@ class AdminPage(BasePage):
         tab_students.click()
         return self
 
+    @logger_exception
     def add_entity_user(self):
         """ Add user in table."""
         add_entity = self.driver.find_element(*AdminPageLocators.ADD_USER)
         add_entity.click()
         return self
 
+    @logger_exception
     def add_entity_group(self):
         """ Add group in table."""
         add_entity = self.driver.find_element(*AdminPageLocators.ADD_GROUP)
         add_entity.click()
         return self
 
+    @logger_exception
     def add_entity_student(self):
         """ Add student in table."""
         add_entity = self.driver.find_element(*AdminPageLocators.ADD_STUDENT)
         add_entity.click()
         return self
 
+    @logger_exception
     def back_home(self):
         """ Click on the button that will return to the Group page."""
         back_home = self.driver.find_element(*AdminPageLocators.BUTTON_ESCAPE)
         back_home.click()
 
+    @logger_exception
     def fill_user_name(self, name):
         """ Filling user name field."""
         first_name = WebDriverWait(self.driver, 20).until(
@@ -65,6 +74,7 @@ class AdminPage(BasePage):
         first_name.send_keys(name, Keys.ENTER)
         return self
 
+    @logger_exception
     def fill_user_second_name(self, second_name):
         """ Filling user second name field."""
         last_name = self.driver.find_element(
@@ -73,6 +83,7 @@ class AdminPage(BasePage):
         last_name.send_keys(second_name)
         return self
 
+    @logger_exception
     def fill_user_role_type(self, role_type):
         """ Filling type role field."""
         role = self.driver.find_element(
@@ -81,6 +92,7 @@ class AdminPage(BasePage):
         Select(role).select_by_visible_text(role_type)
         return self
 
+    @logger_exception
     def fill_user_city(self, city):
         """ Filling location field."""
         location = self.driver.find_element(
@@ -89,6 +101,7 @@ class AdminPage(BasePage):
         Select(location).select_by_visible_text(city)
         return self
 
+    @logger_exception
     def fill_user_photo(self, photo):
         """ Filling path to photography."""
         photograph = self.driver.find_element(*CreateEditUsersLocators.PHOTO)
@@ -96,6 +109,7 @@ class AdminPage(BasePage):
         photograph.send_keys(photo)
         return self
 
+    @logger_exception
     def fill_user_login(self, log_in):
         """ Filling login field."""
         login = self.driver.find_element(
@@ -104,6 +118,7 @@ class AdminPage(BasePage):
         login.send_keys(log_in)
         return self
 
+    @logger_exception
     def fill_user_password(self, secret):
         """ Filling password field."""
         password = self.driver.find_element(
@@ -112,11 +127,13 @@ class AdminPage(BasePage):
         password.send_keys(secret)
         return self
 
+    @logger_exception
     def is_enabled_submit_button(self):
         """ Checking button availability."""
         return self.driver.find_element(
             *AdminPageLocators.BUTTON_SUBMIT).is_enabled()
 
+    @logger_exception
     def fill_group_name(self, group_name):
         """ Filling group name field."""
         name = WebDriverWait(self.driver, 20).until(
@@ -125,6 +142,7 @@ class AdminPage(BasePage):
         name.send_keys(group_name, Keys.ENTER)
         return self
 
+    @logger_exception
     def fill_group_geography(self, geography):
         """ Filling group's by location."""
         location = self.driver.find_element(
@@ -133,6 +151,7 @@ class AdminPage(BasePage):
         Select(location).select_by_visible_text(geography)
         return self
 
+    @logger_exception
     def fill_group_owner(self, owner):
         """ Filling group's owner by location."""
         if owner:
@@ -141,6 +160,7 @@ class AdminPage(BasePage):
             budget_owner.click()
         return self
 
+    @logger_exception
     def fill_group_direct(self, direct):
         """ Filling group's by direction."""
         direction = self.driver.find_element(
@@ -149,6 +169,7 @@ class AdminPage(BasePage):
         Select(direction).select_by_visible_text(direct)
         return self
 
+    @logger_exception
     def fill_group_first_date(self, first_date):
         """ Filling group's by start date."""
         start_date = self.driver.find_element(
@@ -157,6 +178,7 @@ class AdminPage(BasePage):
         start_date.send_keys(first_date)
         return self
 
+    @logger_exception
     def fill_group_second_date(self, second_date):
         """ Filling group's by finish date."""
         finish_date = self.driver.find_element(
@@ -164,6 +186,7 @@ class AdminPage(BasePage):
         finish_date.send_keys(second_date)
         return self
 
+    @logger_exception
     def fill_group_teacher_name(self, teacher_name):
         """ Filling group's by teacher."""
         teachers = self.driver.find_element(
@@ -172,6 +195,7 @@ class AdminPage(BasePage):
         teachers.send_keys(teacher_name)
         return self
 
+    @logger_exception
     def fill_group_experts_name(self, experts_name):
         """ Filling group's by expert name."""
         expert = self.driver.find_element(
@@ -180,6 +204,7 @@ class AdminPage(BasePage):
         expert.send_keys(experts_name)
         return self
 
+    @logger_exception
     def fill_group_stage_level(self, stage_level):
         """ Filling group's by stage level."""
         stage = self.driver.find_element(
@@ -188,6 +213,7 @@ class AdminPage(BasePage):
         stage.click()
         return self
 
+    @logger_exception
     def fill_student_group_id(self, group):
         """ Filling group's by stage level."""
         group_id = WebDriverWait(self.driver, 20).until(
@@ -196,6 +222,7 @@ class AdminPage(BasePage):
         group_id.send_keys(group, Keys.ENTER)
         return self
 
+    @logger_exception
     def fill_student_name(self, first_name):
         """ Filling student's name."""
         name = self.driver.find_element(
@@ -204,6 +231,7 @@ class AdminPage(BasePage):
         name.send_keys(first_name)
         return self
 
+    @logger_exception
     def fill_student_last_name(self, second_name):
         """ Filling student's last name."""
         last_name = self.driver.find_element(
@@ -212,6 +240,7 @@ class AdminPage(BasePage):
         last_name.send_keys(second_name)
         return self
 
+    @logger_exception
     def fill_student_english_level(self, english):
         """ Filling student's english level."""
         english_level = self.driver.find_element(
@@ -220,6 +249,7 @@ class AdminPage(BasePage):
         Select(english_level).select_by_visible_text(english)
         return self
 
+    @logger_exception
     def fill_student_cv_url(self, curriculum_vitae):
         """ Filling path to cv by url."""
         cv_url = self.driver.find_element(
@@ -228,6 +258,7 @@ class AdminPage(BasePage):
         cv_url.send_keys(curriculum_vitae)
         return self
 
+    @logger_exception
     def fill_student_image(self, image_path):
         """ Filling path to image."""
         image = self.driver.find_element(
@@ -236,6 +267,7 @@ class AdminPage(BasePage):
         image.send_keys(image_path)
         return self
 
+    @logger_exception
     def fill_student_entry_score(self, score):
         """ Filling student's entry score."""
         entry_score = self.driver.find_element(
@@ -244,6 +276,7 @@ class AdminPage(BasePage):
         entry_score.send_keys(score)
         return self
 
+    @logger_exception
     def fill_student_approved_by(self, approved):
         """ Filling student's field where
         you will see who approved the student."""
@@ -253,6 +286,7 @@ class AdminPage(BasePage):
         approved_by.send_keys(approved)
         return self
 
+    @logger_exception
     def get_table(self, table_name: str):
         """ Getting all rows from table."""
         WebDriverWait(self.driver, 20,
@@ -266,12 +300,14 @@ class AdminPage(BasePage):
         table = [each.split(',') for each in table_text]
         return table
 
+    @logger_exception
     def delete_last_entity(self):
         """ Deleting last entity who has been added recently"""
         button_path = self.get_last_delete_button()
         self.driver.find_element_by_xpath(button_path).click()
         return self
 
+    @logger_exception
     def get_last_delete_button(self):
         """ Path to entity delete button who has been created recently."""
         WebDriverWait(self.driver, 20,
@@ -281,13 +317,16 @@ class AdminPage(BasePage):
         buttons = self.driver.find_elements(
             By.XPATH, CreateEditUsersLocators.DELETE_BUTTONS)
         number_delete_buttons = \
-            len([z.text for z in buttons if z.text == 'Delete'])
+            len([element_btn.text for element_btn in buttons
+                 if element_btn.text == 'Delete'])
         return CreateEditUsersLocators.DELETE_BUTTONS + "[{}]". \
             format(number_delete_buttons)
 
+    @logger_exception
     def submit(self):
         """ Confirmation of entered data."""
         submit = self.driver.find_element(
             *AdminPageLocators.BUTTON_SUBMIT)
         submit.click()
         return self
+

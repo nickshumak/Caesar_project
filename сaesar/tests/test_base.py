@@ -1,11 +1,9 @@
 import unittest
+import logging
 from selenium import webdriver
 from resource.url_site import PathUrl
 from resource.path_driver import GetDriver
 from caesar_items.pages.login_page import LogInPage
-# from selenium.webdriver.common.action_chains import ActionChains
-# from selenium.webdriver.common.keys import Keys
-# import time
 
 
 class TestBase(unittest.TestCase):

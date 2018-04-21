@@ -6,7 +6,7 @@ from caesar_items.locators.locators import StudentsListLocators, \
 
 
 # the number of seconds the driver will wait until element become enabled
-seconds = 20
+seconds = 30
 
 
 class Student(object):

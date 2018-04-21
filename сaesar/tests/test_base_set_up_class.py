@@ -22,8 +22,8 @@ class TestBaseSetUP(unittest.TestCase):
         cls.login_page.auto_login(user)
         cls.main_page = GroupsPage(cls.driver)
         cls.top_menu = cls.main_page.open_top_menu()
-        cls.main_page = cls.top_menu.click_students_button()
-        cls.main_page.select_group_by_name(data['group_name'])
+        cls.top_menu.click_students_button()
+        GroupsPage(cls.driver).select_group_by_name(data['group_name'])
         cls.students_page = StudentsPage(cls.driver)
 
     @classmethod
