@@ -197,6 +197,9 @@ class GroupsPage(BasePage):
             self.start_date_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
                 until(EC.presence_of_element_located(CreateGroupWindowLocators.
                                                      START_DATE_FORM))
+            self.finish_date_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
+                until(EC.presence_of_element_located(CreateGroupWindowLocators.
+                                                     FINISH_DATE_FORM))
             self.experts_form = WebDriverWait(self.driver, TIME_TO_WAIT). \
                 until(EC.presence_of_element_located(CreateGroupWindowLocators.
                                                      EXPERTS_FORM))
@@ -256,6 +259,10 @@ class GroupsPage(BasePage):
             """ Get start date form web element."""
             return self.start_date_form
 
+        def get_finish_date_form(self) -> object:
+            """ Get start date form web element."""
+            return self.finish_date_form
+
         def get_experts_form(self) -> object:
             """ Get expert form web element."""
             return self.experts_form
@@ -299,21 +306,21 @@ class GroupsPage(BasePage):
 
         def get_teachers_drop_list(self) -> object:
             """ Get  teachers drop down list web element ."""
-            self.teacher_add_button.click()
-            try:
-                return WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                    EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                               TEACHERS_DROP_LIST))
-            finally:
-                return NoSuchElementException
+            teachers_drop_list = WebDriverWait(self.driver, 20).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           TEACHERS_DROP_LIST))
+            return teachers_drop_list
 
         def select_teacher(self, teacher_name) -> object:
             """ Select teacher from teachers drop down list."""
             self.get_teacher_add_button().click()
-            self.get_teachers_drop_list().click()
-            select = Select(self.get_teachers_drop_list())
-            select.select_by_index(teacher_name)
-            self.driver.find_element(CreateGroupWindowLocators.ACCEPT_TEACHER_BUTTON)
+            drop_list_teachers = self.get_teachers_drop_list()
+            drop_list_teachers.click()
+            select = Select(drop_list_teachers)
+            select.select_by_value(teacher_name)
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                           ACCEPT_TEACHER_BUTTON)).click()
             return self
 
         def add_teacher(self) -> object:
@@ -340,6 +347,20 @@ class GroupsPage(BasePage):
             self.start_date_field.send_keys(start_date_value)
             self.finish_date_field.send_keys(Keys.ENTER)
             return self
+
+        def get_value_start_date_field(self) -> str:
+            """ Get value from group start date field."""
+            return self.start_date_field.get_attribute("value")
+
+        def set_finish_date(self, finish_date_value) -> object:
+            """ Set value to "finish date" field."""
+            self.finish_date_field.send_keys(finish_date_value)
+            self.start_date_field.send_keys(Keys.ENTER)
+            return self
+
+        def get_value_finish_date_field(self) -> str:
+            """ Get value from group finish date field."""
+            return self.finish_date_field.get_attribute("value")
 
         def submit_group_creating_button(self) -> object:
             """ End group creating and save all fields."""
@@ -389,24 +410,14 @@ class GroupsPage(BasePage):
                 list_of_values.append(added_expert.text)
             return list_of_values
 
-        def auto_fill_all_fields(self, new_group_name, group_location, group_direction) -> None:
+        def auto_fill_all_fields(self, new_group_name, group_location, group_direction, teachers_name) -> None:
             """ Fill  all fields, to create some group,
                             function used to test deleting of groups."""
             self.group_direction_list.click()
             self.set_group_direction(group_direction)
             self.group_location_list.click()
-            select_location = Select(self.group_location_list)
-            select_location.select_by_value(group_location)
-            self.teacher_add_button.click()
-            drop_list_teachers = WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           TEACHERS_DROP_LIST))
-            drop_list_teachers.click()
-            select = Select(drop_list_teachers)
-            select.select_by_index(TEST_TEACHER_INDEX)
-            WebDriverWait(self.driver, TIME_TO_WAIT).until(
-                EC.element_to_be_clickable(CreateGroupWindowLocators.
-                                           ACCEPT_TEACHER_BUTTON)).click()
+            self.set_group_location(group_location)
+            self.select_teacher(teachers_name)
             self.add_expert(TEST_FIRST_EXPERT_NAME)
             self.start_date_field.send_keys(TEST_START_DATE)
             self.finish_date_field.send_keys(Keys.ENTER)

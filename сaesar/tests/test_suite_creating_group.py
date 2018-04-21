@@ -3,7 +3,9 @@ from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     MESSAGE_DIRECTION_IS_NOT_SELECTED, \
     MESSAGE_START_DATE_FIELD_IS_EMPTY, APP_TITLE, TEST_GROUP_NAME, \
     TEST_ITERATIONS, MESSAGE_EMPTY_EXPERT_NAME, TEST_SECOND_EXPERT_NAME, \
-    MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION, TEST_DIRECTION
+    MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION, TEST_DIRECTION, TEST_TEACHERS_NAME, \
+    TEST_START_DATE, TEST_FINISH_DATE, TEST_WRONG_FORMAT_DATE, MESSAGE_WRONG_START_DATE, \
+    MESSAGE_FINISH_DATE_FIELD_IS_EMPTY
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -53,7 +55,7 @@ class TestCreatingGroup(TestBase):
     def test06_save_button_is_working(self):
         """ Check  the field 'save' button  work correct """
         self.group_page.CreateGroupWindow().auto_fill_all_fields(
-            TEST_GROUP_NAME, TEST_LOCATION, TEST_DIRECTION)
+            TEST_GROUP_NAME, TEST_LOCATION, TEST_DIRECTION, TEST_TEACHERS_NAME)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test07_cancel_button_is_enabled(self):
@@ -148,4 +150,59 @@ class TestCreatingGroup(TestBase):
             self.group_page.CreateGroupWindow().add_teacher()
         teachers_list = self.group_page.CreateGroupWindow(). \
             get_values_from_added_teachers_list()
-        self.assertIn('', teachers_list)
+        self.assertNotIn('', teachers_list)
+
+    def test18_add_default_teacher(self):
+        """ Check  adding  teacher, without choosing him from list"""
+        self.group_page.CreateGroupWindow().add_teacher()
+        teachers_list = self.group_page.CreateGroupWindow(). \
+            get_values_from_added_teachers_list()
+        self.assertIn(TEST_TEACHERS_NAME, teachers_list)
+
+    def test19_check_autoincrement_finish_date(self):
+        """ Check  the autoincrement of ''finish date' field  after entering 'start date' field"""
+        self.group_page.CreateGroupWindow().set_start_date(TEST_START_DATE)
+        finish_date_value = self.group_page.CreateGroupWindow().get_value_finish_date_field()
+        self.assertEqual(finish_date_value, TEST_FINISH_DATE)
+
+    def test20_check_autoincrement_finish_date(self):
+        """ Check  the autoincrement of ''start date' field  after entering ' finish date' field"""
+        self.group_page.CreateGroupWindow().set_finish_date(TEST_FINISH_DATE)
+        start_date_value = self.group_page.CreateGroupWindow().get_value_start_date_field()
+        self.assertEqual(start_date_value, TEST_START_DATE)
+
+    def test21_create_group_with_wrong_format_start_date(self):
+        """ Check  the creating of group when the  field 'start date' get wrong date format"""
+        self.group_page.CreateGroupWindow().set_start_date(TEST_WRONG_FORMAT_DATE)
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
+        start_date_form = self.group_page.CreateGroupWindow(). \
+            get_start_date_form()
+        warning_message = self.group_page.CreateGroupWindow(). \
+            get_warning_message_by_form(start_date_form)
+        self.assertEqual(warning_message, MESSAGE_WRONG_START_DATE)
+
+    def test22_create_group_with_wrong_format_finish_date(self):
+        """ Check  the creating of group when the  field 'finish date' get wrong date format"""
+        self.group_page.CreateGroupWindow().set_finish_date(TEST_WRONG_FORMAT_DATE)
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
+        finish_date_form = self.group_page.CreateGroupWindow(). \
+            get_finish_date_form()
+        warning_message = self.group_page.CreateGroupWindow(). \
+            get_warning_message_by_form(finish_date_form)
+        self.assertEqual(warning_message, MESSAGE_WRONG_START_DATE)
+
+    def test22_create_group_with_empty_finish_date(self):
+        """ Check  the creating of group when the  field 'finish date' is empty"""
+        self.group_page.CreateGroupWindow().submit_group_creating_button()
+        finish_date_form = self.group_page.CreateGroupWindow(). \
+            get_finish_date_form()
+        warning_message = self.group_page.CreateGroupWindow(). \
+            get_warning_message_by_form(finish_date_form)
+        self.assertEqual(warning_message, MESSAGE_FINISH_DATE_FIELD_IS_EMPTY)
+
+    def test23_add_teacher_by_name(self):
+        """ Check  adding  teacher, with custom selected name"""
+        self.group_page.CreateGroupWindow().select_teacher(TEST_TEACHERS_NAME)
+        teachers_list = self.group_page.CreateGroupWindow(). \
+            get_values_from_added_teachers_list()
+        self.assertIn(TEST_TEACHERS_NAME, teachers_list)

@@ -149,6 +149,11 @@ class CreateGroupWindowLocators(object):
                          'div.form-group.col-xs-6.col-xs-offset-0.col-md-5.'
                          'col-md-offset-1.col-lg-4.calendar-wrapper')
     START_DATE_FIELD = (By.NAME, 'startDate')
+    FINISH_DATE_FORM = (
+        By.CSS_SELECTOR, '#modal-window > section > section > section > '
+                         'div:nth-child(4) > div.form-group.col-xs-6.'
+                         'col-xs-offset-0.col-md-5.col-md-offset-1.col-lg-4'
+                         '.calendar-wrapper')
     FINISH_DATE_FIELD = (By.NAME, 'finishDate')
     ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
     EXPERTS_NAME_FIELD = (By.NAME, 'expert')
