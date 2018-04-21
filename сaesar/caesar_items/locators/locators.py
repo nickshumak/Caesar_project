@@ -158,9 +158,7 @@ class CreateGroupWindowLocators(object):
     ADD_EXPERT_BUTTON = (By.CLASS_NAME, 'add-expert-btn')
     EXPERTS_NAME_FIELD = (By.NAME, 'expert')
     ACCEPT_EXPERT_BUTTON = (By.ID, 'acceptInput')
-    EXPERTS_FORM = (By.CSS_SELECTOR, "#modal-window > section > section > "
-                                     "section > div:nth-child(6) > "
-                                     "div:nth-child(2)")
+    EXPERTS_FORM = (By.CSS_SELECTOR, "#experts > div")
     ADDED_EXPERTS_LIST = (By.CLASS_NAME, 'listExpert')
     SAVE_BUTTON = (By.ID, 'save')
     CANCEL_BUTTON = (By.ID, 'cancel')

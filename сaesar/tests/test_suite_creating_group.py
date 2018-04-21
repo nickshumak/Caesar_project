@@ -5,7 +5,7 @@ from resource.constants_creating_group import TEST_TOO_LONG_GROUP_NAME, \
     TEST_ITERATIONS, MESSAGE_EMPTY_EXPERT_NAME, TEST_SECOND_EXPERT_NAME, \
     MESSAGE_INVALID_EXPERT_NAME, TEST_THIRD_EXPERT_NAME, TEST_LOCATION, TEST_DIRECTION, TEST_TEACHERS_NAME, \
     TEST_START_DATE, TEST_FINISH_DATE, TEST_WRONG_FORMAT_DATE, MESSAGE_WRONG_START_DATE, \
-    MESSAGE_FINISH_DATE_FIELD_IS_EMPTY
+    MESSAGE_FINISH_DATE_FIELD_IS_EMPTY, TEST_FIRST_EXPERT_NAME
 from resource.users_base import first_admin
 from tests.test_base import TestBase
 
@@ -55,7 +55,8 @@ class TestCreatingGroup(TestBase):
     def test06_save_button_is_working(self):
         """ Check  the field 'save' button  work correct """
         self.group_page.CreateGroupWindow().auto_fill_all_fields(
-            TEST_GROUP_NAME, TEST_LOCATION, TEST_DIRECTION, TEST_TEACHERS_NAME)
+            TEST_GROUP_NAME, TEST_LOCATION, TEST_DIRECTION, TEST_TEACHERS_NAME,
+            TEST_FIRST_EXPERT_NAME, TEST_START_DATE)
         self.assertEqual(self.group_page.get_title_name(), APP_TITLE)
 
     def test07_cancel_button_is_enabled(self):
@@ -112,7 +113,7 @@ class TestCreatingGroup(TestBase):
 
     def test13_add_expert_without_name(self):
         """ Check  the adding of expert with empty field 'name'"""
-        self.group_page.CreateGroupWindow().add_expert('')
+        self.group_page.CreateGroupWindow().add_expert_x('')
         expert_form = self.group_page.CreateGroupWindow().get_experts_form()
         warning_message = self.group_page.CreateGroupWindow(). \
             get_warning_message_by_form(expert_form)
@@ -191,7 +192,7 @@ class TestCreatingGroup(TestBase):
             get_warning_message_by_form(finish_date_form)
         self.assertEqual(warning_message, MESSAGE_WRONG_START_DATE)
 
-    def test22_create_group_with_empty_finish_date(self):
+    def test23_create_group_with_empty_finish_date(self):
         """ Check  the creating of group when the  field 'finish date' is empty"""
         self.group_page.CreateGroupWindow().submit_group_creating_button()
         finish_date_form = self.group_page.CreateGroupWindow(). \
@@ -200,7 +201,7 @@ class TestCreatingGroup(TestBase):
             get_warning_message_by_form(finish_date_form)
         self.assertEqual(warning_message, MESSAGE_FINISH_DATE_FIELD_IS_EMPTY)
 
-    def test23_add_teacher_by_name(self):
+    def test24_add_teacher_by_name(self):
         """ Check  adding  teacher, with custom selected name"""
         self.group_page.CreateGroupWindow().select_teacher(TEST_TEACHERS_NAME)
         teachers_list = self.group_page.CreateGroupWindow(). \

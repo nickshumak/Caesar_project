@@ -225,8 +225,8 @@ class GroupsPage(BasePage):
                 until(EC.element_to_be_clickable(CreateGroupWindowLocators.
                                                  CANCEL_BUTTON))
             self.add_expert_button = WebDriverWait(self.driver, TIME_TO_WAIT). \
-                until(EC.element_to_be_clickable(
-                CreateGroupWindowLocators.ADD_EXPERT_BUTTON))
+                until(EC.element_to_be_clickable(CreateGroupWindowLocators.
+                                                 ADD_EXPERT_BUTTON))
 
         def get_group_name_field(self) -> object:
             """ Get group name field web element."""
@@ -399,6 +399,21 @@ class GroupsPage(BasePage):
                     CreateGroupWindowLocators.ACCEPT_EXPERT_BUTTON)).click()
             return self
 
+        def add_expert_x(self, expert_name) -> object:
+            """ Add expert - first click the "+one more expert" button, then set
+            expert's name and then click  "accept  expert" button."""
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(
+                    CreateGroupWindowLocators.ADD_EXPERT_BUTTON)).click()
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(
+                    CreateGroupWindowLocators.EXPERTS_NAME_FIELD)). \
+                send_keys(expert_name)
+            WebDriverWait(self.driver, TIME_TO_WAIT).until(
+                EC.element_to_be_clickable(
+                    CreateGroupWindowLocators.ACCEPT_EXPERT_BUTTON)).click()
+            return self
+
         def get_added_experts_list(self) -> list:
             """ Get values from "added experts" list."""
             added_experts_form = WebDriverWait(self.driver, TIME_TO_WAIT).until(
@@ -410,7 +425,9 @@ class GroupsPage(BasePage):
                 list_of_values.append(added_expert.text)
             return list_of_values
 
-        def auto_fill_all_fields(self, new_group_name, group_location, group_direction, teachers_name) -> None:
+        def auto_fill_all_fields(self, new_group_name, group_location,
+                                 group_direction, teachers_name, experts_name,
+                                 start_date) -> None:
             """ Fill  all fields, to create some group,
                             function used to test deleting of groups."""
             self.group_direction_list.click()
@@ -418,8 +435,8 @@ class GroupsPage(BasePage):
             self.group_location_list.click()
             self.set_group_location(group_location)
             self.select_teacher(teachers_name)
-            self.add_expert(TEST_FIRST_EXPERT_NAME)
-            self.start_date_field.send_keys(TEST_START_DATE)
+            self.add_expert(experts_name)
+            self.start_date_field.send_keys(start_date)
             self.finish_date_field.send_keys(Keys.ENTER)
             self.group_name_field.clear()
             self.group_name_field.send_keys(new_group_name)
