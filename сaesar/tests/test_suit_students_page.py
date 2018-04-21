@@ -20,10 +20,10 @@ class TestStudentsPageWithAdmin(TestBaseSetUP):
     driver = None
 
     @classmethod
-    def setUpClass(cls, user='', group=''):
+    def setUpClass(cls, user=''):
         """ Log in as administrator, open top menu,select
         button 'students' and select group."""
-        super().setUpClass(first_admin, data['group_name'])
+        super().setUpClass(first_admin)
 
     @classmethod
     def tearDownClass(cls):
@@ -147,10 +147,10 @@ class TestStudentsPageWithCoordinator(TestBaseSetUP):
     driver = None
 
     @classmethod
-    def setUpClass(cls, user='', group=''):
+    def setUpClass(cls, user=''):
         """Log in by coordinator, open top menu,select
         button 'students', select group."""
-        super().setUpClass(coordinator, data['group_name'])
+        super().setUpClass(coordinator)
 
     @classmethod
     def tearDownClass(cls):
@@ -230,10 +230,10 @@ class TestStudentsPageWithTeacher(TestBaseSetUP):
     driver = None
 
     @classmethod
-    def setUpClass(cls, user='', group=''):
+    def setUpClass(cls, user=''):
         """Log in by teacher, open top menu,select
         button 'students', select group."""
-        super().setUpClass(teacher, data['group_name'])
+        super().setUpClass(teacher)
 
     @classmethod
     def tearDownClass(cls):
@@ -321,8 +321,7 @@ class TestStudentsPageFromGroupWithAdmin(TestBase):
         """Log in by administrator, select group."""
         super().setUp()
         self.login_page.auto_login(first_admin)
-        self.main_page = GroupsPage(self.driver)
-        self.main_page.select_group_by_name(data['group_name'])
+        GroupsPage(self.driver).select_group_by_name(data['group_name'])
         self.students_page = StudentsPage(self.driver)
 
     def tearDown(self):
@@ -332,13 +331,13 @@ class TestStudentsPageFromGroupWithAdmin(TestBase):
     def test19_opening_students_list_editor_after_selecting_group(self):
         """Check opportunity of opening student's list editor after
         selecting group and click on button 'students'."""
-        self.students_page.click_students_from_group_button()
-        self.students_page.click_edit_students_list_button()
+        students_list = self.students_page.\
+            click_students_from_group_button().\
+            click_edit_students_list_button()
         # test fail, because student's list editor does not open
         # after click on button "edit_students_list_button"
-        self.assertTrue(self.students_page.
-                        click_edit_students_list_button().
-                        click_add_new_student_button().is_enabled())
+        self.assertTrue(students_list.
+                        add_new_student_button.is_enabled())
 
 
 if __name__ == '__main__':

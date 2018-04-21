@@ -11,7 +11,7 @@ from resource.data_for_test_suit_students_page import data
 class TestBaseSetUP(unittest.TestCase):
 
     @classmethod
-    def setUpClass(cls, user="", group=""):
+    def setUpClass(cls, user=""):
         """ Log in as specified user, open top menu,select
         button 'students' and select specified group."""
         cls.driver = webdriver.Chrome(
@@ -23,9 +23,8 @@ class TestBaseSetUP(unittest.TestCase):
         cls.main_page = GroupsPage(cls.driver)
         cls.top_menu = cls.main_page.open_top_menu()
         cls.main_page = cls.top_menu.click_students_button()
-        cls.main_page.select_group_by_name(group)
+        cls.main_page.select_group_by_name(data['group_name'])
         cls.students_page = StudentsPage(cls.driver)
-        return cls.students_page
 
     @classmethod
     def tearDownClass(cls):

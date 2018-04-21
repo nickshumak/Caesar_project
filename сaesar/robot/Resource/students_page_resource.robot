@@ -21,6 +21,8 @@ ${new_student_by_admin}    Semmi Vladyslava Pre-intermediate 111 5 Not approved
 ${new_student_by_coordinator}    Holmes Sherlock Pre-intermediate strong 333 3 Not approved
 ${new_student_by_teacher}    Monro Merlin Elementary 123 3 Not approved
 ${editing_student_by_admin}    Potter Garry Upper-intermediate 222 2 Not approved
+${editing_student_by_coordinator}    Good Robin Advanced 444 4 Not approved
+${editing_student_by_teacher}    Kent Clark Upper-intermediate low 321 3 Not approved
 &{users}          first_admin=qwerty    coordinator=dmytro    teacher=sasha
 
 *** Keywords ***
@@ -77,6 +79,10 @@ Click Save Data Changes Button
 Click Sort List By Name
     Click Element    css=#main-section > div > div > table > thead > tr > th.fullName
 
+Click Students Button
+    Wait Until Element Is Enabled    xpath=.//*[@id="main-section"]/div/header/div[2]/button[2]
+    Click Button    xpath=.//*[@id="main-section"]/div/header/div[2]/button[2]
+
 Deleting First Student
     Click Element    css=#modal-window > section > section > section > table > tbody > tr:nth-child(2) > td:nth-child(6) > i
     Click Element    css=#modal-window > div > div > div > div > button.btn.btn-delete > i
@@ -98,17 +104,64 @@ Edit Student Data With Administrator
     Clear Element Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input
     Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
 
+Edit Student Data With Coordinator
+    Wait Until Element Is Enabled    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    5
+    ${second_student_first_name}=    Get From Dictionary    ${data editing first student by coordinator}    first_name
+    Clear Element Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    ${second_student_first_name}
+    ${second_student_last_name}=    Get From Dictionary    ${data editing first student by coordinator}    last_name
+    Clear Element Text    css=.lastName
+    Input Text    css=.lastName    ${second_student_last_name}
+    ${english level student}=    Get From Dictionary    ${data editing first student by coordinator}    english_level
+    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level student}
+    ${incoming_mark}    Get From Dictionary    ${data editing first student by coordinator}    incoming_mark
+    Clear Element Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input
+    Input Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
+    ${entry_mark}    Get From Dictionary    ${data editing first student by coordinator}    entry_mark
+    Clear Element Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
+
+Edit Student Data With Teacher
+    Wait Until Element Is Enabled    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    5
+    ${third_student_first_name}=    Get From Dictionary    ${data editing first student by teacher}    first_name
+    Clear Element Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    ${third_student_first_name}
+    ${third_student_last_name}=    Get From Dictionary    ${data editing first student by teacher}    last_name
+    Clear Element Text    css=.lastName
+    Input Text    css=.lastName    ${third_student_last_name}
+    ${english level third new student}=    Get From Dictionary    ${data editing first student by teacher}    english_level
+    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level third new student}
+    ${incoming_mark}    Get From Dictionary    ${data editing first student by teacher}    incoming_mark
+    Clear Element Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input
+    Input Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
+    ${entry_mark}    Get From Dictionary    ${data editing first student by teacher}    entry_mark
+    Clear Element Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
+
 Enter Student Data With Administrator
     Wait Until Element Is Enabled    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    5
     ${first_student_first_name}=    Get From Dictionary    ${data first student}    first_name
     Input Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    ${first_student_first_name}
     ${first_student_last_name}=    Get From Dictionary    ${data first student}    last_name
     Input Text    css=.lastName    ${first_student_last_name}
-    ${english level first new student}=    Get From Dictionary    ${data first student}    english_level
-    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level first new student}    english_level
+    ${english level first new student}=    Get From Dictionary    ${data first student}    english_level_first_new_student
+    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level first new student}
     ${incoming_mark}    Get From Dictionary    ${data first student}    incoming_mark
     Input Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
     ${entry_mark}    Get From Dictionary    ${data first student}    entry_mark
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
+
+Enter Student Data With Coordinator
+    Wait Until Element Is Enabled    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    5
+    ${first_student_first_name}=    Get From Dictionary    ${data second student}    first_name
+    Input Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    ${first_student_first_name}
+    ${first_student_last_name}=    Get From Dictionary    ${data second student}    last_name
+    Input Text    css=.lastName    ${first_student_last_name}
+    ${english level first new student}=    Get From Dictionary    ${data second student}    english_level
+    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level first new student}
+    ${incoming_mark}    Get From Dictionary    ${data second student}    incoming_mark
+    Input Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
+    ${entry_mark}    Get From Dictionary    ${data second student}    entry_mark
     Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
     Comment    Select From List By Label
 
@@ -118,13 +171,12 @@ Enter Student Data With Teacher
     Input Text    xpath=//*[@id="modal-window"]//div[2]/div[1]/input    ${second_student_first_name}
     ${second_student_last_name}=    Get From Dictionary    ${data third student}    last_name
     Input Text    css=.lastName    ${second_student_last_name}
-    ${english level second new student}=    Get From Dictionary    ${data third student}    english_level_second_new_student
-    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level first new student}
+    ${english level student}=    Get From Dictionary    ${data third student}    english_level_third_new_student
+    Select From List By Value    css=#modal-window > div > section > section > div:nth-child(4) > div:nth-child(1) > select    ${english level student}
     ${incoming_mark}    Get From Dictionary    ${data third student}    incoming_mark
     Input Text    xpath=//*[@id="modal-window"]//div[1]/div[2]/input    ${incoming_mark}
     ${entry_mark}    Get From Dictionary    ${data third student}    entry_mark
     Input Text    xpath=//*[@id="modal-window"]//div[2]/div[2]/input    ${entry_mark}
-    Comment    Select From List By Label
 
 Expected List
     [Arguments]    ${arg1}

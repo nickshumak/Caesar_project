@@ -255,7 +255,8 @@ class StudentsListLocators(object):
     STUDENTS_TABLE = (By.CLASS_NAME, 'tableBodyStudents')
     EXIT_EDIT_STUDENTS_LIST_BUTTON = (By.CLASS_NAME, 'exit')
     DELETE_STUDENT_BUTTON = (By.XPATH, './/*[@id="modal-window"]//td[6]/i')
-    CONFIRM_DELETING_BUTTON = (By.XPATH, './/*[@id="modal-window"]//button[1]')
+    CONFIRM_DELETING_BUTTON = \
+        (By.XPATH, './/*[@id="modal-window"]//button[1]')
     ADD_NEW_STUDENT_BUTTON = \
         (By.XPATH, './/*[@id="modal-window"]/section//button[1]')
     EDIT_STUDENT_BUTTON = \

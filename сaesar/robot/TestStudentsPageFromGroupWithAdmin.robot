@@ -14,8 +14,3 @@ test19_opening_students_list_editor_after_selecting_group
     Click Students Button
     Click Edit Students List Button
     Element Should Be Enabled    xpath=//*[@id="modal-window"]/section//button[1]
-
-*** Keywords ***
-Click Students Button
-    Wait Until Element Is Enabled    xpath=.//*[@id="main-section"]/div/header/div[2]/button[2]
-    Click Button    xpath=.//*[@id="main-section"]/div/header/div[2]/button[2]

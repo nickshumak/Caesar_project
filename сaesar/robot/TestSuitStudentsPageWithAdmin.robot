@@ -11,7 +11,7 @@ Resource          Resource/students_page_resource.robot
 test01_sort_students_list
     [Documentation]    Check with role administrator is student's list sorting by name.
     @{Students list}=    Students list
-    Remove Values From List    ${Students list}
+    Remove Values From List    ${Students list}    ${None}
     Sort List    ${Students list}
     Click Sort List By Name
     @{Students list sorted by button}=    Students list
