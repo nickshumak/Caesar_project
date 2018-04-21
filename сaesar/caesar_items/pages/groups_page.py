@@ -15,7 +15,7 @@ from caesar_items.pages.base_page import BasePage
 from caesar_items.pages.admin_page import AdminPage
 from resource.url_site import PathUrl
 from resource.constants_creating_group import TIME_TO_WAIT, TEST_TEACHER_INDEX, \
-    TEST_FIRST_EXPERT_NAME, TEST_START_DATE, TEST_DIRECTION
+    TEST_FIRST_EXPERT_NAME, TEST_START_DATE, TEST_DIRECTION, TEST_GROUP_NAME, TEST_LOCATION, TEST_TEACHERS_NAME
 
 
 class LeftMenu(object):
@@ -425,9 +425,12 @@ class GroupsPage(BasePage):
                 list_of_values.append(added_expert.text)
             return list_of_values
 
-        def auto_fill_all_fields(self, new_group_name, group_location,
-                                 group_direction, teachers_name, experts_name,
-                                 start_date) -> None:
+        def auto_fill_all_fields(self, new_group_name=TEST_GROUP_NAME,
+                                 group_location=TEST_LOCATION,
+                                 group_direction=TEST_DIRECTION,
+                                 teachers_name=TEST_TEACHERS_NAME,
+                                 experts_name=TEST_FIRST_EXPERT_NAME,
+                                 start_date=TEST_START_DATE) -> None:
             """ Fill  all fields, to create some group,
                             function used to test deleting of groups."""
             self.group_direction_list.click()
